@@ -9,7 +9,7 @@ import Loader from "../components/Loader";
 const Home: NextPage = () => {
   const hello = api.example.hello.useQuery({ text: "from tRPC" });
   const { data: sessionData } = useSession();
-  const {data :user, isLoading: loadinguser} = api.page.getUser.useQuery(
+  const {data :user, isInitialLoading: loadinguser} = api.page.getUser.useQuery(
     undefined, // no input
     { enabled: sessionData?.user !== undefined },
   );
