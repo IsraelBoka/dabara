@@ -17,9 +17,32 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="container min-h-screen">
-<div>
-  test !! !
-</div>
+        <div className="">
+          <h1 className="text-4xl">
+            DABARA / Crée ton CV
+          </h1>
+          
+          <div className="flex ">
+             
+                <button
+                className="rounded-full bg-white/10 p-4 font-semibold text-white no-underline transition hover:bg-white/20"
+                onClick={sessionData ? () => void signOut() : () => void signIn()}
+              >
+                {sessionData ? "Sign out" : "Sign in"}
+              </button>
+              
+            
+                  <Link href="/creerpage" className="rounded-full bg-white/10 p-4 text-white hover:bg-white/20">
+                    Créer une page
+                  </Link>
+          </div>
+          
+          <div className="">
+            <p className="">
+              {hello.data ? hello.data.greeting : "Loading tRPC query..."}
+            </p>
+          </div>
+        </div>
       </main>
     </>
   );
