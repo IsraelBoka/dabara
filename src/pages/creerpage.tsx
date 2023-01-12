@@ -1,4 +1,5 @@
 import { useSession } from "next-auth/react"
+import { api } from "../utils/api";
 import {  useState } from "react"
 import type  {FormEvent } from "react"
 import Portfolioform from "../components/portfolioform"
@@ -7,12 +8,14 @@ const Creerpage = () => {
     const [nom, setNom] = useState<string>("")
     const [description, setDescription] = useState<string>("")
     const [url, setUrl] = useState<string>("")
+    const updatepage =  api.page.Updatepage.useMutation()
+
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        console.log(nom, description, url)
-
-
+        updatepage.mutate({
+            page : url
+        })
     }
 
     return (
