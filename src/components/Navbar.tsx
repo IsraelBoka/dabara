@@ -20,8 +20,11 @@ const Navbar = () => {
           DABARA
           </span>
         </Link>
-        <nav className={classNames("h-[calc(100vh_-_3rem)] w-full fixed md:relative top-12 md:top-0 md:h-auto md:w-auto md:bg-transparent md:block bg-[#121216] left-0 overflow-auto",  open ? "" : "hidden")}>
-          <ul className=" flex flex-col md:flex-row [&_li]:border-b md:[&_li]:border-b-0 [&_li]:border-gray-700  [&_a]:flex [&_a]:items-center [&_a]:h-12   md:items-center h-full text-md md:text-sm [&_a]:transition-colors [&_a:hover]:text-gray-200 [&_li]:ml-6">
+        <div className={classNames( " md:visible ",open ? "visible " : "invisible  delay-500")}>
+          
+        <nav className={classNames("h-[calc(100vh_-_3rem)] w-full fixed md:relative top-12 md:top-0 md:h-auto md:w-auto md:bg-transparent md:block md:opacity-100 duration-500 transition-opacity  bg-[#121216] left-0 overflow-auto",  open ? "opacity-100" : "opacity-0")}>
+          <ul className={classNames("ease-in  [&_a]:duration-300 [&_a]:transition-[color, transform]  flex flex-col md:flex-row [&_a]:border-b md:[&_a]:border-b-0 [&_a]:border-gray-500  [&_a]:flex [&_a]:items-center [&_a]:h-12 md:items-center h-full text-md md:text-sm [&_a]:translate-y-8 md:[&_a]:translate-y-0  [&_a:hover]:text-gray-200 [&_li]:ml-6",
+         open && "[&_a]:translate-y-0 ")}>
             <li>
               <Link href="/creerpage">Création</Link>
             </li>
@@ -34,6 +37,7 @@ const Navbar = () => {
             </li>
           </ul>
         </nav>
+        </div>
         <div className="ml-auto h-full flex items-center  text-sm ">
           {
             sessionData?.user ? (

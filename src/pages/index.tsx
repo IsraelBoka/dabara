@@ -28,7 +28,7 @@ const Home: NextPage = () => {
         
       <main className="pt-12">
       <Container>
-        <Hero title="Mon titre est bien grand " subtitle="Mon subtitle est bien petit"/>
+        <Hero title="Créer votre portfolio en 1 seul click " subtitle="Débutez l'expérience tout de suite"/>
 
         <div className="">
           <h1 className="text-4xl">
