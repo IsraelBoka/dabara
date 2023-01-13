@@ -39,6 +39,17 @@ export const pageRouter = createTRPCRouter({
   }
   ),
 
+  getPagebyId: protectedProcedure
+  .query(async ({ ctx }) => {
+    const page = await ctx.prisma.user.findFirst({
+      select : {
+        page: true,
+      },
+      where: { id: ctx.session.user.id },
+    });
+    return page;
+  }),
+
 
 
 

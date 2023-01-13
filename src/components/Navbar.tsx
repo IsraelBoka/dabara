@@ -37,13 +37,13 @@ const Navbar = () => {
         <div className="ml-auto h-full flex items-center  text-sm ">
           {
             sessionData?.user ? (
-              <Button variant="secondary" size="small" >
+              <Button variant="secondary" >
                 <span onClick={() => void signOut()}>
                 Se déconnecter
                 </span>
               </Button>
             ) : (
-              <Button size={"small"} >
+              <Button  >
                 Se connecter
                   
               </Button>
