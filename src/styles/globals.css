@@ -4,7 +4,13 @@
 
 
 body {
-   @apply bg-gray-800;
+   @apply bg-[#121216];
    @apply text-white
 
+}
+
+@layer utilities {
+   .text-shadow {
+      text-shadow: rgb(0 0 0 / 56%) 0px 3px 12px;
+   }
 }
