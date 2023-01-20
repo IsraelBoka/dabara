@@ -34,8 +34,8 @@ const Navbar = () => {
 
   } , [open])
   return (
-    <header className="fixed top-0 left-0 w-full px-8  backdrop-blur-[12px]">
-      <Container classname="flex  h-12  border-b border-gray-700">
+    <header className="fixed top-0 left-0 w-full px-8 border-gray-700 backdrop-blur-[12px]">
+      <Container classname="flex  h-12 justify-center items-center   border-b">
         <Link
           className="md:text-md mr-2 flex items-center justify-center"
           href="#"
@@ -67,7 +67,7 @@ const Navbar = () => {
               )}
             >
               <li>
-                <Link  href="/creerpage">Création</Link>
+                <Link href="/creerpage">Création</Link>
               </li>
               <li>
                 <Link href="#">Sponsor</Link>
@@ -81,12 +81,12 @@ const Navbar = () => {
         </div>
         <div className="ml-auto flex h-full items-center  text-sm ">
           {sessionData?.user ? (
-            <Button >
+            <Button variant="secondary">
               <span onClick={() => void signOut()}>Se déconnecter</span>
             </Button>
           ) : (
-            <Button size={"medium"}> 
-              <span onClick={() => void signIn()}>Se connecter</span>
+            <Button size={"small"}> 
+              <span onClick={() => void signIn()}>Connexion</span>
             </Button>
           )}
 

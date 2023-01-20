@@ -6,6 +6,8 @@ import Portfolioform from "../components/portfolioform"
 import { useRouter } from "next/router";
 import Loader from "../components/Loader";
 import {Button} from "../components/Button";
+import { Logo } from "../components/icons/logo";
+import Link from "next/link";
 
 const Creerpage = () => {
     const {data : sessionData, status} = useSession()
@@ -24,6 +26,11 @@ const Creerpage = () => {
     if (status === "unauthenticated") {
         return (
             <div className="min-h-screen flex items-center flex-col justify-center">
+         <Link
+          href={"/"}
+        >
+          <Logo classname="hover:scale-105 duration-150 transition w-16 h-16 mr-2 stroke-white" />
+        </Link>
                 <h1 className="text-2xl text-center p-4">Vous devez être connecté pour accéder à cette page</h1>
                 <Button variant={"primary"} >
                     <a onClick = {() => void signIn()}>Se connecter</a>

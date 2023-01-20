@@ -3,7 +3,7 @@ export const Footer = () => {
     const date = new Date()
     return (
         <footer className=" flex flex-col items-center justify-center lg:flex-row text-white py-4 border-t border-t-gray-700">
-                <p className="text-md ">
+                <p className="text-sm md:text-md flex items-center justify-center flex-col">
                     &copy; {date.getFullYear()} - Tous droits réservés <span className="font-bold">DABWEB</span>
                 </p>
 
@@ -13,7 +13,7 @@ export const Footer = () => {
                     </li>
                     
                     <li>
-                        <a href="#">Créer un profil</a>
+                        <a href="#">Profil</a>
                     </li>
                     <li>
                         <a href="#">Contactez-nous</a>

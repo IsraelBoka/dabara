@@ -10,13 +10,13 @@ interface ButtonProps extends VariantProps<typeof Buttonclasses>  {
 const Buttonclasses = cva(" inline-flex items-center justify-center", {
     variants : {
         variant : {
-            primary : "bg-white rounded-full m-2  w-40   hover:text-shadow hover:shadow-secondary duration-200  text-black",
+            primary : "bg-white rounded-full hover:text-shadow hover:shadow-secondary duration-200  text-black",
             secondary : "rounded-lg text-gray-800 bg-blue-300 transition-colors font-semibold no-underline duration-200 hover:bg-blue-400",
             tertiary : "rounded-lg text-gray-800 bg-orange-300 transition-colors font-semibold no-underline duration-200 hover:bg-orange-400",
         },
         size : {
             small : "text-sm px-3 py-4 h-7",
-            medium : "text-lg p-4 h-8",
+            medium : "text-md px-4 h-8",
             large : "text-lg px-6 h-12",
         }
     },
