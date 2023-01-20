@@ -8,7 +8,7 @@ module.exports = {
       },
       boxShadow: {
         "primary": "rgba(40 49 108 / 50%) 0px 1px 40px",
-        "secondary": "rgba(654 848 551 / 50% ) 0px 1px 40px",
+        "secondary": "rgba(654 848 551 / 50% ) 0px 1px 10px",
       },
     },
   },

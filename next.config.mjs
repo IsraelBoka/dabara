@@ -8,10 +8,18 @@
 /** @type {import("next").NextConfig} */
 const config = {
   reactStrictMode: true,
+  images: {
+    domains: ["cdn.discordapp.com","api.dicebear.com"],
+  },
   swcMinify: true,
+
   i18n: {
     locales: ["en"],
     defaultLocale: "en",
   },
+
+
 };
+
+
 export default config;

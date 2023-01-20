@@ -1,7 +1,4 @@
-
-
-export const Logo = ({classname} : {classname? : string}) => (
-<svg width="947" height="945" className={classname} viewBox="0 0 947 945" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="947" height="945" viewBox="0 0 947 945" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g filter="url(#filter0_d_80411_82)">
 <g filter="url(#filter1_d_80411_82)">
 <path d="M676.564 215.658C621.246 158.47 543.582 127.431 460.658 129.369C377.734 131.307 296.343 166.064 234.39 225.992C172.436 285.921 134.996 366.112 130.304 448.926C125.613 531.74 154.055 610.391 209.373 667.579L442.969 441.619L676.564 215.658Z" fill="#93C5FD"/>
@@ -43,6 +40,3 @@ export const Logo = ({classname} : {classname? : string}) => (
 </filter>
 </defs>
 </svg>
-
-
-)

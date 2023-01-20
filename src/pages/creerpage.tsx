@@ -24,7 +24,7 @@ const Creerpage = () => {
     if (status === "unauthenticated") {
         return (
             <div className="min-h-screen flex items-center flex-col justify-center">
-                <h1>Vous devez être connecté pour accéder à cette page</h1>
+                <h1 className="text-2xl text-center p-4">Vous devez être connecté pour accéder à cette page</h1>
                 <Button variant={"primary"} >
                     <a onClick = {() => void signIn()}>Se connecter</a>
                 </Button>

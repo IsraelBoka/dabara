@@ -1,22 +1,23 @@
 import { cva } from "class-variance-authority";
 import type { VariantProps } from "class-variance-authority";
+import classNames from "classnames";
 
 
 interface ButtonProps extends VariantProps<typeof Buttonclasses>  {
     children: React.ReactNode,
 }
 
-const Buttonclasses = cva("rounded-full inline-flex items-center  ", {
+const Buttonclasses = cva(" inline-flex items-center justify-center", {
     variants : {
         variant : {
-            primary : "bg-white  hover:text-shadow hover:shadow-secondary  text-black",
-            secondary : "bg-red-500 text-white hover:text-shadow hover:shadow-secondary",
-            tertiary : "bg-green-500 text-white",
+            primary : "bg-white rounded-full m-2  w-40   hover:text-shadow hover:shadow-secondary duration-200  text-black",
+            secondary : "rounded-lg text-gray-800 bg-blue-300 transition-colors font-semibold no-underline duration-200 hover:bg-blue-400",
+            tertiary : "rounded-lg text-gray-800 bg-orange-300 transition-colors font-semibold no-underline duration-200 hover:bg-orange-400",
         },
         size : {
-            small : "text-xs px-3 h-6",
-            medium : "text-sm px-4 h-8",
-            large : "text-md px-6 h-12",
+            small : "text-sm px-3 py-4 h-7",
+            medium : "text-lg p-4 h-8",
+            large : "text-lg px-6 h-12",
         }
     },
     defaultVariants : {
@@ -28,7 +29,7 @@ const Buttonclasses = cva("rounded-full inline-flex items-center  ", {
 export const Button = (props: ButtonProps) => {
     const { children, variant, size } = props;
     return (
-        <button className={Buttonclasses({variant, size})}>
+        <button className={classNames(Buttonclasses({variant, size}) )}>
         {children}
         </button>
     );
