@@ -19,7 +19,7 @@ export const Avatar = (props: AvatarProps) => {
                 lien ? (
                     <Image  className="w-16 h-16 rounded-full object-contain" referrerPolicy = "origin" src={lien} width={500} height={500} alt="test"/>
                     ) : (
-                        <img referrerPolicy = "origin" className="w-16 h-16" src={`https://api.dicebear.com/5.x/lorelei/svg?seed=${nom.replace(" ", "-")}`} width={500} height={500} alt="test"/>
+                        <Image referrerPolicy = "origin" className="w-16 h-16" src={`https://api.dicebear.com/5.x/lorelei/svg?seed=${nom.replace(" ", "-")}`} width={500} height={500} alt="test"/>
                         )
                     }
             </div>

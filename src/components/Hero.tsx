@@ -6,8 +6,8 @@ interface HeroElementProps extends VariantProps<typeof HeroClasses> {
     children : React.ReactNode,
 }
 
-import { cva, VariantProps } from "class-variance-authority";
-
+import { cva } from "class-variance-authority";
+import type { VariantProps } from "class-variance-authority";
 const HeroClasses = cva("", {
     variants : {
         size: {

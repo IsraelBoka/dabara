@@ -1,11 +1,10 @@
 import { type NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
-import { signIn, signOut, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import Navbar from "../components/Navbar";
 
 import { api } from "../utils/api";
-import Loader from "../components/Loader";
 import { Container } from "../components/container";
 import { Hero, HeroSub, HeroTitle } from "../components/Hero";
 import { Button } from "../components/Button";
@@ -13,9 +12,8 @@ import Image from "next/image";
 import { Footer } from "../components/Footer";
 
 const Home: NextPage = () => {
-  const hello = api.example.hello.useQuery({ text: "from tRPC" });
   const { data: sessionData } = useSession();
-  const { data: user, isInitialLoading: loadinguser } =
+  const { data: user } =
     api.page.getUser.useQuery(
       undefined, // no input
       { enabled: sessionData?.user !== undefined }
@@ -119,22 +117,3 @@ const Home: NextPage = () => {
 
 export default Home;
 
-const AuthShowcase: React.FC = () => {
-  const { data: sessionData } = useSession();
-
-  const { data: secretMessage } = api.example.getSecretMessage.useQuery(
-    undefined, // no input
-    { enabled: sessionData?.user !== undefined }
-  );
-
-  return (
-    <div className="">
-      <button
-        className="rounded-full bg-white/10 p-4 font-semibold text-white no-underline transition hover:bg-white/20"
-        onClick={sessionData ? () => void signOut() : () => void signIn()}
-      >
-        {sessionData ? "Déconnexion" : "Connexion"}
-      </button>
-    </div>
-  );
-};

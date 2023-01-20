@@ -1,4 +1,3 @@
-import { Container } from "./container"
 export const Footer = () => {
     const date = new Date()
     return (
