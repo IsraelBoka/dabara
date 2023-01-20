@@ -2,7 +2,6 @@ import { useSession, signIn } from "next-auth/react";
 import { api } from "../utils/api";
 import { useState } from "react";
 import type { FormEvent } from "react";
-import Portfolioform from "../components/portfolioform";
 import { useRouter } from "next/router";
 import Loader from "../components/Loader";
 import { Button } from "../components/Button";
@@ -11,12 +10,12 @@ import Link from "next/link";
 
 import { useForm } from "react-hook-form";
 import { Container } from "../components/container";
-import Navbar from "../components/Navbar";
 
 type FormData = {
   name: string;
   page: string;
   email: string;
+  poste : string;
   description: string;
   phone: string;
   website: string;
@@ -25,7 +24,9 @@ type FormData = {
   instagram: string;
   linkedin: string;
   github: string;
+  residence: string;
   youtube: string;
+  disponibilite: string;
 };
 
 const Creerpage = () => {
@@ -123,12 +124,6 @@ const Creerpage = () => {
       .then(() => window.scrollTo(0, 0))
       .catch((err) => console.log(err));
   }
-
-  const verifierpage = (e: FormEvent) => {
-    e.preventDefault();
-    console.log("verifier page");
-  };
-
   return (
     <div>
       {getpage?.page === null && (
@@ -141,7 +136,7 @@ const Creerpage = () => {
             </div>
             {formStep === 0 && (
               <form
-                onSubmit={onSubmit}
+                onSubmit={void onSubmit}
                 className="flex flex-col items-center justify-center "
               >
                 <div className="flex-col text-center text-lg text-gray-300 md:text-xl lg:text-2xl  ">
@@ -272,9 +267,9 @@ const Creerpage = () => {
                       className=" rounded   bg-neutral-800 p-2 text-white  placeholder:text-gray-300 focus:border-blue-300"
                       type="text"
                       placeholder="Abidjan CI"
-                      {...register("nom", { required: true })}
+                      {...register("residence", { required: true })}
                     />
-                    {errors.nom && (
+                    {errors.residence && (
                       <span className="text-red-800">Ce champ est requis</span>
                     )}
 
@@ -285,9 +280,9 @@ const Creerpage = () => {
                       className=" rounded   bg-neutral-800 p-2 text-white  placeholder:text-gray-300 focus:border-blue-300"
                       type="text"
                       placeholder="monmail@gmail.com"
-                      {...register("nom", { required: true })}
+                      {...register("email", { required: true })}
                     />
-                    {errors.nom && (
+                    {errors.email && (
                       <span className="text-red-800">Ce champ est requis</span>
                     )}
 
@@ -298,9 +293,9 @@ const Creerpage = () => {
                       className=" rounded   bg-neutral-800 p-2 text-white  placeholder:text-gray-300 focus:border-blue-300"
                       type="text"
                       placeholder="Mon application"
-                      {...register("nom", { required: true })}
+                      {...register("poste", { required: true })}
                     />
-                    {errors.nom && (
+                    {errors.poste && (
                       <span className="text-red-800">Ce champ est requis</span>
                     )}
 
@@ -308,9 +303,9 @@ const Creerpage = () => {
                       className=" mt-2 rounded   bg-neutral-800 p-2 text-white  placeholder:text-gray-300 focus:border-blue-300"
                       type="text"
                       placeholder="http://monapplication.com"
-                      {...register("nom", { required: true })}
+                      {...register("website", { required: true })}
                     />
-                    {errors.nom && (
+                    {errors.website && (
                       <span className="text-red-800">Ce champ est requis</span>
                     )}
 
@@ -321,9 +316,9 @@ const Creerpage = () => {
                       className=" rounded   bg-neutral-800 p-2 text-white  placeholder:text-gray-300 focus:border-blue-300"
                       type="text"
                       placeholder="des missions, travail à distance, etc..."
-                      {...register("nom", { required: true })}
+                      {...register("disponibilite", { required: true })}
                     />
-                    {errors.nom && (
+                    {errors.disponibilite && (
                       <span className="text-red-800">Ce champ est requis</span>
                     )}
                   </div>
