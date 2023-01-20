@@ -34,8 +34,8 @@ const Navbar = () => {
 
   } , [open])
   return (
-    <header className="fixed top-0 left-0 w-full px-8 border-gray-700 backdrop-blur-[12px]">
-      <Container classname="flex  h-12 justify-center items-center   border-b">
+    <header className="fixed top-0 left-0 w-full px-8  backdrop-blur-[12px]">
+      <Container classname="flex  h-12 justify-center items-center border-gray-700   border-b">
         <Link
           className="md:text-md mr-2 flex items-center justify-center"
           href="#"
@@ -67,7 +67,7 @@ const Navbar = () => {
               )}
             >
               <li>
-                <Link href="/creerpage">Création</Link>
+                <Link target={"_blank"} href="/creerpage">Création</Link>
               </li>
               <li>
                 <Link href="#">Sponsor</Link>

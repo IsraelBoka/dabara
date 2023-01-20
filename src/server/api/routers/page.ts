@@ -50,9 +50,18 @@ export const pageRouter = createTRPCRouter({
     return page;
   }),
 
-
-
-
+  verifypage: protectedProcedure
+  .input(z.object({ page: z.string() }))
+  .mutation(async ({ input, ctx }) => {
+    const page = await ctx.prisma.user.findFirst({
+      where: { page: input.page },
+    });
+    if (page) {
+      return true;
+    } else {
+      return false;
+    }
+  }),
 
 
 });
