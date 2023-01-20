@@ -1,7 +1,6 @@
 import { useSession, signIn } from "next-auth/react";
 import { api } from "../utils/api";
 import { useState } from "react";
-import type { FormEvent } from "react";
 import { useRouter } from "next/router";
 import Loader from "../components/Loader";
 import { Button } from "../components/Button";
