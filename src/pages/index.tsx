@@ -98,7 +98,7 @@ const Home: NextPage = () => {
               </div>
           </div>
           <div>
-            <div className="flex justify-center mt-4 ">
+            <div className="flex justify-center mt-8 ">
               <Link href="/recherche">
                 <Button variant={"tertiary"} size="large">
                   Rechercher un profil
