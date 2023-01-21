@@ -81,7 +81,7 @@ const Home: NextPage = () => {
             </div>
           </div>
 
-          <div className="mt-12 flex flex-col lg:flex-row ">
+          <div className="mt-12  flex flex-col-reverse lg:flex-row-reverse ">
             <Hero>
               <HeroTitle>
                 Pour les <span className="text-orange-300">employeurs</span>

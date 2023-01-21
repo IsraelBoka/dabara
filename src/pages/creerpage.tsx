@@ -38,7 +38,6 @@ const Creerpage = () => {
 
   const [taken, setTaken] = useState(false);
   const [page, setPage] = useState("");
-  const updatepage = api.page.Updatepage.useMutation();
   const { data: getpage, isLoading: loadinggetpage } =
     api.page.getPagebyId.useQuery(
       undefined, // no input
