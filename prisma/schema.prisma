@@ -55,15 +55,37 @@ model User {
     email         String?   @unique
     emailVerified DateTime?
     image         String?
+    adresse      String?
+    telephone    String?
+    about        String?
+    fonction     String?
+    disponibilite String?
     page          String?
     accounts      Account[]
     sessions      Session[]
+    Portfolio     Portfolio[]
+    Profil        Profil[]
 }
 
 model Tag {
     id   String @id @default(cuid())
     name String
     Categorie Categorie[]
+}
+
+model Profil {
+    id   String @id @default(cuid())
+    name String
+    email String
+    website String?
+    facebook String?
+    instagram String?
+    twitter String?
+    github String?
+    youtube String?
+    linkedin String?
+    userId      String
+    user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model Categorie {
@@ -73,6 +95,7 @@ model Categorie {
 }
 
 
+
 model Portfolio {
     id          String   @id @default(cuid())
     title       String
@@ -80,7 +103,12 @@ model Portfolio {
     image       String
     url         String
     github      String
+    userId      String
+    user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
+
+
+
 
 
 model VerificationToken {

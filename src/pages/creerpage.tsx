@@ -15,6 +15,7 @@ type FormData = {
   page: string;
   email: string;
   poste : string;
+  disponibilite: string;
   description: string;
   phone: string;
   website: string;
@@ -25,11 +26,11 @@ type FormData = {
   github: string;
   residence: string;
   youtube: string;
-  disponibilite: string;
 };
 
 const Creerpage = () => {
   const { data: sessionData, status } = useSession();
+  const {mutateAsync: creerprofile } = api.profile.addprofiletouser.useMutation();  
   const router = useRouter();
   const verifypage = api.page.verifypage.useMutation();
 
@@ -49,7 +50,7 @@ const Creerpage = () => {
     formState: { errors },
   } = useForm<FormData>();
 
-  const onSubmit = handleSubmit(async (data) => {
+  const handleverification = handleSubmit(async (data) => {
     console.log(data);
     const test = verifypage.mutateAsync({
       page: data.page,
@@ -60,9 +61,6 @@ const Creerpage = () => {
         setTaken(true);
       } else {
         setPage(data.page);
-        updatepage.mutate({
-          page : data.page,
-        });
         setFormStep(formStep + 1);
       }
     });
@@ -123,6 +121,25 @@ const Creerpage = () => {
       .then(() => window.scrollTo(0, 0))
       .catch((err) => console.log(err));
   }
+
+  const onSubmit = handleSubmit(async (data) => {
+    console.log(data);
+      await  creerprofile({
+      name: data.name,
+      page: page,
+      email: data.email,
+      fonction : data.poste,
+      about: data.description,
+      website: data.website,
+      facebook: "",
+      twitter: "",
+      instagram: "",
+      linkedin: "",
+      github: "",
+      youtube: "",
+      residence: "",
+    });
+  });
   return (
     <div>
       {getpage?.page === null && (
@@ -135,7 +152,7 @@ const Creerpage = () => {
             </div>
             {formStep === 0 && (
               <form
-                onSubmit={void onSubmit}
+                onSubmit={void handleverification()}
                 className="flex flex-col items-center justify-center "
               >
                 <div className="flex-col text-center text-lg text-gray-300 md:text-xl lg:text-2xl  ">
@@ -194,7 +211,7 @@ const Creerpage = () => {
             )}
             {formStep === 1 && (
               <form
-                onSubmit={void onSubmit}
+                onSubmit={void onSubmit()}
                 className="flex flex-col items-center justify-center "
               >
                 <div>
@@ -239,9 +256,9 @@ const Creerpage = () => {
                       className="  rounded   bg-neutral-800 p-2 text-white  placeholder:text-gray-300 focus:border-blue-300"
                       type="text"
                       placeholder="Nom"
-                      {...register("name", { required: true })}
+                      {...register("poste", { required: true })}
                     />
-                    {errors.name && (
+                    {errors.poste && (
                       <span className="text-red-800">Ce champ est requis</span>
                     )}
                     <label htmlFor="" className="py-2">
@@ -292,11 +309,7 @@ const Creerpage = () => {
                       className=" rounded   bg-neutral-800 p-2 text-white  placeholder:text-gray-300 focus:border-blue-300"
                       type="text"
                       placeholder="Mon application"
-                      {...register("poste", { required: true })}
                     />
-                    {errors.poste && (
-                      <span className="text-red-800">Ce champ est requis</span>
-                    )}
 
                     <input
                       className=" mt-2 rounded   bg-neutral-800 p-2 text-white  placeholder:text-gray-300 focus:border-blue-300"

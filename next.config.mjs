@@ -9,7 +9,7 @@
 const config = {
   reactStrictMode: true,
   images: {
-    domains: ["cdn.discordapp.com","api.dicebear.com"],
+    domains: ["cdn.discordapp.com","api.dicebear.com", "lh3.googleusercontent.com"],
   },
   swcMinify: true,
 
