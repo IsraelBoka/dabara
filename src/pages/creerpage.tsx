@@ -151,7 +151,7 @@ const Creerpage = () => {
             </div>
             {formStep === 0 && (
               <form
-                onSubmit={void handleverification()}
+                onSubmit={handleverification}
                 className="flex flex-col items-center justify-center "
               >
                 <div className="flex-col text-center text-lg text-gray-300 md:text-xl lg:text-2xl  ">
@@ -210,7 +210,7 @@ const Creerpage = () => {
             )}
             {formStep === 1 && (
               <form
-                onSubmit={void onSubmit()}
+                onSubmit={onSubmit}
                 className="flex flex-col items-center justify-center "
               >
                 <div>

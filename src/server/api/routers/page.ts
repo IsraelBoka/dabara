@@ -19,6 +19,19 @@ export const pageRouter = createTRPCRouter({
     });
   }),
 
+  getProfileUser : protectedProcedure.input( 
+    z.object({
+      id : z.string()
+    })
+  ).query(async ({ ctx, input }) => {
+    const profile = await ctx.prisma.profil.findFirst({
+      where: {
+        userId: input.id,
+      }
+    });
+    return profile;
+  }),
+
   Updatepage: protectedProcedure
   .input(z.object({ page: z.string() }))
   .mutation(async ({ input, ctx }) => {

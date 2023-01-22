@@ -80,14 +80,14 @@ const Home: NextPage = () => {
             </div>
           </div>
 
-          <div className="mt-12  flex flex-col-reverse lg:flex-row-reverse ">
+          <div className="mt-12  flex flex-col lg:flex-row-reverse ">
             <Hero>
               <HeroTitle className= "animate-fade-in [--animation-delay:200ms] opacity-0 translate-y-[-1rem]">
                 Pour les <span className="text-orange-300">employeurs</span>
               </HeroTitle >
               <HeroSub className= "animate-fade-in [--animation-delay:400ms] opacity-0 translate-y-[-1rem]">
                 Trouvez les meilleurs profils pour vos projets et vos  
-                recrutements <br className="hidden md:block" />en quelques clics grace à notre moteur de recherche
+                recrutements <br className="hidden md:block" /> en quelques clics grace à notre moteur de recherche
               </HeroSub>
             </Hero>
             <div className="ml-auto  border-2 border-orange-500 p-2 rounded animate-fade-in [--animation-delay:600ms] opacity-0 translate-y-[-1rem]">

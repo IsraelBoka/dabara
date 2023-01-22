@@ -64,6 +64,8 @@ model User {
     accounts      Account[]
     sessions      Session[]
     Portfolio     Portfolio[]
+    Competence    Competence[]
+    langage       langage[]
     Profil        Profil[]
 }
 
@@ -108,6 +110,21 @@ model Portfolio {
 }
 
 
+model Competence {
+    id   String @id @default(cuid())
+    name String
+    niveau String
+    userId      String
+    user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model langage {
+    id   String @id @default(cuid())
+    name String
+    niveau String
+    userId      String
+    user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
 
 
 

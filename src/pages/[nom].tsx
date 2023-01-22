@@ -24,7 +24,12 @@ const Nom = () => {
       { enabled: nom !== undefined }
     );
 
-    const {data : profile } = api.profile.getprofile.useQuery(undefined, {enabled: machose !== undefined})
+
+    const {data : profile } = api.profile.getprofile.useQuery({
+      id: machose?.id as string
+    }, {
+      enabled: machose?.id !== undefined
+    })
 
   if (machoseloading) {
     return (
@@ -51,6 +56,14 @@ const Nom = () => {
             <a href="">
               <Github classname="w-8 h-8" />
             </a>
+            <a href="">
+              <LinkedIn classname="w-8 h-8" />
+            </a>
+            
+            <a href="">
+              <LinkedIn classname="w-8 h-8" />
+            </a>
+            
             <a href="">
               <LinkedIn classname="w-8 h-8" />
             </a>

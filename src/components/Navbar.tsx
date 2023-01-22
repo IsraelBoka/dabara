@@ -62,12 +62,12 @@ const Navbar = () => {
           >
             <ul
               className={classNames(
-                "[&_a]:transition-[color, transform] [&_a]:mr-8 [&_a]:ml-1 stext-md flex  h-full flex-col ease-in md:flex-row md:items-center md:text-sm  [&_a]:flex [&_a]:h-12 [&_a]:translate-y-8 [&_a]:items-center [&_a]:border-b [&_a]:border-gray-500 [&_a]:duration-300 md:[&_a]:translate-y-0 md:[&_a]:border-b-0  [&_a:hover]:text-gray-200 [&_li]:ml-6",
+                "[&_a]:transition-[color, transform] [&_a]:mr-8 [&_a]:ml-1 stext-md flex  h-full flex-col ease-in md:flex-row md:items-center md:text-sm  [&_a]:flex [&_a]:h-12 [&_a]:translate-y-8 [&_a]:items-center [&_a]:border-b [&_a]:border-gray-500 [&_a]:duration-300 md:[&_a]:translate-y-0 md:[&_a]:border-b-0  [&_a:hover]:text-gray-300 [&_li]:ml-6",
                 open && "[&_a]:translate-y-0 "
               )}
             >
               <li>
-                <Link target={"_blank"} href="/creerpage">Création</Link>
+                <Link target={"_self"} href="/creerpage">Création</Link>
               </li>
               <li>
                 <Link href="#">Sponsor</Link>
