@@ -4,16 +4,18 @@ interface HeroProps {
 
 interface HeroElementProps extends VariantProps<typeof HeroClasses> {
     children : React.ReactNode,
+    className ?: string,
 }
 
 import { cva } from "class-variance-authority";
 import type { VariantProps } from "class-variance-authority";
+import classNames from "classnames";
 const HeroClasses = cva("", {
     variants : {
         size: {
             small : " text-3xl font-bold my-8 md:text-5xl",
-            medium : "text-5xl font-bold my-8 md:text-7xl",
-            large : " text-6xl font-bold my-8 md:text-8xl",
+            medium : "text-5xl font-bold my-8 md:text-6xl",
+            large : " text-6xl font-bold my-8 lg:text-7xl",
         }
     },
     defaultVariants : {
@@ -22,17 +24,18 @@ const HeroClasses = cva("", {
 })
 
 export const HeroTitle = (props : HeroElementProps) => {
-    const { size, children } = props;
+    const { size, children, className } = props;
     return (
-        <h1 className= {HeroClasses({size})}>
+        <h1 className= {classNames(HeroClasses({size}) , className)}>
             {children}
         </h1>
     )
 }
 
-export const HeroSub = ({children} : HeroElementProps) => {
+export const HeroSub = (props : HeroElementProps) => {
+    const { children, className } = props;
     return (
-        <p className="mb-6 text-gray-400 text-xl"> 
+        <p className={classNames("mb-16 mt-16 text-gray-400 text-xl ", className)}> 
             {children}
         </p>
     )

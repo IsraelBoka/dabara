@@ -14,3 +14,9 @@ body {
       text-shadow: rgb(0 0 0 / 56%) 0px 3px 12px;
    }
 }
+
+@layer base{
+   html {
+      font-family: Inter, sans-serif;
+   }
+}

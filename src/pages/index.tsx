@@ -31,14 +31,13 @@ const Home: NextPage = () => {
       <main className="p-4 pt-12 ">
         <Container>
           <Hero >
-            <HeroTitle size={"large"}>
+            <HeroTitle size={"large"} className="animate-fade-in [--animation-delay:200ms] opacity-0 translate-y-[-1rem]">
               Créez un <span className="text-blue-300"> profil </span>
               <br className="hidden md:block" />
               en quelques <span className="text-blue-300">secondes</span>{" "}
             </HeroTitle>
-            <HeroSub>
-              Montrez vos compétences et vos réalisations à vos futurs
-              employeurs
+            <HeroSub className=" animate-fade-in  [--animation-delay:400ms] opacity-0 translate-y-[-1rem]">
+              Montrez vos compétences et vos réalisations à vos futurs <br className="hidden md:block" /> employeurs et clients 
             </HeroSub>
           </Hero>
 
@@ -48,13 +47,13 @@ const Home: NextPage = () => {
                 <div>
                   {user?.page ? (
                     <Link href="/creerpage">
-                      <Button variant={"secondary"} size="large">
+                      <Button variant={"secondary"} size="large" className="animate-fade-in  [--animation-delay:600ms]  opacity-0 translate-y-[-1rem]">
                         Modifier votre profil
                       </Button>
                     </Link>
                   ) : (
                     <Link href="/creerpage">
-                      <Button variant={"secondary"} size="large">
+                      <Button variant={"secondary"} size="large" className="animate-fade-in  [--animation-delay:600ms] opacity-0 translate-y-[-1rem]">
                         Créer un profil
                       </Button>
                     </Link>
@@ -64,7 +63,7 @@ const Home: NextPage = () => {
             </div>
           </div>
 
-          <div className="flex flex-col items-center lg:flex-row my-5">
+          <div className="flex flex-col items-center lg:flex-row my-8">
             <Hero>
               <HeroTitle>
                 Partagez vos réseaux <br className="hidden md:block" />
@@ -83,10 +82,10 @@ const Home: NextPage = () => {
 
           <div className="mt-12  flex flex-col-reverse lg:flex-row-reverse ">
             <Hero>
-              <HeroTitle>
+              <HeroTitle className= "animate-fade-in">
                 Pour les <span className="text-orange-300">employeurs</span>
-              </HeroTitle>
-              <HeroSub>
+              </HeroTitle >
+              <HeroSub className= "animate-fade-in">
                 Trouvez les meilleurs profils pour vos projets et vos  
                 recrutements <br className="hidden md:block" />en quelques clics grace à notre moteur de recherche
               </HeroSub>
@@ -100,7 +99,7 @@ const Home: NextPage = () => {
           <div>
             <div className="flex justify-center mt-8 ">
               <Link href="/recherche">
-                <Button variant={"tertiary"} size="large">
+                <Button variant={"tertiary"} size="large" className= "animate-fade-in">
                   Rechercher un profil
                 </Button>
               </Link>

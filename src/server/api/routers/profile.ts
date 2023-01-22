@@ -48,4 +48,13 @@ export const ProfileRouter = createTRPCRouter({
         await ctx.prisma.$transaction([updatetheuser, createaprofil]);
         return { success: true };
         }),
+
+        getprofile: protectedProcedure.query(async ({ ctx }) => {
+            const profile = await ctx.prisma.profil.findFirst({
+                where :{
+                    userId: ctx.session.user.id,
+                }
+            })
+            return profile;
+        }),
 });

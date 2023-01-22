@@ -34,7 +34,7 @@ const Navbar = () => {
 
   } , [open])
   return (
-    <header className="fixed top-0 left-0 w-full px-8  backdrop-blur-[12px]">
+    <header className="z-10 fixed top-0 left-0 w-full px-8  backdrop-blur-[12px]">
       <Container classname="flex  h-12 justify-center items-center border-gray-700   border-b">
         <Link
           className="md:text-md mr-2 flex items-center justify-center"
@@ -56,7 +56,7 @@ const Navbar = () => {
             className={classNames(
               "fixed top-12  left-0 h-[calc(100vh_-_3rem)] w-full overflow-auto bg-[#121216] transition-opacity duration-500 md:relative md:top-0 md:block md:h-auto md:w-auto  md:translate-x-0 md:bg-transparent md:opacity-100",
               open
-                ? " opacity-100"
+                ? " opacity-100 "
                 : " opacity-0 translate-x-[-100vw] "
             )}
           >

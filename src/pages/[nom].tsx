@@ -10,6 +10,7 @@ import { Logo } from "../components/icons/logo";
 import Loader from "../components/Loader";
 import { api } from "../utils/api";
 
+
 const Nom = () => {
   const router = useRouter();
 
@@ -22,6 +23,8 @@ const Nom = () => {
       },
       { enabled: nom !== undefined }
     );
+
+    const {data : profile } = api.profile.getprofile.useQuery(undefined, {enabled: machose !== undefined})
 
   if (machoseloading) {
     return (
@@ -40,7 +43,7 @@ const Nom = () => {
       {!machose && <Error statusCode={404} />}
       <Container classname="flex items-center  flex-col lg:items-start lg:flex-row h-full w-full">
         <div className="flex min-h-screen  w-96 flex-col items-center lg:rounded bg-[#242424] ">
-          <Avatar nom={nom as string} email={machose.email || undefined} lien={machose.image || undefined}/>
+          <Avatar nom={nom as string} email={profile?.email || undefined} lien={machose.image || undefined}/>
           <div className="flex flex-col items-center">
             <p className="text-xl font-bold text-white">Développeur web </p>
           </div>
@@ -57,10 +60,9 @@ const Nom = () => {
               A propos de moi
             </p>
             <p className="truncate whitespace-pre-wrap p-2 indent-4 text-sm text-white">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia
-              ullam, possimus maiores at saepe repellat ab fuga asperiores
-              debitis placeat tenetur error eveniet rerum quae quasi illum
-              incidunt maxime id!
+              {
+                machose.about
+              }
             </p>
           </div>
 
