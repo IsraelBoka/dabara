@@ -2,7 +2,7 @@ export const Footer = () => {
     const date = new Date()
     return (
         <footer className=" flex flex-col items-center justify-center lg:flex-row text-white py-4 border-t border-t-gray-700">
-                <p className="text-sm md:text-md flex items-center justify-center flex-col">
+                <p className="text-sm md:text-md flex items-center justify-center  gap-2">
                     &copy; {date.getFullYear()} - Tous droits réservés <span className="font-bold text-center">DABWEB</span>
                 </p>
 

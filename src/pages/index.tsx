@@ -65,15 +65,15 @@ const Home: NextPage = () => {
 
           <div className="flex flex-col items-center lg:flex-row my-8">
             <Hero>
-              <HeroTitle>
+              <HeroTitle className="animate-fade-in [--animation-delay:800ms] opacity-0 translate-y-[-1rem]">
                 Partagez vos réseaux <br className="hidden md:block" />
                 <span className="text-blue-300">sociaux</span>
               </HeroTitle>
-              <HeroSub>
+              <HeroSub  className="animate-fade-in [--animation-delay:1000ms] opacity-0 translate-y-[-1rem]">
                 Ajoutez vos réseaux sociaux et vos liens vers vos<br className="hidden md:block"/> projets et vos réalisations
               </HeroSub>
             </Hero>
-            <div className="ml-auto  border-2 border-blue-300 p-2 rounded ">
+            <div className="ml-auto  border-2 border-blue-300 p-2 rounded animate-fade-in [--animation-delay:1200ms] opacity-0 translate-y-[-1rem]">
               <Image src="/deuxiemeblackgirldev.jpg" width={700} height={700} alt="Rien du tout "
               className="rounded "
               />
@@ -82,15 +82,15 @@ const Home: NextPage = () => {
 
           <div className="mt-12  flex flex-col-reverse lg:flex-row-reverse ">
             <Hero>
-              <HeroTitle className= "animate-fade-in">
+              <HeroTitle className= "animate-fade-in [--animation-delay:200ms] opacity-0 translate-y-[-1rem]">
                 Pour les <span className="text-orange-300">employeurs</span>
               </HeroTitle >
-              <HeroSub className= "animate-fade-in">
+              <HeroSub className= "animate-fade-in [--animation-delay:400ms] opacity-0 translate-y-[-1rem]">
                 Trouvez les meilleurs profils pour vos projets et vos  
                 recrutements <br className="hidden md:block" />en quelques clics grace à notre moteur de recherche
               </HeroSub>
             </Hero>
-            <div className="ml-auto  border-2 border-orange-500 p-2 rounded ">
+            <div className="ml-auto  border-2 border-orange-500 p-2 rounded animate-fade-in [--animation-delay:600ms] opacity-0 translate-y-[-1rem]">
               <Image src="/jeunecadredynamique.jpg" width={700} height={700} alt="Rien du tout "
               className="rounded "
               />
@@ -99,7 +99,7 @@ const Home: NextPage = () => {
           <div>
             <div className="flex justify-center mt-8 ">
               <Link href="/recherche">
-                <Button variant={"tertiary"} size="large" className= "animate-fade-in">
+                <Button variant={"tertiary"} size="large" className= " animate-fade-in [--animation-delay:800ms] opacity-0 translate-y-[-1rem]">
                   Rechercher un profil
                 </Button>
               </Link>

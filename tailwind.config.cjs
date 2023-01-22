@@ -18,6 +18,9 @@ module.exports = {
       },
       animation: {
         "fade-in" : "fade-in 1000ms var(--animation-delay, 0ms) ease forwards",
+      },
+      colors: {
+        "off-white " : "#f7f8f8",
       }
     },
   },
