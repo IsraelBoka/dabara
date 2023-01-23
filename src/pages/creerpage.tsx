@@ -67,11 +67,12 @@ const Creerpage = () => {
     });
   });
 
+
   const Navigation = () => {
     return (
       <div>
         <div className="flex justify-center flex-col gap-2 ">
-          {formStep === 3 ? null : (
+          {formStep === 4 ? null : (
             <button
               type="submit"
               className="inline-flex items-center transition-colors duration-300  justify-center rounded-md bg-orange-800 p-2 hover:bg-orange-900 disabled:bg-orange-500"
@@ -123,6 +124,10 @@ const Creerpage = () => {
       .catch((err) => console.log(err));
   }
 
+  const OnSubmit = () => {
+    setFormStep(formStep + 1);
+  }
+
   const submitfini = handleSubmit(async (data) => {
     console.log(data);
       await  creerprofile({
@@ -154,7 +159,7 @@ const Creerpage = () => {
             </div>
             {formStep === 0 && (
               <form
-                onSubmit={handleverification}
+                onSubmit={void handleverification}
                 className="flex flex-col items-center justify-center "
               >
                 <div className="flex-col text-center text-lg text-gray-600 md:text-xl lg:text-2xl  ">
@@ -211,11 +216,9 @@ const Creerpage = () => {
                 </button>
               </form>
             )}
-            {formStep === 2 && (
+            {formStep === 1 && (
               <form
-                onSubmit={handleSubmit((data) => {
-                  console.log(data); 
-                })}
+                onSubmit={void OnSubmit}
                 className="flex flex-col items-center justify-center "
               >
                 <div>
@@ -343,12 +346,8 @@ const Creerpage = () => {
                 <Navigation />
               </form>
             )}
-            {formStep === 3 && (
-              <form onSubmit={
-                handleSubmit((data) => {
-                  console.log(data);
-                })
-              } className="flex flex-col items-center">
+            {formStep === 2 && (
+              <form onSubmit={void OnSubmit} className="flex flex-col items-center">
                 <div className="flex flex-col justify-center rounded p-8 ">
                   <h1 className="text-center text-3xl font-extrabold lg:text-4xl">
                     Mes compétences
@@ -451,12 +450,8 @@ const Creerpage = () => {
               </form>
             )}
             {
-              formStep === 1 && (
-                <form onSubmit={
-                  handleSubmit((data) => {
-                    console.log(data);
-                  })
-                } className="flex flex-col items-center">
+              formStep === 3 && (
+                <form onSubmit={void  submitfini} className="flex flex-col items-center">
                   <div className="flex flex-col justify-center rounded p-8 ">
                     <h1 className="text-center text-3xl font-extrabold lg:text-4xl">
                       Réseaux sociaux <br className="hidden md:block"/> (optionnel)
