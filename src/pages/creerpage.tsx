@@ -159,7 +159,7 @@ const Creerpage = () => {
             </div>
             {formStep === 0 && (
               <form
-                onSubmit={void handleverification}
+                onSubmit={() => void handleverification()}
                 className="flex flex-col items-center justify-center "
               >
                 <div className="flex-col text-center text-lg text-gray-600 md:text-xl lg:text-2xl  ">
@@ -218,7 +218,7 @@ const Creerpage = () => {
             )}
             {formStep === 1 && (
               <form
-                onSubmit={void OnSubmit}
+                onSubmit={() => OnSubmit()}
                 className="flex flex-col items-center justify-center "
               >
                 <div>
@@ -347,7 +347,7 @@ const Creerpage = () => {
               </form>
             )}
             {formStep === 2 && (
-              <form onSubmit={void OnSubmit} className="flex flex-col items-center">
+              <form onSubmit={() => OnSubmit()} className="flex flex-col items-center">
                 <div className="flex flex-col justify-center rounded p-8 ">
                   <h1 className="text-center text-3xl font-extrabold lg:text-4xl">
                     Mes compétences
@@ -451,7 +451,7 @@ const Creerpage = () => {
             )}
             {
               formStep === 3 && (
-                <form onSubmit={void  submitfini} className="flex flex-col items-center">
+                <form onSubmit={() => void submitfini()} className="flex flex-col items-center">
                   <div className="flex flex-col justify-center rounded p-8 ">
                     <h1 className="text-center text-3xl font-extrabold lg:text-4xl">
                       Réseaux sociaux <br className="hidden md:block"/> (optionnel)
