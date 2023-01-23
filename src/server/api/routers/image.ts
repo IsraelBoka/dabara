@@ -3,14 +3,14 @@ import { z } from "zod";
 import { createTRPCRouter, publicProcedure, protectedProcedure } from "../trpc";
 import aws from 'aws-sdk';
 import { env } from "../../../env/server.mjs";
-
+{/**
 
 const s3 = new aws.S3({
     signatureVersion: 'v4',
     region: 'us-east-1',
     accessKeyId: env.AWS_ACCESS_KEY_ID,
     secretAccessKey: env.AWS_SECRET_ACCESS_KEY,
-});
+}); */}
 export const ImageRouter = createTRPCRouter({
     
   hello: publicProcedure
@@ -28,7 +28,7 @@ export const ImageRouter = createTRPCRouter({
   getSecretMessage: protectedProcedure.query(() => {
     return "you can now see this secret message!";
   }),
-
+/**
   createpresignedurl: protectedProcedure.mutation(async ({ input, ctx }) => {  
         return new Promise((resolve, reject) => {
             const params = {
@@ -48,6 +48,6 @@ export const ImageRouter = createTRPCRouter({
                 resolve(data);
             });
         });
-    }),
+    }), */
     
 });

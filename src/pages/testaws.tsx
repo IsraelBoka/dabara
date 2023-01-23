@@ -1,4 +1,4 @@
-
+{/**
 import React, { useState } from 'react';
 import { api } from '../utils/api';
  const TestAWS = () => {
@@ -51,4 +51,13 @@ import { api } from '../utils/api';
     );
     };
 
-export default TestAWS;
+export default TestAWS; */}
+
+const TestAWS = () => {
+    return (
+        <div>
+            <h1>Test AWS</h1>
+        </div>
+    )
+}
+export default TestAWS
