@@ -14,7 +14,7 @@ type FormData = {
   name: string;
   page: string;
   email: string;
-  competencesTechniques : string;
+  competencesTechniques : string[];
   poste : string;
   competencesMetier : string;
   disponibilite: string;
@@ -51,21 +51,6 @@ const Creerpage = () => {
     formState: { errors },
   } = useForm<FormData>();
 
-  const handleverification = handleSubmit(async (data) => {
-    console.log(data);
-    const test = verifypage.mutateAsync({
-      page: data.page,
-    });
-    await test.then((res) => {
-      console.log(res);
-      if (res === true) {
-        setTaken(true);
-      } else {
-        setPage(data.page);
-        setFormStep(formStep + 1);
-      }
-    });
-  });
 
 
   const Navigation = () => {
@@ -124,26 +109,46 @@ const Creerpage = () => {
       .catch((err) => console.log(err));
   }
 
-  const OnSubmit = () => {
-    setFormStep(formStep + 1);
-  }
+  const OnSubmit = handleSubmit((data) => {
+    console.log(data);
+      setFormStep(formStep + 1);
+    }
+  )
+
+  
+  const handleverification = handleSubmit(async (data) => {
+    console.log(data);
+    const test = verifypage.mutateAsync({
+      page: data.page,
+    });
+    await test.then((res) => {
+      console.log(res);
+      if (res === true) {
+        setTaken(true);
+      } else {
+        setPage(data.page);
+        setFormStep(formStep + 1);
+      }
+    });
+  });
 
   const submitfini = handleSubmit(async (data) => {
     console.log(data);
       await  creerprofile({
       name: data.name,
-      page: page,
       email: data.email,
-      fonction : data.poste,
       about: data.description,
+      competence: data.competencesTechniques,
+      page: page,
+      fonction : data.poste,
+      residence: data.residence,
       website: data.website,
       facebook: data.facebook,
-      twitter: data.twitter,
       instagram: data.instagram,
+      twitter: data.twitter,
+      youtube: data.youtube,
       linkedin: data.linkedin,
       github:   data.github,
-      youtube: data.youtube,
-      residence: data.residence,
     });
   });
   return (
@@ -159,10 +164,10 @@ const Creerpage = () => {
             </div>
             {formStep === 0 && (
               <form
-                onSubmit={() => void handleverification()}
+                onSubmit={handleverification}
                 className="flex flex-col items-center justify-center "
               >
-                <div className="flex-col text-center text-lg text-gray-600 md:text-xl lg:text-2xl  ">
+                <div className="flex-col text-center text-lg text-gray-300 md:text-xl lg:text-2xl  ">
                   <h1 className="font-extrabold uppercase">
                     Nom de mon profile
                   </h1>
@@ -175,7 +180,7 @@ const Creerpage = () => {
                   </h1>
                   <label className="py-2 text-white">🌐 Mon identifiant:</label>
                   <input
-                    className=" rounded   bg-neutral-800 p-2 text-white  placeholder:text-gray-600 focus:border-blue-300"
+                    className=" rounded caret-blue-600   bg-neutral-800 p-2 text-white  placeholder:text-gray-600 focus:border-blue-300"
                     type="text"
                     placeholder="@username"
                     
@@ -218,11 +223,11 @@ const Creerpage = () => {
             )}
             {formStep === 1 && (
               <form
-                onSubmit={() => OnSubmit()}
+                onSubmit={() =>  OnSubmit()}
                 className="flex flex-col items-center justify-center "
               >
                 <div>
-                  <div className="flex-col text-center text-lg text-gray-600 md:text-xl lg:text-2xl  ">
+                  <div className="flex-col text-center text-lg text-gray-300 md:text-xl lg:text-2xl  ">
                     <h1 className="font-extrabold uppercase">Introduction</h1>
                     <h2>
                       Présentez vous aux visiteurs de votre page,{" "}
@@ -247,7 +252,7 @@ const Creerpage = () => {
                       👋 Je m&apos;appelle :
                     </label>
                     <input
-                      className=" rounded   bg-neutral-800 p-2 text-white  placeholder:text-gray-600 focus:border-blue-300"
+                      className=" rounded  caret-blue-600     bg-neutral-800 p-2 text-white  placeholder:text-gray-600 focus:border-blue-300"
                       type="text"
                       placeholder="Nom"
                       {...register("name", { required: true })}
@@ -260,7 +265,7 @@ const Creerpage = () => {
                       💡 Fonction :
                     </label>
                     <input
-                      className="  rounded   bg-neutral-800 p-2 text-white  placeholder:text-gray-600 focus:border-blue-300"
+                      className="  rounded  caret-blue-600     bg-neutral-800 p-2 text-white  placeholder:text-gray-600 focus:border-blue-300"
                       type="text"
                       placeholder="Nom"
                       {...register("poste", { required: true })}
@@ -272,7 +277,7 @@ const Creerpage = () => {
                       ✏️ Description:
                     </label>
                     <textarea
-                      className="   rounded   bg-neutral-800 p-2 text-white  placeholder:text-gray-600 focus:border-blue-300"
+                      className="   rounded  caret-blue-600     bg-neutral-800 p-2 text-white  placeholder:text-gray-600 focus:border-blue-300"
                       placeholder="Description"
                       {...register("description", { required: true })}
                     />
@@ -287,7 +292,7 @@ const Creerpage = () => {
                     </h1>
                     <label className="py-2 text-white">🌍 Je réside à :</label>
                     <input
-                      className=" rounded   bg-neutral-800 p-2 text-white  placeholder:text-gray-600 focus:border-blue-300"
+                      className=" rounded   caret-blue-600    bg-neutral-800 p-2 text-white  placeholder:text-gray-600 focus:border-blue-300"
                       type="text"
                       placeholder="Abidjan CI"
                       {...register("residence", { required: true })}
@@ -300,7 +305,7 @@ const Creerpage = () => {
                       ✉️ Contactez-moi :
                     </label>
                     <input
-                      className=" rounded   bg-neutral-800 p-2 text-white  placeholder:text-gray-600 focus:border-blue-300"
+                      className=" rounded    caret-blue-600   bg-neutral-800 p-2 text-white  placeholder:text-gray-600 focus:border-blue-300"
                       type="text"
                       placeholder="monmail@gmail.com"
                       {...register("email", { required: true })}
@@ -313,7 +318,7 @@ const Creerpage = () => {
                       🚀 Mon travail en cours :{" "}
                     </label>
                     <input
-                      className=" rounded   bg-neutral-800 p-2 text-white  placeholder:text-gray-600 focus:border-blue-300"
+                      className=" rounded    caret-blue-600   bg-neutral-800 p-2 text-white  placeholder:text-gray-600 focus:border-blue-300"
                       type="text"
                       placeholder="Mon application"
                     />
@@ -332,7 +337,7 @@ const Creerpage = () => {
                       🤝 Je suis disponible pour :{" "}
                     </label>
                     <input
-                      className=" rounded   bg-neutral-800 p-2 text-white  placeholder:text-gray-600 focus:border-blue-300"
+                      className=" rounded   caret-blue-600    bg-neutral-800 p-2 text-white  placeholder:text-gray-600 focus:border-blue-300"
                       type="text"
                       placeholder="des missions, travail à distance, etc..."
                       {...register("disponibilite", { required: true })}
@@ -451,7 +456,7 @@ const Creerpage = () => {
             )}
             {
               formStep === 3 && (
-                <form onSubmit={() => void submitfini()} className="flex flex-col items-center">
+                <form onSubmit={submitfini} className="flex flex-col items-center">
                   <div className="flex flex-col justify-center rounded p-8 ">
                     <h1 className="text-center text-3xl font-extrabold lg:text-4xl">
                       Réseaux sociaux <br className="hidden md:block"/> (optionnel)
@@ -463,6 +468,7 @@ const Creerpage = () => {
                       className=" rounded   bg-neutral-800 p-2 text-white  placeholder:text-gray-600 focus:border-blue-300"
                       type="text"
                       placeholder="https://www.youtube.com/channel/UC..."
+                      {...register("youtube")}
                     />
                     <label className="py-2 text-white">     
                     💼 Linkedin :
@@ -471,6 +477,7 @@ const Creerpage = () => {
                       className=" rounded   bg-neutral-800 p-2 text-white  placeholder:text-gray-600 focus:border-blue-300"
                       type="text"
                       placeholder="https://www.linkedin.com/in/..."
+                      {...register("linkedin")}
                     />
                     <label className="py-2 text-white">
                     🐦 Twitter :
@@ -479,6 +486,7 @@ const Creerpage = () => {
                       className=" rounded   bg-neutral-800 p-2 text-white  placeholder:text-gray-600 focus:border-blue-300"
                       type="text"
                       placeholder="https://twitter.com/..."
+                      {...register("twitter")}
                     />
                     <label className="py-2 text-white">
                     📸 Instagram :
@@ -487,6 +495,7 @@ const Creerpage = () => {
                       className=" rounded   bg-neutral-800 p-2 text-white  placeholder:text-gray-600 focus:border-blue-300"
                       type="text"
                       placeholder="https://www.instagram.com/..."
+                      {...register("instagram")}
                     />
                     <label className="py-2 text-white">
                     📟 Facebook :
@@ -495,6 +504,7 @@ const Creerpage = () => {
                       className=" rounded   bg-neutral-800 p-2 text-white  placeholder:text-gray-600 focus:border-blue-300"
                       type="text"
                       placeholder="https://www.facebook.com/..."
+                      {...register("facebook")}
                     />
                     <label className="py-2 text-white">
                     👨‍💻 Github :

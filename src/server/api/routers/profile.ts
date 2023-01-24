@@ -11,6 +11,7 @@ export const ProfileRouter = createTRPCRouter({
     about: z.string(),
     page: z.string(),
     fonction : z.string(),
+    competence : z.string().array(),
     residence : z.string(),
     website: z.string().nullable(),
     facebook: z.string().nullable(),
@@ -32,8 +33,8 @@ export const ProfileRouter = createTRPCRouter({
 
         const createaprofil =  ctx.prisma.profil.create({
             data: {
-            email: input.email,
             name : input.name,
+            email: input.email,
             website: input.website,
             facebook: input.facebook,
             instagram : input.instagram,
@@ -45,7 +46,15 @@ export const ProfileRouter = createTRPCRouter({
             },
         });
 
-        await ctx.prisma.$transaction([updatetheuser, createaprofil]);
+        const multiplecompetence = ctx.prisma.competence.createMany({
+            data: input.competence.map((competence) => ({
+                name: competence,
+                niveau : "0", 
+                userId: ctx.session.user.id,
+            })),
+        });
+
+        await ctx.prisma.$transaction([updatetheuser, createaprofil, multiplecompetence]);
         return { success: true };
         }),
 

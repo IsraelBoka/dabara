@@ -8,6 +8,7 @@ import { Github } from "../components/icons/github";
 import { LinkedIn } from "../components/icons/linkedin";
 import { Logo } from "../components/icons/logo";
 import Loader from "../components/Loader";
+import { Network } from "../components/Network";
 import { api } from "../utils/api";
 
 
@@ -16,7 +17,7 @@ const Nom = () => {
 
   const { nom } = router.query;
 
-  const { data: machose, isLoading: machoseloading } =
+  const { data: userinfo, isLoading: loadinguserinfo } =
     api.page.getPage.useQuery(
       {
         page: nom as string,
@@ -24,14 +25,7 @@ const Nom = () => {
       { enabled: nom !== undefined }
     );
 
-
-    const {data : profile } = api.profile.getprofile.useQuery({
-      id: machose?.id as string
-    }, {
-      enabled: machose?.id !== undefined
-    })
-
-  if (machoseloading) {
+  if (loadinguserinfo) {
     return (
       <div className="flex min-h-screen w-full items-center justify-center">
         <Loader />
@@ -39,42 +33,27 @@ const Nom = () => {
     );
   }
 
-  if (!machose) {
+  if (!userinfo) {
     return <Error statusCode={404} />;
   }
 
   return (
     <div>
-      {!machose && <Error statusCode={404} />}
+      {!userinfo && <Error statusCode={404} />}
       <Container classname="flex items-center  flex-col lg:items-start lg:flex-row h-full w-full">
         <div className="flex min-h-screen  w-96 flex-col items-center lg:rounded bg-[#242424] ">
-          <Avatar nom={nom as string} email={profile?.email || undefined} lien={machose.image || undefined}/>
+          <Avatar nom={nom as string} email={userinfo?.Profil?.email || undefined} lien={userinfo.image || undefined}/>
           <div className="flex flex-col items-center">
-            <p className="text-xl font-bold text-white">Développeur web </p>
+            <p className="text-xl font-bold text-white">Développeur web  </p>
           </div>
-          <div className="flex items-center justify-center  [&_a]:m-2 [&_a]:transition-transform [&_a]:duration-150 [&_a:hover]:scale-105">
-            <a href="">
-              <Github classname="w-8 h-8" />
-            </a>
-            <a href="">
-              <LinkedIn classname="w-8 h-8" />
-            </a>
-            
-            <a href="">
-              <LinkedIn classname="w-8 h-8" />
-            </a>
-            
-            <a href="">
-              <LinkedIn classname="w-8 h-8" />
-            </a>
-          </div>
+          <Network instagram={userinfo?.Profil?.instagram  || undefined} />
           <div>
             <p className="text-center text-xl font-bold text-white ">
               A propos de moi
             </p>
             <p className="truncate whitespace-pre-wrap p-2 indent-4 text-sm text-white">
               {
-                machose.about
+                userinfo.about
               }
             </p>
           </div>
@@ -84,18 +63,18 @@ const Nom = () => {
               Mes compétences
             </p>
             <div className="flex flex-wrap justify-center">
-              <div className="m-2  rounded bg-blue-300 p-2 hover:bg-orange-300">
+              <div className="m-2  rounded bg-blue-300 p-2 transition-colors  duration-200 hover:bg-orange-300">
                 <p className="select-none text-sm font-bold uppercase text-gray-800">
                   HTML
                 </p>
               </div>
-              <div className=" m-2  rounded bg-blue-300 p-2 hover:bg-orange-300">
+              <div className=" m-2  rounded bg-blue-300 p-2 transition-colors  duration-200 hover:bg-orange-300">
                 <p className=" select-none text-sm font-bold uppercase text-gray-800">
                   CSS
                 </p>
               </div>
               
-              <div className=" m-2  rounded bg-blue-300 p-2 hover:bg-orange-300">
+              <div className=" m-2  rounded bg-blue-300 p-2 transition-colors  duration-200 hover:bg-orange-300">
                 <p className=" select-none text-sm font-bold uppercase text-gray-800">
                   Javascript 
                 </p>

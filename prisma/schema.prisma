@@ -66,7 +66,7 @@ model User {
     Portfolio     Portfolio[]
     Competence    Competence[]
     langage       langage[]
-    Profil        Profil[]
+    Profil        Profil?
 }
 
 model Tag {
@@ -86,8 +86,8 @@ model Profil {
     github String?
     youtube String?
     linkedin String?
-    userId      String
-    user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+    userId      String @unique
+    user        User     @relation(fields: [userId], references: [id])
 }
 
 model Categorie {
@@ -113,7 +113,7 @@ model Portfolio {
 model Competence {
     id   String @id @default(cuid())
     name String
-    niveau String
+    niveau String?
     userId      String
     user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

@@ -47,6 +47,9 @@ export const pageRouter = createTRPCRouter({
   .query(async ({ input, ctx }) => {
     const page = await ctx.prisma.user.findFirst({
       where: { page: input.page },
+      include : {
+        Profil : true,
+      }
     });
     return page;
   }
