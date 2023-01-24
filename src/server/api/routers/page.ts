@@ -49,6 +49,7 @@ export const pageRouter = createTRPCRouter({
       where: { page: input.page },
       include : {
         Profil : true,
+        Competence : true,
       }
     });
     return page;

@@ -2,7 +2,7 @@
 
 export const Github = ({classname } : {classname? : string}) => {
     return (
-        <svg className={classname} width="800px" height="800px" viewBox="0 -3.5 256 256" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet" fill="#000000" stroke="#000000">
+        <svg className={classname}  viewBox="0 -3.5 256 256" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet" fill="#000000" stroke="#000000">
 
 <g id="SVGRepo_bgCarrier" stroke-width="0"/>
 
