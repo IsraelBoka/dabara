@@ -69,12 +69,12 @@ const Navbar = () => {
               <li>
                 <Link target={"_self"} href="/creerpage">Création</Link>
               </li>
-              <li>
+              <li className="hidden">
                 <Link href="#">Sponsor</Link>
               </li>
 
               <li>
-                <Link href="#">Recherche</Link>
+                <Link href="/recherche">Recherche</Link>
               </li>
             </ul>
           </nav>

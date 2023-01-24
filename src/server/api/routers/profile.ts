@@ -70,4 +70,30 @@ export const ProfileRouter = createTRPCRouter({
             })
             return profile;
         }),
+
+
+
+        searchprofile: publicProcedure.input(z.object({
+            search: z.string(),
+            Tags : z.string().array().nullable(),
+        })).query(async ({ ctx, input }) => {
+
+            const profile = await ctx.prisma.user.findMany({
+                include : {
+                    Competence : true,
+                },
+                where :{
+                    name: {
+                        contains: input.search,
+                    },
+                    page : {
+                        not : null,
+                    }
+                    }
+            })
+            return profile;
+        }),
+
+
+
 });
