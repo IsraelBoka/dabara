@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Container } from "../components/container";
 import { FilterIcon } from "../components/icons/filter";
 import { Logo } from "../components/icons/logo";
+import { SearchIcon } from "../components/icons/searchicon";
 import Loader from "../components/Loader";
 import { api } from "../utils/api";
 
@@ -23,7 +24,7 @@ const Recherche = () => {
 
 
     return (
-        <Container >
+        <Container classname="lg:px-48">
             
         <div>
             <div className="flex items-center justify-center  w-full">
@@ -31,8 +32,13 @@ const Recherche = () => {
             <Logo classname=" w-16 h-16 animate-fade-in [--animation-delay:200ms] opacity-0 " />
                     </Link>
             </div>
-            <input className="opacity-0 animate-fade-in [--animation-delay:400ms]  mb-4 w-full decoration-none focus:border-0 focus:outline-none focus:ring-0 focus:ring-offset-0 rounded-sm p-1 bg-[#2b2d3c]" type="text" placeholder="Recherche..." onChange={(e) => setRecherche(e.target.value)} />
-            <button  >
+            <div className="flex mb-4  items-center justify-center opacity-0 animate-fade-in [--animation-delay:400ms]   ">
+                <div className=" bg-[#2b2d3c] p-1 rounded-l-sm">
+                <SearchIcon className="w-6 h-6"/>
+                </div>
+                <input className="w-full decoration-none bg-[#2b2d3c] focus:border-0 focus:outline-none focus:ring-0 focus:ring-offset-0 rounded-r-sm p-1 " type="text" placeholder="Recherche..." onChange={(e) => setRecherche(e.target.value)} />
+            </div>
+            <button  className="">
             <FilterIcon className="opacity-0 animate-fade-in [--animation-delay:600ms] w-6 h-6 text-white" />
             </button>
             {profiles.isFetching ? <Loader/> : (
@@ -43,21 +49,28 @@ const Recherche = () => {
                     </div> : (<div className="flex flex-wrap justify-center gap-2">
                         {profiles.data?.map((profile) => {
                             return (
-                                <div key={profile.id} className="flex flex-col items-center justify-center gap-2  ">
-                                    <div className="flex items-center justify-center  ">
-                                        <Link href={`/${profile.page || ""}`}>
-                                        <Image alt="image du profile" src={profile.image || ""} width={100} height={100} className="rounded-full" />
-                                        </Link>
-                                    </div>
-                                    <div className="flex flex-col items-center justify-center gap-2  ">
+                                <Link href={`/${profile.page || ""}`} key={profile.id} className="hover:bg-[#2b2d3c] rounded flex flex-col w-48 p-2 gap-1  items-start justify-center ">
+                                    <div className="flex items-center  ">
+                                        <Image alt="image du profile" src={profile.image || ""} width={58} height={58} className="rounded-full" />
+                                        
+                                    <div className="flex flex-col items-center justify-center  text-xs">
                                         <p className="text-white">{profile.name}</p>
                                         <p className="text-white">{profile.fonction}</p>
+
                                     </div>
-                                    <div className="flex flex-col items-center justify-center gap-2  ">
-                                        <p className="text-white">{profile.adresse}</p>
-                                        <p className="text-white">{profile.email}</p>
                                     </div>
-                                    </div>)
+                                    <div className="flex flex-wrap gap-2 items-center justify-center ">
+                                        { profile.Competence.map((competence) => {
+                                            return (
+                                        
+                                    <span key={competence.id} className="bg-blue-100 text-blue-800 text-xs font-medium  px-0.5 py-0.5 rounded ">{
+                                        competence.name
+                                    }</span>
+
+                                            )}
+                                        )}
+                                    </div>
+                                    </Link>)
                             
                         })}
                     </div>))}

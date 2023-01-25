@@ -32,7 +32,7 @@ const Home: NextPage = () => {
         <Container>
           <Hero >
             <HeroTitle size={"large"} className="animate-fade-in [--animation-delay:200ms] opacity-0 translate-y-[-1rem]">
-              Créez un <span className="text-blue-300"> profil </span>
+              Créez un <span className="text-blue-300"> portfolio </span>
               <br className="hidden md:block" />
               en quelques <span className="text-blue-300">secondes</span>{" "}
             </HeroTitle>
@@ -86,8 +86,8 @@ const Home: NextPage = () => {
                 Pour les <span className="text-orange-300">employeurs</span>
               </HeroTitle >
               <HeroSub className= "animate-fade-in [--animation-delay:400ms] opacity-0 translate-y-[-1rem]">
-                Trouvez les meilleurs profils pour vos projets et vos  
-                recrutements <br className="hidden md:block" /> en quelques clics grace à notre moteur de recherche
+                Trouvez les meilleurs profils pour vos projets et vos   <br className="hidden md:block" /> 
+                recrutements grace à notre moteur de recherche
               </HeroSub>
             </Hero>
             <div className="ml-auto  border-2 border-orange-500 p-2 rounded animate-fade-in [--animation-delay:600ms] opacity-0 translate-y-[-1rem]">
