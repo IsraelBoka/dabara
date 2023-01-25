@@ -18,12 +18,14 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import { api } from "../utils/api";
 import Head from "next/head";
+import { useSession } from "next-auth/react";
 
 
 const Nom = () => {
   const router = useRouter();
 
   const { nom } = router.query;
+  const session = useSession();
 
 
   const { data: userinfo, isLoading: loadinguserinfo } =
@@ -163,6 +165,7 @@ theme="dark"
 
           <div className="mt-auto flex-col items-center justify-center gap-2  ">
             
+            
 
           <div className="flex items-center justify-center  ">
               
@@ -180,7 +183,7 @@ theme="dark"
           className="md:text-md mr-2 flex items-center justify-center "
           href={"/"}
         >
-          <Logo classname="w-8 h-8 mr-2 stroke-white" />
+          <Logo classname="w-8 h-8  mr-2 stroke-white" />
           <p className="text-md font-extrabold">
             <span className="">DAB</span>
             <span className="text-blue-300">ARA</span>
@@ -191,11 +194,24 @@ theme="dark"
         </div>
         <div className=" w-96 lg:w-full bg-[#242424] overflow-y-auto lg:ml-4 ">
             <div className="w-full">
+            {
+              userinfo?.email  === session.data?.user?.email && (
+                <Link href="/edit" className="flex items-center justify-center mt-3">
+                  <button className="flex  items-center justify-center bg-blue-500 p-2 rounded-lg text-white">
+                    Modifier mon profil 
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                    </svg>
+
+                  </button>
+                </Link>
+              )
+            }
                 <p className="text-center text-xl p-4 font-bold h-12 text-white ">
                     Mes projets
                 </p>
                 <div className="flex flex-col items-center lg:h-[calc(100vh_-_3rem)] overflow-y-auto  p-4">
-                  <ImageCard image="/portfolio.jpg" link="test" description="testdesc" title="voila" />
+                  <ImageCard image="/portfolio.jpg" link="https://chapchaponlyts.vercel.app" description="testdesc" title="voila" />
 
                     </div>
             </div>
