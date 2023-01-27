@@ -5,7 +5,7 @@ const TestAWS = () => {
 
   const PRESET = 'cld7jf1e90000upxwvrnrosba - portfolio';
 
-  const [file, setFile] = useState<any>(null);
+  const [file, setFile] = useState<File>();
 
   const presignedurl = api.image.createpresignedurl.useMutation();
 
@@ -19,6 +19,9 @@ const TestAWS = () => {
     });
 
     const formData = new FormData();
+    if (file === undefined) {
+      return;
+    }
     formData.append('file', file);
     formData.append('upload_preset', 'cld7jf1e90000upxwvrnrosba - portfolio');
 

@@ -42,7 +42,7 @@ export const ImageRouter = createTRPCRouter({
         file: z.any(),
       }),
     )
-    .mutation(async ({ input, ctx }) => {
+    .mutation(({ input, ctx }) => {
       const url = cloudinary.v2.utils.url(`${ctx.session.user.id}`, {
         sign_url: true,
         type: 'fetch',
