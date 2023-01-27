@@ -1,5 +1,5 @@
 // @ts-check
-import { z } from "zod";
+import { z } from 'zod';
 
 /**
  * Specify your server-side environment variables schema here.
@@ -7,13 +7,16 @@ import { z } from "zod";
  */
 export const serverSchema = z.object({
   DATABASE_URL: z.string().url(),
-  NODE_ENV: z.enum(["development", "test", "production"]),
+  NODE_ENV: z.enum(['development', 'test', 'production']),
   NEXTAUTH_SECRET: z.string(),
   NEXTAUTH_URL: z.string().url(),
   DISCORD_CLIENT_ID: z.string(),
   DISCORD_CLIENT_SECRET: z.string(),
-  GOOGLE_CLIENT_ID : z.string(),
-  GOOGLE_CLIENT_SECRET : z.string(),
+  GOOGLE_CLIENT_ID: z.string(),
+  GOOGLE_CLIENT_SECRET: z.string(),
+  CLOUDINARY_CLOUD_NAME: z.string(),
+  CLOUDINARY_API_KEY: z.string(),
+  CLOUDINARY_API_SECRET: z.string(),
   //AWS_ACCESS_KEY_ID : z.string(),
   //AWS_SECRET_ACCESS_KEY : z.string(),
 });
