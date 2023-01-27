@@ -26,12 +26,17 @@ const TestAWS = () => {
     formData.append('upload_preset', 'cld7jf1e90000upxwvrnrosba - portfolio');
 
     console.log('urlandpreset : ', urlandpreset.url);
-    const res = await fetch('https://api.cloudinary.com/v1_1/dl2pqzw3i/image/upload', {
+
+    await fetch('https://api.cloudinary.com/v1_1/dl2pqzw3i/upload', {
       method: 'POST',
       body: formData,
-    }).then((response) => {
-      console.log('response : ', response);
-    });
+    })
+      .then((response) => {
+        console.log('response : ', response);
+      })
+      .catch((error) => {
+        console.log('error : ', error);
+      });
   };
 
   {
@@ -69,7 +74,12 @@ const TestAWS = () => {
   return (
     <div>
       <form onSubmit={handleUpload}>
-        <input type="file" onChange={onFileChange} />
+        <input
+          type="file"
+          onChange={onFileChange}
+          accept="image/png, image/jpeg, image/jpg"
+          multiple={false}
+        />
         <input type="submit" />
       </form>
     </div>
