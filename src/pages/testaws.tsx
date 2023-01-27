@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { api } from '../utils/api';
 const TestAWS = () => {
   const [upload, setUpload] = useState(false);
@@ -6,6 +6,8 @@ const TestAWS = () => {
   const PRESET = 'cld7jf1e90000upxwvrnrosba - portfolio';
 
   const [file, setFile] = useState<File>();
+
+  const [image, setImage] = useState<string>();
 
   const presignedurl = api.image.createpresignedurl.useMutation();
 
@@ -19,20 +21,22 @@ const TestAWS = () => {
     });
 
     const formData = new FormData();
+
     if (file === undefined) {
       return;
     }
-    formData.append('file', file);
-    formData.append('upload_preset', 'cld7jf1e90000upxwvrnrosba - portfolio');
 
+    formData.append('file', file);
+    formData.append('upload_preset', 'dabara');
     console.log('urlandpreset : ', urlandpreset.url);
 
-    await fetch('https://api.cloudinary.com/v1_1/dl2pqzw3i/upload', {
+    await fetch('https://api.cloudinary.com/v1_1/dl2pqzw3i/image/upload', {
       method: 'POST',
       body: formData,
     })
       .then((response) => {
         console.log('response : ', response);
+        return response.json();
       })
       .catch((error) => {
         console.log('error : ', error);
@@ -70,6 +74,30 @@ const TestAWS = () => {
   const onFileChange = (e: React.FormEvent<HTMLInputElement>) => {
     setFile(e.currentTarget.files?.[0]);
   };
+  {
+    /**
+  const onFileDrop = useCallback(async (e: React.SyntheticEvent<EventTarget>) => {
+    const target = e.target as HTMLInputElement;
+    if (!target.files) return;
+    const newFile = Object.values(target.files).map((file: File) => file);
+    const formData = new FormData();
+    formData.append('file', newFile[0]);
+    console.log('newFile : ', newFile[0]);
+    formData.append('upload_preset', 'dabara');
+
+    await fetch('https://api.cloudinary.com/v1_1/dl2pqzw3i/image/upload', {
+      method: 'POST',
+      body: formData,
+    })
+      .then((response) => {
+        console.log('response : ', response);
+        return response.json();
+      })
+      .catch((error) => {
+        console.log('error : ', error);
+      });
+  }, []); */
+  }
 
   return (
     <div>
