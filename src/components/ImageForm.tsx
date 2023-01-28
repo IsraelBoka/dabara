@@ -14,7 +14,12 @@ export const ImageForm = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<ImageFormProps>();
-  const uploadimage = api.image.addportfolio.useMutation();
+  const utils = api.useContext();
+  const uploadimage = api.image.addportfolio.useMutation({
+    async onSuccess() {
+      await utils.image.getuserimages.invalidate();
+    },
+  });
 
   const onSubmit = handleSubmit(async (data) => {
     console.log('data : ', data);
@@ -54,7 +59,10 @@ export const ImageForm = () => {
 
   return (
     <div>
-      <form onSubmit={onSubmit} className="flex flex-col gap-2 [&_input]:text-gray-800">
+      <form
+        onSubmit={onSubmit}
+        className="flex flex-col gap-2 [&_input]:text-gray-800 [&_label]:text-left"
+      >
         <label htmlFor="title">Titre</label>
         <input
           className="rounded p-1"
@@ -66,9 +74,8 @@ export const ImageForm = () => {
         />
         {errors.title && <p className="text-xs text-red-500">un titre est requis</p>}
         <label htmlFor="description">Description</label>
-        <input
+        <textarea
           className="rounded p-1"
-          type="text"
           {...register('description', {
             required: true,
           })}
