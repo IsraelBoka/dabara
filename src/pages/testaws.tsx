@@ -53,11 +53,12 @@ const TestAWS = () => {
         method: 'POST',
         body: formData,
       });
-      const data = (await res.json()) as { secure_url: string };
+      const data = (await res.json()) as { secure_url: string; public_id: string };
       console.log('data : ', data);
       setImage(data.secure_url);
       await uploadimage.mutateAsync({
         url: data.secure_url,
+        public_id: data.public_id,
       });
     } catch (error) {
       console.log('error : ', error);
