@@ -61,7 +61,7 @@ export const ImageForm = () => {
     <div>
       <form
         onSubmit={onSubmit}
-        className="flex flex-col gap-2 [&_input]:text-gray-800 [&_label]:text-left"
+        className="flex flex-col gap-2 [&_input]:text-black [&_label]:text-left"
       >
         <label htmlFor="title">Titre</label>
         <input
@@ -86,15 +86,21 @@ export const ImageForm = () => {
         <input className="rounded p-1" type="text" {...register('link')} name="link" />
 
         <label htmlFor="image">Image</label>
+
         <input
           type="file"
           {...register('image', {
             required: true,
           })}
+          className="block w-full cursor-pointer rounded-lg border border-gray-300 bg-gray-50 text-sm text-gray-900 focus:outline-none"
+          aria-describedby="file_input_help"
           accept="image/png, image/jpeg, image/jpg"
           multiple={false}
           name="image"
         />
+        <p className="mt-1 text-left text-sm text-gray-500" id="file_input_help">
+          PNG, JPG
+        </p>
         <input
           type="submit"
           className="cursor-pointer rounded bg-gray-200 p-2 transition-colors duration-300 hover:bg-gray-300"

@@ -158,7 +158,7 @@ const Nom = () => {
                   )}
                 >
                   <Dialog.Title as="h3" className="text-lg font-medium leading-6 text-gray-100">
-                    Ajouter votre image
+                    Ajouter votre projet
                   </Dialog.Title>
                   <div className="mt-2">
                     <ImageForm />

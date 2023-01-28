@@ -75,7 +75,7 @@ const Recherche = () => {
                       <p className="text-white">{profile.fonction}</p>
                     </div>
                   </div>
-                  <div className="flex flex-wrap items-center justify-center gap-2 ">
+                  <div className="flex w-full flex-wrap items-center justify-center gap-2 overflow-y-auto ">
                     {profile.Competence.map((competence) => {
                       return (
                         <span
