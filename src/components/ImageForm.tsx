@@ -75,15 +75,15 @@ export const ImageForm = () => {
         {errors.title && <p className="text-xs text-red-500">un titre est requis</p>}
         <label htmlFor="description">Description</label>
         <textarea
-          className="rounded p-1"
           {...register('description', {
             required: true,
           })}
+          className="rounded p-1 text-black"
           name="description"
         />
         {errors.description && <p className="text-xs text-red-500">une description est requise</p>}
         <label htmlFor="link">Lien de votre projet</label>
-        <input className="rounded p-1" type="text" {...register('link')} name="link" />
+        <input className="rounded p-1 " type="text" {...register('link')} name="link" />
 
         <label htmlFor="image">Image</label>
 

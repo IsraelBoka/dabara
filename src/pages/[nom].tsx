@@ -179,8 +179,8 @@ const Nom = () => {
         </Dialog>
       </Transition>
 
-      <Container classname="flex items-center  flex-col lg:items-start lg:flex-row h-full w-full">
-        <div className="flex min-h-screen  w-96 flex-col items-center bg-[#242424] lg:rounded ">
+      <Container classname="flex items-center justify-center  flex-col lg:items-start lg:flex-row h-full w-full">
+        <div className="flex min-h-screen w-96   flex-col items-center justify-center bg-[#242424] lg:rounded ">
           <Avatar
             nom={nom as string}
             email={userinfo?.Profil?.email || undefined}
@@ -263,7 +263,7 @@ const Nom = () => {
           </div>
         </div>
         <div className=" w-96 overflow-y-auto bg-[#242424] lg:ml-4 lg:w-full ">
-          <div className="flex w-full flex-col justify-center lg:max-h-screen">
+          <div className="flex w-full flex-col items-center justify-center lg:max-h-screen">
             {userinfo?.id === session.data?.user?.id && (
               <button
                 onClick={openModal}
@@ -287,20 +287,24 @@ const Nom = () => {
               </button>
             )}
             <p className="h-12 p-4 text-center text-xl font-bold text-white ">Mes projets</p>
-            <div className="flex flex-col items-center p-4 lg:h-[calc(100vh_-_3rem)]  lg:overflow-y-auto">
-              {images?.map((image) => {
-                return (
-                  <div className="m-2 px-8" key={image.id}>
-                    <ImageCard
-                      image={image.url || ' '}
-                      description={image.description || 'description'}
-                      title={image.title || ' '}
-                      link={image.github || ' '}
-                    />
-                  </div>
-                );
-              })}
-            </div>
+            {loadingimages ? (
+              <Loader />
+            ) : (
+              <div className="flex flex-col items-center p-4 lg:h-[calc(100vh_-_3rem)]  lg:overflow-y-auto">
+                {images?.map((image) => {
+                  return (
+                    <div className="m-2 px-8" key={image.id}>
+                      <ImageCard
+                        image={image.url || ' '}
+                        description={image.description || 'description'}
+                        title={image.title || ' '}
+                        link={image.github || ' '}
+                      />
+                    </div>
+                  );
+                })}
+              </div>
+            )}
           </div>
         </div>
       </Container>

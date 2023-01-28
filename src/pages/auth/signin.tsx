@@ -1,0 +1,107 @@
+import { type NextPage } from 'next';
+import Link from 'next/link';
+import { Container } from '../../components/container';
+import { Logo } from '../../components/icons/logo';
+import { LinkedIn } from '../../components/icons/linkedin';
+import { Google } from '../../components/icons/google';
+import { Discord } from '../../components/icons/discord';
+import { signIn, useSession } from 'next-auth/react';
+import { useRouter } from 'next/router';
+import Loader from '../../components/Loader';
+
+const Signin: NextPage = () => {
+  const router = useRouter();
+  const { status } = useSession();
+  const { callbackUrl = '/', error: errorType } = router.query;
+
+  if (status === 'loading') {
+    return (
+      <div className="flex min-h-screen items-center justify-center ">
+        <Loader />
+      </div>
+    );
+  }
+  if (status === 'authenticated') {
+    router
+      .push(callbackUrl as string)
+      .then(() => window.scrollTo(0, 0))
+      .catch(() => {
+        console.log('error');
+      });
+  }
+  const errors = {
+    Signin: 'Essayez de vous connecter avec un autre compte.',
+    OAuthSignin: 'Essayez de vous connecter avec un autre compte.',
+    OAuthCallback: 'Essayez de vous connecter avec un autre compte.',
+    OAuthCreateAccount: 'Essayez de vous connecter avec un autre compte.',
+    EmailCreateAccount: 'Essayez de vous connecter avec un autre compte.',
+    Callback: 'Essayez de vous connecter avec un autre compte.',
+    OAuthAccountNotLinked: 'Cet email est déjà associé à un autre compte ',
+    EmailSignin: 'Check your email address.',
+    CredentialsSignin:
+      'La connexion a échoué. Vérifiez que les identifiants que vous avez fournis sont corrects.',
+    default: 'Impossible de se connecter.',
+  };
+
+  const error = errorType && (errors[errorType as keyof typeof errors] ?? errors.default);
+
+  return (
+    <>
+      {status === 'authenticated' ? (
+        <div className="flex min-h-screen items-center justify-center ">
+          <Loader />
+        </div>
+      ) : (
+        <Container classname="lg:px-48 py-48">
+          <div className=" flex flex-col items-center justify-center gap-4">
+            <Link href={'/'} passHref className="  transition  duration-300 hover:scale-105">
+              <Logo classname=" w-16 h-16 animate-fade-in [--animation-delay:200ms] opacity-0 " />
+            </Link>
+            <div className="flex flex-col gap-4">
+              {error && (
+                <div className="text-center text-sm tracking-wide text-red-500 md:text-lg lg:text-xl">
+                  {error}
+                </div>
+              )}
+
+              <button
+                className="md:text-md inline-flex items-center justify-center gap-2 rounded border p-2 text-sm hover:bg-gray-900 lg:text-xl"
+                onClick={async () => {
+                  await signIn('google', {
+                    callbackUrl: '/',
+                  });
+                }}
+              >
+                Se connecter avec Google <Google className="h-8 w-8" />
+              </button>
+
+              <button
+                className="md:text-md inline-flex items-center justify-center gap-2 rounded border p-2 text-sm hover:bg-gray-900 lg:text-xl"
+                onClick={async () => {
+                  await signIn('linkedin', {
+                    callbackUrl: '/',
+                  });
+                }}
+              >
+                Se connecter avec LinkedIn <LinkedIn classname="h-8 w-8" />
+              </button>
+
+              <button
+                onClick={async () => {
+                  await signIn('discord', {
+                    callbackUrl: '/',
+                  });
+                }}
+                className="md:text-md inline-flex items-center justify-center gap-2 rounded border p-2 text-sm hover:bg-gray-900 lg:text-xl"
+              >
+                Se connecter avec Discord <Discord className="h-8 w-8" />
+              </button>
+            </div>
+          </div>
+        </Container>
+      )}
+    </>
+  );
+};
+
+export default Signin;

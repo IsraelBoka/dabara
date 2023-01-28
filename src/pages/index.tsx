@@ -49,7 +49,7 @@ const Home: NextPage = () => {
               {
                 <div>
                   {user?.page ? (
-                    <Link href={`/${user?.page}`}>
+                    <Link href={`/${user?.page}`} passHref>
                       <Button
                         variant={'secondary'}
                         size="large"
@@ -59,7 +59,7 @@ const Home: NextPage = () => {
                       </Button>
                     </Link>
                   ) : (
-                    <Link href="/creerpage">
+                    <Link href="/creerpage" passHref>
                       <Button
                         variant={'secondary'}
                         size="large"
@@ -119,7 +119,7 @@ const Home: NextPage = () => {
           </div>
           <div>
             <div className="mt-8 flex justify-center ">
-              <Link href="/recherche">
+              <Link href="/recherche" passHref>
                 <Button
                   variant={'tertiary'}
                   size="large"
