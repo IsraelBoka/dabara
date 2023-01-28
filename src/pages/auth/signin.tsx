@@ -52,8 +52,8 @@ const Signin: NextPage = () => {
           <Loader />
         </div>
       ) : (
-        <Container classname="lg:px-48 py-48">
-          <div className=" flex flex-col items-center justify-center gap-4">
+        <Container classname="lg:px-48">
+          <div className=" flex min-h-screen flex-col items-center justify-center gap-4">
             <Link href={'/'} passHref className="  transition  duration-300 hover:scale-105">
               <Logo classname=" w-16 h-16 animate-fade-in [--animation-delay:200ms] opacity-0 " />
             </Link>
@@ -72,7 +72,8 @@ const Signin: NextPage = () => {
                   });
                 }}
               >
-                Se connecter avec Google <Google className="h-8 w-8" />
+                <span className="flex-1">Se connecter avec Google</span>
+                <Google className="h-8 w-8" />
               </button>
 
               <button
@@ -83,7 +84,8 @@ const Signin: NextPage = () => {
                   });
                 }}
               >
-                Se connecter avec LinkedIn <LinkedIn classname="h-8 w-8" />
+                <span className="flex-1">Se connecter avec LinkedIn</span>
+                <LinkedIn classname="h-8 w-8" />
               </button>
 
               <button
@@ -94,7 +96,8 @@ const Signin: NextPage = () => {
                 }}
                 className="md:text-md inline-flex items-center justify-center gap-2 rounded border p-2 text-sm hover:bg-gray-900 lg:text-xl"
               >
-                Se connecter avec Discord <Discord className="h-8 w-8" />
+                <span className="flex-1">Se connecter avec Discord</span>
+                <Discord className="h-8 w-8" />
               </button>
             </div>
           </div>

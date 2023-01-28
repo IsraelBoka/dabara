@@ -78,7 +78,7 @@ const Creerpage = () => {
   if (status === 'unauthenticated') {
     return (
       <div className="flex min-h-screen flex-col items-center justify-center">
-        <Link href={'/'}>
+        <Link href={'/'} passHref>
           <Logo classname="hover:scale-105 duration-150 transition w-16 h-16 mr-2 stroke-white" />
         </Link>
         <h1 className="p-4 text-center text-2xl">
