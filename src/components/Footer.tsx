@@ -1,25 +1,33 @@
+import Link from 'next/link';
+
 export const Footer = () => {
-    const date = new Date()
-    return (
-        <footer className=" flex text-center  flex-col items-center justify-center lg:flex-row text-white py-4 border-t border-t-gray-700">
-                <p className="text-sm md:text-md flex items-center justify-center  gap-2">
-                    &copy; {date.getFullYear()} - Tous droits réservés <span className="font-bold text-center">DABWEB</span>
-                </p>
+  const date = new Date();
+  return (
+    <footer className=" flex flex-col  items-center justify-center border-t border-t-gray-700 py-4 text-center text-white lg:flex-row">
+      <p className="md:text-md flex items-center justify-center gap-2  text-sm">
+        <p>
+          {' '}
+          &copy; {date.getFullYear()} - Tous droits réservés{' '}
+          <span className="text-center font-bold">DABWEB</span>
+        </p>
+      </p>
 
-                <ol className="lg:ml-auto  flex justify-center text-xs md:text-sm p-2 items-center  space-x-2 underline font-bold [&_a:hover]:text-blue-700 [&_a]:transition-colors  text-blue-500 tracking-wide ">
-                    <li>
-                        <a href="#">Accueil</a>
-                    </li>
+      <ol className="flex  items-center justify-center space-x-2 p-2 text-xs font-bold  tracking-wide text-blue-500 underline md:text-sm lg:ml-auto  [&_a:hover]:text-blue-700 [&_a]:transition-colors ">
+        <li>
+          <Link href="/">Accueil</Link>
+        </li>
 
-                    <li>
-                        <a href="#">Profil</a>
-                    </li>
-                    <li>
-                        <a href="#">Contactez-nous</a>
-                    </li>
-                </ol>
-        </footer>
+        <li>
+          <Link href="/creerpage">Profil</Link>
+        </li>
+        <li>
+          <Link href={'mailto:israelboka5@gmail.com'}>
+            <span className="hidden lg:inline-flex">Contactez-nous</span>
 
-    )
-}
-
+            <span className="inline-flex lg:hidden">Contact</span>
+          </Link>
+        </li>
+      </ol>
+    </footer>
+  );
+};
