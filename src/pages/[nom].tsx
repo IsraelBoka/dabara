@@ -46,6 +46,15 @@ const Nom = () => {
     { enabled: nom !== undefined },
   );
 
+  const { data: images } = api.image.getuserimages.useQuery(
+    {
+      id: userinfo?.id as string,
+    },
+    {
+      enabled: userinfo !== undefined,
+    },
+  );
+
   const [copied, setCopied] = useState(false);
   if (loadinguserinfo) {
     return (
@@ -257,11 +266,11 @@ const Nom = () => {
           </div>
         </div>
         <div className=" w-96 overflow-y-auto bg-[#242424] lg:ml-4 lg:w-full ">
-          <div className="w-full">
+          <div className="flex max-h-screen w-full flex-col justify-center">
             {userinfo?.id === session.data?.user?.id && (
               <button
                 onClick={openModal}
-                className="flex  items-center justify-center rounded-lg bg-blue-500 p-2 text-white"
+                className="flex  items-center justify-center bg-blue-500 p-2 text-white"
               >
                 Ajouter un projet
                 <svg
@@ -282,12 +291,13 @@ const Nom = () => {
             )}
             <p className="h-12 p-4 text-center text-xl font-bold text-white ">Mes projets</p>
             <div className="flex flex-col items-center overflow-y-auto p-4  lg:h-[calc(100vh_-_3rem)]">
-              <ImageCard
-                image="/portfolio.jpg"
-                link="https://chapchaponlyts.vercel.app"
-                description="testdesc"
-                title="voila"
-              />
+              {images?.map((image) => {
+                return (
+                  <div className="" key={image.id}>
+                    <Image src={image.url} width={200} height={200} alt="imageportfolio" />
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>

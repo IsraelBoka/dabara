@@ -129,4 +129,19 @@ export const ImageRouter = createTRPCRouter({
       });
       return portfolio;
     }),
+
+  getuserimages: publicProcedure
+    .input(
+      z.object({
+        id: z.string(),
+      }),
+    )
+    .query(async ({ input, ctx }) => {
+      const images = await ctx.prisma.portfolio.findMany({
+        where: {
+          userId: input.id,
+        },
+      });
+      return images;
+    }),
 });
