@@ -5,6 +5,7 @@ const TestAWS = () => {
 
   const PRESET = 'cld7jf1e90000upxwvrnrosba - portfolio';
 
+  const [urlid, setUrlid] = useState<string>();
   const [file, setFile] = useState<File>();
 
   const [image, setImage] = useState<string>();
@@ -15,10 +16,12 @@ const TestAWS = () => {
     e.preventDefault();
 
     console.log('file : ', file);
-
+    {
+      /**
     const urlandpreset = await presignedurl.mutateAsync({
       file: file,
-    });
+    }); */
+    }
 
     const formData = new FormData();
 
@@ -28,19 +31,31 @@ const TestAWS = () => {
 
     formData.append('file', file);
     formData.append('upload_preset', 'dabara');
-    console.log('urlandpreset : ', urlandpreset.url);
 
     await fetch('https://api.cloudinary.com/v1_1/dl2pqzw3i/image/upload', {
       method: 'POST',
       body: formData,
     })
       .then((response) => {
-        console.log('response : ', response);
+        console.log('response : ', response.json());
         return response.json();
       })
       .catch((error) => {
         console.log('error : ', error);
       });
+
+    try {
+      const res = await fetch('https://api.cloudinary.com/v1_1/dl2pqzw3i/image/upload', {
+        method: 'POST',
+        body: formData,
+      });
+
+      const data = await res.json();
+      console.log('data : ', data);
+      setImage(data.secure_url as string);
+    } catch (error) {
+      console.log('error : ', error);
+    }
   };
 
   {
@@ -101,6 +116,7 @@ const TestAWS = () => {
 
   return (
     <div>
+      {image}
       <form onSubmit={handleUpload}>
         <input
           type="file"
