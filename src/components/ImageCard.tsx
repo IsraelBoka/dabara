@@ -14,7 +14,13 @@ export const ImageCard = (props: ImageCardProps) => {
   return (
     <div className="flex flex-col items-center justify-center ">
       <div className="flex flex-col items-center justify-center">
-        <Image src={image} alt={title} height={700} width={700} />
+        <Image
+          src={image}
+          alt={title}
+          height={700}
+          width={700}
+          className="rounded border border-gray-800"
+        />
         <div className="flex flex-col items-center justify-center ">
           <p className="text-2xl font-bold text-white">{title}</p>
           <p className=" text-center text-sm text-white ">{description}</p>

@@ -49,7 +49,7 @@ const Home: NextPage = () => {
               {
                 <div>
                   {user?.page ? (
-                    <Link href="/creerpage">
+                    <Link href={`/${user?.page}`}>
                       <Button
                         variant={'secondary'}
                         size="large"

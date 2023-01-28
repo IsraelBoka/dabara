@@ -12,7 +12,7 @@ export const ImageForm = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<ImageFormProps>();
   const utils = api.useContext();
   const uploadimage = api.image.addportfolio.useMutation({
@@ -103,7 +103,8 @@ export const ImageForm = () => {
         </p>
         <input
           type="submit"
-          className="cursor-pointer rounded bg-gray-200 p-2 transition-colors duration-300 hover:bg-gray-300"
+          disabled={isSubmitting}
+          className="cursor-pointer rounded bg-gray-200 p-2 transition-colors duration-300 hover:bg-gray-300 disabled:bg-gray-100"
         />
       </form>
     </div>

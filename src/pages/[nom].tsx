@@ -43,7 +43,7 @@ const Nom = () => {
     { enabled: nom !== undefined },
   );
 
-  const { data: images } = api.image.getuserimages.useQuery(
+  const { data: images, isLoading: loadingimages } = api.image.getuserimages.useQuery(
     {
       id: userinfo?.id as string,
     },
