@@ -1,7 +1,6 @@
 import { z } from 'zod';
 
 import { createTRPCRouter, publicProcedure, protectedProcedure } from '../trpc';
-import aws from 'aws-sdk';
 import { env } from '../../../env/server.mjs';
 import cloudinary from 'cloudinary';
 {
@@ -42,7 +41,7 @@ export const ImageRouter = createTRPCRouter({
         file: z.any(),
       }),
     )
-    .mutation(({ input, ctx }) => {
+    .mutation(({ ctx }) => {
       const url = cloudinary.v2.utils.url(`${ctx.session.user.id}`, {
         sign_url: true,
         type: 'fetch',
@@ -113,6 +112,9 @@ export const ImageRouter = createTRPCRouter({
       z.object({
         url: z.string(),
         public_id: z.string(),
+        title: z.string(),
+        description: z.string(),
+        link: z.string().optional(),
       }),
     )
     .mutation(async ({ input, ctx }) => {
@@ -120,6 +122,9 @@ export const ImageRouter = createTRPCRouter({
         data: {
           url: input.url,
           image: input.public_id,
+          title: input.title,
+          description: input.description,
+          github: input.link || null,
           user: {
             connect: {
               id: ctx.session.user.id,

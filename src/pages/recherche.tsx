@@ -10,7 +10,7 @@ import { api } from '../utils/api';
 
 const Recherche = () => {
   const [recherche, setRecherche] = useState<string>('');
-  const [tags, setTags] = useState<string[]>([]);
+  const [tags] = useState<string[]>([]);
 
   const profiles = api.profile.searchprofile.useQuery(
     { search: recherche, Tags: tags },

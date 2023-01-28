@@ -1,13 +1,10 @@
 import Error from 'next/error';
-import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState, Fragment } from 'react';
 import { Avatar } from '../components/Avatar';
 import { Container } from '../components/container';
 import { Clipboard } from '../components/icons/clipboard';
-import { Github } from '../components/icons/github';
-import { LinkedIn } from '../components/icons/linkedin';
 import { Logo } from '../components/icons/logo';
 import { ImageCard } from '../components/ImageCard';
 import { Dialog, Transition } from '@headlessui/react';
@@ -266,7 +263,7 @@ const Nom = () => {
           </div>
         </div>
         <div className=" w-96 overflow-y-auto bg-[#242424] lg:ml-4 lg:w-full ">
-          <div className="flex max-h-screen w-full flex-col justify-center">
+          <div className="flex w-full flex-col justify-center lg:max-h-screen">
             {userinfo?.id === session.data?.user?.id && (
               <button
                 onClick={openModal}
@@ -290,11 +287,16 @@ const Nom = () => {
               </button>
             )}
             <p className="h-12 p-4 text-center text-xl font-bold text-white ">Mes projets</p>
-            <div className="flex flex-col items-center overflow-y-auto p-4  lg:h-[calc(100vh_-_3rem)]">
+            <div className="flex flex-col items-center p-4 lg:h-[calc(100vh_-_3rem)]  lg:overflow-y-auto">
               {images?.map((image) => {
                 return (
-                  <div className="" key={image.id}>
-                    <Image src={image.url || ''} width={200} height={200} alt="imageportfolio" />
+                  <div className="m-2 px-8" key={image.id}>
+                    <ImageCard
+                      image={image.url || ' '}
+                      description={image.description || 'description'}
+                      title={image.title || ' '}
+                      link={image.github || ' '}
+                    />
                   </div>
                 );
               })}

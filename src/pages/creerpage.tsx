@@ -211,10 +211,7 @@ const Creerpage = () => {
               </form>
             )}
             {formStep === 1 && (
-              <form
-                onSubmit={() => OnSubmit()}
-                className="flex flex-col items-center justify-center "
-              >
+              <form onSubmit={OnSubmit} className="flex flex-col items-center justify-center ">
                 <div>
                   <div className="flex-col text-center text-lg text-gray-300 md:text-xl lg:text-2xl  ">
                     <h1 className="font-extrabold uppercase">Introduction</h1>
@@ -318,7 +315,7 @@ const Creerpage = () => {
               </form>
             )}
             {formStep === 2 && (
-              <form onSubmit={() => OnSubmit()} className="flex flex-col items-center">
+              <form onSubmit={OnSubmit} className="flex flex-col items-center">
                 <div className="flex flex-col justify-center rounded p-8 ">
                   <h1 className="text-center text-3xl font-extrabold lg:text-4xl">
                     Mes compétences
