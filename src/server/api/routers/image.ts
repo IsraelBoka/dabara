@@ -120,7 +120,6 @@ export const ImageRouter = createTRPCRouter({
         data: {
           url: input.url,
           image: input.public_id,
-          userId: ctx.session.user.id,
           user: {
             connect: {
               id: ctx.session.user.id,
