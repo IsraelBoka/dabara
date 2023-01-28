@@ -294,7 +294,7 @@ const Nom = () => {
               {images?.map((image) => {
                 return (
                   <div className="" key={image.id}>
-                    <Image src={image.url} width={200} height={200} alt="imageportfolio" />
+                    <Image src={image.url || ''} width={200} height={200} alt="imageportfolio" />
                   </div>
                 );
               })}
