@@ -11,6 +11,7 @@ const TestAWS = () => {
   const [image, setImage] = useState<string>();
 
   const presignedurl = api.image.createpresignedurl.useMutation();
+  const uploadimage = api.image.addportfolio.useMutation();
 
   const handleUpload = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -31,6 +32,8 @@ const TestAWS = () => {
 
     formData.append('file', file);
     formData.append('upload_preset', 'dabara');
+    {
+      /**
 
     await fetch('https://api.cloudinary.com/v1_1/dl2pqzw3i/image/upload', {
       method: 'POST',
@@ -42,7 +45,8 @@ const TestAWS = () => {
       })
       .catch((error) => {
         console.log('error : ', error);
-      });
+      }); */
+    }
 
     try {
       const res = await fetch('https://api.cloudinary.com/v1_1/dl2pqzw3i/image/upload', {
@@ -52,6 +56,9 @@ const TestAWS = () => {
       const data = (await res.json()) as { secure_url: string };
       console.log('data : ', data);
       setImage(data.secure_url);
+      await uploadimage.mutateAsync({
+        url: data.secure_url,
+      });
     } catch (error) {
       console.log('error : ', error);
     } finally {

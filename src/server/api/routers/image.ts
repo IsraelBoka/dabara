@@ -107,4 +107,27 @@ export const ImageRouter = createTRPCRouter({
             });
         });
     }), */
+
+  addportfolio: protectedProcedure
+    .input(
+      z.object({
+        url: z.string(),
+        public_id: z.string(),
+      }),
+    )
+    .mutation(async ({ input, ctx }) => {
+      const portfolio = await ctx.prisma.portfolio.create({
+        data: {
+          url: input.url,
+          image: input.public_id,
+          userId: ctx.session.user.id,
+          user: {
+            connect: {
+              id: ctx.session.user.id,
+            },
+          },
+        },
+      });
+      return portfolio;
+    }),
 });
