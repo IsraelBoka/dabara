@@ -49,12 +49,13 @@ const TestAWS = () => {
         method: 'POST',
         body: formData,
       });
-
-      const data = await res.json();
+      const data = (await res.json()) as { secure_url: string };
       console.log('data : ', data);
-      setImage(data.secure_url as string);
+      setImage(data.secure_url);
     } catch (error) {
       console.log('error : ', error);
+    } finally {
+      setUpload(true);
     }
   };
 
