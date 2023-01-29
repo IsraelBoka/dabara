@@ -83,6 +83,7 @@ model Profil {
     instagram String?
     twitter   String?
     github    String?
+    views     Int     @default(0)
     youtube   String?
     linkedin  String?
     userId    String  @unique

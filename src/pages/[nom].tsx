@@ -43,6 +43,18 @@ const Nom = () => {
     { enabled: nom !== undefined },
   );
 
+  api.profile.incrementview.useQuery(
+    {
+      id: userinfo?.id as string,
+    },
+    {
+      refetchOnWindowFocus: false,
+      refetchOnMount: false,
+      refetchOnReconnect: false,
+      enabled: userinfo !== undefined,
+    },
+  );
+
   const { data: images, isLoading: loadingimages } = api.image.getuserimages.useQuery(
     {
       id: userinfo?.id as string,
@@ -180,7 +192,7 @@ const Nom = () => {
       </Transition>
 
       <Container classname="flex items-center justify-center  lg:bg-transparent flex-col lg:items-start lg:flex-row lg:h-full lg:w-full">
-        <div className=" flex flex-col items-center   justify-center  lg:min-h-screen lg:w-96 lg:rounded lg:bg-[#242424] ">
+        <div className=" my-5 flex flex-col items-center justify-center  lg:my-0  lg:min-h-screen lg:w-96 lg:rounded lg:bg-[#242424] ">
           <Avatar
             nom={nom as string}
             email={userinfo?.Profil?.email || undefined}
@@ -251,7 +263,9 @@ const Nom = () => {
               </button>
             </div>
             <div className="mt-2 gap-2">
-              <p className="text-center text-xs font-bold ">Cette page a été visitée 60 fois</p>
+              <p className="text-center text-xs font-bold ">
+                Cette page a été visitée {userinfo?.Profil?.views} fois
+              </p>
               <Link className="md:text-md mr-2 flex items-center justify-center " href={'/'}>
                 <Logo classname="w-8 h-8  mr-2 stroke-white" />
                 <p className="text-md font-extrabold">
