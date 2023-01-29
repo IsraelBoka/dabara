@@ -179,8 +179,8 @@ const Nom = () => {
         </Dialog>
       </Transition>
 
-      <Container classname="flex items-center justify-center  flex-col lg:items-start lg:flex-row h-full w-full">
-        <div className="flex min-h-screen w-96   flex-col items-center justify-center bg-[#242424] lg:rounded ">
+      <Container classname="flex items-center justify-center  lg:bg-transparent flex-col lg:items-start lg:flex-row lg:h-full lg:w-full">
+        <div className=" flex flex-col items-center   justify-center  lg:min-h-screen lg:w-96 lg:rounded lg:bg-[#242424] ">
           <Avatar
             nom={nom as string}
             email={userinfo?.Profil?.email || undefined}
@@ -235,7 +235,7 @@ const Nom = () => {
             </div>
           </div>
 
-          <div className="mt-auto flex-col items-center justify-center gap-2  ">
+          <div className="mt-auto hidden flex-col items-center justify-center gap-2 lg:flex  ">
             <div className="flex items-center justify-center  ">
               <input
                 value={`https://dabara.vercel.app/${userinfo?.page || ''}`}
@@ -262,8 +262,8 @@ const Nom = () => {
             </div>
           </div>
         </div>
-        <div className=" w-96 overflow-y-auto bg-[#242424] lg:ml-4 lg:w-full ">
-          <div className="flex w-full flex-col items-center justify-center lg:max-h-screen">
+        <div className=" overflow-y-auto lg:ml-4 lg:w-full  lg:bg-[#242424] ">
+          <div className="flex h-full w-full flex-col items-center justify-center lg:max-h-screen">
             {userinfo?.id === session.data?.user?.id && (
               <button
                 onClick={openModal}
@@ -305,6 +305,32 @@ const Nom = () => {
                 })}
               </div>
             )}
+          </div>
+          <div className="mt-auto flex flex-col items-center justify-center gap-2 lg:hidden  ">
+            <div className="flex items-center justify-center  ">
+              <input
+                value={`https://dabara.vercel.app/${userinfo?.page || ''}`}
+                className="
+              w-full  truncate rounded-l-lg border bg-transparent p-1  text-white 
+              "
+              />
+              <button
+                onClick={() => Copylink()}
+                className=" rounded-r-lg border border-l-0 bg-transparent p-1"
+              >
+                <Clipboard className="h-6 w-6" />
+              </button>
+            </div>
+            <div className="mt-2 gap-2">
+              <p className="text-center text-xs font-bold ">Cette page a été visitée 60 fois</p>
+              <Link className="md:text-md mr-2 flex items-center justify-center " href={'/'}>
+                <Logo classname="w-8 h-8  mr-2 stroke-white" />
+                <p className="text-md font-extrabold">
+                  <span className="">DAB</span>
+                  <span className="text-blue-300">ARA</span>
+                </p>
+              </Link>
+            </div>
           </div>
         </div>
       </Container>
