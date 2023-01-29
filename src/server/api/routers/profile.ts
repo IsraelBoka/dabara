@@ -79,10 +79,27 @@ export const ProfileRouter = createTRPCRouter({
     .input(
       z.object({
         search: z.string(),
-        Tags: z.string().array().nullable(),
+        Tags: z.string().array().optional(),
       }),
     )
     .query(async ({ ctx, input }) => {
+      if (input.Tags === undefined || input.Tags.length === 0) {
+        const profile = await ctx.prisma.user.findMany({
+          include: {
+            Competence: true,
+          },
+          where: {
+            name: {
+              contains: input.search,
+            },
+            page: {
+              not: null,
+            },
+          },
+        });
+        return profile;
+      }
+
       const profile = await ctx.prisma.user.findMany({
         include: {
           Competence: true,
@@ -93,6 +110,13 @@ export const ProfileRouter = createTRPCRouter({
           },
           page: {
             not: null,
+          },
+          Competence: {
+            some: {
+              name: {
+                in: input.Tags,
+              },
+            },
           },
         },
       });

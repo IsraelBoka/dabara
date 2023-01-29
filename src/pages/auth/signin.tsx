@@ -65,7 +65,7 @@ const Signin: NextPage = () => {
               )}
 
               <button
-                className="md:text-md inline-flex items-center justify-center gap-2 rounded border p-2 text-sm hover:bg-gray-900 lg:text-xl"
+                className="md:text-md inline-flex items-center justify-center  gap-2 rounded border p-2 text-sm transition-colors duration-300 hover:bg-gray-900 lg:text-xl"
                 onClick={async () => {
                   await signIn('google', {
                     callbackUrl: '/',
@@ -77,7 +77,7 @@ const Signin: NextPage = () => {
               </button>
 
               <button
-                className="md:text-md inline-flex items-center justify-center gap-2 rounded border p-2 text-sm hover:bg-gray-900 lg:text-xl"
+                className="md:text-md inline-flex items-center justify-center gap-2 rounded border p-2 text-sm transition-colors duration-300 hover:bg-gray-900 lg:text-xl"
                 onClick={async () => {
                   await signIn('linkedin', {
                     callbackUrl: '/',
@@ -94,7 +94,7 @@ const Signin: NextPage = () => {
                     callbackUrl: '/',
                   });
                 }}
-                className="md:text-md inline-flex items-center justify-center gap-2 rounded border p-2 text-sm hover:bg-gray-900 lg:text-xl"
+                className="md:text-md inline-flex items-center justify-center gap-2 rounded border p-2 text-sm transition-colors duration-300 hover:bg-gray-900 lg:text-xl"
               >
                 <span className="flex-1">Se connecter avec Discord</span>
                 <Discord className="h-8 w-8" />

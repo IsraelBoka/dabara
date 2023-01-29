@@ -64,7 +64,6 @@ const Nom = () => {
     },
   );
 
-  const [copied, setCopied] = useState(false);
   if (loadinguserinfo) {
     return (
       <div className="flex min-h-screen w-full items-center justify-center">
@@ -112,29 +111,7 @@ const Nom = () => {
         theme="dark"
       />
       {!userinfo && <Error statusCode={404} />}
-      {copied && (
-        <div className=" flex w-full animate-fade-in items-center justify-center duration-300 ease-out ">
-          <div className=" flex w-full items-center justify-center bg-green-600  text-white duration-300 ease-in">
-            Votre lien a été copié , vous pouvez le partager
-            <button className="bg-green-600 " onClick={() => setCopied(false)}>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="h-6 w-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
-            </button>
-          </div>
-        </div>
-      )}
+
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog as="div" className="relative z-10" onClose={closeModal}>
           <Transition.Child
@@ -336,7 +313,9 @@ const Nom = () => {
               </button>
             </div>
             <div className="mt-2 gap-2">
-              <p className="text-center text-xs font-bold ">Cette page a été visitée 60 fois</p>
+              <p className="text-center text-xs font-bold ">
+                Cette page a été visitée {userinfo?.Profil?.views} fois
+              </p>
               <Link className="md:text-md mr-2 flex items-center justify-center " href={'/'}>
                 <Logo classname="w-8 h-8  mr-2 stroke-white" />
                 <p className="text-md font-extrabold">

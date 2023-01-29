@@ -4,13 +4,13 @@ export const Footer = () => {
   const date = new Date();
   return (
     <footer className=" flex flex-col  items-center justify-center border-t border-t-gray-700 py-4 text-center text-white lg:flex-row">
-      <p className="md:text-md flex items-center justify-center gap-2  text-sm">
+      <div className="md:text-md flex items-center justify-center gap-2  text-sm">
         <p>
           {' '}
           &copy; {date.getFullYear()} - Tous droits réservés{' '}
           <span className="text-center font-bold">DABWEB</span>
         </p>
-      </p>
+      </div>
 
       <ol className="flex  items-center justify-center space-x-2 p-2 text-xs font-bold  tracking-wide text-blue-500 underline md:text-sm lg:ml-auto  [&_a:hover]:text-blue-700 [&_a]:transition-colors ">
         <li>
