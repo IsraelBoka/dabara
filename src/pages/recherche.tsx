@@ -141,7 +141,7 @@ const Recherche = () => {
                   <Dialog.Title as="h3" className="text-lg font-medium leading-6 text-gray-100">
                     Recherche avancée
                   </Dialog.Title>
-                  <div className="mt-2 flex gap-2 p-2">
+                  <div className="mt-2 flex flex-col justify-center gap-2 p-2 lg:flex-row">
                     <div className="flex flex-wrap items-center justify-center gap-2">
                       <input
                         className="rounded-md p-2 "
@@ -162,11 +162,11 @@ const Recherche = () => {
                           }
                         }}
                       />
-                      <label htmlFor="HTML" className="text-gray-100">
+                      <label htmlFor="HTML" className="flex-1 text-gray-100">
                         HTML
                       </label>
                     </div>
-                    <div className="flex flex-wrap items-center justify-center gap-2">
+                    <div className="flex flex-wrap justify-center gap-2">
                       <input
                         className="rounded-md  p-2 "
                         type="checkbox"
@@ -182,7 +182,7 @@ const Recherche = () => {
                           }
                         }}
                       />
-                      <label htmlFor="CSS" className="text-gray-100">
+                      <label htmlFor="CSS" className="  flex-1 text-gray-100">
                         CSS
                       </label>
                     </div>
@@ -202,7 +202,7 @@ const Recherche = () => {
                           }
                         }}
                       />
-                      <label htmlFor="JAVASCRIPT" className="text-gray-100">
+                      <label htmlFor="JAVASCRIPT" className="  flex-1 text-gray-100">
                         JAVASCRIPT
                       </label>
                     </div>
@@ -222,7 +222,7 @@ const Recherche = () => {
                           }
                         }}
                       />
-                      <label htmlFor="REACT" className="text-gray-100">
+                      <label htmlFor="REACT" className="  flex-1 text-gray-100">
                         REACT
                       </label>
                     </div>
@@ -242,7 +242,7 @@ const Recherche = () => {
                           }
                         }}
                       />
-                      <label htmlFor="NODE" className="text-gray-100">
+                      <label htmlFor="NODE" className="flex-1 text-gray-100">
                         NODE
                       </label>
                     </div>
