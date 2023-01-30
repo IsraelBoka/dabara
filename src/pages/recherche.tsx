@@ -26,7 +26,6 @@ const Recherche = () => {
   const profiles = api.profile.searchprofile.useQuery(
     { search: recherche, Tags: competences },
     {
-      enabled: recherche !== '' && recherche.length > 3,
       keepPreviousData: true,
       refetchOnWindowFocus: false,
       refetchOnMount: false,
@@ -59,7 +58,9 @@ const Recherche = () => {
           <FilterIcon className="h-6 w-6 animate-fade-in text-white opacity-0 transition-colors duration-300 [--animation-delay:600ms] group-hover:stroke-gray-300" />
         </button>
         {profiles.isFetching ? (
-          <Loader />
+          <div className="mt-5 ">
+            <Loader />
+          </div>
         ) : profiles.data?.length === 0 ? (
           <div className="flex h-full w-full items-center justify-center">
             <p className="text-white">Aucun résultat</p>
