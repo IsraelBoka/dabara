@@ -37,7 +37,7 @@ const Recherche = () => {
   );
 
   return (
-    <Container classname="lg:px-48">
+    <Container classname="lg:px-48 py-4">
       <div>
         <div className="flex w-full items-center  justify-center">
           <Link href="/" className="duration-300 hover:scale-105">
@@ -55,8 +55,8 @@ const Recherche = () => {
             onChange={(e) => setRecherche(e.target.value)}
           />
         </div>
-        <button className="" onClick={openModal}>
-          <FilterIcon className=" h-6 w-6 animate-fade-in text-white opacity-0 [--animation-delay:600ms]" />
+        <button className="group" onClick={openModal}>
+          <FilterIcon className="h-6 w-6 animate-fade-in text-white opacity-0 transition-colors duration-300 [--animation-delay:600ms] group-hover:stroke-gray-300" />
         </button>
         {profiles.isFetching ? (
           <Loader />

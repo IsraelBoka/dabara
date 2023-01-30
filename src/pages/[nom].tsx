@@ -19,13 +19,17 @@ import Head from 'next/head';
 import { useSession } from 'next-auth/react';
 import classNames from 'classnames';
 import { ImageForm } from '../components/ImageForm';
+import { Editicon } from '../components/icons/editicon';
 
 const Nom = () => {
   const router = useRouter();
 
   const { nom } = router.query;
   const session = useSession();
-
+  const [changedesc, setchangedesc] = useState(false);
+  const [changefonction, setChangefonction] = useState(false);
+  const [newdesc, setnewdesc] = useState('');
+  const [newfonction, setNewfonction] = useState('');
   const [isOpen, setIsOpen] = useState(false);
 
   function closeModal() {
@@ -63,6 +67,39 @@ const Nom = () => {
       enabled: userinfo !== undefined,
     },
   );
+
+  const onChangeDescription = () => {
+    setchangedesc(!changedesc);
+    setnewdesc(userinfo?.about as string);
+  };
+
+  const onChangeFonction = () => {
+    setChangefonction(!changefonction);
+    setNewfonction(userinfo?.fonction as string);
+  };
+
+  const utils = api.useContext();
+
+  const { mutate: updateuserinfo, isLoading: updating } = api.page.updateuser.useMutation({
+    onSuccess: async () => {
+      toast.success('Informations mises à jour', {
+        position: 'top-center',
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: 'dark',
+      });
+      await utils.page.getPage.invalidate();
+      setchangedesc(false);
+      setChangefonction(false);
+    },
+  });
+
+  const { mutate: deleteportfolio, isLoading: deleteloading } =
+    api.image.deleteportfolio.useMutation();
 
   if (loadinguserinfo) {
     return (
@@ -176,8 +213,39 @@ const Nom = () => {
             lien={userinfo.image || undefined}
           />
           <div className="flex flex-col items-center">
-            <p className="text-xl font-bold text-white">Développeur web </p>
+            {!changefonction ? (
+              <p
+                onClick={userinfo.id === session.data?.user?.id ? onChangeFonction : undefined}
+                className="text-xl font-bold text-white"
+              >
+                {userinfo?.fonction}
+              </p>
+            ) : (
+              <div className="flex ">
+                <input
+                  type="text"
+                  className=" w-48 rounded-l-md border border-r-0 border-gray-300  bg-[#2b2d3c] text-xl font-bold text-white outline-none"
+                  value={newfonction}
+                  onChange={(e) => setNewfonction(e.target.value)}
+                />
+                <button
+                  className="
+                  rounded-r-md border border-gray-300 bg-[#2b2d3c]  p-2 text-xl font-bold text-white outline-none
+                "
+                  onClick={() => {
+                    if (newfonction === userinfo.fonction) {
+                      setChangefonction(false);
+                    } else {
+                      updateuserinfo({ fonction: newfonction });
+                    }
+                  }}
+                >
+                  <Editicon className="h-4 w-4 " />
+                </button>
+              </div>
+            )}
           </div>
+          {}
           <Network
             youtube={userinfo?.Profil?.youtube || undefined}
             facebook={userinfo?.Profil?.facebook || undefined}
@@ -187,10 +255,41 @@ const Nom = () => {
             twitter={userinfo?.Profil?.twitter || undefined}
           />
           <div>
-            <p className="text-center text-xl font-bold text-white ">A propos de moi</p>
-            <p className="truncate whitespace-pre-wrap p-2 indent-4 text-sm text-white">
-              {userinfo.about}
+            <p className="cursor-default text-center text-xl font-bold text-white ">
+              A propos de moi
             </p>
+
+            {!changedesc && (
+              <p
+                onClick={userinfo.id === session.data?.user?.id ? onChangeDescription : undefined}
+                className="truncate whitespace-pre-wrap p-2 indent-4 text-sm text-white"
+              >
+                {userinfo.about}
+              </p>
+            )}
+            {changedesc && (
+              <div className="flex flex-col items-center">
+                <textarea
+                  className="h-32 w-64 rounded bg-[#2b2d3c] p-2"
+                  value={newdesc}
+                  onChange={(e) => setnewdesc(e.target.value)}
+                />
+                <button
+                  onClick={() => {
+                    if (newdesc === userinfo.about) {
+                      setchangedesc(false);
+                    } else {
+                      updateuserinfo({ about: newdesc });
+                    }
+                  }}
+                  className=" mt-1 rounded bg-blue-600 p-1"
+                >
+                  <p className="text-sm text-white">
+                    {newdesc === userinfo.about ? 'Annuler' : 'Valider'}
+                  </p>
+                </button>
+              </div>
+            )}
           </div>
 
           <div>
@@ -211,10 +310,10 @@ const Nom = () => {
             </div>
           </div>
           <div>
-            <p className="text-center text-xl font-bold text-white ">Langues</p>
+            <p className="cursor-default text-center text-xl font-bold text-white ">Langues</p>
             <div className="flex flex-wrap justify-center">
               <div className="m-2  rounded ">
-                <p className="select-none text-sm font-bold uppercase ">Français</p>
+                <p className=" select-none text-sm font-bold uppercase">Français</p>
                 <p>Courant</p>
               </div>
               <div className="m-2  rounded ">
@@ -279,18 +378,34 @@ const Nom = () => {
             )}
             <p className="h-12 p-4 text-center text-xl font-bold text-white ">Mes projets</p>
             {loadingimages ? (
-              <Loader />
+              <div className="my-4">
+                <Loader />
+              </div>
             ) : (
               <div className="flex flex-col items-center p-4 lg:h-[calc(100vh_-_3rem)]  lg:overflow-y-auto">
                 {images?.map((image) => {
                   return (
-                    <div className="m-2 px-8" key={image.id}>
+                    <div className="m-2 flex flex-col px-8" key={image.id}>
                       <ImageCard
                         image={image.url || ' '}
                         description={image.description || 'description'}
                         title={image.title || ' '}
                         link={image.github || ' '}
                       />
+                      {userinfo?.id === session.data?.user?.id && (
+                        <div className="flex items-center justify-center ">
+                          <button
+                            onClick={() => {
+                              deleteportfolio({
+                                id: image.id,
+                              });
+                            }}
+                            className="mt-2 inline-flex w-24 items-center justify-center rounded bg-red-500 p-2 transition-colors duration-300 hover:bg-red-600"
+                          >
+                            Supprimer
+                          </button>
+                        </div>
+                      )}
                     </div>
                   );
                 })}

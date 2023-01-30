@@ -40,7 +40,7 @@ const Home: NextPage = () => {
             </HeroTitle>
             <HeroSub className=" translate-y-[-1rem]  animate-fade-in opacity-0 [--animation-delay:400ms]">
               Montrez vos compétences et vos réalisations à vos futurs{' '}
-              <br className="hidden md:block" /> employeurs et clients
+              <br className="hidden md:block" /> employeurs ou clients
             </HeroSub>
           </Hero>
 

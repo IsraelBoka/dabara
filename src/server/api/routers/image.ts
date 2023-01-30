@@ -149,4 +149,19 @@ export const ImageRouter = createTRPCRouter({
       });
       return images;
     }),
+
+  deleteportfolio: protectedProcedure
+    .input(
+      z.object({
+        id: z.string(),
+      }),
+    )
+    .mutation(async ({ input, ctx }) => {
+      const portfolio = await ctx.prisma.portfolio.delete({
+        where: {
+          id: input.id,
+        },
+      });
+      return portfolio;
+    }),
 });

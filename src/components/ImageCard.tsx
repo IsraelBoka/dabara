@@ -17,9 +17,9 @@ export const ImageCard = (props: ImageCardProps) => {
         <Image
           src={image}
           alt={title}
-          height={700}
-          width={700}
-          className="rounded border border-gray-800"
+          height={300}
+          width={300}
+          className="h-96 w-[32rem] rounded border border-gray-800 object-scale-down"
         />
         <div className="flex flex-col items-center justify-center ">
           <p className="text-2xl font-bold text-white">{title}</p>

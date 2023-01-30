@@ -57,7 +57,7 @@ const Signin: NextPage = () => {
             <Link href={'/'} passHref className="  transition  duration-300 hover:scale-105">
               <Logo classname=" w-16 h-16 animate-fade-in [--animation-delay:200ms] opacity-0 " />
             </Link>
-            <div className="flex flex-col gap-4">
+            <div className="[&_button]:text-md flex flex-col gap-4 md:[&_button]:text-lg lg:[&_button]:text-xl">
               {error && (
                 <div className="text-center text-sm tracking-wide text-red-500 md:text-lg lg:text-xl">
                   {error}
@@ -65,7 +65,7 @@ const Signin: NextPage = () => {
               )}
 
               <button
-                className="md:text-md inline-flex items-center justify-center  gap-2 rounded border p-2 text-sm transition-colors duration-300 hover:bg-gray-900 lg:text-xl"
+                className="inline-flex items-center justify-center  gap-2 rounded border p-2 transition-colors duration-300 hover:bg-gray-900 "
                 onClick={async () => {
                   await signIn('google', {
                     callbackUrl: '/',
@@ -77,7 +77,7 @@ const Signin: NextPage = () => {
               </button>
 
               <button
-                className="md:text-md inline-flex items-center justify-center gap-2 rounded border p-2 text-sm transition-colors duration-300 hover:bg-gray-900 lg:text-xl"
+                className="inline-flex items-center justify-center gap-2 rounded border p-2  transition-colors duration-300 hover:bg-gray-900 "
                 onClick={async () => {
                   await signIn('linkedin', {
                     callbackUrl: '/',
@@ -94,7 +94,7 @@ const Signin: NextPage = () => {
                     callbackUrl: '/',
                   });
                 }}
-                className="md:text-md inline-flex items-center justify-center gap-2 rounded border p-2 text-sm transition-colors duration-300 hover:bg-gray-900 lg:text-xl"
+                className="inline-flex items-center justify-center gap-2 rounded border p-2  transition-colors duration-300 hover:bg-gray-900"
               >
                 <span className="flex-1">Se connecter avec Discord</span>
                 <Discord className="h-8 w-8" />

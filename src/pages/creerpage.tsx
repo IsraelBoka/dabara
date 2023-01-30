@@ -79,7 +79,7 @@ const Creerpage = () => {
     return (
       <div className="flex min-h-screen flex-col items-center justify-center">
         <Link href={'/'} passHref>
-          <Logo classname="hover:scale-105 duration-150 transition w-16 h-16 mr-2 stroke-white" />
+          <Logo classname="hover:scale-105 duration-300 transition w-16 h-16 mr-2 stroke-white" />
         </Link>
         <h1 className="p-4 text-center text-sm md:text-xl lg:text-2xl">
           Vous devez être connecté pour accéder à cette page

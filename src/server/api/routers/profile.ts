@@ -142,4 +142,43 @@ export const ProfileRouter = createTRPCRouter({
       });
       return profile;
     }),
+
+  updateprofile: protectedProcedure
+    .input(
+      z.object({
+        name: z.string().optional(),
+        email: z.string().optional(),
+        about: z.string().optional(),
+        page: z.string().optional(),
+        fonction: z.string().optional(),
+        competence: z.string().array().optional(),
+        residence: z.string().optional(),
+        website: z.string().optional(),
+        facebook: z.string().optional(),
+        instagram: z.string().optional(),
+        twitter: z.string().optional(),
+        youtube: z.string().optional(),
+        linkedin: z.string().optional(),
+        github: z.string().optional(),
+      }),
+    )
+    .mutation(async ({ ctx, input }) => {
+      const profile = await ctx.prisma.profil.update({
+        where: {
+          userId: ctx.session.user.id,
+        },
+        data: {
+          name: input.name,
+          email: input.email,
+          website: input.website,
+          facebook: input.facebook,
+          instagram: input.instagram,
+          twitter: input.twitter,
+          youtube: input.youtube,
+          linkedin: input.linkedin,
+          github: input.github,
+        },
+      });
+      return profile;
+    }),
 });
