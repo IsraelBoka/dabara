@@ -111,21 +111,22 @@ const Nom = () => {
     },
   });
 
-  const { mutate: deleteportfolio } = api.image.deleteportfolio.useMutation({
-    onSuccess: async () => {
-      toast.success('Portfolio supprimé', {
-        position: 'top-center',
-        autoClose: 1000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: true,
-        progress: undefined,
-        theme: 'dark',
-      });
-      await utils.image.getuserimages.invalidate();
-    },
-  });
+  const { mutate: deleteportfolio, isLoading: loadingdelete } =
+    api.image.deleteportfolio.useMutation({
+      onSuccess: async () => {
+        toast.success('Portfolio supprimé', {
+          position: 'top-center',
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: true,
+          progress: undefined,
+          theme: 'dark',
+        });
+        await utils.image.getuserimages.invalidate();
+      },
+    });
 
   if (loadinguserinfo) {
     return <PageLoader />;
@@ -490,6 +491,7 @@ const Nom = () => {
                                 id: image.id,
                               });
                             }}
+                            disabled={loadingdelete}
                             className="mt-2 inline-flex w-24 items-center justify-center rounded bg-red-500 p-2 transition-colors duration-300 hover:bg-red-600"
                           >
                             Supprimer
