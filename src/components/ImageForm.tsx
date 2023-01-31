@@ -22,8 +22,40 @@ export const ImageForm = () => {
   });
 
   const onSubmit = handleSubmit(async (data) => {
-    return new Promise((resolve) => {
-      setTimeout(() => resolve(console.log('data : ', data)), 1000);
+    // eslint-disable-next-line @typescript-eslint/no-misused-promises -- I don't know how to fix this
+    return new Promise(async () => {
+      const formData = new FormData();
+
+      if (data.image === undefined) {
+        return;
+      }
+
+      if (data.image.item(0) === undefined || data.image.item(0) === null) {
+        return;
+      }
+
+      console.log('data.image.item(0) : ', data.image.item(0));
+      formData.append('file', data?.image?.item(0) as File);
+
+      formData.append('upload_preset', 'dabara');
+
+      try {
+        const res = await fetch('https://api.cloudinary.com/v1_1/dl2pqzw3i/image/upload', {
+          method: 'POST',
+          body: formData,
+        });
+        const response = (await res.json()) as { secure_url: string; public_id: string };
+        console.log('data : ', response);
+        await uploadimage.mutateAsync({
+          url: response.secure_url,
+          public_id: response.public_id,
+          title: data.title,
+          description: data.description,
+          link: data.link,
+        });
+      } catch (error) {
+        console.log('error : ', error);
+      }
     });
 
     const formData = new FormData();
