@@ -6,14 +6,23 @@ import { api } from '../utils/api';
 
 import '../styles/globals.css';
 
+import { Inter } from '@next/font/google';
+const inter = Inter({
+  display: 'swap',
+  subsets: ['latin'],
+  weight: ['400'],
+});
+
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
   pageProps: { session, ...pageProps },
 }) => {
   return (
-    <SessionProvider session={session}>
-      <Component {...pageProps} />
-    </SessionProvider>
+    <main className={`${inter.className}`}>
+      <SessionProvider session={session}>
+        <Component {...pageProps} />
+      </SessionProvider>
+    </main>
   );
 };
 
