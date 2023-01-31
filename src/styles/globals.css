@@ -2,21 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
-
 body {
-   @apply bg-[#121216];
-   @apply text-[#f7f8f8]
-
+  @apply bg-[#121216];
+  @apply text-[#f7f8f8];
 }
 
 @layer utilities {
-   .text-shadow {
-      text-shadow: rgb(0 0 0 / 56%) 0px 3px 12px;
-   }
+  .text-shadow {
+    text-shadow: rgb(0 0 0 / 56%) 0px 3px 12px;
+  }
 }
 
-@layer base{
-   html {
-      font-family: Inter, sans-serif;
-   }
+@layer base {
+  html {
+    font-family: Inter, sans-serif;
+  }
 }

@@ -33,7 +33,7 @@ const Home: NextPage = () => {
               size={'large'}
               className="translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:200ms]"
             >
-              Créez un <span className="text-blue-300"> portfolio </span>
+              Créez un <span className="font-display text-blue-300"> portfolio </span>
               <br className="hidden md:block" />
               en quelques <span className="text-blue-300">secondes</span>{' '}
             </HeroTitle>

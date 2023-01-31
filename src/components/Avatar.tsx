@@ -11,11 +11,16 @@ interface AvatarProps {
 export const Avatar = (props: AvatarProps) => {
   const { classname, lien, nom, email } = props;
   return (
-    <div className={classNames('flex items-center  rounded lg:p-2', classname)}>
-      <div className="  rounded-full bg-gradient-to-tl from-[#fde047]  to-[#92c5fb] p-1 lg:p-1 ">
+    <div
+      className={classNames(
+        'flex flex-row-reverse items-center justify-center  rounded lg:p-2',
+        classname,
+      )}
+    >
+      <div className="  rounded-full bg-gradient-to-tl from-[#fde047]  to-[#92c5fb] p-0.5 md:p-1 lg:p-1 ">
         {lien ? (
           <Image
-            className=" h-13 w-13 rounded-full object-contain md:h-16 md:w-16"
+            className=" h-11 w-11 rounded-full object-contain md:h-16 md:w-16"
             referrerPolicy="origin"
             src={lien}
             width={500}
@@ -34,7 +39,7 @@ export const Avatar = (props: AvatarProps) => {
         )}
       </div>
       <div className="m-2 ">
-        <p className="text-xl font-extrabold tracking-wide">{nom}</p>
+        <p className="font-display text-2xl font-extrabold tracking-wide">{nom}</p>
         <p className="text-sm">{email}</p>
       </div>
     </div>

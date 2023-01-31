@@ -344,7 +344,7 @@ const Nom = () => {
             twitter={userinfo?.Profil?.twitter || undefined}
           />
           <div>
-            <p className="cursor-default text-center text-xl font-bold text-white ">
+            <p className=" cursor-default text-center  text-xl font-bold text-white ">
               A propos de moi
             </p>
 
