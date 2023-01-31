@@ -2,13 +2,13 @@ import { useSession, signIn } from 'next-auth/react';
 import { api } from '../utils/api';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import Loader from '../components/Loader';
 import { Button } from '../components/Button';
 import { Logo } from '../components/icons/logo';
 import Link from 'next/link';
 
 import { useForm } from 'react-hook-form';
 import { Container } from '../components/container';
+import { PageLoader } from '../components/PageLoader';
 
 type FormData = {
   name: string;
@@ -94,7 +94,7 @@ const Creerpage = () => {
   if (loadinggetpage) {
     return (
       <div className="flex min-h-screen items-center justify-center ">
-        <Loader />
+        <PageLoader />
       </div>
     );
   }

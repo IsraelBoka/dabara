@@ -35,8 +35,8 @@ const Navbar = () => {
   return (
     <header className="fixed top-0 left-0 z-10 w-full px-8  backdrop-blur-[12px]">
       <Container classname="flex  h-12 justify-center items-center border-gray-700   border-b">
-        <Link className="md:text-md mr-2 flex items-center justify-center" href="#">
-          <Logo classname="w-8 h-8 mr-2 stroke-white" />
+        <Link className="md:text-md group mr-2 flex items-center justify-center" href="#">
+          <Logo classname="w-8 h-8 mr-2 stroke-white group-hover:rotate-45 ease-in-out transition duration-500 " />
           <p className="text-md font-extrabold">
             <span className="">DAB</span>
             <span className="text-blue-300">ARA</span>

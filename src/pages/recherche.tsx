@@ -58,7 +58,7 @@ const Recherche = () => {
           <FilterIcon className="h-6 w-6 animate-fade-in text-white opacity-0 transition-colors duration-300 [--animation-delay:600ms] group-hover:stroke-gray-300" />
         </button>
         {profiles.isFetching ? (
-          <div className="mt-5 ">
+          <div className="mt-5 animate-fade-in  opacity-0  [--animation-delay:800ms]">
             <Loader />
           </div>
         ) : profiles.data?.length === 0 ? (
@@ -92,7 +92,7 @@ const Recherche = () => {
                       return (
                         <span
                           key={competence.id}
-                          className=" shrink-0 snap-center rounded bg-blue-100 px-0.5 py-0.5 text-xs  font-medium uppercase text-blue-800 "
+                          className=" shrink-0 snap-center rounded-full bg-blue-100 px-0.5 py-0.5 text-xs  font-medium uppercase text-blue-800 "
                         >
                           {competence.name}
                         </span>

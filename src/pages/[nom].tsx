@@ -20,6 +20,9 @@ import { useSession } from 'next-auth/react';
 import classNames from 'classnames';
 import { ImageForm } from '../components/ImageForm';
 import { Editicon } from '../components/icons/editicon';
+import { Plusicon } from '../components/icons/Plusicon';
+import { CompetenceForm } from '../components/CompetenceForm';
+import { PageLoader } from '../components/PageLoader';
 
 const Nom = () => {
   const router = useRouter();
@@ -31,6 +34,16 @@ const Nom = () => {
   const [newdesc, setnewdesc] = useState('');
   const [newfonction, setNewfonction] = useState('');
   const [isOpen, setIsOpen] = useState(false);
+
+  const [isOpenCompetence, setIsOpenCompetence] = useState(false);
+
+  function closeModalCompetence() {
+    setIsOpenCompetence(false);
+  }
+
+  function openModalCompetence() {
+    setIsOpenCompetence(true);
+  }
 
   function closeModal() {
     setIsOpen(false);
@@ -80,7 +93,7 @@ const Nom = () => {
 
   const utils = api.useContext();
 
-  const { mutate: updateuserinfo, isLoading: updating } = api.page.updateuser.useMutation({
+  const { mutate: updateuserinfo, isLoading: updatinguserinfo } = api.page.updateuser.useMutation({
     onSuccess: async () => {
       toast.success('Informations mises à jour', {
         position: 'top-center',
@@ -98,15 +111,11 @@ const Nom = () => {
     },
   });
 
-  const { mutate: deleteportfolio, isLoading: deleteloading } =
+  const { mutate: deleteportfolio, isLoading: deletingportfolio } =
     api.image.deleteportfolio.useMutation();
 
   if (loadinguserinfo) {
-    return (
-      <div className="flex min-h-screen w-full items-center justify-center">
-        <Loader />
-      </div>
-    );
+    return <PageLoader />;
   }
 
   if (!userinfo) {
@@ -149,6 +158,7 @@ const Nom = () => {
       />
       {!userinfo && <Error statusCode={404} />}
 
+      {/** ------------------------------------ Modal for image form ------------------------------------ */}
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog as="div" className="relative z-10" onClose={closeModal}>
           <Transition.Child
@@ -205,6 +215,64 @@ const Nom = () => {
         </Dialog>
       </Transition>
 
+      {/**----------------------------------- Modal for competences form ------------------------------------- */}
+
+      <Transition appear show={isOpenCompetence} as={Fragment}>
+        <Dialog as="div" className="relative z-10" onClose={closeModalCompetence}>
+          <Transition.Child
+            as={Fragment}
+            enter="ease-out duration-300"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave="ease-in duration-200"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            <div className="fixed inset-0 bg-black bg-opacity-25" />
+          </Transition.Child>
+
+          <div className="fixed inset-0 overflow-y-auto">
+            <div className="flex min-h-full items-center justify-center p-4 text-center">
+              <Transition.Child
+                as={Fragment}
+                enter="ease-out duration-300"
+                enterFrom="opacity-0 scale-95"
+                enterTo="opacity-100 scale-100"
+                leave="ease-in duration-200"
+                leaveFrom="opacity-100 scale-100"
+                leaveTo="opacity-0 scale-95"
+              >
+                <Dialog.Panel
+                  className={classNames(
+                    'fixed z-50',
+                    'w-[95vw] max-w-md rounded-lg p-4 md:w-full',
+                    'top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]',
+                    'border bg-[#242424]  ',
+                    'focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75',
+                  )}
+                >
+                  <Dialog.Title as="h3" className="text-lg font-medium leading-6 text-gray-100">
+                    📚 Mes compétences
+                  </Dialog.Title>
+                  <div className="mt-2">
+                    <CompetenceForm />
+                  </div>
+                  <div className="mt-4">
+                    <button
+                      type="button"
+                      className="inline-flex justify-center rounded-md border border-transparent bg-blue-600 px-4 py-2 text-sm font-medium text-gray-900 hover:bg-blue-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                      onClick={closeModalCompetence}
+                    >
+                      Quitter
+                    </button>
+                  </div>
+                </Dialog.Panel>
+              </Transition.Child>
+            </div>
+          </div>
+        </Dialog>
+      </Transition>
+
       <Container classname="flex items-center justify-center  lg:bg-transparent flex-col lg:items-start lg:flex-row lg:h-full lg:w-full">
         <div className=" my-5 flex flex-col items-center justify-center  lg:my-0  lg:min-h-screen lg:w-96 lg:rounded lg:bg-[#242424] ">
           <Avatar
@@ -224,6 +292,7 @@ const Nom = () => {
               <div className="flex ">
                 <input
                   type="text"
+                  autoFocus
                   className=" w-48 rounded-l-md border border-r-0 border-gray-300  bg-[#2b2d3c] text-xl font-bold text-white outline-none"
                   value={newfonction}
                   onChange={(e) => setNewfonction(e.target.value)}
@@ -270,6 +339,7 @@ const Nom = () => {
             {changedesc && (
               <div className="flex flex-col items-center">
                 <textarea
+                  autoFocus
                   className="h-32 w-64 rounded bg-[#2b2d3c] p-2"
                   value={newdesc}
                   onChange={(e) => setnewdesc(e.target.value)}
@@ -293,7 +363,14 @@ const Nom = () => {
           </div>
 
           <div>
-            <p className="text-center text-xl font-bold text-white ">Mes compétences</p>
+            <div className="flex items-center justify-center gap-1 text-center text-xl font-bold text-white ">
+              <p>Mes compétences</p>
+              {userinfo.id === session.data?.user?.id && (
+                <button onClick={openModalCompetence} className="ml-2 rounded bg-blue-700 p-1">
+                  <Plusicon className="h-4 w-4" />
+                </button>
+              )}
+            </div>
             <div className="flex flex-wrap justify-center">
               {userinfo?.Competence?.map((competence) => {
                 return (
