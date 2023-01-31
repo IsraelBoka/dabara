@@ -18,7 +18,7 @@ export const Skills = ({ competence }: SkillsProps) => {
           {skill.name === 'Angular' && (
             <div className="group relative flex flex-col items-center justify-center">
               <Angularjs className="   h-8 w-8" />
-              <p className="absolute top-9 hidden select-none rounded-md bg-gray-800 p-1 text-xs group-hover:block">
+              <p className="absolute top-9 select-none rounded-md bg-gray-800 p-1 text-xs opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100">
                 Angular{' '}
               </p>
             </div>

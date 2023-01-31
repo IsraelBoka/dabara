@@ -82,7 +82,7 @@ const Creerpage = () => {
           <Logo classname="hover:scale-105 duration-300 transition w-16 h-16 mr-2 stroke-white" />
         </Link>
         <h1 className="p-4 text-center text-sm md:text-xl lg:text-2xl">
-          Vous devez être connecté pour accéder à cette page
+          Connectez vous pour créer une page
         </h1>
         <Button onClick={() => void signIn()}>Se connecter</Button>
       </div>

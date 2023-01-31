@@ -293,7 +293,7 @@ const Nom = () => {
         </Dialog>
       </Transition>
 
-      <Container classname="flex items-center justify-center  lg:bg-transparent flex-col lg:items-start lg:flex-row lg:h-full lg:w-full">
+      <Container classname="flex items-center flex-col justify-center lg:bg-transparent lg:flex lg:items-start lg:flex-row lg:h-full lg:w-full">
         <div className=" my-5 flex flex-col items-center justify-center  lg:my-0  lg:min-h-screen lg:w-96 lg:rounded lg:bg-[#242424] ">
           <Avatar
             nom={nom as string}
@@ -360,7 +360,7 @@ const Nom = () => {
               <div className="flex flex-col items-center">
                 <textarea
                   autoFocus
-                  className="h-32 w-64 rounded bg-[#2b2d3c] p-2"
+                  className="h-32 rounded bg-[#2b2d3c] p-2 lg:w-64"
                   value={newdesc}
                   onChange={(e) => setnewdesc(e.target.value)}
                 />
@@ -438,7 +438,7 @@ const Nom = () => {
             </div>
           </div>
         </div>
-        <div className=" overflow-y-auto lg:ml-4 lg:w-full  lg:bg-[#242424] ">
+        <div className=" lg:ml-4 lg:w-full lg:overflow-y-auto  lg:bg-[#242424] ">
           <div className="flex h-full w-full flex-col items-center justify-center lg:max-h-screen">
             {userinfo?.id === session.data?.user?.id && (
               <button

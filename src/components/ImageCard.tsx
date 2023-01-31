@@ -42,7 +42,7 @@ export const ImageCard = (props: ImageCardProps) => {
           alt={title}
           height={400}
           width={400}
-          className=" rounded-xl object-scale-down"
+          className=" rounded-xl lg:object-scale-down"
         />
         <div className="flex flex-col items-center justify-center gap-3">
           {changetitle ? (
@@ -89,7 +89,7 @@ export const ImageCard = (props: ImageCardProps) => {
                   onChange={(e) => {
                     setNewdescription(e.target.value);
                   }}
-                  className=" h-32 w-64 rounded bg-[#2b2d3c] p-2"
+                  className=" h-32 rounded bg-[#2b2d3c] p-2 lg:w-64"
                 />
                 <button
                   className="mt-1 rounded bg-blue-600 p-1"
@@ -109,7 +109,7 @@ export const ImageCard = (props: ImageCardProps) => {
                 onClick={() => {
                   props.sessionid === props.userinfoid ? setchangedesc(!changedesc) : undefined;
                 }}
-                className=" w-[32rem] text-center indent-1 text-sm text-white "
+                className=" w-44 text-center text-sm text-white md:w-auto "
               >
                 {newdescription}
               </p>
