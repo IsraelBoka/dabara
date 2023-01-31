@@ -57,39 +57,6 @@ export const ImageForm = () => {
         console.log('error : ', error);
       }
     });
-
-    const formData = new FormData();
-
-    if (data.image === undefined) {
-      return;
-    }
-
-    if (data.image.item(0) === undefined || data.image.item(0) === null) {
-      return;
-    }
-
-    console.log('data.image.item(0) : ', data.image.item(0));
-    formData.append('file', data?.image?.item(0) as File);
-
-    formData.append('upload_preset', 'dabara');
-
-    try {
-      const res = await fetch('https://api.cloudinary.com/v1_1/dl2pqzw3i/image/upload', {
-        method: 'POST',
-        body: formData,
-      });
-      const response = (await res.json()) as { secure_url: string; public_id: string };
-      console.log('data : ', response);
-      await uploadimage.mutateAsync({
-        url: response.secure_url,
-        public_id: response.public_id,
-        title: data.title,
-        description: data.description,
-        link: data.link,
-      });
-    } catch (error) {
-      console.log('error : ', error);
-    }
   });
 
   return (
@@ -140,7 +107,9 @@ export const ImageForm = () => {
           type="submit"
           disabled={isSubmitting}
           className="cursor-pointer rounded bg-gray-200 p-2 transition-colors duration-300 hover:bg-gray-300 disabled:bg-gray-100"
-        />
+        >
+          {isSubmitting ? 'En cours...' : 'Envoyer'}
+        </input>
       </form>
     </div>
   );
