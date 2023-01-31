@@ -93,7 +93,7 @@ const Nom = () => {
 
   const utils = api.useContext();
 
-  const { mutate: updateuserinfo, isLoading: updatinguserinfo } = api.page.updateuser.useMutation({
+  const { mutate: updateuserinfo } = api.page.updateuser.useMutation({
     onSuccess: async () => {
       toast.success('Informations mises à jour', {
         position: 'top-center',
@@ -111,8 +111,21 @@ const Nom = () => {
     },
   });
 
-  const { mutate: deleteportfolio, isLoading: deletingportfolio } =
-    api.image.deleteportfolio.useMutation();
+  const { mutate: deleteportfolio } = api.image.deleteportfolio.useMutation({
+    onSuccess: async () => {
+      toast.success('Portfolio supprimé', {
+        position: 'top-center',
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: 'dark',
+      });
+      await utils.image.getuserimages.invalidate();
+    },
+  });
 
   if (loadinguserinfo) {
     return <PageLoader />;

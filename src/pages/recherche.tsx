@@ -66,13 +66,13 @@ const Recherche = () => {
             <p className="text-white">Aucun résultat</p>
           </div>
         ) : (
-          <div className="flex flex-wrap justify-center gap-2">
+          <div className="mt-5 flex flex-wrap justify-center gap-6">
             {profiles.data?.map((profile) => {
               return (
                 <Link
                   href={`/${profile.page || ''}`}
                   key={profile.id}
-                  className="flex w-48 flex-col items-start justify-center gap-1 rounded  p-2 hover:bg-[#2b2d3c] "
+                  className=" flex w-48 flex-col items-start justify-center gap-1 rounded-md border border-gray-300  p-2 hover:bg-[#2b2d3c] "
                 >
                   <div className="flex items-center justify-center gap-2">
                     <Image

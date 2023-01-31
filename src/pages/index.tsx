@@ -1,6 +1,5 @@
 import { type NextPage } from 'next';
 import Head from 'next/head';
-import Link from 'next/link';
 import { useSession } from 'next-auth/react';
 import Navbar from '../components/Navbar';
 
@@ -49,25 +48,23 @@ const Home: NextPage = () => {
               {
                 <div>
                   {user?.page ? (
-                    <Link href={`/${user?.page}`} passHref>
-                      <Button
-                        variant={'secondary'}
-                        size="large"
-                        className="translate-y-[-1rem]  animate-fade-in  opacity-0 [--animation-delay:600ms]"
-                      >
-                        Modifier votre profil
-                      </Button>
-                    </Link>
+                    <Button
+                      variant={'secondary'}
+                      size="large"
+                      href={`/${user?.page}`}
+                      className="translate-y-[-1rem]  animate-fade-in  opacity-0 [--animation-delay:600ms]"
+                    >
+                      Modifier votre profil
+                    </Button>
                   ) : (
-                    <Link href="/creerpage" passHref>
-                      <Button
-                        variant={'secondary'}
-                        size="large"
-                        className="translate-y-[-1rem]  animate-fade-in opacity-0 [--animation-delay:600ms]"
-                      >
-                        Créer un profil
-                      </Button>
-                    </Link>
+                    <Button
+                      variant={'secondary'}
+                      href="/creerpage"
+                      size="large"
+                      className="translate-y-[-1rem]  animate-fade-in opacity-0 [--animation-delay:600ms]"
+                    >
+                      Créer un profil
+                    </Button>
                   )}
                 </div>
               }
@@ -119,15 +116,14 @@ const Home: NextPage = () => {
           </div>
           <div>
             <div className="mt-8 flex justify-center ">
-              <Link href="/recherche" passHref>
-                <Button
-                  variant={'tertiary'}
-                  size="large"
-                  className=" translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:800ms]"
-                >
-                  Rechercher un profil
-                </Button>
-              </Link>
+              <Button
+                variant={'tertiary'}
+                href="/recherche"
+                size="large"
+                className=" translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:800ms]"
+              >
+                Rechercher un profil
+              </Button>
             </div>
           </div>
           <div className="mt-12">

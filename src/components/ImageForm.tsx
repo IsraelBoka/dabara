@@ -22,7 +22,10 @@ export const ImageForm = () => {
   });
 
   const onSubmit = handleSubmit(async (data) => {
-    console.log('data : ', data);
+    return new Promise((resolve) => {
+      setTimeout(() => resolve(console.log('data : ', data)), 1000);
+    });
+
     const formData = new FormData();
 
     if (data.image === undefined) {

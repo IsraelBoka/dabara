@@ -13,25 +13,23 @@ export const ImageCard = (props: ImageCardProps) => {
   const { image, title, description, link } = props;
   return (
     <div className="flex flex-col items-center justify-center ">
-      <div className="flex flex-col items-center justify-center">
+      <div className="flex flex-col items-center justify-center gap-2">
         <Image
           src={image}
           alt={title}
-          height={300}
-          width={300}
-          className="h-96 w-[32rem] rounded border border-gray-800 object-scale-down"
+          height={400}
+          width={400}
+          className=" rounded-xl object-scale-down"
         />
-        <div className="flex flex-col items-center justify-center ">
-          <p className="text-2xl font-bold text-white">{title}</p>
-          <p className=" text-center text-sm text-white ">{description}</p>
+        <div className="flex flex-col items-center justify-center gap-3">
+          <p className="text-2xl font-bold text-white">{title} </p>
+          <p className=" w-[32rem] text-center indent-1 text-sm text-white ">{description}</p>
         </div>
       </div>
-      <div className="">
-        <Link href={link} target="_blank" rel="noreferrer">
-          <Button variant={'secondary'} size="large">
-            Voir le projet
-          </Button>
-        </Link>
+      <div className="my-2">
+        <Button variant={'secondary'} href={link}>
+          Voir le projet
+        </Button>
       </div>
     </div>
   );

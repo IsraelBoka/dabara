@@ -84,9 +84,7 @@ const Creerpage = () => {
         <h1 className="p-4 text-center text-sm md:text-xl lg:text-2xl">
           Vous devez être connecté pour accéder à cette page
         </h1>
-        <Button variant={'primary'}>
-          <a onClick={() => void signIn()}>Se connecter</a>
-        </Button>
+        <Button onClick={() => void signIn()}>Se connecter</Button>
       </div>
     );
   }

@@ -72,13 +72,9 @@ const Navbar = () => {
         </div>
         <div className="ml-auto flex h-full items-center  text-sm ">
           {sessionData?.user ? (
-            <Button>
-              <span onClick={() => void signOut()}>Déconnexion</span>
-            </Button>
+            <Button onClick={() => void signOut()}>Déconnexion</Button>
           ) : (
-            <Button>
-              <span onClick={() => void signIn()}>Connexion</span>
-            </Button>
+            <Button onClick={() => void signIn()}>Connexion</Button>
           )}
 
           <button className="ml-4   md:hidden" onClick={() => setOpen(!open)}>
