@@ -18,11 +18,13 @@ import { api } from '../utils/api';
 import Head from 'next/head';
 import { useSession } from 'next-auth/react';
 import classNames from 'classnames';
+
 import { ImageForm } from '../components/ImageForm';
 import { Editicon } from '../components/icons/editicon';
 import { Plusicon } from '../components/icons/Plusicon';
 import { CompetenceForm } from '../components/CompetenceForm';
 import { PageLoader } from '../components/PageLoader';
+import { Skills } from '../components/Skills';
 
 const Nom = () => {
   const router = useRouter();
@@ -269,7 +271,11 @@ const Nom = () => {
                     📚 Mes compétences
                   </Dialog.Title>
                   <div className="mt-2">
-                    <CompetenceForm />
+                    <CompetenceForm
+                      competence={userinfo?.Competence.map((competence) => {
+                        return competence.name;
+                      })}
+                    />
                   </div>
                   <div className="mt-4">
                     <button
@@ -386,18 +392,7 @@ const Nom = () => {
               )}
             </div>
             <div className="flex flex-wrap justify-center">
-              {userinfo?.Competence?.map((competence) => {
-                return (
-                  <div
-                    key={competence.id}
-                    className="m-2  rounded bg-blue-300 p-2 transition-colors  duration-200 hover:bg-orange-300"
-                  >
-                    <p className="select-none text-sm font-bold uppercase text-gray-800">
-                      {competence.name}
-                    </p>
-                  </div>
-                );
-              })}
+              <Skills competence={userinfo?.Competence} />
             </div>
           </div>
           <div>
@@ -478,6 +473,8 @@ const Nom = () => {
                   return (
                     <div className="m-2 flex flex-col px-8" key={image.id}>
                       <ImageCard
+                        sessionid={session.data?.user?.id || ' '}
+                        userinfoid={userinfo?.id}
                         id={image.id}
                         image={image.url || ' '}
                         description={image.description || 'description'}

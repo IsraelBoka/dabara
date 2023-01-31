@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import Link from 'next/link';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { api } from '../utils/api';
@@ -8,6 +7,8 @@ import { Editicon } from './icons/editicon';
 
 interface ImageCardProps {
   image: string;
+  userinfoid: string;
+  sessionid: string;
   id: string;
   title: string;
   description: string;
@@ -72,7 +73,7 @@ export const ImageCard = (props: ImageCardProps) => {
             <p
               className="text-2xl font-bold text-white"
               onClick={() => {
-                setchangetitle(!changetitle);
+                props.sessionid === props.userinfoid ? setchangetitle(!changetitle) : undefined;
               }}
             >
               {newtitle}
@@ -106,11 +107,11 @@ export const ImageCard = (props: ImageCardProps) => {
             ) : (
               <p
                 onClick={() => {
-                  setchangedesc(!changedesc);
+                  props.sessionid === props.userinfoid ? setchangedesc(!changedesc) : undefined;
                 }}
                 className=" w-[32rem] text-center indent-1 text-sm text-white "
               >
-                {description}
+                {newdescription}
               </p>
             )}
           </div>

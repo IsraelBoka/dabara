@@ -83,18 +83,38 @@ export const pageRouter = createTRPCRouter({
         email: z.string().optional(),
         about: z.string().optional(),
         fonction: z.string().optional(),
+        competence: z.string().array().optional(),
       }),
     )
     .mutation(async ({ input, ctx }) => {
-      const user = await ctx.prisma.user.update({
-        where: { id: ctx.session.user.id },
+      if (input.competence) {
+        const deletecompetence = ctx.prisma.competence.deleteMany({
+          where: {
+            userId: ctx.session.user.id,
+          },
+        });
+
+        const createcompetence = ctx.prisma.competence.createMany({
+          data: input.competence.map((name) => ({
+            name,
+            userId: ctx.session.user.id,
+          })),
+        });
+
+        return ctx.prisma.$transaction([deletecompetence, createcompetence]);
+      }
+
+      const updatetheuser = ctx.prisma.user.update({
         data: {
           name: input.name,
           email: input.email,
           about: input.about,
           fonction: input.fonction,
         },
+
+        where: { id: ctx.session.user.id },
       });
-      return user;
+
+      return updatetheuser;
     }),
 });

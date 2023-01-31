@@ -1,12 +1,27 @@
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
+import { api } from '../utils/api';
 
-interface FormProps {
-  name: string;
-}
-export const CompetenceForm = () => {
-  const { handleSubmit, register } = useForm();
-  const onSubmit = handleSubmit((data) => {
-    console.log(data);
+export const CompetenceForm = ({ competence }: { competence?: string[] }) => {
+  const { handleSubmit, register } = useForm({
+    defaultValues: {
+      competencesTechniques: competence,
+    },
+  });
+
+  const utils = api.useContext();
+
+  const updatecompetence = api.page.updateuser.useMutation({
+    async onSuccess() {
+      await utils.page.getPage.invalidate();
+      toast.success('Competences mises à jour');
+    },
+  });
+
+  const onSubmit = handleSubmit(async (data) => {
+    await updatecompetence.mutateAsync({
+      competence: data.competencesTechniques,
+    });
   });
   return (
     <div>
@@ -19,9 +34,7 @@ export const CompetenceForm = () => {
                 className="rounded   "
                 type="checkbox"
                 value="HTML"
-                {...register('competencesTechniques', {
-                  required: true,
-                })}
+                {...register('competencesTechniques')}
               />
               <label className="py-2 text-white">HTML</label>
             </div>
@@ -30,9 +43,7 @@ export const CompetenceForm = () => {
                 className="rounded  "
                 type="checkbox"
                 value="CSS"
-                {...register('competencesTechniques', {
-                  required: true,
-                })}
+                {...register('competencesTechniques')}
               />
               <label className="py-2 text-white">CSS</label>
             </div>
@@ -41,9 +52,7 @@ export const CompetenceForm = () => {
                 className="rounded  "
                 type="checkbox"
                 value="Javascript"
-                {...register('competencesTechniques', {
-                  required: true,
-                })}
+                {...register('competencesTechniques')}
               />
               <label className="py-2 text-white">Javascript</label>
             </div>
@@ -52,9 +61,7 @@ export const CompetenceForm = () => {
                 className="rounded  "
                 type="checkbox"
                 value="React"
-                {...register('competencesTechniques', {
-                  required: true,
-                })}
+                {...register('competencesTechniques')}
               />
               <label className="py-2 text-white">React</label>
             </div>
@@ -63,9 +70,7 @@ export const CompetenceForm = () => {
                 className="rounded"
                 type="checkbox"
                 value="NodeJS"
-                {...register('competencesTechniques', {
-                  required: true,
-                })}
+                {...register('competencesTechniques')}
               />
               <label className="py-2 text-white">NodeJS</label>
             </div>
@@ -74,14 +79,15 @@ export const CompetenceForm = () => {
                 className="rounded"
                 type="checkbox"
                 value="Angular"
-                {...register('competencesTechniques', {
-                  required: true,
-                })}
+                {...register('competencesTechniques')}
               />
               <label className="py-2 text-white">Angular</label>
             </div>
           </div>
         </div>
+        <button className="rounded bg-blue-500 p-2 text-white" type="submit">
+          Submit
+        </button>
       </form>
     </div>
   );

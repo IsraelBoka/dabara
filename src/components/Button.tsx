@@ -1,7 +1,6 @@
 import { cva } from 'class-variance-authority';
 import type { VariantProps } from 'class-variance-authority';
-import classNames from 'classnames';
-import { AnchorHTMLAttributes, ButtonHTMLAttributes } from 'react';
+import { type AnchorHTMLAttributes, type ButtonHTMLAttributes } from 'react';
 import Link from 'next/link';
 
 type ButtonBaseProps = VariantProps<typeof Buttonclasses> & {

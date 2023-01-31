@@ -193,15 +193,17 @@ export const ProfileRouter = createTRPCRouter({
       }),
     )
     .mutation(async ({ ctx, input }) => {
-      const portfolio = await ctx.prisma.portfolio.update({
+      const portfolio = await ctx.prisma.portfolio.updateMany({
         data: {
           title: input.title,
           description: input.description,
           github: input.link,
           image: input.image,
         },
+
         where: {
           id: input.id,
+          userId: ctx.session.user.id,
         },
       });
 
