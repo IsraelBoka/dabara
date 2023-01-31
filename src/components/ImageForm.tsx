@@ -103,13 +103,13 @@ export const ImageForm = () => {
         <p className="mt-1 text-left text-sm text-gray-500" id="file_input_help">
           PNG, JPG
         </p>
-        <input
+        <button
           type="submit"
           disabled={isSubmitting}
-          className="cursor-pointer rounded bg-gray-200 p-2 transition-colors duration-300 hover:bg-gray-300 disabled:bg-gray-100"
+          className=" cursor-pointer rounded bg-gray-200 p-2 text-black transition-colors duration-300 hover:bg-gray-300 disabled:bg-gray-100"
         >
-          {isSubmitting ? 'En cours...' : 'Envoyer'}
-        </input>
+          {isSubmitting ? 'En cours...' : 'Ajouter'}
+        </button>
       </form>
     </div>
   );
