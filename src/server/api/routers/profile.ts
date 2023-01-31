@@ -181,4 +181,30 @@ export const ProfileRouter = createTRPCRouter({
       });
       return profile;
     }),
+
+  updateportfolio: protectedProcedure
+    .input(
+      z.object({
+        id: z.string(),
+        title: z.string().optional(),
+        description: z.string().optional(),
+        link: z.string().optional(),
+        image: z.string().optional(),
+      }),
+    )
+    .mutation(async ({ ctx, input }) => {
+      const portfolio = await ctx.prisma.portfolio.update({
+        data: {
+          title: input.title,
+          description: input.description,
+          github: input.link,
+          image: input.image,
+        },
+        where: {
+          id: input.id,
+        },
+      });
+
+      return portfolio;
+    }),
 });

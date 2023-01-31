@@ -478,6 +478,7 @@ const Nom = () => {
                   return (
                     <div className="m-2 flex flex-col px-8" key={image.id}>
                       <ImageCard
+                        id={image.id}
                         image={image.url || ' '}
                         description={image.description || 'description'}
                         title={image.title || ' '}
