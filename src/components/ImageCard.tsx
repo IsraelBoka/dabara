@@ -1,9 +1,9 @@
 import Image from 'next/image';
-import { useState } from 'react';
+import { type RefObject, useRef, useState } from 'react';
 import { toast } from 'react-toastify';
+import useOnClickOutside from '../hooks/useOnClickOutside';
 import { api } from '../utils/api';
 import { Button } from './Button';
-import { Editicon } from './icons/editicon';
 
 interface ImageCardProps {
   image: string;
@@ -16,8 +16,11 @@ interface ImageCardProps {
 }
 
 export const ImageCard = (props: ImageCardProps) => {
-  const { image, title, description, link, id } = props;
   const [changedesc, setchangedesc] = useState(false);
+
+  console.log(changedesc);
+
+  const { image, title, description, link, id } = props;
   const [newdescription, setNewdescription] = useState(description);
 
   const [changetitle, setchangetitle] = useState(false);
@@ -32,6 +35,29 @@ export const ImageCard = (props: ImageCardProps) => {
       toast.success('Portfolio modifié');
       await utils.image.getuserimages.invalidate();
     },
+  });
+
+  // Create a ref that we add to the element for which we want to detect outside clicks
+  const ref = useRef<HTMLTextAreaElement>();
+  const reftitre = useRef<HTMLInputElement>();
+
+  // Call hook passing in the ref and a function to call on outside click
+  useOnClickOutside(reftitre as RefObject<HTMLInputElement>, () => {
+    if (newtitle === title) {
+      setchangetitle(!changetitle);
+      return;
+    }
+    setchangetitle(!changetitle);
+    update.mutate({ id, title: newtitle });
+  });
+
+  useOnClickOutside(ref as RefObject<HTMLTextAreaElement>, () => {
+    if (newdescription === description) {
+      setchangedesc(!changedesc);
+      return;
+    }
+    setchangedesc(!changedesc);
+    update.mutate({ id, description: newdescription });
   });
 
   return (
@@ -50,24 +76,12 @@ export const ImageCard = (props: ImageCardProps) => {
               <input
                 autoFocus
                 value={newtitle}
+                ref={reftitre as RefObject<HTMLInputElement>}
                 onChange={(e) => {
                   setNewtitle(e.target.value);
                 }}
-                className="rounded-l-lg bg-[#2b2d3c] p-2 text-center text-sm text-white"
+                className="rounded-lg border border-gray-300  bg-[#2b2d3c] p-2 text-left text-sm text-white outline-none"
               />
-              <button
-                className="rounded-r-lg border-0  border-l bg-[#2b2d3c] p-2"
-                onClick={() => {
-                  if (newtitle === title) {
-                    setchangetitle(!changetitle);
-                    return;
-                  }
-
-                  update.mutate({ id, title: newtitle });
-                }}
-              >
-                <Editicon className="h-5 w-5" />
-              </button>
             </div>
           ) : (
             <p
@@ -86,28 +100,17 @@ export const ImageCard = (props: ImageCardProps) => {
                 <textarea
                   autoFocus
                   value={newdescription}
+                  ref={ref as RefObject<HTMLTextAreaElement>}
                   onChange={(e) => {
                     setNewdescription(e.target.value);
                   }}
                   className=" h-32 rounded bg-[#2b2d3c] p-2 lg:w-64"
                 />
-                <button
-                  className="mt-1 rounded bg-blue-600 p-1"
-                  onClick={() => {
-                    if (newdescription === description) {
-                      setchangedesc(!changedesc);
-                      return;
-                    }
-                    update.mutate({ id, description: newdescription });
-                  }}
-                >
-                  <Editicon className="h-5 w-5" />
-                </button>
               </div>
             ) : (
               <p
                 onClick={() => {
-                  props.sessionid === props.userinfoid ? setchangedesc(!changedesc) : undefined;
+                  props.sessionid === props.userinfoid ? setchangedesc(true) : undefined;
                 }}
                 className=" w-44 text-center text-sm text-white md:w-auto "
               >

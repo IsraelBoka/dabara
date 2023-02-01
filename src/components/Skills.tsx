@@ -18,7 +18,7 @@ export const Skills = ({ competence }: SkillsProps) => {
           {skill.name === 'Angular' && (
             <div className="group relative flex flex-col items-center justify-center">
               <Angularjs className="   h-8 w-8" />
-              <p className="absolute top-9 select-none rounded-md bg-gray-800 p-1 text-xs opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100">
+              <p className="absolute top-9 z-10 select-none rounded-md bg-gray-800 p-1 text-xs opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100">
                 Angular{' '}
               </p>
             </div>
@@ -26,7 +26,7 @@ export const Skills = ({ competence }: SkillsProps) => {
           {skill.name === 'HTML' && (
             <div className="group relative flex flex-col items-center justify-center">
               <Html className="h-8 w-8" />
-              <p className="absolute top-9 hidden select-none rounded-md bg-gray-800 p-1 text-xs group-hover:block">
+              <p className="absolute top-9 z-10 select-none rounded-md bg-gray-800 p-1 text-xs opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100">
                 HTML{' '}
               </p>
             </div>
@@ -34,7 +34,7 @@ export const Skills = ({ competence }: SkillsProps) => {
           {skill.name === 'CSS' && (
             <div className="group relative flex flex-col items-center justify-center">
               <Css className="h-8 w-8" />
-              <p className="absolute top-9 hidden select-none rounded-md bg-gray-800 p-1 text-xs group-hover:block">
+              <p className="absolute top-9 z-10 select-none rounded-md bg-gray-800 p-1 text-xs opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100">
                 CSS{' '}
               </p>
             </div>
@@ -42,7 +42,7 @@ export const Skills = ({ competence }: SkillsProps) => {
           {skill.name === 'Javascript' && (
             <div className="group relative flex flex-col items-center justify-center">
               <Javascript className="h-8 w-8" />
-              <p className="absolute top-9 hidden select-none rounded-md bg-gray-800 p-1 text-xs group-hover:block">
+              <p className="absolute top-9 z-10 select-none rounded-md bg-gray-800 p-1 text-xs opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100">
                 Javascript{' '}
               </p>
             </div>
@@ -50,7 +50,7 @@ export const Skills = ({ competence }: SkillsProps) => {
           {skill.name === 'React' && (
             <div className="group relative flex flex-col items-center justify-center">
               <Reactjs className="h-8 w-8" />
-              <p className="absolute top-9 hidden select-none rounded-md bg-gray-800 p-1 text-xs group-hover:block">
+              <p className="absolute top-9 z-10 select-none rounded-md bg-gray-800 p-1 text-xs opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100">
                 React{' '}
               </p>
             </div>
@@ -58,7 +58,7 @@ export const Skills = ({ competence }: SkillsProps) => {
           {skill.name === 'NodeJS' && (
             <div className="group relative flex flex-col items-center justify-center">
               <Nodejs className="h-8 w-8" />
-              <p className="absolute top-9 hidden select-none rounded-md bg-gray-800 p-1 text-xs group-hover:block">
+              <p className="absolute top-9 z-10 select-none rounded-md bg-gray-800 p-1 text-xs opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100">
                 NodeJS{' '}
               </p>
             </div>

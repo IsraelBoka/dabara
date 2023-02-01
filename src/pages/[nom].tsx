@@ -1,7 +1,7 @@
 import Error from 'next/error';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useState, Fragment } from 'react';
+import { useState, Fragment, useRef, type RefObject } from 'react';
 import { Avatar } from '../components/Avatar';
 import { Container } from '../components/container';
 import { Clipboard } from '../components/icons/clipboard';
@@ -16,9 +16,10 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import { api } from '../utils/api';
 import Head from 'next/head';
+
 import { useSession } from 'next-auth/react';
 import classNames from 'classnames';
-
+import useOnClickOutside from '../hooks/useOnClickOutside';
 import { ImageForm } from '../components/ImageForm';
 import { Editicon } from '../components/icons/editicon';
 import { Plusicon } from '../components/icons/Plusicon';
@@ -36,6 +37,31 @@ const Nom = () => {
   const [newdesc, setnewdesc] = useState('');
   const [newfonction, setNewfonction] = useState('');
   const [isOpen, setIsOpen] = useState(false);
+
+  const reffonction = useRef<HTMLInputElement>();
+  useOnClickOutside(reffonction as RefObject<HTMLInputElement>, () => {
+    {
+      if (newfonction === userinfo?.fonction) {
+        setChangefonction(false);
+      } else {
+        setChangefonction(false);
+        updateuserinfo({ fonction: newfonction });
+      }
+    }
+  });
+
+  const refDescription = useRef<HTMLTextAreaElement>();
+  useOnClickOutside(refDescription as RefObject<HTMLTextAreaElement>, () => {
+    {
+      if (newdesc === userinfo?.about) {
+        setchangedesc(false);
+      } else {
+        setchangedesc(false);
+
+        updateuserinfo({ about: newdesc });
+      }
+    }
+  });
 
   const [isOpenCompetence, setIsOpenCompetence] = useState(false);
 
@@ -306,31 +332,18 @@ const Nom = () => {
                 onClick={userinfo.id === session.data?.user?.id ? onChangeFonction : undefined}
                 className="text-xl font-bold text-white"
               >
-                {userinfo?.fonction}
+                {newfonction ? newfonction : userinfo?.fonction || 'Ajouter votre fonction'}
               </p>
             ) : (
               <div className="flex ">
                 <input
+                  ref={reffonction as RefObject<HTMLInputElement>}
                   type="text"
                   autoFocus
-                  className=" w-48 rounded-l-md border border-r-0 border-gray-300  bg-[#2b2d3c] text-xl font-bold text-white outline-none"
+                  className=" w-48 rounded-md border  border-gray-300  bg-[#2b2d3c] text-xl font-bold text-white outline-none"
                   value={newfonction}
                   onChange={(e) => setNewfonction(e.target.value)}
                 />
-                <button
-                  className="
-                  rounded-r-md border border-gray-300 bg-[#2b2d3c]  p-2 text-xl font-bold text-white outline-none
-                "
-                  onClick={() => {
-                    if (newfonction === userinfo.fonction) {
-                      setChangefonction(false);
-                    } else {
-                      updateuserinfo({ fonction: newfonction });
-                    }
-                  }}
-                >
-                  <Editicon className="h-4 w-4 " />
-                </button>
               </div>
             )}
           </div>
@@ -353,33 +366,38 @@ const Nom = () => {
                 onClick={userinfo.id === session.data?.user?.id ? onChangeDescription : undefined}
                 className="truncate whitespace-pre-wrap p-2 indent-4 text-sm text-white"
               >
-                {userinfo.about}
+                {newdesc ? newdesc : userinfo?.about || 'Ajouter une description'}
               </p>
             )}
             {changedesc && (
               <div className="flex flex-col items-center">
                 <textarea
+                  ref={refDescription as RefObject<HTMLTextAreaElement>}
                   autoFocus
                   className="h-32 rounded bg-[#2b2d3c] p-2 lg:w-64"
                   value={newdesc}
                   onChange={(e) => setnewdesc(e.target.value)}
                 />
-                <button
-                  onClick={() => {
-                    if (newdesc === userinfo.about) {
-                      setchangedesc(false);
-                    } else {
-                      updateuserinfo({ about: newdesc });
-                    }
-                  }}
-                  className=" mt-1 rounded bg-blue-600 p-1"
-                >
-                  <p className="text-sm text-white">
-                    {newdesc === userinfo.about ? 'Annuler' : 'Valider'}
-                  </p>
-                </button>
               </div>
             )}
+          </div>
+
+          <div className="mb-5 flex gap-2 font-bold">
+            Contactez moi:{' '}
+            <a
+              href={`mailto:${userinfo?.Profil?.email || ''}`}
+              className="text-purple-500 transition-colors duration-300 hover:text-purple-700"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className="h-6 w-6"
+              >
+                <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z" />
+                <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z" />
+              </svg>
+            </a>
           </div>
 
           <div>
@@ -443,23 +461,9 @@ const Nom = () => {
             {userinfo?.id === session.data?.user?.id && (
               <button
                 onClick={openModal}
-                className="flex  items-center justify-center bg-blue-500 p-2 text-white"
+                className="inline-flex items-center justify-center  gap-2 rounded-sm bg-blue-500 p-2 text-white"
               >
-                Ajouter un projet
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="h-6 w-6"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-                  />
-                </svg>
+                Ajouter un projet <Editicon className="h-4 w-4 " />
               </button>
             )}
             <p className="h-12 p-4 text-center text-xl font-bold text-white ">Mes projets</p>
