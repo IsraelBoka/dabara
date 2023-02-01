@@ -92,8 +92,11 @@ export const CompetenceForm = ({ competence, closeModalCompetence }: CompetenceF
             </div>
           </div>
         </div>
-        <button className="rounded bg-blue-500 p-2 text-white" type="submit">
-          Submit
+        <button
+          className="rounded bg-blue-300 p-2 font-bold text-gray-800 transition-colors duration-300 hover:bg-blue-400"
+          type="submit"
+        >
+          Sauvegarder
         </button>
       </form>
     </div>

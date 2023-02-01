@@ -233,7 +233,7 @@ const Nom = () => {
                   <div className="mt-4">
                     <button
                       type="button"
-                      className="inline-flex justify-center rounded-md border border-transparent bg-blue-600 px-4 py-2 text-sm font-medium text-gray-900 hover:bg-blue-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                      className=" inline-flex justify-center rounded-md  border border-gray-300 px-4 py-2 text-sm font-medium hover:bg-modalbutton  focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-300 focus-visible:ring-offset-2"
                       onClick={closeModal}
                     >
                       Quitter
@@ -296,7 +296,7 @@ const Nom = () => {
                   <div className="mt-4">
                     <button
                       type="button"
-                      className="inline-flex justify-center rounded-md border border-transparent bg-blue-600 px-4 py-2 text-sm font-medium text-gray-900 hover:bg-blue-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                      className=" inline-flex justify-center rounded-md  border border-gray-300 px-4 py-2 text-sm font-medium hover:bg-modalbutton  focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-300 focus-visible:ring-offset-2"
                       onClick={closeModalCompetence}
                     >
                       Quitter
@@ -310,7 +310,7 @@ const Nom = () => {
       </Transition>
 
       <Container classname="flex items-center flex-col justify-center lg:bg-transparent lg:flex lg:items-start lg:flex-row lg:h-full lg:w-full">
-        <div className=" my-5 flex flex-col items-center justify-center  lg:my-0  lg:min-h-screen lg:w-96 lg:rounded lg:bg-profile ">
+        <div className=" my-5 flex flex-col items-center justify-center  lg:my-0  lg:h-screen lg:w-96 lg:rounded lg:bg-profile ">
           <Avatar
             nom={nom as string}
             email={userinfo?.Profil?.email || undefined}
@@ -417,7 +417,7 @@ const Nom = () => {
             </div>
           </div>
 
-          <div className="mt-auto hidden flex-col items-center justify-center gap-2 lg:flex  ">
+          <div className="mt-2 hidden flex-col items-center justify-center gap-2 lg:flex  ">
             <div className="flex items-center justify-center  ">
               <input
                 value={`https://dabara.vercel.app/${userinfo?.page || ''}`}
@@ -432,7 +432,7 @@ const Nom = () => {
                 <Clipboard className="h-6 w-6" />
               </button>
             </div>
-            <div className="mt-2 gap-2 p-4">
+            <div className="mt-2 gap-2">
               <p className="text-center text-xs font-bold ">
                 Cette page a été visitée {userinfo?.Profil?.views} fois
               </p>
@@ -451,7 +451,7 @@ const Nom = () => {
             {userinfo?.id === session.data?.user?.id && (
               <button
                 onClick={openModal}
-                className="inline-flex items-center justify-center  gap-2 rounded-sm bg-blue-500 p-2 text-white"
+                className="inline-flex items-center justify-center  gap-2 rounded-sm bg-blue-300 p-2 text-gray-800 "
               >
                 Ajouter un projet <Editicon className="h-4 w-4 " />
               </button>
@@ -484,7 +484,7 @@ const Nom = () => {
                               });
                             }}
                             disabled={loadingdelete}
-                            className="mt-2 inline-flex w-24 items-center justify-center rounded bg-red-500 p-2 transition-colors duration-300 hover:bg-red-600"
+                            className="mt-2 inline-flex w-24 items-center justify-center rounded bg-red-400 p-2 font-bold text-gray-800 transition-colors duration-300 hover:bg-red-500"
                           >
                             Supprimer
                           </button>

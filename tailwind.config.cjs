@@ -26,6 +26,7 @@ module.exports = {
         profile: '#1c1e2b',
         secondary: '#21232f',
         change: '#2b2d3c',
+        modalbutton: '#2a2a36',
       },
     },
   },

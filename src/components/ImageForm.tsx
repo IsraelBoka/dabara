@@ -62,13 +62,10 @@ export const ImageForm = () => {
 
   return (
     <div>
-      <form
-        onSubmit={onSubmit}
-        className="flex flex-col gap-2 [&_input]:text-black [&_label]:text-left"
-      >
+      <form onSubmit={onSubmit} className="flex flex-col gap-2  [&_label]:text-left">
         <label htmlFor="title">Titre</label>
         <input
-          className="rounded p-1"
+          className="rounded bg-change p-1 "
           type="text"
           {...register('title', {
             required: true,
@@ -81,12 +78,12 @@ export const ImageForm = () => {
           {...register('description', {
             required: true,
           })}
-          className="rounded p-1 text-black"
+          className="rounded bg-change  p-1 "
           name="description"
         />
         {errors.description && <p className="text-xs text-red-500">une description est requise</p>}
         <label htmlFor="link">Lien de votre projet</label>
-        <input className="rounded p-1 " type="text" {...register('link')} name="link" />
+        <input className="rounded bg-change p-1  " type="text" {...register('link')} name="link" />
 
         <label htmlFor="image">Image</label>
 
@@ -95,7 +92,7 @@ export const ImageForm = () => {
           {...register('image', {
             required: true,
           })}
-          className="block w-full cursor-pointer rounded-lg border border-gray-300 bg-gray-50 text-sm text-gray-900 focus:outline-none"
+          className="block w-full cursor-pointer rounded-lg border border-gray-300 bg-change text-sm  focus:outline-none"
           aria-describedby="file_input_help"
           accept="image/png, image/jpeg, image/jpg"
           multiple={false}
@@ -107,7 +104,7 @@ export const ImageForm = () => {
         <button
           type="submit"
           disabled={isSubmitting}
-          className=" cursor-pointer rounded bg-gray-200 p-2 text-black transition-colors duration-300 hover:bg-gray-300 disabled:bg-gray-100"
+          className=" cursor-pointer rounded bg-[#4a5067] p-2 text-gray-300 transition-colors duration-150 hover:bg-[#838396] hover:text-gray-800 disabled:bg-gray-100"
         >
           {isSubmitting ? 'En cours...' : 'Ajouter'}
         </button>
