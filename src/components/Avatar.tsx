@@ -39,7 +39,7 @@ export const Avatar = (props: AvatarProps) => {
         )}
       </div>
       <div className="m-2 ">
-        <p className="font-display text-2xl font-extrabold tracking-wide">{nom}</p>
+        <p className="font-display text-2xl font-extrabold ">@{nom}</p>
         <p className="text-sm">{email}</p>
       </div>
     </div>

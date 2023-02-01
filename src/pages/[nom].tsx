@@ -294,7 +294,7 @@ const Nom = () => {
       </Transition>
 
       <Container classname="flex items-center flex-col justify-center lg:bg-transparent lg:flex lg:items-start lg:flex-row lg:h-full lg:w-full">
-        <div className=" my-5 flex flex-col items-center justify-center  lg:my-0  lg:min-h-screen lg:w-96 lg:rounded lg:bg-[#242424] ">
+        <div className=" my-5 flex flex-col items-center justify-center  lg:my-0  lg:min-h-screen lg:w-96 lg:rounded lg:bg-profile ">
           <Avatar
             nom={nom as string}
             email={userinfo?.Profil?.email || undefined}
@@ -438,7 +438,7 @@ const Nom = () => {
             </div>
           </div>
         </div>
-        <div className=" lg:ml-4 lg:w-full lg:overflow-y-auto  lg:bg-[#242424] ">
+        <div className=" lg:ml-4 lg:w-full lg:overflow-y-auto  lg:bg-profile">
           <div className="flex h-full w-full flex-col items-center justify-center lg:max-h-screen">
             {userinfo?.id === session.data?.user?.id && (
               <button

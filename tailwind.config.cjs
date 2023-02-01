@@ -6,6 +6,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: '"sans-serif", "  SF Pro Dispaly ", --apple-system, BlinkMacSystemFont, "Inter", "Segoe UI",  "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue"',
+        display: ['var(--font-roboto)'],
       },
       boxShadow: {
         primary: 'rgba(40 49 108 / 50%) 0px 1px 40px',
@@ -22,6 +23,7 @@ module.exports = {
       },
       colors: {
         'off-white ': '#f7f8f8',
+        profile: '#1c1e2b',
       },
     },
   },

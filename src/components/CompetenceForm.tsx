@@ -4,7 +4,7 @@ import { api } from '../utils/api';
 
 export const CompetenceForm = ({ competence }: { competence?: string[] }) => {
   const { handleSubmit, register } = useForm({
-    defaultValues: {
+    values: {
       competencesTechniques: competence,
     },
   });
