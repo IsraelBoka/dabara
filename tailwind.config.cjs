@@ -24,6 +24,8 @@ module.exports = {
       colors: {
         'off-white ': '#f7f8f8',
         profile: '#1c1e2b',
+        secondary: '#21232f',
+        change: '#2b2d3c',
       },
     },
   },

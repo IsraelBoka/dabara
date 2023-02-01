@@ -25,7 +25,7 @@ export const Avatar = (props: AvatarProps) => {
             src={lien}
             width={500}
             height={500}
-            alt="test"
+            alt="Image  de profil"
           />
         ) : (
           <Image

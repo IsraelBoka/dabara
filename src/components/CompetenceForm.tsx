@@ -2,7 +2,12 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import { api } from '../utils/api';
 
-export const CompetenceForm = ({ competence }: { competence?: string[] }) => {
+interface CompetenceFormProps {
+  competence?: string[];
+  closeModalCompetence?: () => void;
+}
+
+export const CompetenceForm = ({ competence, closeModalCompetence }: CompetenceFormProps) => {
   const { handleSubmit, register } = useForm({
     values: {
       competencesTechniques: competence,
@@ -19,6 +24,8 @@ export const CompetenceForm = ({ competence }: { competence?: string[] }) => {
   });
 
   const onSubmit = handleSubmit(async (data) => {
+    closeModalCompetence && closeModalCompetence();
+
     await updatecompetence.mutateAsync({
       competence: data.competencesTechniques,
     });

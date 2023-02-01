@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { Fragment, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { Container } from '../components/container';
 import { FilterIcon } from '../components/icons/filter';
 import { Logo } from '../components/icons/logo';

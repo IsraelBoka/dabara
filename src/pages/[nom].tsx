@@ -123,19 +123,8 @@ const Nom = () => {
 
   const { mutate: updateuserinfo } = api.page.updateuser.useMutation({
     onSuccess: async () => {
-      toast.success('Informations mises à jour', {
-        position: 'top-center',
-        autoClose: 1000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: true,
-        progress: undefined,
-        theme: 'dark',
-      });
+      toast.success('Informations mises à jour');
       await utils.page.getPage.invalidate();
-      setchangedesc(false);
-      setChangefonction(false);
     },
   });
 
@@ -231,7 +220,7 @@ const Nom = () => {
                     'fixed z-50',
                     'w-[95vw] max-w-md rounded-lg p-4 md:w-full',
                     'top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]',
-                    'border bg-[#242424]  ',
+                    ' bg-secondary  ',
                     'focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75',
                   )}
                 >
@@ -289,7 +278,7 @@ const Nom = () => {
                     'fixed z-50',
                     'w-[95vw] max-w-md rounded-lg p-4 md:w-full',
                     'top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]',
-                    'border bg-[#242424]  ',
+                    ' bg-secondary  ',
                     'focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75',
                   )}
                 >
@@ -298,6 +287,7 @@ const Nom = () => {
                   </Dialog.Title>
                   <div className="mt-2">
                     <CompetenceForm
+                      closeModalCompetence={closeModalCompetence}
                       competence={userinfo?.Competence.map((competence) => {
                         return competence.name;
                       })}
@@ -340,7 +330,7 @@ const Nom = () => {
                   ref={reffonction as RefObject<HTMLInputElement>}
                   type="text"
                   autoFocus
-                  className=" w-48 rounded-md border  border-gray-300  bg-[#2b2d3c] text-xl font-bold text-white outline-none"
+                  className=" text-md w-48 rounded-md  border  border-gray-300 bg-change font-bold text-white outline-none"
                   value={newfonction}
                   onChange={(e) => setNewfonction(e.target.value)}
                 />
@@ -363,8 +353,8 @@ const Nom = () => {
 
             {!changedesc && (
               <p
+                className="truncate whitespace-pre-wrap p-2 text-center indent-4 text-sm text-white"
                 onClick={userinfo.id === session.data?.user?.id ? onChangeDescription : undefined}
-                className="truncate whitespace-pre-wrap p-2 indent-4 text-sm text-white"
               >
                 {newdesc ? newdesc : userinfo?.about || 'Ajouter une description'}
               </p>
@@ -374,7 +364,7 @@ const Nom = () => {
                 <textarea
                   ref={refDescription as RefObject<HTMLTextAreaElement>}
                   autoFocus
-                  className="h-32 rounded bg-[#2b2d3c] p-2 lg:w-64"
+                  className="h-32 rounded bg-change p-2 lg:w-64"
                   value={newdesc}
                   onChange={(e) => setnewdesc(e.target.value)}
                 />
@@ -442,12 +432,12 @@ const Nom = () => {
                 <Clipboard className="h-6 w-6" />
               </button>
             </div>
-            <div className="mt-2 gap-2">
+            <div className="mt-2 gap-2 p-4">
               <p className="text-center text-xs font-bold ">
                 Cette page a été visitée {userinfo?.Profil?.views} fois
               </p>
-              <Link className="md:text-md mr-2 flex items-center justify-center " href={'/'}>
-                <Logo classname="w-8 h-8  mr-2 stroke-white" />
+              <Link className="md:text-md group mr-2 flex items-center justify-center " href={'/'}>
+                <Logo classname="w-8 h-8 mr-2 stroke-white group-hover:rotate-45 ease-in-out transition duration-500 " />
                 <p className="text-md font-extrabold">
                   <span className="">DAB</span>
                   <span className="text-blue-300">ARA</span>

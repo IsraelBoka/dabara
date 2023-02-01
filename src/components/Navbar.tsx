@@ -56,7 +56,13 @@ const Navbar = () => {
               )}
             >
               <li>
-                <Link target={'_self'} href="/creerpage">
+                <Link
+                  href="/creerpage"
+                  onClick={() => {
+                    const html = document.querySelector('html');
+                    if (html) html.classList.remove('overflow-hidden');
+                  }}
+                >
                   Création
                 </Link>
               </li>
@@ -65,7 +71,15 @@ const Navbar = () => {
               </li>
 
               <li>
-                <Link href="/recherche">Recherche</Link>
+                <Link
+                  href={'/recherche'}
+                  onClick={() => {
+                    const html = document.querySelector('html');
+                    if (html) html.classList.remove('overflow-hidden');
+                  }}
+                >
+                  Recherche
+                </Link>
               </li>
             </ul>
           </nav>

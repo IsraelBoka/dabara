@@ -30,8 +30,6 @@ export const ImageCard = (props: ImageCardProps) => {
 
   const update = api.profile.updateportfolio.useMutation({
     async onSuccess() {
-      setchangetitle(false);
-      setchangedesc(false);
       toast.success('Portfolio modifié');
       await utils.image.getuserimages.invalidate();
     },
