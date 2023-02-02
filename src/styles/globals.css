@@ -17,4 +17,37 @@ body {
   html {
     font-family: Inter, sans-serif;
   }
+
+  [type='text'],
+  [type='email'],
+  [type='password'],
+  [type='tel'],
+  [type='url'],
+  [type='number'],
+  [type='date'],
+  [type='datetime-local'],
+  [type='month'],
+  [type='search'],
+  [type='time'],
+  [type='week'],
+  textarea,
+  select {
+    @apply bg-change;
+    @apply text-[#f7f8f8];
+  }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: #fff;
+  /* -webkit-box-shadow: 0 0 0px 1000px #1b1b6c inset; */
+  background-color: #1b1b6c;
+  transition: background-color 5000s ease-in-out 0s;
 }

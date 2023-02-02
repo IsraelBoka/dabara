@@ -9,6 +9,13 @@ import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import { Container } from '../components/container';
 import { PageLoader } from '../components/PageLoader';
+import { Html } from '../components/icons/skills/html';
+import { Css } from '../components/icons/skills/css';
+import { Javascript } from '../components/icons/skills/javascript';
+import { Reactjs } from '../components/icons/skills/react';
+import { Nodejs } from '../components/icons/skills/nodejs';
+import { Angularjs } from '../components/icons/skills/angular';
+import Head from 'next/head';
 
 type FormData = {
   name: string;
@@ -57,7 +64,7 @@ const Creerpage = () => {
           {formStep === 4 ? null : (
             <button
               type="submit"
-              className="inline-flex items-center justify-center rounded-md  bg-orange-800 p-2 transition-colors duration-300 hover:bg-orange-900 disabled:bg-orange-500"
+              className="rounded bg-[#575bc7] p-2 text-sm transition-colors duration-300 hover:bg-[#575bc7]/60"
             >
               <span>Suivant</span>
             </button>
@@ -65,9 +72,9 @@ const Creerpage = () => {
           {formStep === 0 ? null : (
             <button
               onClick={() => setFormStep(formStep - 1)}
-              className="inline-flex items-center justify-center rounded-md bg-neutral-700 p-2 transition-colors duration-300 hover:bg-neutral-800 disabled:bg-neutral-600"
+              className="inline-flex items-center justify-center rounded-md border bg-secondary p-2 transition-colors duration-300 hover:bg-modalbutton disabled:bg-neutral-600"
             >
-              <span>Précedent</span>
+              <span>Précédent</span>
             </button>
           )}
         </div>
@@ -145,37 +152,42 @@ const Creerpage = () => {
     });
   });
   return (
-    <div>
+    <>
+      <Head>
+        <title>Dabara - Créer une page</title>
+        <meta name="description" content="Créer une page" />
+      </Head>
       {getpage?.page === null && (
         <div>
-          <Container classname=" pt-8">
-            <div className="flex justify-center">
-              <Link href={'/'}>
-                <Logo classname=" hover:scale-105  duration-150 transition w-16 h-16 mr-2 stroke-white" />
-              </Link>
-            </div>
+          <Container>
             {formStep === 0 && (
               <form
                 onSubmit={handleverification}
-                className="flex flex-col items-center justify-center "
+                className="flex min-h-screen flex-col items-center justify-center "
               >
+                <div className="flex justify-center">
+                  <Link href={'/'}>
+                    <Logo classname=" hover:scale-105  duration-300 transition w-16 h-16 mr-2 stroke-white" />
+                  </Link>
+                </div>
+
                 <div className="flex-col text-center text-lg text-gray-300 md:text-xl lg:text-2xl  ">
-                  <h1 className="font-extrabold uppercase">Nom de mon profile</h1>
-                  <h2>Vérifier la validité de la page</h2>
+                  <h1 className="font-extrabold uppercase">Création du profile</h1>
                 </div>
                 <div className=" flex flex-col justify-center rounded p-8 ">
                   <h1 className=" text-center text-3xl font-extrabold lg:text-4xl ">
                     Vérifier la validité de <br className="hidden md:block" /> la page
                   </h1>
-                  <label className="py-2 text-white">🌐 Mon identifiant:</label>
+                  <label className="py-2 ">🌐 Mon identifiant:</label>
                   <input
-                    className=" rounded bg-neutral-800   p-2 text-white caret-blue-600  placeholder:text-gray-600 focus:border-blue-300"
+                    className=" rounded    p-2  caret-blue-600  placeholder:text-gray-600 focus:border-blue-300"
                     type="text"
                     placeholder="@username"
                     {...register('page', {
                       required: true,
-                      minLength: 6,
+                      minLength: 4,
                       maxLength: 20,
+                      //regex pour que le nom de la page ne contienne que des lettres et des chiffres
                       pattern: /^[a-zA-Z0-9]+$/,
                     })}
                   />
@@ -184,7 +196,7 @@ const Creerpage = () => {
                   )}
                   {errors.page?.type === 'minLength' && (
                     <span className="text-red-800 ">
-                      L&apos;identifiant doit contenir au moins 6 caractères
+                      L&apos;identifiant doit contenir au moins 4 caractères
                     </span>
                   )}
                   {errors.page?.type === 'maxLength' && (
@@ -202,35 +214,43 @@ const Creerpage = () => {
                 </div>
                 <button
                   type="submit"
-                  className="rounded bg-blue-300 p-2 text-gray-800 transition-colors duration-150 hover:bg-blue-400"
+                  className="rounded bg-[#575bc7] p-2 text-sm transition-colors duration-300 hover:bg-[#575bc7]/60"
                 >
-                  Vérifier
+                  Vérifier la page
                 </button>
               </form>
             )}
             {formStep === 1 && (
-              <form onSubmit={OnSubmit} className="flex flex-col items-center justify-center ">
+              <form onSubmit={OnSubmit} className="flex flex-col items-center justify-center py-8">
+                <div className="flex justify-center">
+                  <Link href={'/'}>
+                    <Logo classname=" hover:scale-105  duration-300 transition w-16 h-16 mr-2 stroke-white" />
+                  </Link>
+                </div>
                 <div>
                   <div className="flex-col text-center text-lg text-gray-300 md:text-xl lg:text-2xl  ">
                     <h1 className="font-extrabold uppercase">Introduction</h1>
                     <h2>
                       Présentez vous aux visiteurs de votre page, <br className="hidden md:block" />{' '}
-                      expliquez leur ce que vous faites
+                      expliquez-leur ce que vous faites
                     </h2>
                   </div>
                   <div className=" flex flex-col justify-center rounded p-8 ">
                     <h1 className=" text-center text-3xl font-extrabold lg:text-4xl ">
                       Créer votre page
                     </h1>
-
-                    <label className="py-2 text-white">🌐 Mon identifiant: </label>
-                    <div className=" rounded   bg-neutral-800 p-2 text-white  placeholder:text-gray-600 focus:border-blue-300">
-                      {page}
+                    <div className="flex items-center ">
+                      <label className="md:text-md py-2 text-sm text-white">
+                        🌐 Mon identifiant:{' '}
+                      </label>
+                      <div className=" rounded p-2    text-sm font-extrabold  text-white md:text-lg">
+                        @{page}
+                      </div>
                     </div>
 
                     <label className="py-2 text-white">👋 Je m&apos;appelle :</label>
                     <input
-                      className=" rounded  bg-neutral-800     p-2 text-white caret-blue-600  placeholder:text-gray-600 focus:border-blue-300"
+                      className=" rounded       p-2 text-white caret-blue-600  placeholder:text-gray-600 focus:border-blue-300"
                       type="text"
                       placeholder="Nom"
                       {...register('name', { required: true })}
@@ -241,9 +261,9 @@ const Creerpage = () => {
                       💡 Fonction :
                     </label>
                     <input
-                      className="  rounded  bg-neutral-800     p-2 text-white caret-blue-600  placeholder:text-gray-600 focus:border-blue-300"
+                      className="  rounded       p-2 text-white caret-blue-600  placeholder:text-gray-600 focus:border-blue-300"
                       type="text"
-                      placeholder="Nom"
+                      placeholder="Fonction..."
                       {...register('poste', { required: true })}
                     />
                     {errors.poste && <span className="text-red-800">Ce champ est requis</span>}
@@ -251,13 +271,10 @@ const Creerpage = () => {
                       ✏️ Description:
                     </label>
                     <textarea
-                      className="   rounded  bg-neutral-800     p-2 text-white caret-blue-600  placeholder:text-gray-600 focus:border-blue-300"
+                      className="   rounded       p-2 text-white caret-blue-600  placeholder:text-gray-600 focus:border-blue-300"
                       placeholder="Description"
-                      {...register('description', { required: true })}
+                      {...register('description')}
                     />
-                    {errors.description && (
-                      <span className="text-red-800">Ce champ est requis</span>
-                    )}
                   </div>
 
                   <div className=" flex flex-col justify-center rounded p-8 ">
@@ -266,31 +283,32 @@ const Creerpage = () => {
                     </h1>
                     <label className="py-2 text-white">🌍 Je réside à :</label>
                     <input
-                      className=" rounded   bg-neutral-800    p-2 text-white caret-blue-600  placeholder:text-gray-600 focus:border-blue-300"
+                      className=" rounded       p-2 text-white caret-blue-600  placeholder:text-gray-600 focus:border-blue-300"
                       type="text"
                       placeholder="Abidjan CI"
-                      {...register('residence', { required: true })}
+                      {...register('residence')}
                     />
-                    {errors.residence && <span className="text-red-800">Ce champ est requis</span>}
 
                     <label className="py-2 text-white">✉️ Contactez-moi :</label>
                     <input
-                      className=" rounded    bg-neutral-800   p-2 text-white caret-blue-600  placeholder:text-gray-600 focus:border-blue-300"
+                      className=" rounded       p-2 text-white caret-blue-600  placeholder:text-gray-600 focus:border-blue-300"
                       type="text"
                       placeholder="monmail@gmail.com"
-                      {...register('email', { required: true })}
+                      {...register('email', { required: true, pattern: /^\S+@\S+$/i })}
                     />
-                    {errors.email && <span className="text-red-800">Ce champ est requis</span>}
+                    {errors?.email?.type === 'pattern' && (
+                      <span className="text-red-800">Veuillez entrer une adresse mail valide</span>
+                    )}
 
                     <label className="py-2 text-white">🚀 Mon travail en cours : </label>
                     <input
-                      className=" rounded    bg-neutral-800   p-2 text-white caret-blue-600  placeholder:text-gray-600 focus:border-blue-300"
+                      className=" rounded       p-2 text-white caret-blue-600  placeholder:text-gray-600 focus:border-blue-300"
                       type="text"
                       placeholder="Mon application"
                     />
 
                     <input
-                      className=" mt-2 rounded   bg-neutral-800 p-2 text-white  placeholder:text-gray-600 focus:border-blue-300"
+                      className=" mt-2 rounded    p-2 text-white  placeholder:text-gray-600 focus:border-blue-300"
                       type="text"
                       placeholder="http://monapplication.com"
                       {...register('website', { required: true })}
@@ -299,7 +317,7 @@ const Creerpage = () => {
 
                     <label className="py-2 text-white">🤝 Je suis disponible pour : </label>
                     <input
-                      className=" rounded   bg-neutral-800    p-2 text-white caret-blue-600  placeholder:text-gray-600 focus:border-blue-300"
+                      className=" rounded       p-2 text-white caret-blue-600  placeholder:text-gray-600 focus:border-blue-300"
                       type="text"
                       placeholder="des missions, travail à distance, etc..."
                       {...register('disponibilite', { required: true })}
@@ -313,85 +331,97 @@ const Creerpage = () => {
               </form>
             )}
             {formStep === 2 && (
-              <form onSubmit={OnSubmit} className="flex flex-col items-center">
+              <form onSubmit={OnSubmit} className="flex flex-col items-center py-8">
                 <div className="flex flex-col justify-center rounded p-8 ">
                   <h1 className="text-center text-3xl font-extrabold lg:text-4xl">
                     Mes compétences
                   </h1>
                   <label className="py-2 text-white">📚 Mes compétences techniques :</label>
                   {/** checkbox */}
-                  <div className="flex flex-col">
-                    <div className="flex flex-row">
+                  <div className="flex flex-wrap items-center justify-center gap-3 lg:w-72 ">
+                    <div className="flex flex-row items-center justify-center gap-2">
                       <input
-                        className="rounded   bg-neutral-800 p-2 text-white  placeholder:text-gray-600 focus:border-blue-300"
+                        className="rounded"
                         type="checkbox"
                         value="HTML"
                         {...register('competencesTechniques', {
                           required: true,
                         })}
                       />
-                      <label className="py-2 text-white">HTML</label>
+                      <label className="py-2 text-white">
+                        <Html className="h-8 w-8" />
+                      </label>
                     </div>
-                    <div className="flex flex-row">
+                    <div className="flex flex-row items-center justify-center gap-2">
                       <input
-                        className="rounded   bg-neutral-800 p-2 text-white  placeholder:text-gray-600 focus:border-blue-300"
+                        className="rounded "
                         type="checkbox"
                         value="CSS"
                         {...register('competencesTechniques', {
                           required: true,
                         })}
                       />
-                      <label className="py-2 text-white">CSS</label>
+                      <label className="py-2 text-white">
+                        <Css className="h-8 w-8" />
+                      </label>
                     </div>
-                    <div className="flex flex-row">
+                    <div className="flex flex-row items-center justify-center gap-2">
                       <input
-                        className="rounded   bg-neutral-800 p-2 text-white  placeholder:text-gray-600 focus:border-blue-300"
+                        className="rounded "
                         type="checkbox"
                         value="Javascript"
                         {...register('competencesTechniques', {
                           required: true,
                         })}
                       />
-                      <label className="py-2 text-white">Javascript</label>
+                      <label className="py-2 text-white">
+                        <Javascript className="h-8 w-8" />
+                      </label>
                     </div>
-                    <div className="flex flex-row">
+                    <div className="flex flex-row items-center justify-center gap-2">
                       <input
-                        className="rounded   bg-neutral-800 p-2 text-white  placeholder:text-gray-600 focus:border-blue-300"
+                        className="rounded "
                         type="checkbox"
                         value="React"
                         {...register('competencesTechniques', {
                           required: true,
                         })}
                       />
-                      <label className="py-2 text-white">React</label>
+                      <label className="py-2 text-white">
+                        <Reactjs className="h-8 w-8" />
+                      </label>
                     </div>
-                    <div className="flex flex-row">
+                    <div className="flex flex-row items-center justify-center gap-2">
                       <input
-                        className="rounded   bg-neutral-800 p-2 text-white  placeholder:text-gray-600 focus:border-blue-300"
+                        className="rounded "
                         type="checkbox"
                         value="NodeJS"
                         {...register('competencesTechniques', {
                           required: true,
                         })}
                       />
-                      <label className="py-2 text-white">NodeJS</label>
+                      <label className="py-2 text-white">
+                        <Nodejs className="h-8 w-8" />
+                      </label>
                     </div>
-                    <div className="flex flex-row">
+                    <div className="flex flex-row items-center justify-center gap-2">
                       <input
-                        className="rounded   bg-neutral-800 p-2 text-white  placeholder:text-gray-600 focus:border-blue-300"
+                        className="rounded "
                         type="checkbox"
                         value="Angular"
                         {...register('competencesTechniques', {
                           required: true,
                         })}
                       />
-                      <label className="py-2 text-white">Angular</label>
+                      <label className="py-2 text-white">
+                        <Angularjs className="h-8 w-8" />
+                      </label>
                     </div>
                   </div>
 
                   <label className="py-2 text-white">📚 Mes compétences métiers :</label>
                   <input
-                    className=" rounded   bg-neutral-800 p-2 text-white  placeholder:text-gray-600 focus:border-blue-300"
+                    className=" rounded "
                     type="text"
                     placeholder="Développeur, Designer, etc..."
                     {...register('competencesMetier', { required: true })}
@@ -404,53 +434,94 @@ const Creerpage = () => {
               </form>
             )}
             {formStep === 3 && (
-              <form onSubmit={submitfini} className="flex flex-col items-center">
-                <div className="flex flex-col justify-center rounded p-8 ">
+              <form onSubmit={submitfini} className="flex flex-col items-center py-8">
+                <div className=" rounded p-8 ">
                   <h1 className="text-center text-3xl font-extrabold lg:text-4xl">
                     Réseaux sociaux <br className="hidden md:block" /> (optionnel)
                   </h1>
-                  <label className="py-2 text-white">▶️ Youtube :</label>
-                  <input
-                    className=" rounded   bg-neutral-800 p-2 text-white  placeholder:text-gray-600 focus:border-blue-300"
-                    type="text"
-                    placeholder="https://www.youtube.com/channel/UC..."
-                    {...register('youtube')}
-                  />
+                  <div className="flex flex-col">
+                    <label className="py-2 text-white">▶️ Youtube :</label>
+                    <div className="flex flex-row-reverse items-center text-xs  ">
+                      <input
+                        className=" peer rounded-r-md border-l-0 border-gray-500 px-0 py-2  text-xs text-white  ring-0 placeholder:text-gray-600 visited:bg-change  autofill:bg-transparent focus:border-blue-300 focus:outline-none  focus:ring-0"
+                        type="text"
+                        placeholder=""
+                        {...register('youtube')}
+                      />
+
+                      <span className=" rounded-l-md border border-r-0 border-gray-500 bg-change p-2 px-0 focus:ring-0  peer-focus:border-blue-300">
+                        https://www.youtube.com/c/
+                      </span>
+                    </div>
+                  </div>
+
                   <label className="py-2 text-white">💼 Linkedin :</label>
-                  <input
-                    className=" rounded   bg-neutral-800 p-2 text-white  placeholder:text-gray-600 focus:border-blue-300"
-                    type="text"
-                    placeholder="https://www.linkedin.com/in/..."
-                    {...register('linkedin')}
-                  />
+                  <div className="flex flex-row-reverse items-center justify-center text-xs">
+                    <input
+                      className=" peer rounded-r-md border-l-0 border-gray-500 px-0 py-2  text-xs text-white ring-0    placeholder:text-gray-600 focus:border-blue-300 focus:outline-none  focus:ring-0"
+                      type="text"
+                      placeholder=""
+                      {...register('linkedin')}
+                    />
+
+                    <span className=" rounded-l-md border border-r-0 border-gray-500 bg-change p-2 px-0 focus:ring-0  peer-focus:border-blue-300">
+                      https://www.linkedin.com/in/
+                    </span>
+                  </div>
                   <label className="py-2 text-white">🐦 Twitter :</label>
-                  <input
-                    className=" rounded   bg-neutral-800 p-2 text-white  placeholder:text-gray-600 focus:border-blue-300"
-                    type="text"
-                    placeholder="https://twitter.com/..."
-                    {...register('twitter')}
-                  />
+                  <div className="flex flex-col">
+                    <div className="flex w-96 flex-row-reverse  items-center justify-center  text-xs">
+                      <input
+                        className=" peer rounded-r-md border-l-0 border-gray-500 px-0 py-2  text-xs text-white ring-0    placeholder:text-gray-600 focus:border-blue-300 focus:outline-none  focus:ring-0"
+                        type="text"
+                        placeholder=""
+                        {...register('twitter')}
+                      />
+
+                      <span className=" rounded-l-md border border-r-0 border-gray-500 bg-change p-2 px-0 focus:ring-0  peer-focus:border-blue-300">
+                        https://www.twitter.com/
+                      </span>
+                    </div>
+                  </div>
                   <label className="py-2 text-white">📸 Instagram :</label>
-                  <input
-                    className=" rounded   bg-neutral-800 p-2 text-white  placeholder:text-gray-600 focus:border-blue-300"
-                    type="text"
-                    placeholder="https://www.instagram.com/..."
-                    {...register('instagram')}
-                  />
+                  <div className="flex w-96 flex-row-reverse  items-center justify-center  text-xs ">
+                    <input
+                      className=" peer rounded-r-md border-l-0 border-gray-500 px-0 py-2  text-xs text-white ring-0    placeholder:text-gray-600 focus:border-blue-300 focus:outline-none  focus:ring-0"
+                      type="text"
+                      placeholder=""
+                      {...register('instagram')}
+                    />
+
+                    <span className=" rounded-l-md border border-r-0 border-gray-500 bg-change p-2 px-0 focus:ring-0  peer-focus:border-blue-300">
+                      https://www.instagram.com/
+                    </span>
+                  </div>
                   <label className="py-2 text-white">📟 Facebook :</label>
-                  <input
-                    className=" rounded   bg-neutral-800 p-2 text-white  placeholder:text-gray-600 focus:border-blue-300"
-                    type="text"
-                    placeholder="https://www.facebook.com/..."
-                    {...register('facebook')}
-                  />
+                  <div className="flex w-96 flex-row-reverse items-center justify-center text-xs">
+                    <input
+                      className=" peer rounded-r-md border-l-0 border-gray-500 px-0 py-2  text-xs text-white ring-0    placeholder:text-gray-600 focus:border-blue-300 focus:outline-none  focus:ring-0"
+                      type="text"
+                      placeholder=""
+                      {...register('facebook')}
+                    />
+
+                    <span className=" rounded-l-md border border-r-0 border-gray-500 bg-change p-2 px-0 focus:ring-0  peer-focus:border-blue-300">
+                      https://www.facebook.com/
+                    </span>
+                  </div>
                   <label className="py-2 text-white">👨‍💻 Github :</label>
-                  <input
-                    className=" rounded   bg-neutral-800 p-2 text-white  placeholder:text-gray-600 focus:border-blue-300"
-                    type="text"
-                    placeholder="https://www.github.com/..."
-                    {...register('github')}
-                  />
+                  <div className="flex flex-row-reverse text-xs">
+                    <input
+                      className=" peer rounded-r-md border-l-0 border-gray-500 px-0 py-2  text-xs text-white ring-0    placeholder:text-gray-600 focus:border-blue-300 focus:outline-none  focus:ring-0"
+                      type="text"
+                      placeholder=""
+                      {...register('github')}
+                    />
+
+                    <span className=" rounded-l-md border border-r-0 border-gray-500 bg-change p-2 px-0 focus:ring-0  peer-focus:border-blue-300">
+                      https://www.github.com/
+                    </span>
+                  </div>
                 </div>
                 <Navigation />
               </form>
@@ -458,7 +529,7 @@ const Creerpage = () => {
           </Container>
         </div>
       )}
-    </div>
+    </>
   );
 };
 export default Creerpage;
