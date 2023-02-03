@@ -81,15 +81,17 @@ export const ImageCard = (props: ImageCardProps) => {
                 className="rounded-lg border border-gray-300  bg-[#2b2d3c] p-2 text-left text-sm text-white outline-none"
               />
             </div>
-          ) : (
+          ) : props.sessionid === props.userinfoid ? (
             <p
               className="text-2xl font-bold text-white"
               onClick={() => {
                 props.sessionid === props.userinfoid ? setchangetitle(!changetitle) : undefined;
               }}
             >
-              {newtitle}
+              {newtitle === '' ? 'Ajouter un titre' : newtitle}
             </p>
+          ) : (
+            <p className="text-2xl font-bold text-white">{newtitle}</p>
           )}
 
           <div>
@@ -105,15 +107,17 @@ export const ImageCard = (props: ImageCardProps) => {
                   className=" h-32 rounded bg-[#2b2d3c] p-2 lg:w-64"
                 />
               </div>
-            ) : (
+            ) : props.sessionid === props.userinfoid ? (
               <p
                 onClick={() => {
                   props.sessionid === props.userinfoid ? setchangedesc(true) : undefined;
                 }}
                 className=" w-44 text-center text-sm text-white md:w-auto "
               >
-                {newdescription}
+                {newdescription === '' ? 'Ajouter une description' : newdescription}
               </p>
+            ) : (
+              <p className=" w-44 text-center text-sm text-white md:w-auto ">{newdescription}</p>
             )}
           </div>
         </div>

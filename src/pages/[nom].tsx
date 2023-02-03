@@ -498,12 +498,12 @@ const Nom = () => {
             </div>
           </div>
 
-          <div className="mt-2 hidden flex-col items-center justify-center gap-2 lg:flex  ">
+          <div className="mt-2 hidden  flex-col items-center justify-center gap-2 px-8 lg:flex  ">
             <div className="flex items-center justify-center  ">
               <input
                 value={`https://dabara.vercel.app/${userinfo?.page || ''}`}
                 className="
-              w-full  truncate rounded-l-lg border bg-transparent p-1   
+              w-full  truncate rounded-l-lg border bg-transparent p-1  
               "
               />
               <button
@@ -529,14 +529,16 @@ const Nom = () => {
         </div>
         <div className=" lg:ml-4 lg:w-full lg:overflow-y-auto  lg:bg-profile">
           <div className="flex h-full w-full flex-col items-center justify-center lg:max-h-screen">
-            {userinfo?.id === session.data?.user?.id && (
-              <button
-                onClick={openModal}
-                className="inline-flex items-center justify-center  gap-2 rounded-sm bg-blue-300 p-2 text-gray-800 "
-              >
-                Ajouter un projet <Editicon className="h-4 w-4 " />
-              </button>
-            )}
+            {images?.length !== undefined &&
+              images?.length < 2 &&
+              userinfo?.id === session.data?.user?.id && (
+                <button
+                  onClick={openModal}
+                  className="inline-flex items-center justify-center  gap-2 rounded-sm bg-blue-300 p-2 text-gray-800 "
+                >
+                  Ajouter un projet <Editicon className="h-4 w-4 " />
+                </button>
+              )}
             <p className="h-12 p-4 text-center text-xl font-bold  ">Mes projets</p>
             {loadingimages ? (
               <div className="my-4">
@@ -578,7 +580,7 @@ const Nom = () => {
             )}
           </div>
           <div className="mt-auto flex flex-col items-center justify-center gap-2 lg:hidden  ">
-            <div className="flex items-center justify-center  ">
+            <div className="flex items-center justify-center  px-8 ">
               <input
                 value={`https://dabara.vercel.app/${userinfo?.page || ''}`}
                 className="
