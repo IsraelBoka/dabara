@@ -9,7 +9,7 @@ type ImageFormProps = {
   link: string;
 };
 
-export const ImageForm = () => {
+export const ImageForm = ({ closeModal }: { closeModal?: () => void }) => {
   const {
     register,
     handleSubmit,
@@ -19,6 +19,7 @@ export const ImageForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const uploadimage = api.image.addportfolio.useMutation({
     async onSuccess() {
+      closeModal && closeModal();
       await utils.image.getuserimages.invalidate();
       setIsSubmitting(false);
     },
@@ -101,6 +102,7 @@ export const ImageForm = () => {
         <p className="mt-1 text-left text-sm text-gray-500" id="file_input_help">
           PNG, JPG
         </p>
+        {errors.image && <p className="text-xs text-red-500">une image est requise</p>}
         <button
           type="submit"
           disabled={isSubmitting}

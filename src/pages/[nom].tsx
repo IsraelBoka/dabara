@@ -235,7 +235,7 @@ const Nom = () => {
                     Ajouter votre projet
                   </Dialog.Title>
                   <div className="mt-2">
-                    <ImageForm />
+                    <ImageForm closeModal={closeModal} />
                   </div>
                   <div className="mt-4">
                     <button
