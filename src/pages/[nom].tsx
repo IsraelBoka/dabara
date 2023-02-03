@@ -19,10 +19,10 @@ import classNames from 'classnames';
 import useOnClickOutside from '../hooks/useOnClickOutside';
 import { ImageForm } from '../components/ImageForm';
 import { Editicon } from '../components/icons/editicon';
-import { Plusicon } from '../components/icons/Plusicon';
 import { CompetenceForm } from '../components/CompetenceForm';
 import { PageLoader } from '../components/PageLoader';
 import { Skills } from '../components/Skills';
+import { NetworkForm } from '../components/NetworkForm';
 
 const Nom = () => {
   const router = useRouter();
@@ -59,6 +59,16 @@ const Nom = () => {
       }
     }
   });
+
+  const [isOpenNetwork, setIsOpenNetwork] = useState(false);
+
+  function closeModalNetwork() {
+    setIsOpenNetwork(false);
+  }
+
+  function openModalNetwork() {
+    setIsOpenNetwork(true);
+  }
 
   const [isOpenCompetence, setIsOpenCompetence] = useState(false);
 
@@ -306,11 +316,76 @@ const Nom = () => {
         </Dialog>
       </Transition>
 
+      {/**----------------------------------- Modal for Network form ------------------------------------- */}
+      <Transition appear show={isOpenNetwork} as={Fragment}>
+        <Dialog as="div" className="relative z-10" onClose={closeModalNetwork}>
+          <Transition.Child
+            as={Fragment}
+            enter="ease-out duration-300"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave="ease-in duration-200"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            <div className="fixed inset-0 bg-black bg-opacity-25" />
+          </Transition.Child>
+
+          <div className="fixed inset-0 overflow-y-auto">
+            <div className="flex min-h-full items-center justify-center p-4 text-center">
+              <Transition.Child
+                as={Fragment}
+                enter="ease-out duration-300"
+                enterFrom="opacity-0 scale-95"
+                enterTo="opacity-100 scale-100"
+                leave="ease-in duration-200"
+                leaveFrom="opacity-100 scale-100"
+                leaveTo="opacity-0 scale-95"
+              >
+                <Dialog.Panel
+                  className={classNames(
+                    'fixed z-50',
+                    'w-[95vw] max-w-md rounded-lg p-4 md:w-full',
+                    'top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]',
+                    ' bg-secondary  ',
+                    'focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75',
+                  )}
+                >
+                  <Dialog.Title as="h3" className="text-lg font-medium leading-6 text-gray-100">
+                    Mes réseaux
+                  </Dialog.Title>
+                  <div className="mt-2">
+                    <NetworkForm
+                      closeModal={closeModalNetwork}
+                      youtube={userinfo?.Profil?.youtube || undefined}
+                      facebook={userinfo?.Profil?.facebook || undefined}
+                      instagram={userinfo?.Profil?.instagram || undefined}
+                      linkedin={userinfo?.Profil?.linkedin || undefined}
+                      github={userinfo?.Profil?.github || undefined}
+                      twitter={userinfo?.Profil?.twitter || undefined}
+                    />
+                  </div>
+                  <div className="mt-4">
+                    <button
+                      type="button"
+                      className=" inline-flex justify-center rounded-md  border border-gray-300 px-4 py-2 text-sm font-medium hover:bg-modalbutton  focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-300 focus-visible:ring-offset-2"
+                      onClick={closeModalNetwork}
+                    >
+                      Quitter
+                    </button>
+                  </div>
+                </Dialog.Panel>
+              </Transition.Child>
+            </div>
+          </div>
+        </Dialog>
+      </Transition>
+
       <Container classname="flex items-center flex-col justify-center lg:bg-transparent lg:flex lg:items-start lg:flex-row lg:h-full lg:w-full">
         <div className=" my-5 flex flex-col items-center  lg:my-0  lg:h-screen lg:w-96 lg:rounded lg:bg-profile ">
           <Avatar
             nom={nom as string}
-            sessionid={session.data?.user?.id || ' '}
+            sessionid={session.data?.user?.id || ''}
             userinfoid={userinfo?.id}
             email={userinfo?.Profil?.email || undefined}
             lien={userinfo.image || undefined}
@@ -319,7 +394,7 @@ const Nom = () => {
             {!changefonction ? (
               <p
                 onClick={userinfo.id === session.data?.user?.id ? onChangeFonction : undefined}
-                className="text-xl font-bold text-white"
+                className="text-xl font-bold"
               >
                 {newfonction ? newfonction : userinfo?.fonction || 'Ajouter votre fonction'}
               </p>
@@ -329,30 +404,37 @@ const Nom = () => {
                   ref={reffonction as RefObject<HTMLInputElement>}
                   type="text"
                   autoFocus
-                  className=" text-md w-48 rounded-md  border  border-gray-300 bg-change font-bold text-white outline-none"
+                  className=" text-md w-48 rounded-md  border  border-gray-300 bg-change font-bold  outline-none"
                   value={newfonction}
                   onChange={(e) => setNewfonction(e.target.value)}
                 />
               </div>
             )}
           </div>
-          {}
-          <Network
-            youtube={userinfo?.Profil?.youtube || undefined}
-            facebook={userinfo?.Profil?.facebook || undefined}
-            instagram={userinfo?.Profil?.instagram || undefined}
-            linkedin={userinfo?.Profil?.linkedin || undefined}
-            github={userinfo?.Profil?.github || undefined}
-            twitter={userinfo?.Profil?.twitter || undefined}
-          />
           <div>
-            <p className=" cursor-default text-center  text-xl font-bold text-white ">
-              A propos de moi
-            </p>
+            <div className="flex items-center justify-center py-2">
+              <p className=" text-center text-xl font-bold">Mes réseaux </p>
+              {userinfo.id === session.data?.user?.id && (
+                <button onClick={openModalNetwork} className="ml-2 rounded bg-blue-700 p-1">
+                  <Editicon className="h-4 w-4" />
+                </button>
+              )}
+            </div>
+            <Network
+              youtube={userinfo?.Profil?.youtube || undefined}
+              facebook={userinfo?.Profil?.facebook || undefined}
+              instagram={userinfo?.Profil?.instagram || undefined}
+              linkedin={userinfo?.Profil?.linkedin || undefined}
+              github={userinfo?.Profil?.github || undefined}
+              twitter={userinfo?.Profil?.twitter || undefined}
+            />
+          </div>
+          <div>
+            <p className=" cursor-default text-center  text-xl font-bold  ">A propos de moi</p>
 
             {!changedesc && (
               <p
-                className="truncate whitespace-pre-wrap p-2 text-center indent-4 text-sm text-white"
+                className="truncate whitespace-pre-wrap p-2 text-center indent-4 text-sm "
                 onClick={userinfo.id === session.data?.user?.id ? onChangeDescription : undefined}
               >
                 {newdesc ? newdesc : userinfo?.about || 'Ajouter une description'}
@@ -390,11 +472,11 @@ const Nom = () => {
           </div>
 
           <div>
-            <div className="flex items-center justify-center gap-1 text-center text-xl font-bold text-white ">
+            <div className="flex items-center justify-center gap-1 text-center text-xl font-bold  ">
               <p>Mes compétences</p>
               {userinfo.id === session.data?.user?.id && (
                 <button onClick={openModalCompetence} className="ml-2 rounded bg-blue-700 p-1">
-                  <Plusicon className="h-4 w-4" />
+                  <Editicon className="h-4 w-4" />
                 </button>
               )}
             </div>
@@ -403,7 +485,7 @@ const Nom = () => {
             </div>
           </div>
           <div>
-            <p className="cursor-default text-center text-xl font-bold text-white ">Langues</p>
+            <p className="cursor-default text-center text-xl font-bold  ">Langues</p>
             <div className="flex flex-wrap justify-center">
               <div className="m-2  rounded ">
                 <p className=" select-none text-sm font-bold uppercase">Français</p>
@@ -421,7 +503,7 @@ const Nom = () => {
               <input
                 value={`https://dabara.vercel.app/${userinfo?.page || ''}`}
                 className="
-              w-full  truncate rounded-l-lg border bg-transparent p-1  text-white 
+              w-full  truncate rounded-l-lg border bg-transparent p-1   
               "
               />
               <button
@@ -455,7 +537,7 @@ const Nom = () => {
                 Ajouter un projet <Editicon className="h-4 w-4 " />
               </button>
             )}
-            <p className="h-12 p-4 text-center text-xl font-bold text-white ">Mes projets</p>
+            <p className="h-12 p-4 text-center text-xl font-bold  ">Mes projets</p>
             {loadingimages ? (
               <div className="my-4">
                 <Loader />
@@ -500,7 +582,7 @@ const Nom = () => {
               <input
                 value={`https://dabara.vercel.app/${userinfo?.page || ''}`}
                 className="
-              w-full  truncate rounded-l-lg border bg-transparent p-1  text-white 
+              w-full  truncate rounded-l-lg border bg-transparent p-1  
               "
               />
               <button

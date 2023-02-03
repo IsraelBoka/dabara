@@ -21,7 +21,7 @@ export const Avatar = (props: AvatarProps) => {
 
   const updateProfile = api.profile.updateprofile.useMutation({
     onSuccess: async () => {
-      await utils.profile.getprofile.invalidate();
+      await utils.page.getPage.invalidate();
       toast.success('Email modifié');
     },
   });
