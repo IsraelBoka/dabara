@@ -11,7 +11,7 @@ interface ImageCardProps {
   sessionid: string;
   id: string;
   title: string;
-  description: string;
+  description?: string;
   link: string;
 }
 

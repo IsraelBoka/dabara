@@ -539,24 +539,32 @@ const Nom = () => {
                   Ajouter un projet <Editicon className="h-4 w-4 " />
                 </button>
               )}
-            <p className="h-12 p-4 text-center text-xl font-bold  ">Mes projets</p>
             {loadingimages ? (
               <div className="my-4">
                 <Loader />
               </div>
             ) : (
               <div className="flex flex-col items-center p-4 lg:h-[calc(100vh_-_3rem)]  lg:overflow-y-auto">
+                {images?.length === 0 ? (
+                  <div className="flex flex-col items-center justify-center gap-2">
+                    <p className="text-center text-xl font-bold ">Aucun projet</p>
+                  </div>
+                ) : (
+                  <div className="flex flex-col items-center justify-center gap-2">
+                    <p className="text-center text-xl font-bold ">Mes projets</p>
+                  </div>
+                )}
                 {images?.map((image) => {
                   return (
                     <div className="m-2 flex flex-col px-8" key={image.id}>
                       <ImageCard
-                        sessionid={session.data?.user?.id || ' '}
+                        sessionid={session.data?.user?.id || ''}
                         userinfoid={userinfo?.id}
                         id={image.id}
-                        image={image.url || ' '}
+                        image={image.url || ''}
                         description={image.description || 'description'}
-                        title={image.title || ' '}
-                        link={image.github || ' '}
+                        title={image.title || ''}
+                        link={image.github || ''}
                       />
                       {userinfo?.id === session.data?.user?.id && (
                         <div className="flex items-center justify-center ">

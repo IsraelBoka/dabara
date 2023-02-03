@@ -72,7 +72,7 @@ const Recherche = () => {
                 <Link
                   href={`/${profile.page || ''}`}
                   key={profile.id}
-                  className=" flex w-48 flex-col items-start justify-center gap-1 rounded-md border border-gray-300  p-2 hover:bg-[#2b2d3c] "
+                  className=" flex w-48 flex-col items-start justify-center gap-1 rounded-md border border-gray-600  p-2 hover:bg-[#2b2d3c] "
                 >
                   <div className="flex items-center justify-center gap-2">
                     <Image
