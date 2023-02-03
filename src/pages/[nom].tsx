@@ -10,13 +10,10 @@ import { ImageCard } from '../components/ImageCard';
 import { Dialog, Transition } from '@headlessui/react';
 import Loader from '../components/Loader';
 import { Network } from '../components/Network';
-
 import { ToastContainer, toast, Flip } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
 import { api } from '../utils/api';
 import Head from 'next/head';
-
 import { useSession } from 'next-auth/react';
 import classNames from 'classnames';
 import useOnClickOutside from '../hooks/useOnClickOutside';
@@ -310,9 +307,11 @@ const Nom = () => {
       </Transition>
 
       <Container classname="flex items-center flex-col justify-center lg:bg-transparent lg:flex lg:items-start lg:flex-row lg:h-full lg:w-full">
-        <div className=" my-5 flex flex-col items-center justify-center  lg:my-0  lg:h-screen lg:w-96 lg:rounded lg:bg-profile ">
+        <div className=" my-5 flex flex-col items-center  lg:my-0  lg:h-screen lg:w-96 lg:rounded lg:bg-profile ">
           <Avatar
             nom={nom as string}
+            sessionid={session.data?.user?.id || ' '}
+            userinfoid={userinfo?.id}
             email={userinfo?.Profil?.email || undefined}
             lien={userinfo.image || undefined}
           />

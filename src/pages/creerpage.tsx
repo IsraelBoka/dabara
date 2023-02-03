@@ -39,12 +39,20 @@ type FormData = {
 
 const Creerpage = () => {
   const { data: sessionData, status } = useSession();
-  const { mutateAsync: creerprofile } = api.profile.addprofiletouser.useMutation();
+  const { mutateAsync: creerprofile } = api.profile.addprofiletouser.useMutation({
+    onSuccess: async () => {
+      setIsSubmitting(false);
+      await router.push('/' + page).then(() => window.scrollTo(0, 0));
+    },
+  });
   const router = useRouter();
-  const verifypage = api.page.verifypage.useMutation();
-
+  const verifypage = api.page.verifypage.useMutation({
+    onSuccess: () => {
+      setIsSubmitting(false);
+    },
+  });
   const [formStep, setFormStep] = useState(0);
-
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [taken, setTaken] = useState(false);
   const [page, setPage] = useState('');
   const { data: getpage, isLoading: loadinggetpage } = api.page.getPagebyId.useQuery(
@@ -64,7 +72,7 @@ const Creerpage = () => {
           {formStep === 4 ? null : (
             <button
               type="submit"
-              className="rounded bg-[#575bc7] p-2 text-sm transition-colors duration-300 hover:bg-[#575bc7]/60"
+              className="rounded bg-[#575bc7] p-2 text-sm transition-colors duration-300 hover:bg-[#575bc7]/60 disabled:bg-purple-100 disabled:text-gray-800"
             >
               <span>Suivant</span>
             </button>
@@ -117,12 +125,11 @@ const Creerpage = () => {
   });
 
   const handleverification = handleSubmit(async (data) => {
-    console.log(data);
+    setIsSubmitting(true);
     const test = verifypage.mutateAsync({
       page: data.page,
     });
     await test.then((res) => {
-      console.log(res);
       if (res === true) {
         setTaken(true);
       } else {
@@ -134,6 +141,7 @@ const Creerpage = () => {
 
   const submitfini = handleSubmit(async (data) => {
     console.log(data);
+    setIsSubmitting(true);
     await creerprofile({
       name: data.name,
       email: data.email,
@@ -214,7 +222,8 @@ const Creerpage = () => {
                 </div>
                 <button
                   type="submit"
-                  className="rounded bg-[#575bc7] p-2 text-sm transition-colors duration-300 hover:bg-[#575bc7]/60"
+                  disabled={isSubmitting}
+                  className=" rounded bg-[#575bc7] p-2 text-sm transition-colors duration-300 hover:bg-[#575bc7]/60  disabled:text-gray-800"
                 >
                   Vérifier la page
                 </button>
@@ -525,6 +534,14 @@ const Creerpage = () => {
                 </div>
                 <Navigation />
               </form>
+            )}
+
+            {formStep === 4 && (
+              <div>
+                <h1 className="text-center text-3xl font-extrabold lg:text-4xl">
+                  Votre page est prête !
+                </h1>
+              </div>
             )}
           </Container>
         </div>

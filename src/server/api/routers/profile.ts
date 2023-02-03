@@ -13,13 +13,13 @@ export const ProfileRouter = createTRPCRouter({
         fonction: z.string(),
         competence: z.string().array(),
         residence: z.string(),
-        website: z.string().nullable(),
-        facebook: z.string().nullable(),
-        instagram: z.string().nullable(),
-        twitter: z.string().nullable(),
-        youtube: z.string().nullable(),
-        linkedin: z.string().nullable(),
-        github: z.string().nullable(),
+        website: z.string().optional(),
+        facebook: z.string().optional(),
+        instagram: z.string().optional(),
+        twitter: z.string().optional(),
+        youtube: z.string().optional(),
+        linkedin: z.string().optional(),
+        github: z.string().optional(),
       }),
     )
     .mutation(async ({ input, ctx }) => {
@@ -49,7 +49,7 @@ export const ProfileRouter = createTRPCRouter({
       });
 
       const multiplecompetence = ctx.prisma.competence.createMany({
-        data: input.competence.map((competence) => ({
+        data: input.competence?.map((competence) => ({
           name: competence,
           niveau: '0',
           userId: ctx.session.user.id,
@@ -108,15 +108,15 @@ export const ProfileRouter = createTRPCRouter({
           name: {
             contains: input.search,
           },
-          page: {
-            not: null,
-          },
           Competence: {
             some: {
               name: {
                 in: input.Tags,
               },
             },
+          },
+          page: {
+            not: null,
           },
         },
       });
