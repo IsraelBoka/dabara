@@ -54,15 +54,15 @@ export const NetworkForm = (props: NetworkProps) => {
       <div className=" rounded ">
         <div className="flex flex-col">
           <label className="py-2 text-white">▶️ Youtube :</label>
-          <div className="flex flex-row-reverse items-center justify-center text-xs  ">
+          <div className=" flex flex-row-reverse items-center justify-center text-xs  ">
             <input
-              className=" peer rounded-r-md border-l-0 border-gray-500 px-0 py-2  text-xs  ring-0 placeholder:text-gray-600 visited:bg-change  autofill:bg-transparent focus:border-blue-300 focus:outline-none  focus:ring-0"
+              className="peer w-24 rounded-r-md border-l-0 border-gray-500  py-2  px-0  text-xs ring-0 placeholder:text-gray-600 visited:bg-change  autofill:bg-transparent focus:border-blue-300 focus:outline-none  focus:ring-0"
               type="text"
               placeholder=""
               {...register('youtube')}
             />
 
-            <span className="w-24 rounded-l-md  border border-r-0  border-gray-500 bg-change p-2 px-0 text-right focus:ring-0  peer-focus:border-blue-300  lg:w-40">
+            <span className=" flex-1 rounded-l-md border  border-r-0 border-gray-500  bg-change py-2  text-right focus:ring-0  peer-focus:border-blue-300  lg:w-40">
               https://www.youtube.com/c/
             </span>
           </div>
@@ -71,13 +71,13 @@ export const NetworkForm = (props: NetworkProps) => {
         <label className="py-2 text-white">💼 Linkedin :</label>
         <div className="flex flex-row-reverse items-center justify-center text-xs">
           <input
-            className=" peer rounded-r-md border-l-0 border-gray-500 px-0 py-2  text-xs text-white ring-0    placeholder:text-gray-600 focus:border-blue-300 focus:outline-none  focus:ring-0"
+            className="peer w-24 rounded-r-md border-l-0 border-gray-500 px-0 py-2  text-xs text-white ring-0    placeholder:text-gray-600 focus:border-blue-300 focus:outline-none  focus:ring-0"
             type="text"
             placeholder=""
             {...register('linkedin')}
           />
 
-          <span className="w-24 rounded-l-md  border  border-r-0 border-gray-500 bg-change p-2 px-0 text-right focus:ring-0 peer-focus:border-blue-300  lg:w-40">
+          <span className="flex-1 rounded-l-md  border  border-r-0 border-gray-500 bg-change p-2 px-0 text-right focus:ring-0 peer-focus:border-blue-300  lg:w-40">
             https://www.linkedin.com/in/
           </span>
         </div>
@@ -85,13 +85,13 @@ export const NetworkForm = (props: NetworkProps) => {
         <div className="flex flex-col">
           <div className="flex flex-row-reverse  items-center justify-center  text-xs">
             <input
-              className=" peer rounded-r-md border-l-0 border-gray-500 px-0 py-2  text-xs text-white ring-0    placeholder:text-gray-600 focus:border-blue-300 focus:outline-none  focus:ring-0"
+              className=" peer w-24 rounded-r-md border-l-0 border-gray-500 px-0 py-2  text-xs text-white ring-0    placeholder:text-gray-600 focus:border-blue-300 focus:outline-none  focus:ring-0"
               type="text"
               placeholder=""
               {...register('twitter')}
             />
 
-            <span className="w-24 rounded-l-md  border  border-r-0 border-gray-500 bg-change p-2 px-0 text-right focus:ring-0 peer-focus:border-blue-300  lg:w-40">
+            <span className="flex-1 rounded-l-md  border  border-r-0 border-gray-500 bg-change p-2 px-0 text-right focus:ring-0 peer-focus:border-blue-300  lg:w-40">
               https://www.twitter.com/
             </span>
           </div>
@@ -99,39 +99,39 @@ export const NetworkForm = (props: NetworkProps) => {
         <label className="py-2 text-white">📸 Instagram :</label>
         <div className="flex flex-row-reverse  items-center justify-center  text-xs ">
           <input
-            className=" peer rounded-r-md border-l-0 border-gray-500 px-0 py-2  text-xs text-white ring-0    placeholder:text-gray-600 focus:border-blue-300 focus:outline-none  focus:ring-0"
+            className=" peer w-24 rounded-r-md border-l-0 border-gray-500 px-0 py-2  text-xs text-white ring-0    placeholder:text-gray-600 focus:border-blue-300 focus:outline-none  focus:ring-0"
             type="text"
             placeholder=""
             {...register('instagram')}
           />
 
-          <span className=" w-24 rounded-l-md  border border-r-0 border-gray-500 bg-change p-2 px-0 text-right focus:ring-0 peer-focus:border-blue-300  lg:w-40">
+          <span className="flex-1 rounded-l-md  border border-r-0 border-gray-500 bg-change p-2 px-0 text-right focus:ring-0 peer-focus:border-blue-300  lg:w-40">
             https://www.instagram.com/
           </span>
         </div>
         <label className="py-2 text-white">📟 Facebook :</label>
         <div className="flex flex-row-reverse items-center justify-center text-xs">
           <input
-            className=" peer rounded-r-md border-l-0 border-gray-500 px-0 py-2  text-xs text-white ring-0    placeholder:text-gray-600 focus:border-blue-300 focus:outline-none  focus:ring-0"
+            className=" peer w-24 rounded-r-md border-l-0 border-gray-500 px-0 py-2  text-xs text-white ring-0    placeholder:text-gray-600 focus:border-blue-300 focus:outline-none  focus:ring-0"
             type="text"
             placeholder=""
             {...register('facebook')}
           />
 
-          <span className=" w-24 rounded-l-md  border border-r-0 border-gray-500 bg-change p-2 px-0 text-right focus:ring-0 peer-focus:border-blue-300  lg:w-40">
+          <span className=" flex-1 rounded-l-md  border border-r-0 border-gray-500 bg-change p-2 px-0 text-right focus:ring-0 peer-focus:border-blue-300  lg:w-40">
             https://www.facebook.com/
           </span>
         </div>
         <label className="py-2 text-white">👨‍💻 Github :</label>
         <div className="flex flex-row-reverse items-center justify-center text-xs">
           <input
-            className=" peer rounded-r-md border-l-0 border-gray-500 px-0 py-2  text-xs text-white ring-0    placeholder:text-gray-600 focus:border-blue-300 focus:outline-none  focus:ring-0"
+            className=" peer w-24 rounded-r-md border-l-0 border-gray-500 px-0 py-2  text-xs text-white ring-0    placeholder:text-gray-600 focus:border-blue-300 focus:outline-none  focus:ring-0"
             type="text"
             placeholder=""
             {...register('github')}
           />
 
-          <span className=" w-24 rounded-l-md  border border-r-0 border-gray-500 bg-change p-2 px-0 text-right focus:ring-0 peer-focus:border-blue-300  lg:w-40">
+          <span className=" flex-1 rounded-l-md  border border-r-0 border-gray-500 bg-change p-2 px-0 text-right focus:ring-0 peer-focus:border-blue-300  lg:w-40">
             https://www.github.com/
           </span>
         </div>

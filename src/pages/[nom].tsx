@@ -23,6 +23,7 @@ import { CompetenceForm } from '../components/CompetenceForm';
 import { PageLoader } from '../components/PageLoader';
 import { Skills } from '../components/Skills';
 import { NetworkForm } from '../components/NetworkForm';
+import { UnFound } from './404';
 
 const Nom = () => {
   const router = useRouter();
@@ -157,7 +158,7 @@ const Nom = () => {
   }
 
   if (!userinfo) {
-    return <Error statusCode={404} />;
+    return <UnFound />;
   }
 
   const Copylink = async () => {
@@ -382,7 +383,7 @@ const Nom = () => {
       </Transition>
 
       <Container classname="flex items-center flex-col justify-center lg:bg-transparent lg:flex lg:items-start lg:flex-row lg:h-full lg:w-full">
-        <div className=" my-5 flex flex-col items-center  lg:my-0  lg:h-screen lg:w-96 lg:rounded lg:bg-profile ">
+        <div className=" flex flex-col items-center   lg:my-0  lg:h-screen lg:w-96 lg:rounded lg:bg-profile ">
           <Avatar
             nom={nom as string}
             sessionid={session.data?.user?.id || ''}
@@ -484,6 +485,7 @@ const Nom = () => {
               <Skills competence={userinfo?.Competence} />
             </div>
           </div>
+          {/**
           <div>
             <p className="cursor-default text-center text-xl font-bold  ">Langues</p>
             <div className="flex flex-wrap justify-center">
@@ -496,7 +498,7 @@ const Nom = () => {
                 <p>Courant</p>
               </div>
             </div>
-          </div>
+          </div> */}
 
           <div className="mt-2 hidden  flex-col items-center justify-center gap-2 px-8 lg:flex  ">
             <div className="flex items-center justify-center  ">
@@ -513,11 +515,11 @@ const Nom = () => {
                 <Clipboard className="h-6 w-6" />
               </button>
             </div>
-            <div className="mt-2 gap-2">
+            <div className="mt-2 gap-2 py-2">
               <p className="text-center text-xs font-bold ">
                 Cette page a été visitée {userinfo?.Profil?.views} fois
               </p>
-              <Link className="md:text-md group mr-2 flex items-center justify-center " href={'/'}>
+              <Link className="md:text-md group mr-2 flex items-center justify-center  " href={'/'}>
                 <Logo classname="w-8 h-8 mr-2 stroke-white group-hover:rotate-45 ease-in-out transition duration-500 " />
                 <p className="text-md font-extrabold">
                   <span className="">DAB</span>
