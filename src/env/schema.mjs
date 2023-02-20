@@ -17,6 +17,8 @@ export const serverSchema = z.object({
   CLOUDINARY_CLOUD_NAME: z.string(),
   CLOUDINARY_API_KEY: z.string(),
   CLOUDINARY_API_SECRET: z.string(),
+  LINKEDIN_CLIENT_ID: z.string(),
+  LINKEDIN_CLIENT_SECRET: z.string(),
   //AWS_ACCESS_KEY_ID : z.string(),
   //AWS_SECRET_ACCESS_KEY : z.string(),
 });

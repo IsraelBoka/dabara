@@ -65,18 +65,6 @@ const Signin: NextPage = () => {
               )}
 
               <button
-                className="inline-flex items-center justify-center  gap-2 rounded border p-2 transition-colors duration-300 hover:bg-gray-900 "
-                onClick={async () => {
-                  await signIn('google', {
-                    callbackUrl: '/',
-                  });
-                }}
-              >
-                <span className="flex-1">Se connecter avec Google</span>
-                <Google className="h-8 w-8" />
-              </button>
-
-              <button
                 className="inline-flex items-center justify-center gap-2 rounded border p-2  transition-colors duration-300 hover:bg-gray-900 "
                 onClick={async () => {
                   await signIn('linkedin', {
@@ -86,6 +74,17 @@ const Signin: NextPage = () => {
               >
                 <span className="flex-1">Se connecter avec LinkedIn</span>
                 <LinkedIn classname="h-8 w-8" />
+              </button>
+              <button
+                className="inline-flex items-center justify-center  gap-2 rounded border p-2 transition-colors duration-300 hover:bg-gray-900 "
+                onClick={async () => {
+                  await signIn('google', {
+                    callbackUrl: '/',
+                  });
+                }}
+              >
+                <span className="flex-1">Se connecter avec Google</span>
+                <Google className="h-8 w-8" />
               </button>
 
               <button
