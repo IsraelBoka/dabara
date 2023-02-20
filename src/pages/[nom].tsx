@@ -206,6 +206,13 @@ const Nom = ({ page }: { page: User }) => {
       <Head>
         <title>@{userinfo?.page} portfolio </title>
         <link rel="icon" href="/favicon.ico" />
+        <meta name="title" content={`@${userinfo?.page as string} portfolio`} />
+        <meta
+          name="description"
+          content="
+        Suivez le parcours de @${userinfo?.page} sur Dabara. Découvrez ses compétences, ses projets et son réseau.
+        "
+        />
         <meta
           property="og:image"
           content="https://inthepocket.tech/api/og-image?name=Next.js&stage=adopt"
