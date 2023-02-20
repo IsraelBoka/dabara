@@ -199,16 +199,17 @@ const Nom = ({ page }: { page: User }) => {
     });
   };
 
-  const ImgUrl = `https://dabara.vercel.app/api/og-image?image=${page.image || ''}&title=${
-    nom as string
-  }`;
+  const ImgUrl = 'https://inthepocket.tech/api/og-image?name=Next.js&stage=adopt';
   console.log(ImgUrl);
   return (
     <div>
       <Head>
         <title>@{userinfo?.page} portfolio </title>
-        <meta property="og:image" content={ImgUrl} />
         <link rel="icon" href="/favicon.ico" />
+        <meta
+          property="og:image"
+          content="https://inthepocket.tech/api/og-image?name=Next.js&stage=adopt"
+        />{' '}
       </Head>
       <ToastContainer
         position="top-center"
