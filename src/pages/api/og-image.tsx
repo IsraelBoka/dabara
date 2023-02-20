@@ -32,7 +32,9 @@ const handler = async (req: NextRequest) => {
           <div tw="flex flex-col mx-auto my-auto items-center ">
             <img
               src={image}
-              tw=" rounded-full flex h-[200px] object-cover w-[200px] "
+              tw=" rounded-full flex h-[150px] w-[150px] "
+              width={200}
+              height={200}
               alt="rien du tout "
             />
 
