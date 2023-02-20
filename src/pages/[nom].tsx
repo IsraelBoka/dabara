@@ -185,12 +185,14 @@ const Nom = ({ page }: { page: User }) => {
           <meta name="title" content={'portfolio'} />
           <meta
             name="description"
-            content="Check out iPhone 12 XR Pro and iPhone 12 Pro Max. Visit your local store and for expert advice."
+            content={`Suivez ${nom as string} sur Dabara et découvrez son portfolio.`}
             key="desc"
           />
           <meta
             property="og:image"
-            content="https://inthepocket.tech/api/og-image?name=Next.js&stage=adopt"
+            content={`https://dabara.vercel.app/api/og-image?title=${nom as string}&image=${
+              page.image as string
+            }`}
           />{' '}
         </Head>
         <PageLoader />;
@@ -216,7 +218,9 @@ const Nom = ({ page }: { page: User }) => {
     });
   };
 
-  const ImgUrl = 'https://inthepocket.tech/api/og-image?name=Next.js&stage=adopt';
+  const ImgUrl = `https://dabara.vercel.app/api/og-image?title=${nom as string}&image=${
+    page.image as string
+  }`;
   console.log(ImgUrl);
   return (
     <div>
