@@ -178,7 +178,24 @@ const Nom = ({ page }: { page: User }) => {
     });
 
   if (loadinguserinfo) {
-    return <PageLoader />;
+    return (
+      <>
+        <Head>
+          <link rel="icon" href="/favicon.ico" />
+          <meta name="title" content={'portfolio'} />
+          <meta
+            name="description"
+            content="Check out iPhone 12 XR Pro and iPhone 12 Pro Max. Visit your local store and for expert advice."
+            key="desc"
+          />
+          <meta
+            property="og:image"
+            content="https://inthepocket.tech/api/og-image?name=Next.js&stage=adopt"
+          />{' '}
+        </Head>
+        <PageLoader />;
+      </>
+    );
   }
 
   if (!userinfo) {
@@ -203,21 +220,6 @@ const Nom = ({ page }: { page: User }) => {
   console.log(ImgUrl);
   return (
     <div>
-      <Head>
-        <title>@{userinfo?.page} portfolio </title>
-        <link rel="icon" href="/favicon.ico" />
-        <meta name="title" content={`@${userinfo?.page as string} portfolio`} />
-        <meta
-          name="description"
-          content="
-        Suivez le parcours de @${userinfo?.page} sur Dabara. Découvrez ses compétences, ses projets et son réseau.
-        "
-        />
-        <meta
-          property="og:image"
-          content="https://inthepocket.tech/api/og-image?name=Next.js&stage=adopt"
-        />{' '}
-      </Head>
       <ToastContainer
         position="top-center"
         autoClose={1000}
