@@ -30,6 +30,7 @@ import {
   type InferGetServerSidePropsType,
   type NextPage,
 } from 'next';
+import { NextSeo } from 'next-seo';
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const prisma = new PrismaClient();
@@ -191,21 +192,28 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
   if (loadinguserinfo) {
     return (
       <>
-        <Head>
-          <link rel="icon" href="/favicon.ico" />
-          <meta name="title" content={'portfolio'} />
-          <meta
-            name="description"
-            content={`Suivez ${nom as string} sur Dabara et découvrez son portfolio.`}
-            key="desc"
-          />
-          <meta
-            property="og:image"
-            content={`https://dabara.vercel.app/api/og-image?title=${nom as string}&image=${
-              page?.image as string
-            }&fonction=${page?.fonction as string}`}
-          />
-        </Head>
+        <NextSeo
+          title="Dabara"
+          description="Dabara est une plateforme de partage de portfolio pour les développeurs"
+          canonical="https://dabara.com"
+          openGraph={{
+            url: 'https://dabara.com',
+            title: 'Dabara',
+            description: 'Dabara est une plateforme de partage de portfolio pour les développeurs',
+            images: [
+              {
+                url: `
+                https://dabara.vercel.app/api/og-image?title=${nom as string}&image=${
+                  page?.image as string
+                }&fonction=${page?.fonction as string}`,
+                width: 800,
+                height: 600,
+                alt: 'Dabara',
+              },
+            ],
+            site_name: 'Dabara',
+          }}
+        />
         <PageLoader />;
       </>
     );
@@ -240,22 +248,28 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
 
   return (
     <div>
-      <Head>
-        <link rel="icon" href="/favicon.ico" />
-        <title>Portfolio de {userinfo?.Profil?.name}</title>
-        <meta name="title" content={'portfolio'} />
-        <meta
-          name="description"
-          content={`Suivez ${nom as string} sur Dabara et découvrez son portfolio.`}
-          key="desc"
-        />
-        <meta
-          property="og:image"
-          content={`https://dabara.vercel.app/api/og-image?title=${nom as string}&image=${
-            page?.image as string
-          }&fonction=${page?.fonction as string}`}
-        />
-      </Head>
+      <NextSeo
+        title="Dabara"
+        description="Dabara est une plateforme de partage de portfolio pour les développeurs"
+        canonical="https://dabara.com"
+        openGraph={{
+          url: 'https://dabara.com',
+          title: 'Dabara',
+          description: 'Dabara est une plateforme de partage de portfolio pour les développeurs',
+          images: [
+            {
+              url: `
+          https://dabara.vercel.app/api/og-image?title=${nom as string}&image=${
+                page?.image as string
+              }&fonction=${page?.fonction as string}`,
+              width: 800,
+              height: 600,
+              alt: 'Dabara',
+            },
+          ],
+          site_name: 'Dabara',
+        }}
+      />
       <ToastContainer
         position="top-center"
         autoClose={1000}
