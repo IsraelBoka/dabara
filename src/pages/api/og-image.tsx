@@ -16,10 +16,12 @@ const interRegular = fetch(
 
 const handler = async (req: NextRequest) => {
   const searchParams = new URLSearchParams(req.nextUrl.search);
-  const title = searchParams.get('title') || 'Hello World';
+  const title = searchParams.get('title') || 'Boka Israël';
   const image =
     searchParams.get('image') ||
     'https://og-image.now.sh/**Hello%20World**.png?theme=light&md=1&fontSize=100px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fvercel-triangle-white.svg';
+  const fonction = searchParams.get('fonction') || 'Développeur';
+
   const interMediumFontData = await interMedium;
   const interRegularFontData = await interRegular;
 
@@ -27,10 +29,8 @@ const handler = async (req: NextRequest) => {
     (
       <div tw="flex h-full bg-[#1c1e2b] flex-row-reverse text-[#f7f8f8]">
         <div tw="w-1/2 flex h-full bg-[#21232f]">
-          {
-            // eslint-disable-next-line @next/next/no-img-element
-          }
           <div tw="flex flex-col mx-auto my-auto items-center ">
+            {/* es-lint-disable-next-line @next/no-img-element */}
             <img
               src={image}
               tw=" rounded-full flex h-[150px] w-[150px] "
@@ -39,7 +39,7 @@ const handler = async (req: NextRequest) => {
               alt="rien du tout "
             />
 
-            <h1 tw="text-2xl font-medium"> Développeur web fullstack</h1>
+            <h1 tw="text-2xl font-medium">{fonction}</h1>
           </div>
           <div
             tw="absolute left-[-80px] top-[-30px]  h-[120%] bg-[#1c1e2b]  w-[150px] "

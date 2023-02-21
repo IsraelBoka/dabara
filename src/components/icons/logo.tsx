@@ -1,4 +1,4 @@
-export const Logo = ({ classname, tw }: { classname?: string; tw?: string }) => (
+export const Logo = ({ classname }: { classname?: string }) => (
   <svg
     width="947"
     height="945"
