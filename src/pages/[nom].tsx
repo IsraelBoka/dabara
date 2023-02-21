@@ -25,16 +25,23 @@ import { PageLoader } from '../components/PageLoader';
 import { Skills } from '../components/Skills';
 import { NetworkForm } from '../components/NetworkForm';
 import { UnFound } from './404';
-import { type InferGetServerSidePropsType, type NextPage } from 'next';
+import {
+  type GetServerSidePropsContext,
+  type InferGetServerSidePropsType,
+  type NextPage,
+} from 'next';
 
-export async function getServerSideProps({ query }: { query: { nom: string } }) {
+export async function getServerSideProps(context: GetServerSidePropsContext) {
   const prisma = new PrismaClient();
   const page = await prisma.user.findFirst({
-    include: {
-      Profil: true,
+    select: {
+      id: true,
+      name: true,
+      image: true,
+      fonction: true,
     },
     where: {
-      page: query.nom,
+      page: context.query.nom as string,
     },
   });
 
@@ -235,7 +242,7 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
     <div>
       <Head>
         <link rel="icon" href="/favicon.ico" />
-        <title>Portfolio de {page.Profil?.name}</title>
+        <title>Portfolio de {userinfo?.Profil?.name}</title>
         <meta name="title" content={'portfolio'} />
         <meta
           name="description"
