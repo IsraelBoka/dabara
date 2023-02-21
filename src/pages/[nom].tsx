@@ -211,8 +211,8 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
     https://dabara.vercel.app/api/og-image?title=${nom as string}&image=${
                   page.image as string
                 }&fonction=${page.fonction as string}`,
-                width: 800,
-                height: 600,
+                width: 1200,
+                height: 630,
                 alt: 'Dabara',
               },
             ],
