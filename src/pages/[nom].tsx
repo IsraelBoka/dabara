@@ -192,41 +192,55 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
   if (loadinguserinfo && page) {
     return (
       <>
-        <NextSeo
-          title={`Dabara - Portfolio de ${nom as string}`}
-          description="Dabara est une plateforme de partage de portfolio pour les développeurs"
-          canonical="https://dabara.com"
-          twitter={{
-            handle: '@dabara',
-            site: '@dabara',
-            cardType: 'summary_large_image',
-          }}
-          openGraph={{
-            url: 'https://dabara.com',
-            title: 'Dabara',
+        <Head>
+          <NextSeo
+            title={`Dabara - Portfolio de ${nom as string}`}
+            description="Dabara est une plateforme de partage de portfolio pour les développeurs"
+            canonical="https://dabara.com"
+            twitter={{
+              handle: '@dabara',
 
-            description: 'Dabara est une plateforme de partage de portfolio pour les développeurs',
+              site: '@dabara',
+              cardType: 'summary_large_image',
+            }}
+            openGraph={{
+              url: 'https://dabara.com',
+              title: 'Dabara',
 
-            images: [
-              {
-                url: `
+              description:
+                'Dabara est une plateforme de partage de portfolio pour les développeurs',
+
+              images: [
+                {
+                  url: `
           https://dabara.vercel.app/api/og-image?title=${nom as string}&image=${
-                  page.image as string
-                }&fonction=${page.fonction as string}`,
-                width: 800,
-                height: 600,
-                alt: 'Dabara',
-              },
-            ],
+                    page.image as string
+                  }&fonction=${page.fonction as string}`,
+                  width: 800,
+                  height: 600,
+                  alt: 'Dabara',
+                },
+              ],
 
-            type: 'website',
-            site_name: 'Dabara',
-            profile: {
-              username: `${nom as string}`,
-              firstName: `${page.name as string}`,
-            },
-          }}
-        />
+              type: 'website',
+              site_name: 'Dabara',
+              profile: {
+                username: `${nom as string}`,
+                firstName: `${page.name as string}`,
+              },
+            }}
+          />
+          <meta
+            name="twitter:image"
+            content={`
+          https://dabara.vercel.app/api/og-image?title=${nom as string}&image=${
+              page.image as string
+            }&fonction=${page.fonction as string}`}
+          />
+          <meta name="twitter:image:alt" content="Dabara" />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:site" content="@dabara" />
+        </Head>
         <PageLoader />;
       </>
     );
@@ -261,54 +275,54 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
 
   return (
     <div>
-      <NextSeo
-        title={`Dabara - Portfolio de ${nom as string}`}
-        description="Dabara est une plateforme de partage de portfolio pour les développeurs"
-        canonical="https://dabara.com"
-        twitter={{
-          handle: '@dabara',
-          site: '@dabara',
-          cardType: 'summary_large_image',
-        }}
-        openGraph={{
-          url: 'https://dabara.com',
-          title: 'Dabara',
+      <Head>
+        <NextSeo
+          title={`Dabara - Portfolio de ${nom as string}`}
+          description="Dabara est une plateforme de partage de portfolio pour les développeurs"
+          canonical="https://dabara.com"
+          twitter={{
+            handle: '@dabara',
 
-          description: 'Dabara est une plateforme de partage de portfolio pour les développeurs',
+            site: '@dabara',
+            cardType: 'summary_large_image',
+          }}
+          openGraph={{
+            url: 'https://dabara.com',
+            title: 'Dabara',
 
-          images: [
-            {
-              url: `
-          https://dabara.vercel.app/api/og-image?title=${nom as string}&image=${
-                page.image as string
-              }&fonction=${page.fonction as string}`,
-              width: 800,
-              height: 600,
-              alt: 'Dabara',
+            description: 'Dabara est une plateforme de partage de portfolio pour les développeurs',
+
+            images: [
+              {
+                url: `
+    https://dabara.vercel.app/api/og-image?title=${nom as string}&image=${
+                  page.image as string
+                }&fonction=${page.fonction as string}`,
+                width: 800,
+                height: 600,
+                alt: 'Dabara',
+              },
+            ],
+
+            type: 'website',
+            site_name: 'Dabara',
+            profile: {
+              username: `${nom as string}`,
+              firstName: `${page.name as string}`,
             },
-          ],
-
-          type: 'website',
-          site_name: 'Dabara',
-          profile: {
-            username: `${nom as string}`,
-            firstName: `${page.name as string}`,
-          },
-        }}
-      />
-      <ToastContainer
-        position="top-center"
-        autoClose={1000}
-        hideProgressBar={false}
-        transition={Flip}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss={false}
-        draggable
-        pauseOnHover={false}
-        theme="dark"
-      />
+          }}
+        />
+        <meta
+          name="twitter:image"
+          content={`
+    https://dabara.vercel.app/api/og-image?title=${nom as string}&image=${
+            page.image as string
+          }&fonction=${page.fonction as string}`}
+        />
+        <meta name="twitter:image:alt" content="Dabara" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@dabara" />
+      </Head>
       {!userinfo && <Error statusCode={404} />}
 
       {/** ------------------------------------ Modal for image form ------------------------------------ */}
