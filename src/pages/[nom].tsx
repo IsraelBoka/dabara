@@ -192,55 +192,39 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
   if (loadinguserinfo && page) {
     return (
       <>
-        <Head>
-          <NextSeo
-            title={`Dabara - Portfolio de ${nom as string}`}
-            description="Dabara est une plateforme de partage de portfolio pour les développeurs"
-            canonical="https://dabara.com"
-            twitter={{
-              handle: '@dabara',
-
-              site: '@dabara',
-              cardType: 'summary_large_image',
-            }}
-            openGraph={{
-              url: 'https://dabara.com',
-              title: 'Dabara',
-
-              description:
-                'Dabara est une plateforme de partage de portfolio pour les développeurs',
-
-              images: [
-                {
-                  url: `
-          https://dabara.vercel.app/api/og-image?title=${nom as string}&image=${
-                    page.image as string
-                  }&fonction=${page.fonction as string}`,
-                  width: 800,
-                  height: 600,
-                  alt: 'Dabara',
-                },
-              ],
-
-              type: 'website',
-              site_name: 'Dabara',
-              profile: {
-                username: `${nom as string}`,
-                firstName: `${page.name as string}`,
+        <NextSeo
+          title={`Dabara - Portfolio de ${nom as string}`}
+          description="Dabara est une plateforme de partage de portfolio pour les développeurs"
+          canonical="https://dabara.com"
+          twitter={{
+            handle: '@dabara',
+            site: '@dabara',
+            cardType: 'summary_large_image',
+          }}
+          openGraph={{
+            url: 'https://dabara.com',
+            title: 'Dabara',
+            description: 'Dabara est une plateforme de partage de portfolio pour les développeurs',
+            images: [
+              {
+                url: `
+    https://dabara.vercel.app/api/og-image?title=${nom as string}&image=${
+                  page.image as string
+                }&fonction=${page.fonction as string}`,
+                width: 800,
+                height: 600,
+                alt: 'Dabara',
               },
-            }}
-          />
-          <meta
-            name="twitter:image"
-            content={`
-          https://dabara.vercel.app/api/og-image?title=${nom as string}&image=${
-              page.image as string
-            }&fonction=${page.fonction as string}`}
-          />
-          <meta name="twitter:image:alt" content="Dabara" />
-          <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:site" content="@dabara" />
-        </Head>
+            ],
+
+            type: 'website',
+            site_name: 'Dabara',
+            profile: {
+              username: `${nom as string}`,
+              firstName: `${page.name as string}`,
+            },
+          }}
+        />
         <PageLoader />;
       </>
     );
@@ -275,54 +259,43 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
 
   return (
     <div>
-      <Head>
-        <NextSeo
-          title={`Dabara - Portfolio de ${nom as string}`}
-          description="Dabara est une plateforme de partage de portfolio pour les développeurs"
-          canonical="https://dabara.com"
-          twitter={{
-            handle: '@dabara',
+      <NextSeo
+        title={`Dabara - Portfolio de ${nom as string}`}
+        description="Dabara est une plateforme de partage de portfolio pour les développeurs"
+        canonical="https://dabara.com"
+        twitter={{
+          handle: '@dabara',
 
-            site: '@dabara',
-            cardType: 'summary_large_image',
-          }}
-          openGraph={{
-            url: 'https://dabara.com',
-            title: 'Dabara',
+          site: '@dabara',
+          cardType: 'summary_large_image',
+        }}
+        openGraph={{
+          url: 'https://dabara.com',
+          title: 'Dabara',
 
-            description: 'Dabara est une plateforme de partage de portfolio pour les développeurs',
+          description: 'Dabara est une plateforme de partage de portfolio pour les développeurs',
 
-            images: [
-              {
-                url: `
+          images: [
+            {
+              url: `
     https://dabara.vercel.app/api/og-image?title=${nom as string}&image=${
-                  page.image as string
-                }&fonction=${page.fonction as string}`,
-                width: 800,
-                height: 600,
-                alt: 'Dabara',
-              },
-            ],
-
-            type: 'website',
-            site_name: 'Dabara',
-            profile: {
-              username: `${nom as string}`,
-              firstName: `${page.name as string}`,
+                page.image as string
+              }&fonction=${page.fonction as string}`,
+              width: 800,
+              height: 600,
+              alt: 'Dabara',
             },
-          }}
-        />
-        <meta
-          name="twitter:image"
-          content={`
-    https://dabara.vercel.app/api/og-image?title=${nom as string}&image=${
-            page.image as string
-          }&fonction=${page.fonction as string}`}
-        />
-        <meta name="twitter:image:alt" content="Dabara" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@dabara" />
-      </Head>
+          ],
+
+          type: 'website',
+          site_name: 'Dabara',
+          profile: {
+            username: `${nom as string}`,
+            firstName: `${page.name as string}`,
+          },
+        }}
+      />
+
       {!userinfo && <Error statusCode={404} />}
 
       {/** ------------------------------------ Modal for image form ------------------------------------ */}
