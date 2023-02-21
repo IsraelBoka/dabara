@@ -241,6 +241,21 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
 
   return (
     <div>
+      <Head>
+        <link rel="icon" href="/favicon.ico" />
+        <meta name="title" content={'portfolio'} />
+        <meta
+          name="description"
+          content={`Suivez ${nom as string} sur Dabara et découvrez son portfolio.`}
+          key="desc"
+        />
+        <meta
+          property="og:image"
+          content={`https://dabara.vercel.app/api/og-image?title=${nom as string}&image=${
+            page?.image as string
+          }&fonction=${page?.fonction as string}`}
+        />
+      </Head>
       <ToastContainer
         position="top-center"
         autoClose={1000}

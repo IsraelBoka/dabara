@@ -1,6 +1,5 @@
 import { ImageResponse } from '@vercel/og';
 import { type NextRequest } from 'next/server';
-import { Logo } from '../../components/icons/logo';
 
 export const config = {
   runtime: 'experimental-edge',
