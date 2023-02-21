@@ -38,7 +38,8 @@ const handler = async (req: NextRequest) => {
               alt="rien du tout "
             />
 
-            <h1 tw="text-2xl font-medium">{fonction}</h1>
+            <h1 tw="text-2xl font-medium">@{title}</h1>
+            <h2 tw="text-xl flex mt-2 font-medium">{fonction}</h2>
           </div>
           <div
             tw="absolute left-[-80px] top-[-30px]  h-[120%] bg-[#1c1e2b]  w-[150px] "

@@ -203,7 +203,7 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
           }}
           openGraph={{
             url: 'https://dabara.com',
-            title: 'Dabara',
+            title: `Dabara - @${nom as string}`,
             description: 'Dabara est une plateforme de partage de portfolio pour les développeurs',
             images: [
               {
