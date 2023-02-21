@@ -249,25 +249,36 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
   return (
     <div>
       <NextSeo
-        title="Dabara"
+        title={`Dabara - Portfolio de ${nom as string}`}
         description="Dabara est une plateforme de partage de portfolio pour les développeurs"
         canonical="https://dabara.com"
+        twitter={{
+          handle: '@dabara',
+          site: '@dabara',
+          cardType: 'summary_large_image',
+        }}
         openGraph={{
           url: 'https://dabara.com',
           title: 'Dabara',
+
           description: 'Dabara est une plateforme de partage de portfolio pour les développeurs',
+
           images: [
             {
               url: `
           https://dabara.vercel.app/api/og-image?title=${nom as string}&image=${
-                page?.image as string
-              }&fonction=${page?.fonction as string}`,
+                page.image as string
+              }&fonction=${page.fonction as string}`,
               width: 800,
               height: 600,
               alt: 'Dabara',
             },
           ],
           site_name: 'Dabara',
+          profile: {
+            username: `${nom as string}`,
+            firstName: `${page.name as string}`,
+          },
         }}
       />
       <ToastContainer
