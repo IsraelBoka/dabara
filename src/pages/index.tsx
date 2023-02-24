@@ -82,7 +82,7 @@ const Home: NextPage = () => {
                 alt="Rien du tout "
               />
             </div>
-            <div className="absolute inset-0 -z-10 bg-gradient-to-b from-blue-600 to-yellow-800 blur-lg " />
+            <div className="absolute inset-0 -z-10 bg-gradient-to-b from-blue-600 to-yellow-800 opacity-75 blur-lg hover:opacity-100 " />
           </div>
 
           <div className="my-8 flex flex-col items-center lg:flex-row">
