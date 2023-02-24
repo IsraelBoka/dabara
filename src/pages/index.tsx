@@ -72,13 +72,17 @@ const Home: NextPage = () => {
             </div>
           </div>
 
-          <div className="my-8 translate-y-[-1rem] animate-fade-in rounded border-2 border-gray-800  p-1 opacity-0 [--animation-delay:800ms]">
-            <Image
-              src="/dabara.vercel.app_Erica.png"
-              width={2000}
-              height={2000}
-              alt="Rien du tout "
-            />
+          <div className="relative my-10 translate-y-[-1rem] animate-fade-in rounded   p-1 opacity-0 [--animation-delay:800ms]">
+            <div>
+              <Image
+                src="/dabara.vercel.app_Erica.png"
+                width={2000}
+                height={2000}
+                className="rounded "
+                alt="Rien du tout "
+              />
+            </div>
+            <div className="absolute inset-0 -z-10 bg-gradient-to-b from-blue-600 to-yellow-800 blur-lg " />
           </div>
 
           <div className="my-8 flex flex-col items-center lg:flex-row">
@@ -99,7 +103,7 @@ const Home: NextPage = () => {
                 className="cursor-pointer "
                 fonction="Designer UX/UI"
               />
-              <div className="transition-opacity duration-75 [.opened+&]:cursor-default	 [.opened+&]:opacity-0">
+              <div className="transition-opacity duration-100 [.opened+&]:cursor-default	 [.opened+&]:opacity-0">
                 <h1 className="text-center   font-bold "> Carte de visite</h1>
                 <h2 className="m-2 text-center text-sm text-gray-400 ">
                   Vous obtenez une carte de visite à partager <br /> sur vos réseaux
