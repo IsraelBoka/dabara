@@ -9,6 +9,7 @@ import { Hero, HeroSub, HeroTitle } from '../components/Hero';
 import { Button } from '../components/Button';
 import Image from 'next/image';
 import { Footer } from '../components/Footer';
+import { SocialCard } from '../components/SocialCard';
 
 const Home: NextPage = () => {
   const { data: sessionData } = useSession();
@@ -71,6 +72,15 @@ const Home: NextPage = () => {
             </div>
           </div>
 
+          <div className="my-8 translate-y-[-1rem] animate-fade-in rounded border-2 border-gray-800  p-1 opacity-0 [--animation-delay:800ms]">
+            <Image
+              src="/dabara.vercel.app_Erica.png"
+              width={2000}
+              height={2000}
+              alt="Rien du tout "
+            />
+          </div>
+
           <div className="my-8 flex flex-col items-center lg:flex-row">
             <Hero>
               <HeroTitle className="translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:800ms]">
@@ -82,14 +92,19 @@ const Home: NextPage = () => {
                 <br className="hidden md:block" /> projets et vos réalisations
               </HeroSub>
             </Hero>
-            <div className="ml-auto  translate-y-[-1rem] animate-fade-in rounded border-2 border-blue-300 p-2 opacity-0 [--animation-delay:1200ms]">
-              <Image
-                src="/deuxiemeblackgirldev.jpg"
-                width={700}
-                height={700}
-                alt="Rien du tout "
-                className="rounded "
+            <div className="flex translate-y-[-1rem] animate-fade-in flex-col-reverse items-center   overflow-clip rounded-md border border-gray-700 p-1 opacity-0 [--animation-delay:1200ms] lg:ml-auto lg:py-4 lg:px-6">
+              <SocialCard
+                image="/SocialCardErica.webp"
+                title="Erica"
+                className="cursor-pointer "
+                fonction="Designer UX/UI"
               />
+              <div className="transition-opacity duration-75 [.opened+&]:cursor-default	 [.opened+&]:opacity-0">
+                <h1 className="text-center   font-bold "> Carte de visite</h1>
+                <h2 className="m-2 text-center text-sm text-gray-400 ">
+                  Vous obtenez une carte de visite à partager <br /> sur vos réseaux
+                </h2>
+              </div>
             </div>
           </div>
 
@@ -104,7 +119,7 @@ const Home: NextPage = () => {
                 recrutements grace à notre moteur de recherche
               </HeroSub>
             </Hero>
-            <div className="ml-auto  translate-y-[-1rem] animate-fade-in rounded border-2 border-orange-500 p-2 opacity-0 [--animation-delay:600ms]">
+            <div className="flex translate-y-[-1rem] animate-fade-in flex-col-reverse items-center   overflow-clip rounded-md border border-gray-700 p-1 opacity-0 [--animation-delay:1200ms] lg:ml-auto lg:py-4 lg:px-6 ">
               <Image
                 src="/jeunecadredynamique.jpg"
                 width={700}

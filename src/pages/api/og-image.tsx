@@ -48,7 +48,7 @@ const handler = async (req: NextRequest) => {
           ></div>
         </div>
         <div tw="w-1/2  flex flex-col mt-auto p-8 mb-auto z-10 relative">
-          <div tw="flex flex-row items-center border rounded-md">
+          <div tw="flex flex-row items-center border border-gray-300 rounded-md">
             <svg
               width="947"
               height="945"

@@ -67,9 +67,7 @@ const Signin: NextPage = () => {
               <button
                 className="inline-flex items-center justify-center gap-2 rounded border p-2  transition-colors duration-300 hover:bg-gray-900 "
                 onClick={async () => {
-                  await signIn('linkedin', {
-                    callbackUrl: '/',
-                  });
+                  await signIn('linkedin');
                 }}
               >
                 <span className="flex-1">Se connecter avec LinkedIn</span>
@@ -78,9 +76,7 @@ const Signin: NextPage = () => {
               <button
                 className="inline-flex items-center justify-center  gap-2 rounded border p-2 transition-colors duration-300 hover:bg-gray-900 "
                 onClick={async () => {
-                  await signIn('google', {
-                    callbackUrl: '/',
-                  });
+                  await signIn('google');
                 }}
               >
                 <span className="flex-1">Se connecter avec Google</span>
@@ -89,9 +85,7 @@ const Signin: NextPage = () => {
 
               <button
                 onClick={async () => {
-                  await signIn('discord', {
-                    callbackUrl: '/',
-                  });
+                  await signIn('discord');
                 }}
                 className="inline-flex items-center justify-center gap-2 rounded border p-2  transition-colors duration-300 hover:bg-gray-900"
               >
