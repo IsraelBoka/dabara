@@ -72,17 +72,17 @@ const Home: NextPage = () => {
             </div>
           </div>
 
-          <div className="relative my-10 translate-y-[-1rem] animate-fade-in rounded   p-1 opacity-0 [--animation-delay:800ms]">
+          <div className="group relative my-10 translate-y-[-1rem] animate-fade-in rounded   p-1 opacity-0 [--animation-delay:800ms]">
             <div>
               <Image
                 src="/dabara.vercel.app_Erica.png"
                 width={2000}
                 height={2000}
-                className="rounded "
+                className=" rounded "
                 alt="Rien du tout "
               />
             </div>
-            <div className="absolute inset-0 -z-10 bg-gradient-to-b from-blue-600 to-yellow-800 opacity-75 blur-lg hover:opacity-100 " />
+            <div className="absolute inset-0 -z-10 bg-gradient-to-b from-blue-600 to-yellow-800 opacity-60 blur-lg transition-opacity duration-700 group-hover:opacity-100 " />
           </div>
 
           <div className="my-8 flex flex-col items-center lg:flex-row">
