@@ -1,7 +1,7 @@
 import Error from 'next/error';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useState, Fragment, useRef, type RefObject } from 'react';
+import { useState, useEffect, Fragment, useRef, type RefObject } from 'react';
 import { Avatar } from '../components/Avatar';
 import { Container } from '../components/container';
 import { Clipboard } from '../components/icons/clipboard';
@@ -63,8 +63,22 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
 const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({ page }) => {
   const router = useRouter();
+  {
+    /**
+  const [isLoading, setIsLoading] = useState(true);
 
+  useEffect(() => {
+    setIsLoading(false);
+  }, [page]);
+
+  {
+    isLoading && <PageLoader />;
+  }
+ */
+  }
   const { nom } = router.query;
+  // Set isLoading to false once data has been fetched
+
   const session = useSession();
   const [changedesc, setchangedesc] = useState(false);
   const [changefonction, setChangefonction] = useState(false);

@@ -10,6 +10,14 @@ import { Button } from '../components/Button';
 import Image from 'next/image';
 import { Footer } from '../components/Footer';
 import { SocialCard } from '../components/SocialCard';
+import { Feature } from '../components/Feature';
+import { LinkedIn } from '../components/icons/linkedin';
+import { Roue } from '../components/icons/features/Roue';
+import { Users } from '../components/icons/features/Users';
+import { BankCard } from '../components/icons/features/BankCard';
+import { Share } from '../components/icons/features/Share';
+import { SearchFeature } from '../components/icons/features/SearchFeature';
+import { Chart } from '../components/icons/features/Charts';
 
 const Home: NextPage = () => {
   const { data: sessionData } = useSession();
@@ -78,14 +86,14 @@ const Home: NextPage = () => {
                 src="/dabara.vercel.app_Erica.png"
                 width={2000}
                 height={2000}
-                className=" rounded "
+                className=" pointer-events-none rounded"
                 alt="Rien du tout "
               />
             </div>
             <div className="absolute inset-0 -z-10 bg-gradient-to-b from-blue-600 to-yellow-800 opacity-60 blur-lg transition-opacity duration-700 group-hover:opacity-100 " />
           </div>
 
-          <div className="my-8 flex flex-col items-center lg:flex-row">
+          <div className="my-20 flex flex-col items-center lg:flex-row">
             <Hero>
               <HeroTitle className="translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:800ms]">
                 Partagez vos réseaux <br className="hidden md:block" />
@@ -133,6 +141,7 @@ const Home: NextPage = () => {
               />
             </div>
           </div>
+
           <div>
             <div className="mt-8 flex justify-center ">
               <Button
@@ -145,7 +154,60 @@ const Home: NextPage = () => {
               </Button>
             </div>
           </div>
-          <div className="mt-12">
+
+          <div className="mt-12  flex  flex-col ">
+            <Hero>
+              <HeroTitle
+                size={'small'}
+                className="translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:200ms]"
+              >
+                Des fonctionnalités <br className="hidden md:block" />
+                <span className="text-blue-300">simples</span>
+              </HeroTitle>
+            </Hero>
+            <hr className="m-8 h-[1px] border-none bg-gray-800" />
+            <div className="mx-auto ">
+              <Feature
+                feature={[
+                  {
+                    title: 'Complètement modifiable',
+                    description: ' Vous pouvez modifier votre profil à tout moment', // 100 caractères max
+                    Icon: Roue,
+                  },
+                  {
+                    title: "Créer un profil sans compte d'utilisateur",
+                    description: ' Connectez vous avec votre compte LinkedIn, Google ou Discord', // 100 caractères max
+                    Icon: Users,
+                  },
+                  {
+                    title: 'Gratuit',
+                    description:
+                      ' Vous pouvez créer un profil gratuitement et sans limite de temps', // 100 caractères max
+                    Icon: BankCard,
+                  },
+                  {
+                    title: 'Carte de visite',
+                    description:
+                      ' Vous pouvez partager votre carte de visite sur vos réseaux sociaux', // 100 caractères max
+                    Icon: Share,
+                  },
+                  {
+                    title: 'Recherche de profils',
+                    description: ' Vous pouvez rechercher des profils en fonction de vos critères', // 100 caractères max
+                    Icon: SearchFeature,
+                  },
+                  {
+                    title: 'Statistiques',
+                    description:
+                      " Vous pouvez consulter l'affluence que vous avez sur votre profil",
+                    Icon: Chart,
+                  },
+                ]}
+              />
+            </div>
+          </div>
+
+          <div className="mt-32">
             <Footer />
           </div>
         </Container>
