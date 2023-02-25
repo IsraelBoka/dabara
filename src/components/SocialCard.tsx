@@ -32,7 +32,9 @@ export const SocialCard = (props: SocialCardProps) => {
       className={ClassNames(
         'flex h-full w-80 flex-row rounded-md bg-[#1c1e2b] text-[#f7f8f8] transition-[transform,opacity] duration-200 md:w-96',
         className,
-        isOpen ? 'opened -translate-y-10  opacity-100 ' : ' translate-y-10 opacity-60 ',
+        isOpen
+          ? 'opened -translate-y-10  opacity-100 '
+          : 'translate-y-10 cursor-default opacity-60 ',
       )}
       ref={CardRef}
     >
