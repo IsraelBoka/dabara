@@ -123,7 +123,7 @@ export const ImageCard = (props: ImageCardProps) => {
         </div>
       </div>
       <div className="my-2">
-        <Button variant={'secondary'} href={link}>
+        <Button target={'_blank'} variant={'secondary'} href={link}>
           Voir le projet
         </Button>
       </div>

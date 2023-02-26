@@ -11,13 +11,13 @@ import Image from 'next/image';
 import { Footer } from '../components/Footer';
 import { SocialCard } from '../components/SocialCard';
 import { Feature } from '../components/Feature';
-import { LinkedIn } from '../components/icons/linkedin';
 import { Roue } from '../components/icons/features/Roue';
 import { Users } from '../components/icons/features/Users';
 import { BankCard } from '../components/icons/features/BankCard';
 import { Share } from '../components/icons/features/Share';
 import { SearchFeature } from '../components/icons/features/SearchFeature';
 import { Chart } from '../components/icons/features/Charts';
+import { Searchforlanding } from '../components/Searchforlanding';
 
 const Home: NextPage = () => {
   const { data: sessionData } = useSession();
@@ -114,7 +114,7 @@ const Home: NextPage = () => {
               <div className="transition-opacity duration-100 [.opened+&]:cursor-default	 [.opened+&]:opacity-0">
                 <h1 className="text-center   font-bold "> Carte de visite</h1>
                 <h2 className="m-2 text-center text-sm text-gray-400 ">
-                  Vous obtenez une carte de visite à partager <br /> sur vos réseaux
+                  Vous obtenez une carte de visite à partager <br /> sur vos réseaux sociaux
                 </h2>
               </div>
             </div>
@@ -131,14 +131,8 @@ const Home: NextPage = () => {
                 recrutements grace à notre moteur de recherche
               </HeroSub>
             </Hero>
-            <div className="flex translate-y-[-1rem] animate-fade-in flex-col-reverse items-center   overflow-clip rounded-md border border-gray-700 p-1 opacity-0 [--animation-delay:1200ms] lg:ml-auto lg:py-4 lg:px-6 ">
-              <Image
-                src="/jeunecadredynamique.jpg"
-                width={700}
-                height={700}
-                alt="Rien du tout "
-                className="rounded "
-              />
+            <div className="flex translate-y-[-1rem] animate-fade-in justify-center  overflow-clip rounded-md    border border-gray-700 p-2 opacity-0 [--animation-delay:1200ms] lg:mr-auto lg:h-72 lg:w-96 lg:py-4 lg:px-6">
+              <Searchforlanding />
             </div>
           </div>
 

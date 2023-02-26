@@ -52,8 +52,8 @@ export const Avatar = (props: AvatarProps) => {
             className=" h-11 w-11 rounded-full object-contain md:h-16 md:w-16"
             referrerPolicy="origin"
             src={lien}
-            width={500}
-            height={500}
+            width={2000}
+            height={2000}
             alt="Image  de profil"
           />
         ) : (
@@ -61,8 +61,8 @@ export const Avatar = (props: AvatarProps) => {
             referrerPolicy="origin"
             className="h-16 w-16"
             src={`https://api.dicebear.com/5.x/lorelei/svg?seed=${nom.replace(' ', '-')}`}
-            width={500}
-            height={500}
+            width={2000}
+            height={2000}
             alt="test"
           />
         )}
