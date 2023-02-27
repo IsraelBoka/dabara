@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import { TimeIcon } from './icons/features/TimeIcon';
@@ -158,7 +159,9 @@ export const Searchforlanding = () => {
                 onClick={(ev) => onActionButtonClick(ev, action.text)}
                 key={index}
                 data-action={action.text}
-                className=" shrink-0 snap-center rounded-full border border-gray-800  p-1 text-sm font-medium first:ml-[50vw] last:mr-[50vw]"
+                className={classNames(" shrink-0 snap-center rounded-full border border-gray-800  p-1 text-sm font-medium first:ml-[50vw] last:mr-[50vw]", 
+                  selectedAction === action.text ? "" : "opacity-60",
+                )}
               >
                 {action.text}
               </button>
