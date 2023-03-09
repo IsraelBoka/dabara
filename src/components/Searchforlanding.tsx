@@ -100,7 +100,7 @@ export const Searchforlanding = () => {
                 <SearchIcon className="h-4 w-4 md:h-5 md:w-5" />
               </div>
               <input
-                className=" decoration-none w-72 rounded-r-sm border-0 bg-[#2b2d3c] p-0 focus:border-0  focus:outline-none focus:ring-0 focus:ring-offset-0 md:p-0.5 "
+                className=" decoration-none w-56 rounded-r-sm border-0 bg-[#2b2d3c] p-0 focus:border-0 focus:outline-none  focus:ring-0 focus:ring-offset-0 md:w-72 md:p-0.5 "
                 disabled={true}
                 type="text"
                 placeholder="Recherche..."
@@ -159,8 +159,9 @@ export const Searchforlanding = () => {
                 onClick={(ev) => onActionButtonClick(ev, action.text)}
                 key={index}
                 data-action={action.text}
-                className={classNames(" shrink-0 snap-center rounded-full border border-gray-800  p-1 text-sm font-medium first:ml-[50vw] last:mr-[50vw]", 
-                  selectedAction === action.text ? "" : "opacity-60",
+                className={classNames(
+                  ' shrink-0 snap-center rounded-full border border-gray-800  p-1 text-sm font-medium first:ml-[50vw] last:mr-[50vw]',
+                  selectedAction === action.text ? '' : 'opacity-60',
                 )}
               >
                 {action.text}

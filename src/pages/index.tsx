@@ -95,12 +95,17 @@ const Home: NextPage = () => {
           </div>
 
           <div className="group relative my-10 translate-y-[-1rem] animate-fade-in rounded   p-1 opacity-0 [--animation-delay:800ms]">
-            <div>
+            <div className="flex flex-col">
+              <div className="div flex gap-1 rounded-t bg-[#101010] p-2 ">
+                <div className="ml-4 h-1.5 w-1.5 rounded-full bg-gray-700 md:h-3 md:w-3" />
+                <div className="h-1.5 w-1.5 rounded-full bg-gray-700 md:h-3 md:w-3" />
+                <div className="h-1.5 w-1.5 rounded-full bg-gray-700 md:h-3 md:w-3" />
+              </div>
               <Image
-                src="/dabara.vercel.app_Erica.png"
+                src="/GIFPORTFOLIO.gif"
                 width={2000}
                 height={2000}
-                className=" pointer-events-none rounded"
+                className=" pointer-events-none rounded-b"
                 alt="Rien du tout "
               />
             </div>
@@ -134,7 +139,7 @@ const Home: NextPage = () => {
             </div>
           </div>
 
-          <div className="mt-12  flex flex-col lg:flex-row-reverse ">
+          <div className="mt-12  flex flex-col items-center  lg:flex-row-reverse ">
             <Hero>
               <HeroTitle className="translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:200ms]">
                 Pour les <span className="text-orange-300">employeurs</span>
@@ -145,7 +150,7 @@ const Home: NextPage = () => {
                 recrutements grace à notre moteur de recherche
               </HeroSub>
             </Hero>
-            <div className="flex translate-y-[-1rem] animate-fade-in justify-center  overflow-clip rounded-md    border border-gray-700 p-2 opacity-0 [--animation-delay:1200ms] lg:mr-auto lg:h-72 lg:w-96 lg:py-4 lg:px-6">
+            <div className="flex h-72 w-64 translate-y-[-1rem] animate-fade-in justify-center  overflow-clip rounded-md    border border-gray-700 p-2 opacity-0 [--animation-delay:1200ms] md:h-72 md:w-80 lg:mr-auto lg:h-72 lg:w-96 lg:py-4 lg:px-6">
               <Searchforlanding />
             </div>
           </div>
