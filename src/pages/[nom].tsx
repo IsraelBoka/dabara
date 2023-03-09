@@ -1,7 +1,7 @@
 import Error from 'next/error';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useState, useEffect, Fragment, useRef, type RefObject } from 'react';
+import { useState, Fragment, useRef, type RefObject } from 'react';
 import { Avatar } from '../components/Avatar';
 import { Container } from '../components/container';
 import { Clipboard } from '../components/icons/clipboard';
@@ -308,6 +308,20 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
             firstName: `${page.name as string}`,
           },
         }}
+      />
+
+      <ToastContainer
+        position="bottom-right"
+        autoClose={1000}
+        hideProgressBar={false}
+        transition={Flip}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss={false}
+        draggable
+        pauseOnHover={false}
+        theme="dark"
       />
 
       {!userinfo && <Error statusCode={404} />}
