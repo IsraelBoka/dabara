@@ -96,7 +96,7 @@ const Home: NextPage = () => {
 
           <div className="group relative my-10 translate-y-[-1rem] animate-fade-in rounded   p-1 opacity-0 [--animation-delay:800ms]">
             <div className="flex flex-col">
-              <div className="div flex gap-1 rounded-t bg-[#101010] p-2 ">
+              <div className=" flex gap-1 rounded-t bg-[#101010] p-2 ">
                 <div className="ml-4 h-1.5 w-1.5 rounded-full bg-gray-700 md:h-3 md:w-3" />
                 <div className="h-1.5 w-1.5 rounded-full bg-gray-700 md:h-3 md:w-3" />
                 <div className="h-1.5 w-1.5 rounded-full bg-gray-700 md:h-3 md:w-3" />
@@ -111,7 +111,7 @@ const Home: NextPage = () => {
               />*/}
               {/** video to show the website */}
               <video autoPlay loop muted className="rounded-b">
-                <source src="/Gifportfolio5.webm" type="video/mp4" />
+                <source src="/Gifportfolio5.webm" type="video/webm" />
               </video>
             </div>
             <div className="absolute inset-0 -z-10 bg-gradient-to-b from-blue-600 to-yellow-800 opacity-60 blur-lg transition-opacity duration-700 group-hover:opacity-100 " />
