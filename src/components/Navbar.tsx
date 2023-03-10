@@ -92,6 +92,7 @@ const Navbar = () => {
           )}
 
           <button className="ml-4   md:hidden" onClick={() => setOpen(!open)}>
+            <span className="sr-only">Open main menu</span>
             <Hamburger classname=" w-4 " />
           </button>
         </div>
