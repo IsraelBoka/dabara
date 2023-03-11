@@ -12,7 +12,8 @@ import Loader from '../../components/Loader';
 const Signin: NextPage = () => {
   const router = useRouter();
   const { status } = useSession();
-  const { callbackUrl = '/', error: errorType } = router.query;
+
+  const { callbackUrl, error: errorType } = router.query;
 
   if (status === 'loading') {
     return (

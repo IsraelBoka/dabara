@@ -15,7 +15,7 @@ import { Javascript } from '../components/icons/skills/javascript';
 import { Reactjs } from '../components/icons/skills/react';
 import { Nodejs } from '../components/icons/skills/nodejs';
 import { Angularjs } from '../components/icons/skills/angular';
-import Head from 'next/head';
+import { NextSeo } from 'next-seo';
 
 type FormData = {
   name: string;
@@ -92,15 +92,18 @@ const Creerpage = () => {
 
   if (status === 'unauthenticated') {
     return (
-      <div className="flex min-h-screen flex-col items-center justify-center">
-        <Link href={'/'} passHref>
-          <Logo classname="hover:scale-105 duration-300 transition w-16 h-16 mr-2 stroke-white" />
-        </Link>
-        <h1 className="p-4 text-center text-sm md:text-xl lg:text-2xl">
-          Connectez vous pour créer une page
-        </h1>
-        <Button onClick={() => void signIn()}>Se connecter</Button>
-      </div>
+      <>
+        <NextSeo title="Dabara - Créer une page" description="Créer une page" />
+        <div className="flex min-h-screen flex-col items-center justify-center">
+          <Link href={'/'} passHref>
+            <Logo classname="hover:scale-105 duration-300 transition w-16 h-16 mr-2 stroke-white" />
+          </Link>
+          <h1 className="p-4 text-center text-sm md:text-xl lg:text-2xl">
+            Connectez vous pour créer une page
+          </h1>
+          <Button onClick={() => void signIn()}>Se connecter</Button>
+        </div>
+      </>
     );
   }
 
@@ -161,10 +164,14 @@ const Creerpage = () => {
   });
   return (
     <>
-      <Head>
-        <title>Dabara - Créer une page</title>
-        <meta name="description" content="Créer une page" />
-      </Head>
+      <NextSeo
+        title="Dabara - Créer une page"
+        description="Créer une page"
+        openGraph={{
+          title: 'Dabara - Créer une page',
+          description: 'Créer une page',
+        }}
+      />
       {getpage?.page === null && (
         <div>
           <Container>

@@ -56,17 +56,14 @@ const Recherche = () => {
 
   return (
     <>
-    <NextSeo 
-    title="Dabara - Recherche de profils"
-    description="Recherchez des profils par compétences ou par nom"
-    openGraph={{
-      title: 'Recherche',
-      description: 'Recherchez des profils par compétences ou par nom',
-    }}
-
-
-    
-    />
+      <NextSeo
+        title="Dabara - Recherche de profils"
+        description="Recherchez des profils par compétences ou par nom"
+        openGraph={{
+          title: 'Recherche',
+          description: 'Recherchez des profils par compétences ou par nom',
+        }}
+      />
       {loading ? (
         <PageLoader />
       ) : (
@@ -159,9 +156,9 @@ const Recherche = () => {
               </button>
             </div> */}
             {hasNextPage && !isFetching && (
-              <div className="flex items-center justify-center ">
+              <div className="mt-5 flex items-center justify-center">
                 <Button
-                  variant={'secondary'}
+                  variant={'tertiary'}
                   className="text-center "
                   onClick={async () => {
                     await fetchNextPage();
