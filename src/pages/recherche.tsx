@@ -36,17 +36,26 @@ const Recherche = () => {
     setIsOpen(true);
   }
 
-  const profiles = api.profile.searchprofile.useQuery(
-    { search: recherche, Tags: competences },
+  const {
+    data: QuerySearch,
+    fetchNextPage,
+    hasNextPage,
+    isFetching,
+  } = api.profile.searchprofile.useInfiniteQuery(
+    { search: recherche, Tags: competences, limit: 2 },
     {
       keepPreviousData: true,
       refetchOnWindowFocus: false,
       refetchOnMount: false,
       refetchOnReconnect: false,
+      getNextPageParam: (lastPage) => lastPage?.nextCursor,
+
       refetchInterval: false,
       refetchIntervalInBackground: false,
     },
   );
+
+  const profiles = QuerySearch?.pages[0]?.profile;
 
   return (
     <>
@@ -74,17 +83,17 @@ const Recherche = () => {
             <button className="group" onClick={openModal}>
               <FilterIcon className="h-6 w-6 animate-fade-in text-white opacity-0 transition-colors duration-300 [--animation-delay:600ms] group-hover:stroke-gray-300" />
             </button>
-            {profiles.isFetching ? (
+            {isFetching ? (
               <div className="mt-5 animate-fade-in  opacity-0  [--animation-delay:800ms]">
                 <Loader />
               </div>
-            ) : profiles.data?.length === 0 ? (
+            ) : profiles?.length === 0 ? (
               <div className="flex h-full w-full items-center justify-center">
                 <p className="text-white">Aucun résultat</p>
               </div>
             ) : (
               <div className="mt-5 flex flex-wrap justify-center gap-6">
-                {profiles.data?.map((profile) => {
+                {profiles?.map((profile) => {
                   return (
                     <Link
                       href={`/${profile.page || ''}`}
@@ -115,6 +124,15 @@ const Recherche = () => {
                             </span>
                           );
                         })}
+
+                        <button
+                          onClick={async () => {
+                            await fetchNextPage();
+                          }}
+                          disabled={!hasNextPage}
+                        >
+                          Load More
+                        </button>
                       </div>
                     </Link>
                   );

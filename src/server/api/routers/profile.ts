@@ -80,11 +80,18 @@ export const ProfileRouter = createTRPCRouter({
       z.object({
         search: z.string(),
         Tags: z.string().array().optional(),
+        cursor: z.string().nullish(),
+        limit: z.number().min(1).max(100).nullish(),
       }),
     )
     .query(async ({ ctx, input }) => {
+      const limit = input.limit ?? 50;
+      const { cursor } = input;
+
       if (input.Tags === undefined || input.Tags.length === 0) {
         const profile = await ctx.prisma.user.findMany({
+          take: limit + 1, // get an extra item at the end which we'll use as next cursor
+
           include: {
             Competence: true,
           },
@@ -96,31 +103,23 @@ export const ProfileRouter = createTRPCRouter({
               not: null,
             },
           },
-        });
-        return profile;
-      }
 
-      const profile = await ctx.prisma.user.findMany({
-        include: {
-          Competence: true,
-        },
-        where: {
-          name: {
-            contains: input.search,
+          cursor: cursor ? { id: cursor } : undefined,
+          orderBy: {
+            id: 'asc',
           },
-          Competence: {
-            some: {
-              name: {
-                in: input.Tags,
-              },
-            },
-          },
-          page: {
-            not: null,
-          },
-        },
-      });
-      return profile;
+        });
+
+        let nextCursor: typeof cursor | undefined = undefined;
+        if (profile.length > limit) {
+          const nextItem = profile.pop();
+          nextCursor = nextItem?.id;
+        }
+        return {
+          profile,
+          nextCursor,
+        };
+      }
     }),
 
   incrementview: publicProcedure
