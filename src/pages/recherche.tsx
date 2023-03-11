@@ -124,19 +124,19 @@ const Recherche = () => {
                             </span>
                           );
                         })}
-
-                        <button
-                          onClick={async () => {
-                            await fetchNextPage();
-                          }}
-                          disabled={!hasNextPage}
-                        >
-                          Load More
-                        </button>
                       </div>
                     </Link>
                   );
                 })}
+
+                <button
+                  onClick={async () => {
+                    await fetchNextPage();
+                  }}
+                  disabled={!hasNextPage}
+                >
+                  Load More
+                </button>
               </div>
             )}
           </div>
