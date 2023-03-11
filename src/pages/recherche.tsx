@@ -11,6 +11,8 @@ import { api } from '../utils/api';
 import classNames from 'classnames';
 import { Router } from 'next/router';
 import { PageLoader } from '../components/PageLoader';
+import { Button } from '../components/Button';
+import { NextSeo } from 'next-seo';
 
 const Recherche = () => {
   const [recherche, setRecherche] = useState<string>('');
@@ -44,7 +46,7 @@ const Recherche = () => {
     isLoading,
     isFetchingNextPage,
   } = api.profile.searchprofile.useInfiniteQuery(
-    { search: recherche, Tags: competences, limit: 9 },
+    { search: recherche, Tags: competences, limit: 2 },
     {
       getNextPageParam: (lastPage) => lastPage?.nextCursor,
     },
@@ -54,6 +56,17 @@ const Recherche = () => {
 
   return (
     <>
+    <NextSeo 
+    title="Dabara - Recherche de profils"
+    description="Recherchez des profils par compétences ou par nom"
+    openGraph={{
+      title: 'Recherche',
+      description: 'Recherchez des profils par compétences ou par nom',
+    }}
+
+
+    
+    />
       {loading ? (
         <PageLoader />
       ) : (
@@ -147,17 +160,16 @@ const Recherche = () => {
             </div> */}
             {hasNextPage && !isFetching && (
               <div className="flex items-center justify-center ">
-                <button
+                <Button
+                  variant={'secondary'}
                   className="text-center "
                   onClick={async () => {
                     await fetchNextPage();
                   }}
                   disabled={!hasNextPage}
                 >
-                  <div className="flex items-center justify-center gap-2">
-                    <p className="text-white">Charger plus</p>
-                  </div>
-                </button>
+                  Charger plus
+                </Button>
               </div>
             )}
 
