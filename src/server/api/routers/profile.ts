@@ -105,9 +105,6 @@ export const ProfileRouter = createTRPCRouter({
           },
 
           cursor: cursor ? { id: cursor } : undefined,
-          orderBy: {
-            id: 'asc',
-          },
         });
 
         let nextCursor: typeof cursor | undefined = undefined;

@@ -41,15 +41,16 @@ const Recherche = () => {
     fetchNextPage,
     hasNextPage,
     isFetching,
+    isLoading,
+    isFetchingNextPage,
   } = api.profile.searchprofile.useInfiniteQuery(
-    { search: recherche, Tags: competences, limit: 2 },
+    { search: recherche, Tags: competences, limit: 9 },
     {
-      keepPreviousData: true,
       getNextPageParam: (lastPage) => lastPage?.nextCursor,
     },
   );
 
-  const profiles = QuerySearch?.pages[0]?.profile;
+  const profiles = QuerySearch?.pages.flatMap((page) => page?.profile);
 
   return (
     <>
@@ -77,7 +78,7 @@ const Recherche = () => {
             <button className="group" onClick={openModal}>
               <FilterIcon className="h-6 w-6 animate-fade-in text-white opacity-0 transition-colors duration-300 [--animation-delay:600ms] group-hover:stroke-gray-300" />
             </button>
-            {isFetching ? (
+            {isLoading ? (
               <div className="mt-5 animate-fade-in  opacity-0  [--animation-delay:800ms]">
                 <Loader />
               </div>
@@ -87,29 +88,29 @@ const Recherche = () => {
               </div>
             ) : (
               <div className="mt-5 flex flex-wrap justify-center gap-6">
-                <h1>nextcursor : {QuerySearch?.pages[0]?.nextCursor}</h1>
                 {profiles?.map((profile) => {
                   return (
                     <Link
-                      href={`/${profile.page || ''}`}
-                      key={profile.id}
+                      href={`/${profile?.page || ''}`}
+                      key={profile?.id}
                       className=" flex w-48 flex-col items-start justify-center gap-1 rounded-md border border-gray-600  p-2 hover:bg-[#2b2d3c] "
                     >
                       <div className="flex items-center justify-center gap-2">
                         <Image
                           alt="image du profile"
-                          src={profile.image || ''}
+                          src={profile?.image || ''}
                           width={58}
                           height={58}
                           className="rounded-full"
                         />
-                        <div className="flex flex-col items-center justify-center  text-xs">
-                          <p className="text-white">{profile.name}</p>
-                          <p className="text-white">{profile.fonction}</p>
+                        <div className="flex flex-col items-center justify-center overflow-hidden text-xs">
+                          <p className="text-white">{profile?.name}</p>
+
+                          <p className="text-white">{profile?.fonction}</p>
                         </div>
                       </div>
                       <div className="flex min-h-[3rem] max-w-full snap-x snap-mandatory items-center gap-2 overflow-auto  scroll-smooth [&::-webkit-scrollbar]:hidden ">
-                        {profile.Competence.map((competence) => {
+                        {profile?.Competence.map((competence) => {
                           return (
                             <span
                               key={competence.id}
@@ -123,15 +124,46 @@ const Recherche = () => {
                     </Link>
                   );
                 })}
+              </div>
+            )}
+            {/**
+            <div>
+              {profiles2?.map((profile) => {
+                return (
+                  <div key={profile?.id}>
+                    <p>{profile?.id}</p>
+                  </div>
+                );
+              })}
 
+              <button
+                onClick={async () => {
+                  await fetchNextPage();
+                }}
+                disabled={!hasNextPage}
+              >
+                Load More
+              </button>
+            </div> */}
+            {hasNextPage && !isFetching && (
+              <div className="flex items-center justify-center ">
                 <button
+                  className="text-center "
                   onClick={async () => {
                     await fetchNextPage();
                   }}
                   disabled={!hasNextPage}
                 >
-                  Load More
+                  <div className="flex items-center justify-center gap-2">
+                    <p className="text-white">Charger plus</p>
+                  </div>
                 </button>
+              </div>
+            )}
+
+            {isFetchingNextPage && (
+              <div className="mt-2 flex items-center justify-center">
+                <Loader />
               </div>
             )}
           </div>
