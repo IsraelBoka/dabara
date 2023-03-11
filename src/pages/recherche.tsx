@@ -45,13 +45,7 @@ const Recherche = () => {
     { search: recherche, Tags: competences, limit: 2 },
     {
       keepPreviousData: true,
-      refetchOnWindowFocus: false,
-      refetchOnMount: false,
-      refetchOnReconnect: false,
       getNextPageParam: (lastPage) => lastPage?.nextCursor,
-
-      refetchInterval: false,
-      refetchIntervalInBackground: false,
     },
   );
 
@@ -93,6 +87,7 @@ const Recherche = () => {
               </div>
             ) : (
               <div className="mt-5 flex flex-wrap justify-center gap-6">
+                <h1>nextcursor : {QuerySearch?.pages[0]?.nextCursor}</h1>
                 {profiles?.map((profile) => {
                   return (
                     <Link
