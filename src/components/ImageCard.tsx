@@ -18,8 +18,6 @@ interface ImageCardProps {
 export const ImageCard = (props: ImageCardProps) => {
   const [changedesc, setchangedesc] = useState(false);
 
-  console.log(changedesc);
-
   const { image, title, description, link, id } = props;
   const [newdescription, setNewdescription] = useState(description);
 

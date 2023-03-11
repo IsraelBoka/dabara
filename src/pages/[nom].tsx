@@ -517,6 +517,7 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
             nom={nom as string}
             sessionid={session.data?.user?.id || ''}
             userinfoid={userinfo?.id}
+            profileid={userinfo?.Profil?.id}
             email={userinfo?.Profil?.email || undefined}
             lien={userinfo.image || undefined}
           />

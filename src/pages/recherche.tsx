@@ -228,7 +228,6 @@ const Recherche = () => {
                             onChange={(e) => {
                               if (e.target.checked) {
                                 setCompetences((prev) => [...prev, e.target.name]);
-                                console.log(competences);
                               } else {
                                 setCompetences((prev) =>
                                   prev.filter((item) => item !== e.target.name),
@@ -250,7 +249,6 @@ const Recherche = () => {
                             onChange={(e) => {
                               if (e.target.checked) {
                                 setCompetences((prev) => [...prev, e.target.name]);
-                                console.log(competences);
                               } else {
                                 setCompetences((prev) =>
                                   prev.filter((item) => item !== e.target.name),
@@ -272,7 +270,6 @@ const Recherche = () => {
                             onChange={(e) => {
                               if (e.target.checked) {
                                 setCompetences((prev) => [...prev, e.target.name]);
-                                console.log(competences);
                               } else {
                                 setCompetences((prev) =>
                                   prev.filter((item) => item !== e.target.name),
@@ -294,7 +291,6 @@ const Recherche = () => {
                             onChange={(e) => {
                               if (e.target.checked) {
                                 setCompetences((prev) => [...prev, e.target.name]);
-                                console.log(competences);
                               } else {
                                 setCompetences((prev) =>
                                   prev.filter((item) => item !== e.target.name),
@@ -316,7 +312,6 @@ const Recherche = () => {
                             onChange={(e) => {
                               if (e.target.checked) {
                                 setCompetences((prev) => [...prev, e.target.name]);
-                                console.log(competences);
                               } else {
                                 setCompetences((prev) =>
                                   prev.filter((item) => item !== e.target.name),

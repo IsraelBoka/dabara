@@ -205,4 +205,30 @@ export const ProfileRouter = createTRPCRouter({
 
       return portfolio;
     }),
+
+  deleteprofile: protectedProcedure.mutation(async ({ ctx }) => {
+    const profile = ctx.prisma.profil.delete({
+      where: {
+        userId: ctx.session.user.id,
+      },
+    });
+
+    const competence = ctx.prisma.competence.deleteMany({
+      where: {
+        userId: ctx.session.user.id,
+      },
+    });
+
+    const userupdate = ctx.prisma.user.update({
+      where: {
+        id: ctx.session.user.id,
+      },
+      data: {
+        page: null,
+      },
+    });
+
+    await ctx.prisma.$transaction([profile, competence, userupdate]);
+    return { success: true };
+  }),
 });
