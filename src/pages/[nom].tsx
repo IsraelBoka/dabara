@@ -239,7 +239,7 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
             },
           }}
         />
-        <PageLoader />;
+        <PageLoader />
       </>
     );
   }
