@@ -56,7 +56,7 @@ model User {
     image         String?
     adresse       String?
     telephone     String?
-    about         String?
+    about         String?      @db.Text
     fonction      String?
     disponibilite String?
     page          String?
@@ -75,19 +75,20 @@ model Tag {
 }
 
 model Profil {
-    id        String  @id @default(cuid())
-    name      String
-    email     String
-    website   String?
-    facebook  String?
-    instagram String?
-    twitter   String?
-    github    String?
-    views     Int     @default(0)
-    youtube   String?
-    linkedin  String?
-    userId    String  @unique
-    user      User    @relation(fields: [userId], references: [id])
+    id             String  @id @default(cuid())
+    name           String
+    email          String
+    website        String?
+    facebook       String?
+    instagram      String?
+    twitter        String?
+    github         String?
+    views          Int     @default(0)
+    youtube        String?
+    linkedin       String?
+    travailencours String?
+    userId         String  @unique
+    user           User    @relation(fields: [userId], references: [id])
 }
 
 model Categorie {
@@ -99,7 +100,7 @@ model Categorie {
 model Portfolio {
     id          String  @id @default(cuid())
     title       String?
-    description String?
+    description String? @db.Text
     image       String?
     url         String?
     github      String?

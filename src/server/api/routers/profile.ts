@@ -10,6 +10,7 @@ export const ProfileRouter = createTRPCRouter({
         email: z.string(),
         about: z.string(),
         page: z.string(),
+        disponibilite: z.string(),
         fonction: z.string(),
         competence: z.string().array(),
         residence: z.string(),
@@ -17,6 +18,7 @@ export const ProfileRouter = createTRPCRouter({
         facebook: z.string().optional(),
         instagram: z.string().optional(),
         twitter: z.string().optional(),
+        tafencours: z.string().optional(),
         youtube: z.string().optional(),
         linkedin: z.string().optional(),
         github: z.string().optional(),
@@ -29,7 +31,9 @@ export const ProfileRouter = createTRPCRouter({
           name: input.name,
           about: input.about,
           page: input.page,
+          adresse: input.residence,
           fonction: input.fonction,
+          disponibilite: input.disponibilite,
         },
       });
 
@@ -43,6 +47,7 @@ export const ProfileRouter = createTRPCRouter({
           twitter: input.twitter,
           youtube: input.youtube,
           linkedin: input.linkedin,
+          travailencours: input.tafencours,
           github: input.github,
           userId: ctx.session.user.id,
         },
@@ -117,6 +122,41 @@ export const ProfileRouter = createTRPCRouter({
           nextCursor,
         };
       }
+
+      const profile = await ctx.prisma.user.findMany({
+        take: limit + 1, // get an extra item at the end which we'll use as next cursor
+
+        include: {
+          Competence: true,
+        },
+        where: {
+          name: {
+            contains: input.search,
+          },
+          page: {
+            not: null,
+          },
+          Competence: {
+            some: {
+              name: {
+                in: input.Tags,
+              },
+            },
+          },
+        },
+
+        cursor: cursor ? { id: cursor } : undefined,
+      });
+
+      let nextCursor: typeof cursor | undefined = undefined;
+      if (profile.length > limit) {
+        const nextItem = profile.pop();
+        nextCursor = nextItem?.id;
+      }
+      return {
+        profile,
+        nextCursor,
+      };
     }),
 
   incrementview: publicProcedure

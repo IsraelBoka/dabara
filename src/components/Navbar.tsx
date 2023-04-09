@@ -51,7 +51,7 @@ const Navbar = () => {
           >
             <ul
               className={classNames(
-                '[&_a]:transition-[color, transform] stext-md flex h-full flex-col tracking-wide  ease-in md:flex-row md:items-center md:text-sm [&_a]:mr-8 [&_a]:ml-1  [&_a]:flex [&_a]:h-12 [&_a]:translate-y-8 [&_a]:items-center [&_a]:border-b [&_a]:border-gray-500 [&_a]:duration-300 md:[&_a]:translate-y-0 md:[&_a]:border-b-0  [&_a:hover]:text-gray-300 [&_li]:ml-6',
+                '[&_a]:transition-[color, transform] flex h-full flex-col text-base tracking-wide  ease-in md:flex-row md:items-center md:text-sm [&_a]:mr-8 [&_a]:ml-1  [&_a]:flex [&_a]:h-12 [&_a]:translate-y-8 [&_a]:items-center [&_a]:border-b [&_a]:border-gray-500 [&_a]:duration-300 md:[&_a]:translate-y-0 md:[&_a]:border-b-0  [&_a:hover]:text-gray-300 [&_li]:ml-6',
                 open && '[&_a]:translate-y-0 ',
               )}
             >

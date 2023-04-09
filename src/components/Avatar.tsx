@@ -62,75 +62,6 @@ export const Avatar = (props: AvatarProps) => {
         classname,
       )}
     >
-      {/**----------------------------------- Modal for Profile deletion ------------------------------------- */}
-
-      <Transition appear show={isOpenDelete} as={Fragment}>
-        <Dialog as="div" className="relative z-10" onClose={closeModal}>
-          <Transition.Child
-            as={Fragment}
-            enter="ease-out duration-300"
-            enterFrom="opacity-0"
-            enterTo="opacity-100"
-            leave="ease-in duration-200"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
-          >
-            <div className="fixed inset-0 bg-black bg-opacity-25" />
-          </Transition.Child>
-
-          <div className="fixed inset-0 overflow-y-auto">
-            <div className="flex min-h-full items-center justify-center p-4 text-center">
-              <Transition.Child
-                as={Fragment}
-                enter="ease-out duration-300"
-                enterFrom="opacity-0 scale-95"
-                enterTo="opacity-100 scale-100"
-                leave="ease-in duration-200"
-                leaveFrom="opacity-100 scale-100"
-                leaveTo="opacity-0 scale-95"
-              >
-                <Dialog.Panel
-                  className={classNames(
-                    'fixed z-50',
-                    'w-[95vw] max-w-md rounded-lg p-4 md:w-full',
-                    'top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]',
-                    ' bg-secondary  ',
-                    'focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75',
-                  )}
-                >
-                  <Dialog.Title as="h3" className="text-lg font-medium leading-6 text-gray-100">
-                    Supprimer le profil ?
-                  </Dialog.Title>
-                  <div className="mt-2">
-                    <p className="text-sm text-gray-300">
-                      Vous êtes sur le point de supprimer votre profil. Cette action est
-                      irréversible.
-                    </p>
-                  </div>
-                  <div className="mt-4 flex items-center justify-center gap-2">
-                    <button
-                      className=" inline-flex justify-center rounded-md  border border-red-300 bg-red-500 px-4 py-2 text-sm font-medium transition-colors duration-150 hover:bg-red-600  focus:outline-none focus-visible:ring-2 focus-visible:ring-red-300 focus-visible:ring-offset-2"
-                      onClick={() => {
-                        deleteprofile.mutate();
-                      }}
-                    >
-                      OUI
-                    </button>
-
-                    <button
-                      type="button"
-                      className=" inline-flex justify-center rounded-md  border border-gray-300 px-4 py-2 text-sm font-medium hover:bg-modalbutton  focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-300 focus-visible:ring-offset-2"
-                      onClick={closeModal}
-                    >
-                      Quitter
-                    </button>
-                  </div>
-                </Dialog.Panel>
-              </Transition.Child>
-            </div>
-          </div>
-        </Dialog>
-      </Transition>
       <div className="flex">
         <div className=" shrink-0 rounded-full bg-gradient-to-tl from-[#fde047]  to-[#92c5fb] p-0.5 md:p-1 lg:p-1 ">
           {lien ? (
@@ -153,15 +84,9 @@ export const Avatar = (props: AvatarProps) => {
             />
           )}
         </div>
-
-        {sessionid === userinfoid && (
-          <button onClick={() => setIsOpenDelete(true)} className="">
-            <TrashIcon className="h-5 w-5 text-red-500" />
-          </button>
-        )}
       </div>
       <div className="m-2 ">
-        <p className="font-display text-2xl font-extrabold ">@{nom}</p>
+        <p className="truncate font-display text-xl font-extrabold lg:w-40 ">@{nom}</p>
 
         {!changeMail && (
           <p

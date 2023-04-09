@@ -28,6 +28,7 @@ type FormData = {
   description: string;
   phone: string;
   website: string;
+  tafencours: string;
   facebook: string;
   twitter: string;
   instagram: string;
@@ -149,6 +150,7 @@ const Creerpage = () => {
       name: data.name,
       email: data.email,
       about: data.description,
+      disponibilite: data.disponibilite,
       competence: data.competencesTechniques,
       page: page,
       fonction: data.poste,
@@ -157,6 +159,7 @@ const Creerpage = () => {
       facebook: data.facebook,
       instagram: data.instagram,
       twitter: data.twitter,
+      tafencours: data.tafencours,
       youtube: data.youtube,
       linkedin: data.linkedin,
       github: data.github,
@@ -197,7 +200,7 @@ const Creerpage = () => {
                   <input
                     className=" rounded    p-2  caret-blue-600  placeholder:text-gray-600 focus:border-blue-300"
                     type="text"
-                    placeholder="@username"
+                    placeholder="username"
                     {...register('page', {
                       required: true,
                       minLength: 4,
@@ -320,6 +323,7 @@ const Creerpage = () => {
                     <input
                       className=" rounded       p-2 text-white caret-blue-600  placeholder:text-gray-600 focus:border-blue-300"
                       type="text"
+                      {...register('tafencours', { required: true })}
                       placeholder="Mon application"
                     />
 
@@ -450,97 +454,93 @@ const Creerpage = () => {
               </form>
             )}
             {formStep === 3 && (
-              <form onSubmit={submitfini} className="flex flex-col items-center py-8">
-                <div className=" rounded p-8 ">
-                  <h1 className="text-center text-3xl font-extrabold lg:text-4xl">
-                    Réseaux sociaux <br className="hidden md:block" /> (optionnel)
-                  </h1>
-                  <div className="flex flex-col">
-                    <label className="py-2 text-white">▶️ Youtube :</label>
-                    <div className="flex flex-row-reverse items-center text-xs  ">
-                      <input
-                        className=" peer rounded-r-md border-l-0 border-gray-500 px-0 py-2  text-xs text-white  ring-0 placeholder:text-gray-600 visited:bg-change  autofill:bg-transparent focus:border-blue-300 focus:outline-none  focus:ring-0"
-                        type="text"
-                        placeholder=""
-                        {...register('youtube')}
-                      />
+              <div>
+                <form onSubmit={submitfini} className="lg:flex lg:flex-col lg:items-center">
+                  <div className=" rounded p-8 ">
+                    <h1 className="text-center text-xl font-extrabold lg:text-4xl">
+                      Réseaux sociaux <br className=" block" /> (optionnel)
+                    </h1>
+                    <div className="">
+                      <label className="py-2 text-white">▶️ Youtube :</label>
+                      <div className="flex rounded-md bg-change   ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-blue-300 sm:max-w-md  ">
+                        <span className=" flex select-none items-center pl-3 text-white sm:text-sm ">
+                          https://www.youtube.com/c/
+                        </span>
+                        <input
+                          className="block flex-1 truncate border-0 bg-red-500 bg-transparent py-1.5 pl-1 placeholder:text-white focus:ring-0 sm:text-sm "
+                          type="text"
+                          placeholder=""
+                          {...register('youtube')}
+                        />
+                      </div>
 
-                      <span className=" flex-1 rounded-l-md  border  border-r-0 border-gray-500 bg-change p-2 px-0 text-right focus:ring-0 peer-focus:border-blue-300  lg:w-40">
-                        https://www.youtube.com/c/
-                      </span>
+                      <label className="py-2 text-white">💼 Linkedin :</label>
+                      <div className="flex rounded-md  bg-change shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-blue-300 sm:max-w-md ">
+                        <span className=" flex select-none items-center pl-3 text-white sm:text-sm  ">
+                          https://www.linkedin.com/in/
+                        </span>
+                        <input
+                          className="  block flex-1  truncate  border-0 bg-transparent py-1.5 pl-1 placeholder:text-white focus:ring-0 sm:text-sm sm:leading-6"
+                          type="text"
+                          placeholder=""
+                          {...register('linkedin')}
+                        />
+                      </div>
+                      <label className="py-2 text-white">🐦 Twitter :</label>
+                      <div className="flex flex-col">
+                        <div className="flex rounded-md  bg-change shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-blue-300 sm:max-w-md ">
+                          <span className=" flex select-none items-center pl-3 text-white sm:text-sm ">
+                            https://www.twitter.com/
+                          </span>
+                          <input
+                            className="  block flex-1 truncate  border-0 bg-transparent py-1.5 pl-1 placeholder:text-white focus:ring-0 sm:text-sm sm:leading-6"
+                            type="text"
+                            placeholder=""
+                            {...register('twitter')}
+                          />
+                        </div>
+                      </div>
+                      <label className="py-2 text-white">📸 Instagram :</label>
+                      <div className="flex rounded-md  bg-change shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-blue-300 sm:max-w-md  ">
+                        <span className=" flex select-none items-center pl-3 text-white sm:text-sm ">
+                          https://www.instagram.com/
+                        </span>
+                        <input
+                          className="  block flex-1 truncate  border-0 bg-transparent py-1.5 pl-1 placeholder:text-white focus:ring-0 sm:text-sm sm:leading-6"
+                          type="text"
+                          placeholder=""
+                          {...register('instagram')}
+                        />
+                      </div>
+                      <label className="py-2 text-white">📟 Facebook :</label>
+                      <div className="flex rounded-md  bg-change shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-blue-300 sm:max-w-md ">
+                        <span className=" flex select-none items-center pl-3 text-white sm:text-sm ">
+                          https://www.facebook.com/
+                        </span>
+                        <input
+                          className="  block flex-1 truncate  border-0 bg-transparent py-1.5 pl-1 placeholder:text-white focus:ring-0 sm:text-sm sm:leading-6"
+                          type="text"
+                          placeholder=""
+                          {...register('facebook')}
+                        />
+                      </div>
+                      <label className="py-2 text-white">👨‍💻 Github :</label>
+                      <div className="flex rounded-md  bg-change shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-blue-300 sm:max-w-md ">
+                        <span className=" flex select-none items-center pl-3 text-white sm:text-sm ">
+                          https://www.github.com/
+                        </span>
+                        <input
+                          className="  block flex-1 truncate  border-0 bg-transparent py-1.5 pl-1 placeholder:text-white focus:ring-0 sm:text-sm sm:leading-6"
+                          type="text"
+                          placeholder=""
+                          {...register('github')}
+                        />
+                      </div>
                     </div>
                   </div>
-
-                  <label className="py-2 text-white">💼 Linkedin :</label>
-                  <div className="flex flex-row-reverse items-center justify-center text-xs">
-                    <input
-                      className=" peer w-24 rounded-r-md border-l-0 border-gray-500 px-0 py-2  text-xs text-white ring-0    placeholder:text-gray-600 focus:border-blue-300 focus:outline-none  focus:ring-0"
-                      type="text"
-                      placeholder=""
-                      {...register('linkedin')}
-                    />
-
-                    <span className=" flex-1 rounded-l-md  border  border-r-0 border-gray-500 bg-change p-2 px-0 text-right focus:ring-0 peer-focus:border-blue-300  lg:w-40">
-                      https://www.linkedin.com/in/
-                    </span>
-                  </div>
-                  <label className="py-2 text-white">🐦 Twitter :</label>
-                  <div className="flex flex-col">
-                    <div className="flex w-96 flex-row-reverse  items-center justify-center  text-xs">
-                      <input
-                        className=" peer w-24 rounded-r-md border-l-0 border-gray-500 px-0 py-2  text-xs text-white ring-0    placeholder:text-gray-600 focus:border-blue-300 focus:outline-none  focus:ring-0"
-                        type="text"
-                        placeholder=""
-                        {...register('twitter')}
-                      />
-
-                      <span className=" flex-1 rounded-l-md  border  border-r-0 border-gray-500 bg-change p-2 px-0 text-right focus:ring-0 peer-focus:border-blue-300  lg:w-40">
-                        https://www.twitter.com/
-                      </span>
-                    </div>
-                  </div>
-                  <label className="py-2 text-white">📸 Instagram :</label>
-                  <div className="flex w-96 flex-row-reverse  items-center justify-center  text-xs ">
-                    <input
-                      className=" peer w-24 rounded-r-md border-l-0 border-gray-500 px-0 py-2  text-xs text-white ring-0    placeholder:text-gray-600 focus:border-blue-300 focus:outline-none  focus:ring-0"
-                      type="text"
-                      placeholder=""
-                      {...register('instagram')}
-                    />
-
-                    <span className=" flex-1 rounded-l-md  border  border-r-0 border-gray-500 bg-change p-2 px-0 text-right focus:ring-0 peer-focus:border-blue-300  lg:w-40">
-                      https://www.instagram.com/
-                    </span>
-                  </div>
-                  <label className="py-2 text-white">📟 Facebook :</label>
-                  <div className="flex w-96 flex-row-reverse items-center justify-center text-xs">
-                    <input
-                      className=" peer w-24 rounded-r-md border-l-0 border-gray-500 px-0 py-2  text-xs text-white ring-0    placeholder:text-gray-600 focus:border-blue-300 focus:outline-none  focus:ring-0"
-                      type="text"
-                      placeholder=""
-                      {...register('facebook')}
-                    />
-
-                    <span className=" flex-1 rounded-l-md  border  border-r-0 border-gray-500 bg-change p-2 px-0 text-right focus:ring-0 peer-focus:border-blue-300  lg:w-40">
-                      https://www.facebook.com/
-                    </span>
-                  </div>
-                  <label className="py-2 text-white">👨‍💻 Github :</label>
-                  <div className="flex flex-row-reverse text-xs">
-                    <input
-                      className=" peer w-24 rounded-r-md border-l-0 border-gray-500 px-0 py-2  text-xs text-white ring-0    placeholder:text-gray-600 focus:border-blue-300 focus:outline-none  focus:ring-0"
-                      type="text"
-                      placeholder=""
-                      {...register('github')}
-                    />
-
-                    <span className=" flex-1 rounded-l-md  border  border-r-0 border-gray-500 bg-change p-2 px-0 text-right focus:ring-0 peer-focus:border-blue-300  lg:w-40">
-                      https://www.github.com/
-                    </span>
-                  </div>
-                </div>
-                <Navigation />
-              </form>
+                  <Navigation />
+                </form>
+              </div>
             )}
 
             {formStep === 4 && (

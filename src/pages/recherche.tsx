@@ -46,7 +46,7 @@ const Recherche = () => {
     isLoading,
     isFetchingNextPage,
   } = api.profile.searchprofile.useInfiniteQuery(
-    { search: recherche, Tags: competences, limit: 2 },
+    { search: recherche, Tags: competences, limit: 9 },
     {
       getNextPageParam: (lastPage) => lastPage?.nextCursor,
     },
