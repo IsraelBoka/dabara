@@ -1,5 +1,4 @@
 import { type NextPage } from 'next';
-import Head from 'next/head';
 import { useSession } from 'next-auth/react';
 import Navbar from '../components/Navbar';
 
@@ -7,7 +6,6 @@ import { api } from '../utils/api';
 import { Container } from '../components/container';
 import { Hero, HeroSub, HeroTitle } from '../components/Hero';
 import { Button } from '../components/Button';
-import Image from 'next/image';
 import { Footer } from '../components/Footer';
 import { SocialCard } from '../components/SocialCard';
 import { Feature } from '../components/Feature';

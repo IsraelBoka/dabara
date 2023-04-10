@@ -1,12 +1,9 @@
 import classNames from 'classnames';
 import Image from 'next/image';
-import { type RefObject, useRef, useState, Fragment } from 'react';
+import { type RefObject, useRef, useState } from 'react';
 import { toast } from 'react-toastify';
 import useOnClickOutside from '../hooks/useOnClickOutside';
 import { api } from '../utils/api';
-import { TrashIcon } from './icons/trash';
-import { Dialog, Transition } from '@headlessui/react';
-import { useRouter } from 'next/router';
 
 interface AvatarProps {
   classname?: string;
@@ -19,16 +16,9 @@ interface AvatarProps {
 }
 
 export const Avatar = (props: AvatarProps) => {
-  const { classname, lien, nom, email, sessionid, userinfoid, profileid } = props;
+  const { classname, lien, nom, email, sessionid, userinfoid } = props;
   const [changeMail, setChangeMail] = useState(false);
-  const router = useRouter();
   const utils = api.useContext();
-
-  const [isOpenDelete, setIsOpenDelete] = useState(false);
-
-  function closeModal() {
-    setIsOpenDelete(false);
-  }
 
   const updateProfile = api.profile.updateprofile.useMutation({
     onSuccess: async () => {
@@ -38,13 +28,6 @@ export const Avatar = (props: AvatarProps) => {
   });
 
   const [newEmail, setEmail] = useState(email);
-  const deleteprofile = api.profile.deleteprofile.useMutation({
-    onSuccess: async () => {
-      await utils.page.getPage.invalidate();
-      await router.push('/');
-    },
-  });
-
   const refemail = useRef<HTMLInputElement>();
 
   const OnChangeEmail = () => {

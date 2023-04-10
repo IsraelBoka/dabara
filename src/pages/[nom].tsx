@@ -13,7 +13,6 @@ import { Network } from '../components/Network';
 import { ToastContainer, toast, Flip } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { api } from '../utils/api';
-import Head from 'next/head';
 import { useSession } from 'next-auth/react';
 import classNames from 'classnames';
 import useOnClickOutside from '../hooks/useOnClickOutside';
