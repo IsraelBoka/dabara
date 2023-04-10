@@ -1,6 +1,7 @@
 import { api } from '../utils/api';
 import { useForm } from 'react-hook-form';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import Image from 'next/image';
 
 type ImageFormProps = {
   title: string;
@@ -13,6 +14,7 @@ export const ImageForm = ({ closeModal }: { closeModal?: () => void }) => {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm<ImageFormProps>();
   const utils = api.useContext();
@@ -24,6 +26,36 @@ export const ImageForm = ({ closeModal }: { closeModal?: () => void }) => {
       setIsSubmitting(false);
     },
   });
+
+  const [imagePreview, setImagePreview] = useState<string | null>(null);
+
+  const watchImageInput = watch('image');
+
+  useEffect(() => {
+    if (watchImageInput && watchImageInput.length) {
+      const file = watchImageInput[0];
+      const reader = new FileReader();
+
+      reader.onload = () => {
+        setImagePreview(reader.result as string);
+      };
+
+      reader.readAsDataURL(file as Blob);
+    } else {
+      setImagePreview(null);
+    }
+  }, [watchImageInput]);
+
+  {
+    /**const renderFilePreview = (data) => {
+    const formData = new FormData();
+    if (!data.image.item(0)) return null;
+
+    // Type guard to check that selectedFile is not null
+
+    return <img alt="machin" src={URL.createObjectURL(data.image.item(0) as Blob)} />;
+  }; */
+  }
 
   const onSubmit = handleSubmit(async (data) => {
     setIsSubmitting(true);
@@ -109,6 +141,18 @@ export const ImageForm = ({ closeModal }: { closeModal?: () => void }) => {
         <p className="mt-1 text-left text-sm text-gray-500" id="file_input_help">
           PNG, JPG
         </p>
+        <div className=" inline-flex items-center justify-center">
+          {imagePreview && (
+            <Image
+              className="rounded border"
+              width={200}
+              height={200}
+              src={imagePreview}
+              alt="Preview"
+            />
+          )}
+        </div>
+
         {errors.image && <p className="text-xs text-red-500">une image est requise</p>}
         <button
           type="submit"

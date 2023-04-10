@@ -467,7 +467,7 @@ const Creerpage = () => {
                           https://www.youtube.com/c/
                         </span>
                         <input
-                          className="block flex-1 truncate border-0 bg-red-500 bg-transparent py-1.5 pl-1 placeholder:text-white focus:ring-0 sm:text-sm "
+                          className="block flex-1 truncate border-0  bg-transparent py-1.5 pl-1 placeholder:text-white focus:ring-0 sm:text-sm "
                           type="text"
                           placeholder=""
                           {...register('youtube')}

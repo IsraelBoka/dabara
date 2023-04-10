@@ -114,8 +114,8 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
 
   const deleteprofile = api.profile.deleteprofile.useMutation({
     onSuccess: async () => {
-      await utils.page.getPage.invalidate();
       await router.push('/');
+      await utils.page.getPage.invalidate();
     },
   });
 
@@ -287,7 +287,7 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
             site_name: 'Dabara',
           }}
         />
-        <UnFound />;
+        <UnFound />
       </>
     );
   }
@@ -476,7 +476,7 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
                     <button
                       type="button"
                       className=" inline-flex justify-center rounded-md  border border-gray-300 px-4 py-2 text-sm font-medium hover:bg-modalbutton  focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-300 focus-visible:ring-offset-2"
-                      onClick={closeModal}
+                      onClick={closeModalDelete}
                     >
                       Quitter
                     </button>
@@ -626,6 +626,8 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
             email={userinfo?.Profil?.email || undefined}
             lien={userinfo.image || undefined}
           />
+          <div className="inline-flex items-center text-lg">📍 {userinfo?.adresse}</div>
+
           <div className="flex flex-col items-center">
             {!changefonction ? (
               <p
@@ -697,6 +699,8 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
               <Skills competence={userinfo?.Competence} />
             </div>
           </div>
+          <div className="inline-flex items-center p-2 text-lg">💼 {userinfo?.disponibilite}</div>
+
           {/**
           <div>
             <p className="cursor-default text-center text-xl font-bold  ">Langues</p>
@@ -753,7 +757,9 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
                   classNames(
                     'w-full rounded-lg p-1   font-medium leading-5 text-gray-100',
                     'ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2',
-                    selected ? 'bg-change' : 'bg-white/[0.12] text-blue-100 hover:text-white',
+                    selected
+                      ? 'border bg-change'
+                      : 'bg-white/[0.12] text-blue-100 hover:text-white',
                   )
                 }
               >
@@ -764,7 +770,9 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
                   classNames(
                     'w-full rounded-lg p-1   font-medium leading-5 text-gray-100',
                     'ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2',
-                    selected ? 'bg-change' : 'bg-white/[0.12] text-blue-100 hover:text-white',
+                    selected
+                      ? 'border  bg-change'
+                      : 'bg-white/[0.12] text-blue-100 hover:text-white',
                   )
                 }
               >
@@ -774,9 +782,11 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
                 <Tab
                   className={({ selected }) =>
                     classNames(
-                      'w-full rounded-lg p-1   font-medium leading-5 text-gray-100',
+                      'w-full rounded-lg p-1  font-medium leading-5 text-gray-100',
                       'ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2',
-                      selected ? 'bg-change' : 'bg-white/[0.12] text-blue-100 hover:text-white',
+                      selected
+                        ? 'border   bg-change'
+                        : 'bg-white/[0.12] text-blue-100 hover:text-white',
                     )
                   }
                 >
@@ -793,7 +803,7 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
                       <div className="flex items-center ">
                         <button
                           onClick={openModal}
-                          className="inline-flex items-center justify-center  gap-2 rounded-sm bg-blue-300 p-2 text-gray-800 "
+                          className="my-2 inline-flex items-center justify-center gap-2 rounded-md bg-blue-700 p-2 text-white "
                         >
                           Ajouter un projet <Editicon className="h-4 w-4 " />
                         </button>
