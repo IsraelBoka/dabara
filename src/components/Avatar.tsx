@@ -45,15 +45,15 @@ export const Avatar = (props: AvatarProps) => {
         classname,
       )}
     >
-      <div className="flex">
-        <div className=" shrink-0 rounded-full bg-gradient-to-tl from-[#fde047]  to-[#92c5fb] p-0.5 md:p-1 lg:p-1 ">
+      <div className="flex items-center justify-center ">
+        <div className=" flex shrink-0 items-center justify-center rounded-full  bg-gradient-to-r from-profile to-gray-600  p-0.5 shadow-2xl md:p-1 ">
           {lien ? (
             <Image
-              className=" h-11 w-11 rounded-full object-contain md:h-16 md:w-16"
+              className=" h-11 w-11 rounded-full object-cover md:h-16 md:w-16"
               referrerPolicy="origin"
               src={lien}
-              width={2000}
-              height={2000}
+              width={500}
+              height={500}
               alt="Image  de profil"
             />
           ) : (
@@ -71,7 +71,7 @@ export const Avatar = (props: AvatarProps) => {
       <div className="m-2 ">
         <p className="truncate font-display text-xl font-extrabold lg:w-40 ">@{nom}</p>
 
-        {!changeMail && (
+        {!changeMail && sessionid === userinfoid && (
           <p
             className="text-sm"
             onClick={sessionid === userinfoid ? () => setChangeMail(!changeMail) : undefined}
@@ -85,6 +85,19 @@ export const Avatar = (props: AvatarProps) => {
               newEmail
             )}
           </p>
+        )}
+
+        {!changeMail && sessionid !== userinfoid && newEmail && (
+          <a href={`mailto:${newEmail}`} className="text-sm">
+            {newEmail === 'undefined' ||
+            newEmail === 'null' ||
+            newEmail === 'NaN' ||
+            newEmail === '' ? (
+              <span className="text-gray-400">Ajouter un email</span>
+            ) : (
+              newEmail
+            )}
+          </a>
         )}
 
         {changeMail && (

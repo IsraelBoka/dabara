@@ -8,6 +8,7 @@ import { Discord } from '../../components/icons/discord';
 import { signIn, useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import Loader from '../../components/Loader';
+import { NextSeo } from 'next-seo';
 
 const Signin: NextPage = () => {
   const router = useRouter();
@@ -48,6 +49,32 @@ const Signin: NextPage = () => {
 
   return (
     <>
+      <NextSeo
+        title={`Dabara - Se connecter `}
+        description="Dabara est une plateforme de partage de portfolio pour les développeurs"
+        canonical="https://dabara.com"
+        twitter={{
+          handle: '@dabara',
+
+          site: '@dabara',
+          cardType: 'summary_large_image',
+        }}
+        openGraph={{
+          url: 'https://dabara.com',
+          title: 'Dabara',
+
+          description: 'Dabara est une plateforme de partage de portfolio pour les développeurs',
+
+          images: [
+            {
+              url: 'https://dabara.vercel.app/og.png',
+            },
+          ],
+
+          type: 'website',
+          site_name: 'Dabara',
+        }}
+      />
       {status === 'authenticated' ? (
         <div className="flex min-h-screen items-center justify-center ">
           <Loader />

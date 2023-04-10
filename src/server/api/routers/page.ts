@@ -81,9 +81,13 @@ export const pageRouter = createTRPCRouter({
       z.object({
         name: z.string().optional(),
         email: z.string().optional(),
+        disponibilite: z.string().optional(),
+        adresse: z.string().optional(),
         about: z.string().optional(),
         fonction: z.string().optional(),
         competence: z.string().array().optional(),
+        tafencours: z.string().optional(),
+        website: z.string().optional(),
       }),
     )
     .mutation(async ({ input, ctx }) => {
@@ -110,6 +114,14 @@ export const pageRouter = createTRPCRouter({
           email: input.email,
           about: input.about,
           fonction: input.fonction,
+          adresse: input.adresse,
+          disponibilite: input.disponibilite,
+          Profil: {
+            update: {
+              travailencours: input.tafencours,
+              website: input.website,
+            },
+          },
         },
 
         where: { id: ctx.session.user.id },

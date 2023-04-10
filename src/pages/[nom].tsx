@@ -84,6 +84,17 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
   const [changefonction, setChangefonction] = useState(false);
   const [newdesc, setnewdesc] = useState('');
   const [newfonction, setNewfonction] = useState('');
+  const [newadresse, setNewadresse] = useState('');
+  const [changeadresse, setChangeadresse] = useState(false);
+  const [changedisponibilite, setChangedisponibilite] = useState(false);
+  const [newdisponibilite, setNewdisponibilite] = useState('');
+
+  const [newtafencours, setNewtafencours] = useState('');
+  const [changeTafencours, setChangeTafencours] = useState(false);
+
+  const [newwebsite, setNewwebsite] = useState('');
+  const [changewebsite, setChangewebsite] = useState(false);
+
   const [isOpen, setIsOpen] = useState(false);
 
   const reffonction = useRef<HTMLInputElement>();
@@ -107,6 +118,54 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
         setchangedesc(false);
 
         updateuserinfo({ about: newdesc });
+      }
+    }
+  });
+
+  const refadresse = useRef<HTMLInputElement>();
+  useOnClickOutside(refadresse as RefObject<HTMLInputElement>, () => {
+    {
+      if (newadresse === userinfo?.adresse) {
+        setChangeadresse(false);
+      } else {
+        setChangeadresse(false);
+        updateuserinfo({ adresse: newadresse });
+      }
+    }
+  });
+
+  const refdisponibilite = useRef<HTMLInputElement>();
+  useOnClickOutside(refdisponibilite as RefObject<HTMLInputElement>, () => {
+    {
+      if (newdisponibilite === userinfo?.disponibilite) {
+        setChangedisponibilite(false);
+      } else {
+        setChangedisponibilite(false);
+        updateuserinfo({ disponibilite: newdisponibilite });
+      }
+    }
+  });
+
+  const reftafencours = useRef<HTMLInputElement>();
+  useOnClickOutside(reftafencours as RefObject<HTMLInputElement>, () => {
+    {
+      if (newtafencours === userinfo?.Profil?.travailencours) {
+        setChangeTafencours(false);
+      } else {
+        setChangeTafencours(false);
+        updateuserinfo({ tafencours: newtafencours });
+      }
+    }
+  });
+
+  const refwebsite = useRef<HTMLInputElement>();
+  useOnClickOutside(refwebsite as RefObject<HTMLInputElement>, () => {
+    {
+      if (newwebsite === userinfo?.Profil?.website) {
+        setChangewebsite(false);
+      } else {
+        setChangewebsite(false);
+        updateuserinfo({ website: newwebsite });
       }
     }
   });
@@ -188,6 +247,26 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
   const onChangeFonction = () => {
     setChangefonction(!changefonction);
     setNewfonction(userinfo?.fonction as string);
+  };
+
+  const onChangeAdresse = () => {
+    setChangeadresse(!changeadresse);
+    setNewadresse(userinfo?.adresse as string);
+  };
+
+  const onChangeDisponibilite = () => {
+    setChangedisponibilite(!changedisponibilite);
+    setNewdisponibilite(userinfo?.disponibilite as string);
+  };
+
+  const onChangeTafencours = () => {
+    setChangeTafencours(!changeTafencours);
+    setNewtafencours(userinfo?.Profil?.travailencours as string);
+  };
+
+  const onChangeWebsite = () => {
+    setChangewebsite(!changewebsite);
+    setNewwebsite(userinfo?.Profil?.website as string);
   };
 
   const utils = api.useContext();
@@ -625,13 +704,40 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
             email={userinfo?.Profil?.email || undefined}
             lien={userinfo.image || undefined}
           />
-          <div className="inline-flex items-center text-lg">📍 {userinfo?.adresse}</div>
+          {!changeadresse ? (
+            <p
+              onClick={userinfo.id === session.data?.user?.id ? onChangeAdresse : undefined}
+              className="text-lg "
+            >
+              <div>
+                {newadresse ? (
+                  <span>📍 {newadresse}</span>
+                ) : (
+                  <span>{userinfo?.adresse === '' ? '' : <span>📍 {userinfo?.adresse}</span>}</span>
+                )}
+              </div>
+              {userinfo?.adresse === '' && userinfo.id === session.data?.user?.id && (
+                <span className="text-gray-400">Ajouter votre adresse</span>
+              )}
+            </p>
+          ) : (
+            <div className="flex ">
+              <input
+                ref={refadresse as RefObject<HTMLInputElement>}
+                type="text"
+                autoFocus
+                className=" text-md w-48 rounded-md  border  border-gray-300 bg-change font-bold  outline-none"
+                value={newadresse}
+                onChange={(e) => setNewadresse(e.target.value)}
+              />
+            </div>
+          )}
 
           <div className="flex flex-col items-center">
             {!changefonction ? (
               <p
                 onClick={userinfo.id === session.data?.user?.id ? onChangeFonction : undefined}
-                className="text-xl font-bold"
+                className="pt-6 text-xl font-bold"
               >
                 {newfonction ? newfonction : userinfo?.fonction || 'Ajouter votre fonction'}
               </p>
@@ -649,7 +755,7 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
             )}
           </div>
           <div>
-            <div className="flex items-center justify-center py-2">
+            <div className=" flex items-center justify-center py-2 ">
               <p className=" text-center text-xl font-bold">Mes réseaux </p>
               {userinfo.id === session.data?.user?.id && (
                 <button onClick={openModalNetwork} className="ml-2 rounded bg-blue-700 p-1">
@@ -667,26 +773,8 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
             />
           </div>
 
-          <div className="mb-5 flex gap-2 font-bold">
-            Contactez moi:{' '}
-            <a
-              href={`mailto:${userinfo?.Profil?.email || ''}`}
-              className="text-purple-500 transition-colors duration-300 hover:text-purple-700"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="h-6 w-6"
-              >
-                <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z" />
-                <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z" />
-              </svg>
-            </a>
-          </div>
-
           <div>
-            <div className="flex items-center justify-center gap-1 text-center text-xl font-bold  ">
+            <div className="mt-4 flex items-center justify-center gap-1 text-center text-xl font-bold  lg:mt-8">
               <p>Mes compétences</p>
               {userinfo.id === session.data?.user?.id && (
                 <button onClick={openModalCompetence} className="ml-2 rounded bg-blue-700 p-1">
@@ -698,7 +786,40 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
               <Skills competence={userinfo?.Competence} />
             </div>
           </div>
-          <div className="inline-flex items-center p-2 text-lg">💼 {userinfo?.disponibilite}</div>
+          {!changedisponibilite ? (
+            <p
+              onClick={userinfo.id === session.data?.user?.id ? onChangeDisponibilite : undefined}
+              className="p-2 text-lg"
+            >
+              <div>
+                {newdisponibilite ? (
+                  <span>💼 {newdisponibilite}</span>
+                ) : (
+                  <span>
+                    {userinfo?.disponibilite === '' ? (
+                      ''
+                    ) : (
+                      <span>💼 {userinfo?.disponibilite}</span>
+                    )}
+                  </span>
+                )}
+              </div>
+              {userinfo?.disponibilite === '' && userinfo.id === session.data?.user?.id && (
+                <span className="text-gray-400">Ajouter votre disponibilité</span>
+              )}
+            </p>
+          ) : (
+            <div className="flex ">
+              <input
+                ref={refdisponibilite as RefObject<HTMLInputElement>}
+                type="text"
+                autoFocus
+                className=" text-md w-48 rounded-md  border  border-gray-300 bg-change font-bold  outline-none"
+                value={newdisponibilite}
+                onChange={(e) => setNewdisponibilite(e.target.value)}
+              />
+            </div>
+          )}
 
           {/**
           <div>
@@ -885,20 +1006,108 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
                     </div>
                   )}
 
-                  <p className="p-4 text-center">
-                    Je travail actuellement sur{' '}
-                    <span className="font-bold">{userinfo.Profil?.travailencours}</span>
-                  </p>
-                  {userinfo?.Profil?.website && (
-                    <div className="flex items-center justify-center ">
-                      <Link
-                        className=" text-sm underline hover:text-blue-400"
-                        target="_blank"
-                        passHref
-                        href={userinfo?.Profil?.website}
-                      >
-                        <span className="">{userinfo.Profil?.website}</span>
-                      </Link>
+                  {!changeTafencours ? (
+                    <p
+                      onClick={
+                        userinfo.id === session.data?.user?.id ? onChangeTafencours : undefined
+                      }
+                      className="p-2 text-center "
+                    >
+                      <div>
+                        {newtafencours ? (
+                          <span className="">
+                            Je travail actuellement sur
+                            <span className="font-bold"> {newtafencours}</span>
+                          </span>
+                        ) : (
+                          <span>
+                            {userinfo.Profil?.travailencours === '' ? (
+                              ''
+                            ) : (
+                              <span className="">
+                                Je travail actuellement sur
+                                <span className="font-bold">
+                                  {' '}
+                                  {userinfo.Profil?.travailencours}
+                                </span>
+                              </span>
+                            )}
+                          </span>
+                        )}
+                      </div>
+                      {userinfo.Profil?.travailencours === '' &&
+                        userinfo.id === session.data?.user?.id && (
+                          <span className="text-gray-400">Ajouter votre projet en cours </span>
+                        )}
+                    </p>
+                  ) : (
+                    <div className="flex items-center justify-center p-2 ">
+                      <input
+                        ref={reftafencours as RefObject<HTMLInputElement>}
+                        type="text"
+                        autoFocus
+                        className=" text-md w-48 rounded-md  border  border-gray-300 bg-change font-bold  outline-none"
+                        value={newtafencours}
+                        onChange={(e) => setNewtafencours(e.target.value)}
+                      />
+                    </div>
+                  )}
+                  {!changewebsite ? (
+                    <div
+                      onClick={userinfo.id === session.data?.user?.id ? onChangeWebsite : undefined}
+                      className="p-2 text-center "
+                    >
+                      <div>
+                        {newwebsite ? (
+                          <div className="flex items-center justify-center ">
+                            <Link
+                              className={classNames(
+                                ' text-sm underline hover:text-blue-400 ',
+                                userinfo.id === session.data?.user?.id && 'pointer-events-none',
+                              )}
+                              target="_blank"
+                              passHref
+                              href={newwebsite}
+                            >
+                              <span className="">{newwebsite}</span>
+                            </Link>
+                          </div>
+                        ) : (
+                          <div>
+                            {userinfo.Profil?.website === '' ? (
+                              ''
+                            ) : (
+                              <div className="flex items-center justify-center ">
+                                <Link
+                                  className=" text-sm underline hover:text-blue-400"
+                                  target="_blank"
+                                  passHref
+                                  href={userinfo?.Profil?.website as string}
+                                >
+                                  <span className="">{userinfo.Profil?.website}</span>
+                                </Link>
+                              </div>
+                            )}
+                          </div>
+                        )}
+                      </div>
+                      {userinfo.Profil?.website === '' &&
+                        userinfo.id === session.data?.user?.id && (
+                          <span className="text-gray-400">
+                            Ajouter le site internet de votre projet
+                          </span>
+                        )}
+                    </div>
+                  ) : (
+                    <div className="flex items-center justify-center p-2 ">
+                      <input
+                        ref={refwebsite as RefObject<HTMLInputElement>}
+                        type="text"
+                        autoFocus
+                        className=" text-md w-48 rounded-md  border  border-gray-300 bg-change font-bold  outline-none"
+                        value={newwebsite}
+                        onChange={(e) => setNewwebsite(e.target.value)}
+                      />
                     </div>
                   )}
                 </div>
