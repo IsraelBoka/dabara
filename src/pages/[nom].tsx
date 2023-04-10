@@ -1079,7 +1079,10 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
                             ) : (
                               <div className="flex items-center justify-center ">
                                 <Link
-                                  className=" text-sm underline hover:text-blue-400"
+                                  className={classNames(
+                                    ' text-sm underline hover:text-blue-400 ',
+                                    userinfo.id === session.data?.user?.id && 'pointer-events-none',
+                                  )}
                                   target="_blank"
                                   passHref
                                   href={userinfo?.Profil?.website as string}
