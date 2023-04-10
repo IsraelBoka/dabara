@@ -884,17 +884,37 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
                       />
                     </div>
                   )}
+
+                  <p className="p-4 text-center">
+                    Je travail actuellement sur{' '}
+                    <span className="font-bold">{userinfo.Profil?.travailencours}</span>
+                  </p>
+                  {userinfo?.Profil?.website && (
+                    <div className="flex items-center justify-center ">
+                      <Link
+                        className=" text-sm underline hover:text-blue-400"
+                        target="_blank"
+                        passHref
+                        href={userinfo?.Profil?.website}
+                      >
+                        <span className="">{userinfo.Profil?.website}</span>
+                      </Link>
+                    </div>
+                  )}
                 </div>
               </Tab.Panel>
               <Tab.Panel>
                 {userinfo?.id === session.data?.user?.id && (
                   <div className="mt-2 flex flex-col items-center justify-center gap-4">
-                    <h1>téléphone : {userinfo.telephone}</h1>
-                    <h2>email : {userinfo.email}</h2>
-                    <h3>disponibilité : {userinfo.disponibilite}</h3>
-                    <h3>adresse : {userinfo.adresse}</h3>
-                    <h3>Taf en cours : {userinfo.Profil?.travailencours}</h3>
-                    <h3>Website taf en cours : {userinfo.Profil?.website}</h3>
+                    <h1 className="text-lg font-bold lg:text-xl">Salut {userinfo?.name}</h1>
+                    <span className="text-center text-sm text-gray-200 hover:text-white lg:text-base lg:text-gray-500">
+                      Pour modifier votre profil, cliquer directement sur les informations que vous
+                      souhaitez modifier ou sur l&apos;icone de modification.
+                    </span>
+                    <span className="text-center text-sm text-gray-200 hover:text-white lg:text-base lg:text-gray-500">
+                      Il n&apos;est pas possible de modifier votre nom d&apos;utilisateur, vous
+                      pouvez en créer un nouveau en supprimant votre profil.
+                    </span>
                     <button
                       onClick={() => setIsOpenDelete(true)}
                       className="mb-4 inline-flex items-center justify-center rounded-xl bg-red-500 p-2"
