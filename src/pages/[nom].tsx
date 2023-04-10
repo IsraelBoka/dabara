@@ -720,7 +720,7 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
               <input
                 value={`https://dabara.vercel.app/${userinfo?.page || ''}`}
                 className="
-              w-full  truncate rounded-l-lg border bg-transparent p-1  
+              pointer-events-none w-full select-none truncate rounded-l-lg border bg-transparent p-1  
               "
               />
               <button
@@ -789,7 +789,7 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
                     )
                   }
                 >
-                  Parametres
+                  Paramètres
                 </Tab>
               )}
             </Tab.List>
