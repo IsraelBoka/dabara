@@ -2,7 +2,6 @@ import { api } from '../utils/api';
 import { useForm } from 'react-hook-form';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { env } from '../env/client.mjs';
 
 type ImageFormProps = {
   title: string;
@@ -75,10 +74,12 @@ export const ImageForm = ({ closeModal }: { closeModal?: () => void }) => {
     reader.readAsDataURL(data.image.item(0) as File);
     formData.append('file', data?.image?.item(0) as File);
 
-    formData.append('upload_preset', env.NEXT_PUBLIC_CLOUDINARY_PRESET);
+    formData.append('upload_preset', process.env.NEXT_PUBLIC_CLOUDINARY_PRESET as string);
     try {
       const res = await fetch(
-        `https://api.cloudinary.com/v1_1/${env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload`,
+        `https://api.cloudinary.com/v1_1/${
+          process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME as string
+        }/image/upload`,
         {
           method: 'POST',
           body: formData,

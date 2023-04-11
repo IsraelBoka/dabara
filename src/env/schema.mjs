@@ -14,9 +14,9 @@ export const serverSchema = z.object({
   DISCORD_CLIENT_SECRET: z.string(),
   GOOGLE_CLIENT_ID: z.string(),
   GOOGLE_CLIENT_SECRET: z.string(),
-  CLOUDINARY_CLOUD_NAME: z.string(),
-  CLOUDINARY_API_KEY: z.string(),
-  CLOUDINARY_API_SECRET: z.string(),
+  //CLOUDINARY_CLOUD_NAME: z.string(),
+  //CLOUDINARY_API_KEY: z.string(),
+  //CLOUDINARY_API_SECRET: z.string(),
   LINKEDIN_CLIENT_ID: z.string(),
   LINKEDIN_CLIENT_SECRET: z.string(),
   //AWS_ACCESS_KEY_ID : z.string(),
@@ -31,6 +31,5 @@ export const serverSchema = z.object({
 export const clientSchema = z.object({
   NEXT_PUBLIC_CLOUDINARY_PRESET: z.string(),
   NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME: z.string(),
-
   // NEXT_PUBLIC_CLIENTVAR: z.string(),
 });
