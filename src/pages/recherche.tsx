@@ -114,7 +114,7 @@ const Recherche = () => {
                           className="rounded-full"
                         />
                         <div className="flex flex-col items-center justify-center overflow-hidden text-xs">
-                          <p className="text-white">{profile?.name}</p>
+                          <p className="text-white">@{profile?.page}</p>
 
                           <p className="text-white">{profile?.fonction}</p>
                         </div>

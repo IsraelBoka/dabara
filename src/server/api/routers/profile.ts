@@ -101,10 +101,8 @@ export const ProfileRouter = createTRPCRouter({
             Competence: true,
           },
           where: {
-            name: {
-              contains: input.search,
-            },
             page: {
+              contains: input.search,
               not: null,
             },
           },
@@ -130,10 +128,8 @@ export const ProfileRouter = createTRPCRouter({
           Competence: true,
         },
         where: {
-          name: {
-            contains: input.search,
-          },
           page: {
+            contains: input.search,
             not: null,
           },
           Competence: {

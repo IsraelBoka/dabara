@@ -2,6 +2,7 @@ import { api } from '../utils/api';
 import { useForm } from 'react-hook-form';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import { env } from '../env/client.mjs';
 
 type ImageFormProps = {
   title: string;
@@ -72,22 +73,18 @@ export const ImageForm = ({ closeModal }: { closeModal?: () => void }) => {
     // preview image before upload
     const reader = new FileReader();
     reader.readAsDataURL(data.image.item(0) as File);
-    reader.onloadend = () => {
-      console.log('reader.result : ', reader.result);
-    };
-
-    console.log('data.image.item(0) : ', data.image.item(0));
     formData.append('file', data?.image?.item(0) as File);
 
-    formData.append('upload_preset', 'dabara');
-
+    formData.append('upload_preset', env.NEXT_PUBLIC_CLOUDINARY_PRESET);
     try {
-      const res = await fetch('https://api.cloudinary.com/v1_1/dl2pqzw3i/image/upload', {
-        method: 'POST',
-        body: formData,
-      });
+      const res = await fetch(
+        `https://api.cloudinary.com/v1_1/${env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload`,
+        {
+          method: 'POST',
+          body: formData,
+        },
+      );
       const response = (await res.json()) as { secure_url: string; public_id: string };
-      console.log('data : ', response);
       await uploadimage.mutateAsync({
         url: response.secure_url,
         public_id: response.public_id,
