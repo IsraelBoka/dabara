@@ -694,8 +694,8 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
         </Dialog>
       </Transition>
 
-      <Container classname="flex items-center flex-col justify-center lg:bg-transparent lg:flex lg:items-start lg:flex-row lg:h-full lg:w-full">
-        <div className="flex flex-col items-center lg:my-0 lg:h-screen    lg:w-96  lg:rounded lg:border-2 lg:border-yellow-200 lg:bg-profile ">
+      <Container classname="flex items-center flex-col justify-center lg:bg-transparent lg:flex lg:items-start lg:flex-row lg:h-screen lg:w-full">
+        <div className=" flex  flex-col items-center  lg:my-auto lg:h-[36rem] lg:w-96  lg:rounded lg:border-2 lg:border-yellow-200 lg:bg-profile ">
           <Avatar
             nom={nom as string}
             sessionid={session.data?.user?.id || ''}
@@ -865,7 +865,7 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
             </div>
           </div>
         </div>
-        <div className=" rounded lg:ml-4 lg:max-h-screen lg:w-full  lg:overflow-y-auto lg:border-2 lg:border-yellow-200 lg:bg-profile">
+        <div className="rounded lg:my-auto lg:ml-4 lg:h-[36rem] lg:max-h-screen  lg:w-full  lg:overflow-y-auto lg:border-2 lg:border-yellow-200 lg:bg-profile">
           <Tab.Group>
             <Tab.List
               className={

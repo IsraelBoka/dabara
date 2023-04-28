@@ -80,7 +80,7 @@ export const pageRouter = createTRPCRouter({
     .input(
       z.object({
         name: z.string().optional(),
-        email: z.string().optional(),
+        email: z.string().email().optional(),
         disponibilite: z.string().optional(),
         adresse: z.string().optional(),
         about: z.string().optional(),

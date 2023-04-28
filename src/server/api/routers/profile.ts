@@ -179,7 +179,7 @@ export const ProfileRouter = createTRPCRouter({
     .input(
       z.object({
         name: z.string().optional(),
-        email: z.string().optional(),
+        email: z.string().email().optional(),
         about: z.string().optional(),
         page: z.string().optional(),
         fonction: z.string().optional(),

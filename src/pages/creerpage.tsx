@@ -100,7 +100,7 @@ const Creerpage = () => {
             <Logo classname="hover:scale-105 duration-300 transition w-16 h-16 mr-2 stroke-white" />
           </Link>
           <h1 className="p-4 text-center text-sm md:text-xl lg:text-2xl">
-            Connectez vous pour créer une page
+            Inscrivez-vous pour créer une page
           </h1>
           <Button onClick={() => void signIn()}>Se connecter</Button>
         </div>
@@ -223,9 +223,10 @@ const Creerpage = () => {
                     </span>
                   )}
                   {errors.page?.type === 'pattern' && (
-                    <span className="text-red-800 ">
-                      L&apos;identifiant ne doit contenir que
-                      <br className="hidden md:block" /> des lettres et des chiffres
+                    <span className="text-center text-red-800 ">
+                      L&apos;identifiant ne doit contenir ne doit contenir <br />
+                      que des lettres et des chiffres sans <br />
+                      espace ni caractères spéciaux (ex: @, #, $, %, etc.)
                     </span>
                   )}
                   {taken && <span className="text-red-800 ">Cet identifiant est déjà pris</span>}
@@ -282,23 +283,25 @@ const Creerpage = () => {
                     <input
                       className="  rounded       p-2 text-white caret-blue-600  placeholder:text-gray-600 focus:border-blue-300"
                       type="text"
-                      placeholder="Fonction..."
+                      placeholder="
+                      Ex: Développeur web, Designer, etc.
+                      "
                       {...register('poste', { required: true })}
                     />
                     {errors.poste && <span className="text-red-800">Ce champ est requis</span>}
                     <label htmlFor="" className="py-2">
-                      ✏️ Description:
+                      ✏️ A propos de moi :
                     </label>
                     <textarea
                       className="   rounded       p-2 text-white caret-blue-600  placeholder:text-gray-600 focus:border-blue-300"
-                      placeholder="Description"
+                      placeholder="Qui suis-je ?"
                       {...register('description')}
                     />
                   </div>
 
                   <div className=" flex flex-col justify-center rounded p-8 ">
                     <h1 className="text-center text-3xl font-extrabold lg:text-4xl">
-                      A propos de moi
+                      Adresse, contact <br className="hidden md:block" /> et disponibilité
                     </h1>
                     <label className="py-2 text-white">🌍 Je réside à :</label>
                     <input

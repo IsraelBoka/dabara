@@ -29,7 +29,7 @@ export const serverSchema = z.object({
  * To expose them to the client, prefix them with `NEXT_PUBLIC_`.
  */
 export const clientSchema = z.object({
-  NEXT_PUBLIC_CLOUDINARY_PRESET: z.string(),
-  NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME: z.string(),
+  NEXT_PUBLIC_CLOUDINARY_PRESET: z.string().optional(),
+  NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME: z.string().optional(),
   // NEXT_PUBLIC_CLIENTVAR: z.string(),
 });
