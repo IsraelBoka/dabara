@@ -122,8 +122,7 @@ export const ProfileRouter = createTRPCRouter({
       }
 
       const profile = await ctx.prisma.user.findMany({
-        take: limit + 1, // get an extra item at the end which we'll use as next cursor
-
+        take: limit + 1,
         include: {
           Competence: true,
         },
@@ -132,15 +131,16 @@ export const ProfileRouter = createTRPCRouter({
             contains: input.search,
             not: null,
           },
-          Competence: {
-            some: {
-              name: {
-                in: input.Tags,
+          AND: input.Tags.map((tag) => ({
+            Competence: {
+              some: {
+                name: {
+                  equals: tag,
+                },
               },
             },
-          },
+          })),
         },
-
         cursor: cursor ? { id: cursor } : undefined,
       });
 
