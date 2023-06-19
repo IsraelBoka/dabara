@@ -361,6 +361,9 @@ const Creerpage = () => {
                   </h1>
                   <label className="py-2 text-white">📚 Mes compétences techniques :</label>
                   {/** checkbox */}
+                  {errors.competencesTechniques && (
+                    <span className="text-center text-red-800 ">Ce champ est requis</span>
+                  )}
                   <div className="flex flex-wrap items-center justify-center gap-3 lg:w-72 ">
                     <div className="flex flex-row items-center justify-center gap-2">
                       <input
@@ -441,17 +444,6 @@ const Creerpage = () => {
                       </label>
                     </div>
                   </div>
-
-                  <label className="py-2 text-white">📚 Mes compétences métiers :</label>
-                  <input
-                    className=" rounded "
-                    type="text"
-                    placeholder="Développeur, Designer, etc..."
-                    {...register('competencesMetier', { required: true })}
-                  />
-                  {errors.competencesMetier && (
-                    <span className="text-red-800">Ce champ est requis</span>
-                  )}
                 </div>
                 <Navigation />
               </form>
