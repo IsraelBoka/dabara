@@ -991,7 +991,10 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
                         userinfo.id === session.data?.user?.id ? onChangeDescription : undefined
                       }
                     >
-                      {newdesc ? newdesc : userinfo?.about || 'Ajouter une description'}
+                      {newdesc ? newdesc : userinfo?.about || 'Aucune description'}
+                      {userinfo?.about === '' && userinfo.id === session.data?.user?.id && (
+                        <span className="text-gray-400">Ajouter une description</span>
+                      )}
                     </p>
                   )}
                   {changedesc && (

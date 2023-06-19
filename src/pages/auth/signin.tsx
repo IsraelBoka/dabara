@@ -14,7 +14,7 @@ const Signin: NextPage = () => {
   const router = useRouter();
   const { status } = useSession();
 
-  const { callbackUrl, error: errorType } = router.query;
+  const { error: errorType } = router.query;
 
   if (status === 'loading') {
     return (
@@ -25,7 +25,7 @@ const Signin: NextPage = () => {
   }
   if (status === 'authenticated') {
     router
-      .push(callbackUrl as string)
+      .push(`/creerpage`)
       .then(() => window.scrollTo(0, 0))
       .catch(() => {
         console.log('error');
