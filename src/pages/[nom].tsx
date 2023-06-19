@@ -441,7 +441,7 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
 
       {/** ------------------------------------ Modal for image form ------------------------------------ */}
       <Transition appear show={isOpen} as={Fragment}>
-        <Dialog as="div" className="relative z-10" onClose={closeModal}>
+        <Dialog as="div" className="relative z-10 overflow-y-auto" onClose={closeModal}>
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
@@ -454,7 +454,7 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
             <div className="fixed inset-0 bg-black bg-opacity-25" />
           </Transition.Child>
 
-          <div className="fixed inset-0 overflow-y-auto">
+          <div className="fixed inset-0  ">
             <div className="flex min-h-full items-center justify-center p-4 text-center">
               <Transition.Child
                 as={Fragment}
@@ -470,9 +470,10 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
                     'fixed z-50',
                     'w-[95vw] max-w-md rounded-lg p-4 md:w-full',
                     'top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]',
-                    ' bg-secondary  ',
+                    ' max-h-screen overflow-y-auto bg-secondary ',
                     'focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75',
                   )}
+                  style={{ maxHeight: '90vh' }}
                 >
                   <Dialog.Title as="h3" className="text-lg font-medium leading-6 text-gray-100">
                     Ajouter votre projet
