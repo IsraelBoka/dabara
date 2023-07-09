@@ -85,13 +85,13 @@ const Signin: NextPage = () => {
             <Link href={'/'} passHref className="  transition  duration-300 hover:scale-105">
               <Logo classname=" w-16 h-16 animate-fade-in [--animation-delay:200ms] opacity-0 " />
             </Link>
-            <div className="[&_button]:text-md flex flex-col gap-4 md:[&_button]:text-lg lg:[&_button]:text-xl">
-              {error && (
-                <div className="text-center text-sm tracking-wide text-red-500 md:text-lg lg:text-xl">
-                  {error}
-                </div>
-              )}
 
+            {error && (
+              <div className="text-center text-sm tracking-wide text-red-500 md:text-lg lg:text-xl">
+                {error}
+              </div>
+            )}
+            <div className="[&_button]:text-md flex flex-col gap-4 md:[&_button]:text-lg lg:[&_button]:text-xl">
               <button
                 className="inline-flex items-center justify-center gap-2 rounded border p-2  transition-colors duration-300 hover:bg-gray-900 "
                 onClick={async () => {
