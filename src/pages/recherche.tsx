@@ -71,6 +71,7 @@ const Recherche = () => {
           <div>
             <div className="flex w-full items-center  justify-center">
               <Link href="/" className="duration-300 hover:scale-105">
+                <p className="sr-only">Retour à l&apos;accueil</p>
                 <Logo classname=" h-14 w-14 lg:w-16 lg:h-16 animate-fade-in [--animation-delay:200ms] opacity-0 " />
               </Link>
             </div>
@@ -85,7 +86,7 @@ const Recherche = () => {
                 onChange={(e) => setRecherche(e.target.value)}
               />
             </div>
-            <button className="group" onClick={openModal}>
+            <button className="group" onClick={openModal} name="filtering-button">
               <FilterIcon className="h-6 w-6 animate-fade-in text-white opacity-0 transition-colors duration-300 [--animation-delay:600ms] group-hover:stroke-gray-300" />
             </button>
             {isLoading ? (
@@ -111,7 +112,7 @@ const Recherche = () => {
                           src={profile?.image || ''}
                           width={58}
                           height={58}
-                          className="rounded-full"
+                          className="rounded-full object-contain "
                         />
                         <div className="flex flex-col items-center justify-center overflow-hidden text-xs">
                           <p className="text-white">@{profile?.page}</p>
