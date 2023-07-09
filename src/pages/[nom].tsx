@@ -1072,7 +1072,6 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
                                 ' text-sm underline hover:text-blue-400 ',
                                 userinfo.id === session.data?.user?.id && 'pointer-events-none',
                               )}
-                              target="_blank"
                               passHref
                               href={newwebsite}
                             >

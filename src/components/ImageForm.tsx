@@ -18,6 +18,7 @@ export const ImageForm = ({ closeModal }: { closeModal?: () => void }) => {
     formState: { errors },
   } = useForm<ImageFormProps>();
   const utils = api.useContext();
+  const presignedurl = api.image.createpresignedurl.useMutation();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const uploadimage = api.image.addportfolio.useMutation({
     async onSuccess() {
@@ -61,34 +62,26 @@ export const ImageForm = ({ closeModal }: { closeModal?: () => void }) => {
     setIsSubmitting(true);
     const formData = new FormData();
 
-    if (data.image === undefined) {
-      return;
-    }
-
-    if (data.image.item(0) === undefined || data.image.item(0) === null) {
-      return;
-    }
-
     // preview image before upload
     const reader = new FileReader();
-    reader.readAsDataURL(data.image.item(0) as File);
-    formData.append('file', data?.image?.item(0) as File);
+    reader.readAsDataURL(data.image.item(0));
+    formData.append('file', data.image.item(0));
 
-    formData.append('upload_preset', process.env.NEXT_PUBLIC_CLOUDINARY_PRESET as string);
+    const url = await presignedurl.mutateAsync({
+      filetype: data.image.item(0).type,
+      filename: data.image.item(0).name,
+    });
+
+    const options = {
+      method: 'PUT',
+      body: data.image.item(0),
+    };
+
     try {
-      const res = await fetch(
-        `https://api.cloudinary.com/v1_1/${
-          process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME as string
-        }/image/upload`,
-        {
-          method: 'POST',
-          body: formData,
-        },
-      );
-      const response = (await res.json()) as { secure_url: string; public_id: string };
+      const res = await fetch(url, options);
+      console.log(res);
       await uploadimage.mutateAsync({
-        url: response.secure_url,
-        public_id: response.public_id,
+        public_id: data.image.item(0).name,
         title: data.title,
         description: data.description,
         link: data.link,

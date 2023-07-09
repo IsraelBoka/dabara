@@ -14,6 +14,7 @@ const config = {
       'api.dicebear.com',
       'res.cloudinary.com',
       'lh3.googleusercontent.com',
+      'dabara2.s3.amazonaws.com',
     ],
   },
   swcMinify: true,

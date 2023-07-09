@@ -26,17 +26,17 @@ export const ImageRouter = createTRPCRouter({
     return 'you can now see this secret message!';
   }),
 
-  createpresignedurl: publicProcedure
+  createpresignedurl: protectedProcedure
     .input(
       z.object({
         filename: z.string(),
         filetype: z.string(),
       }),
     )
-    .mutation(({ input }) => {
+    .mutation(({ input, ctx }) => {
       const url = s3.getSignedUrl('putObject', {
         Bucket: env.AWS_BUCKET_NAME,
-        Key: input.filename,
+        Key: `portfolio/${ctx.session.user.id}/${input.filename}`,
         ContentType: input.filetype,
         Expires: 60 * 5,
       });
@@ -47,7 +47,6 @@ export const ImageRouter = createTRPCRouter({
   addportfolio: protectedProcedure
     .input(
       z.object({
-        url: z.string(),
         public_id: z.string(),
         title: z.string(),
         description: z.string(),
@@ -57,7 +56,7 @@ export const ImageRouter = createTRPCRouter({
     .mutation(async ({ input, ctx }) => {
       const portfolio = await ctx.prisma.portfolio.create({
         data: {
-          url: input.url,
+          url: `https://${env.AWS_BUCKET_NAME}.s3.amazonaws.com/portfolio/${ctx.session.user.id}/${input.public_id}`,
           image: input.public_id,
           title: input.title,
           description: input.description,
