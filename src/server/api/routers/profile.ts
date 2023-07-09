@@ -255,12 +255,9 @@ export const ProfileRouter = createTRPCRouter({
       },
     });
 
-    const userupdate = ctx.prisma.user.update({
+    const userupdate = ctx.prisma.user.delete({
       where: {
         id: ctx.session.user.id,
-      },
-      data: {
-        page: null,
       },
     });
 
