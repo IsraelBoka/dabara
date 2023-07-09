@@ -17,13 +17,8 @@ export const serverSchema = z.object({
   AWS_ACCESS_KEY_ID: z.string(),
   AWS_SECRET_ACCESS_KEY: z.string(),
   AWS_BUCKET_NAME: z.string(),
-  //CLOUDINARY_CLOUD_NAME: z.string(),
-  //CLOUDINARY_API_KEY: z.string(),
-  //CLOUDINARY_API_SECRET: z.string(),
   LINKEDIN_CLIENT_ID: z.string(),
   LINKEDIN_CLIENT_SECRET: z.string(),
-  //AWS_ACCESS_KEY_ID : z.string(),
-  //AWS_SECRET_ACCESS_KEY : z.string(),
 });
 
 /**
@@ -31,8 +26,4 @@ export const serverSchema = z.object({
  * This way you can ensure the app isn't built with invalid env vars.
  * To expose them to the client, prefix them with `NEXT_PUBLIC_`.
  */
-export const clientSchema = z.object({
-  NEXT_PUBLIC_CLOUDINARY_PRESET: z.string().optional(),
-  NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME: z.string().optional(),
-  // NEXT_PUBLIC_CLIENTVAR: z.string(),
-});
+export const clientSchema = z.object({});
