@@ -29,8 +29,8 @@ export const ImageRouter = createTRPCRouter({
   createpresignedurl: publicProcedure
     .input(
       z.object({
-        filename: z.any(),
-        filetype: z.any(),
+        filename: z.string(),
+        filetype: z.string(),
       }),
     )
     .mutation(({ input }) => {
