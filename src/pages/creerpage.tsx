@@ -364,17 +364,17 @@ const Creerpage = () => {
                   {errors.competencesTechniques && (
                     <span className="text-center text-red-800 ">Ce champ est requis</span>
                   )}
-                  <div className="flex flex-wrap items-center justify-center gap-3 lg:w-72 ">
+                  <div className="flex flex-wrap items-center justify-center gap-3  lg:w-72">
                     <div className="flex flex-row items-center justify-center gap-2">
                       <input
-                        className="rounded"
+                        className="rounded accent-lime-600 "
                         type="checkbox"
                         value="HTML"
                         {...register('competencesTechniques', {
                           required: true,
                         })}
                       />
-                      <label className="py-2 text-white">
+                      <label className="py-2 text-white ">
                         <Html className="h-8 w-8" />
                       </label>
                     </div>
