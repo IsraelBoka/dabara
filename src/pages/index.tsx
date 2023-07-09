@@ -108,7 +108,7 @@ const Home: NextPage = () => {
                 alt="Rien du tout "
               />*/}
               {/** video to show the website */}
-              <video autoPlay loop muted className=" rounded-b">
+              <video autoPlay loop muted className="pointer-events-none rounded-b">
                 <source src="/Gifportfolio5.webm" type="video/webm" />
                 <source src="/Gifportfolio5.mp4" type="video/mp4" />
               </video>

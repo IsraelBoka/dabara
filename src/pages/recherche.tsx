@@ -110,9 +110,9 @@ const Recherche = () => {
                         <Image
                           alt="image du profile"
                           src={profile?.image || ''}
-                          width={58}
-                          height={58}
-                          className="rounded-full object-contain "
+                          width={500}
+                          height={500}
+                          className="h-16 w-16 rounded-full object-cover "
                         />
                         <div className="flex flex-col items-center justify-center overflow-hidden text-xs">
                           <p className="text-white">@{profile?.page}</p>

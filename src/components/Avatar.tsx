@@ -49,7 +49,7 @@ export const Avatar = (props: AvatarProps) => {
         <div className=" flex shrink-0 items-center justify-center rounded-full  bg-gradient-to-r from-profile to-gray-600  p-0.5 shadow-2xl md:p-1 ">
           {lien ? (
             <Image
-              className=" h-11 w-11 rounded-full object-contain md:h-16 md:w-16"
+              className=" h-11 w-11 rounded-full object-cover md:h-16 md:w-16"
               referrerPolicy="origin"
               src={lien}
               width={500}
