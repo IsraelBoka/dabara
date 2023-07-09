@@ -4,7 +4,8 @@ import { api } from '../utils/api';
 const TestAWS = () => {
   const [upload, setUpload] = useState(false);
 
-  const [file, setFile] = useState<File>(new File([''], 'filename', { type: 'image/png' }));
+  const [file, setFile] = useState<File>();
+
   const presignedurl = api.image.createpresignedurl.useMutation();
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -16,6 +17,7 @@ const TestAWS = () => {
 
   const handleUpload = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!file) return;
     const url = await presignedurl.mutateAsync({
       filetype: file.type,
       filename: file.name,
