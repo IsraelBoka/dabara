@@ -64,6 +64,10 @@ export const ImageForm = ({ closeModal }: { closeModal?: () => void }) => {
 
     // preview image before upload
     const reader = new FileReader();
+
+    if (!data.image) return null;
+    if (!data.image.item(0)) return null;
+
     reader.readAsDataURL(data.image.item(0));
     formData.append('file', data.image.item(0));
 
