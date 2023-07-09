@@ -1023,7 +1023,7 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
                       <div>
                         {newtafencours ? (
                           <span className="">
-                            Je travail actuellement sur
+                            Je travaille actuellement sur
                             <span className="font-bold"> {newtafencours}</span>
                           </span>
                         ) : (
@@ -1032,7 +1032,7 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
                               ''
                             ) : (
                               <span className="">
-                                Je travail actuellement sur
+                                Je travaille actuellement sur
                                 <span className="font-bold">
                                   {' '}
                                   {userinfo.Profil?.travailencours}
