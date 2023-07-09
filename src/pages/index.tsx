@@ -109,6 +109,7 @@ const Home: NextPage = () => {
               />*/}
               {/** video to show the website */}
               <video autoPlay loop muted className=" rounded-b">
+                <source src="/Gifportfolio5.webm" type="video/webm" />
                 <source src="/Gifportfolio5.mp4" type="video/mp4" />
               </video>
             </div>
