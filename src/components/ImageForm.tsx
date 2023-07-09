@@ -65,27 +65,28 @@ export const ImageForm = ({ closeModal }: { closeModal?: () => void }) => {
     // preview image before upload
     const reader = new FileReader();
 
-    if (!data.image) return null;
-    if (!data.image.item(0)) return null;
+    if (!data.image) return;
+    if (!data.image.item(0)) return;
 
-    reader.readAsDataURL(data.image.item(0));
-    formData.append('file', data.image.item(0));
+    const file = data.image.item(0) as File;
+    reader.readAsDataURL(file);
+    formData.append('file', file);
 
     const url = await presignedurl.mutateAsync({
-      filetype: data.image.item(0).type,
-      filename: data.image.item(0).name,
+      filetype: file.type,
+      filename: file.name,
     });
 
     const options = {
       method: 'PUT',
-      body: data.image.item(0),
+      body: file,
     };
 
     try {
       const res = await fetch(url, options);
       console.log(res);
       await uploadimage.mutateAsync({
-        public_id: data.image.item(0).name,
+        public_id: file.name,
         title: data.title,
         description: data.description,
         link: data.link,
