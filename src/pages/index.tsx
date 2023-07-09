@@ -110,6 +110,7 @@ const Home: NextPage = () => {
               {/** video to show the website */}
               <video autoPlay loop muted className="pointer-events-none rounded-b">
                 <source src="/Gifportfolio5.webm" type="video/webm" />
+                <source src="/Gifportfolio5.mp4" type="video/mp4" />
               </video>
             </div>
             <div className="absolute inset-0 -z-10 bg-gradient-to-b from-blue-600 to-yellow-800 opacity-60 blur-lg transition-opacity duration-700 group-hover:opacity-100 " />
