@@ -99,15 +99,6 @@ const Home: NextPage = () => {
                 <div className="h-1.5 w-1.5 rounded-full bg-gray-700 md:h-3 md:w-3" />
                 <div className="h-1.5 w-1.5 rounded-full bg-gray-700 md:h-3 md:w-3" />
               </div>
-              {/** 
-              <Image
-                src="/GIFPORTFOLIO.gif"
-                width={2000}
-                height={2000}
-                className=" pointer-events-none rounded-b"
-                alt="Rien du tout "
-              />*/}
-              {/** video to show the website */}
               <video autoPlay loop muted className="pointer-events-none rounded-b">
                 <source src="/Gifportfolio5.webm" type="video/webm" />
                 <source src="/Gifportfolio5.mp4" type="video/mp4" />
@@ -127,7 +118,7 @@ const Home: NextPage = () => {
                 <br className="hidden md:block" /> projets et vos réalisations
               </HeroSub>
             </Hero>
-            <div className="flex translate-y-[-1rem] animate-fade-in flex-col-reverse items-center   overflow-clip rounded-md border border-gray-700 p-1 opacity-0 [--animation-delay:1200ms] lg:ml-auto lg:py-4 lg:px-6">
+            <div className="flex translate-y-[-1rem] animate-fade-in flex-col-reverse items-center   overflow-clip rounded-md border border-gray-700 p-1 opacity-0 [--animation-delay:1200ms] lg:ml-auto lg:px-6 lg:py-4">
               <SocialCard
                 image="/SocialCardErica.webp"
                 title="Erica"
@@ -154,7 +145,7 @@ const Home: NextPage = () => {
                 recrutements grace à notre moteur de recherche
               </HeroSub>
             </Hero>
-            <div className="flex h-72 w-64 translate-y-[-1rem] animate-fade-in justify-center  overflow-clip rounded-md    border border-gray-700 p-2 opacity-0 [--animation-delay:1200ms] md:h-72 md:w-80 lg:mr-auto lg:h-72 lg:w-96 lg:py-4 lg:px-6">
+            <div className="flex h-72 w-64 translate-y-[-1rem] animate-fade-in justify-center  overflow-clip rounded-md    border border-gray-700 p-2 opacity-0 [--animation-delay:1200ms] md:h-72 md:w-80 lg:mr-auto lg:h-72 lg:w-96 lg:px-6 lg:py-4">
               <Searchforlanding />
             </div>
           </div>
