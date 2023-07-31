@@ -33,10 +33,6 @@ Le Générateur de Portfolio est une puissante application web qui permet aux ut
 
 Les contributions au Générateur de Portfolio sont les bienvenues ! Si vous trouvez des bugs ou avez des idées de nouvelles fonctionnalités, n'hésitez pas à ouvrir une issue. Pour les changements majeurs, veuillez ouvrir une issue pour discuter de votre proposition avant de l'implémenter.
 
-## Licence
-
-Ce projet est sous licence [MIT License](https://chat.openai.com/c/LICENSE).
-
 ## Contact
 
 Pour toute question ou demande d'assistance,
