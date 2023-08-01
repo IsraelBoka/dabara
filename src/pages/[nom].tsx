@@ -386,44 +386,43 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
     });
   };
 
+  const image = encodeURIComponent(page.image as string);
+  const title = encodeURIComponent(nom as string);
+  const fonction = encodeURIComponent(page.fonction as string);
+
+
   return (
     <div>
       <NextSeo
-        title={`Dabara - Portfolio de ${nom as string}`}
-        description="Dabara est une plateforme de partage de portfolio pour les développeurs"
-        canonical="https://dabara.com"
-        twitter={{
-          handle: '@dabara',
+          title={`Dabara - Portfolio de ${nom as string}`}
+          description="Dabara est une plateforme de partage de portfolio pour les développeurs"
+          canonical="https://dabara.vercel.app"
+          twitter={{
+            handle: '@dabara',
+            site: '@dabara',
+            cardType: 'summary_large_image',
+          }}
+          openGraph={{
+            url: 'https://dabara.com',
+            title: `Dabara - @${title }`,
+            description: 'Dabara est une plateforme de partage de portfolio pour les développeurs',
+            images: [
+              {
+                url: `https://dabara.vercel.app/api/og-image?title=${title}&image=${image}&fonction=${fonction}`,
+                width: 1200,
+                height: 630,
+                alt: 'Dabara',
+              },
+            ],
 
-          site: '@dabara',
-          cardType: 'summary_large_image',
-        }}
-        openGraph={{
-          url: 'https://dabara.com',
-          title: 'Dabara',
-
-          description: 'Dabara est une plateforme de partage de portfolio pour les développeurs',
-
-          images: [
-            {
-              url: `
-    https://dabara.vercel.app/api/og-image?title=${nom as string}&image=${
-                page.image as string
-              }&fonction=${page.fonction as string}`,
-              width: 800,
-              height: 600,
-              alt: 'Dabara',
+            type: 'website',
+            site_name: 'Dabara',
+            profile: {
+              username: `${nom as string}`,
+              firstName: `${page.name as string}`,
             },
-          ],
-
-          type: 'website',
-          site_name: 'Dabara',
-          profile: {
-            username: `${nom as string}`,
-            firstName: `${page.name as string}`,
-          },
-        }}
-      />
+          }}
+        />
 
       <ToastContainer
         position="bottom-right"
