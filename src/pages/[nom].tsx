@@ -296,6 +296,8 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
     });
 
   if (loadinguserinfo && page) {
+    const image = encodeURIComponent(page.image as string);
+
     return (
       <>
         <NextSeo
@@ -315,7 +317,7 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
               {
                 url: `
     https://dabara.vercel.app/api/og-image?title=${nom as string}&image=${
-                  page.image as string
+                  image
                 }&fonction=${page.fonction as string}`,
                 width: 1200,
                 height: 630,
