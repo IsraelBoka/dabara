@@ -52,8 +52,8 @@ export const Avatar = (props: AvatarProps) => {
               className=" h-11 w-11 rounded-full object-cover md:h-16 md:w-16"
               referrerPolicy="origin"
               src={lien}
-              width={500}
-              height={500}
+              width={2000}
+              height={2000}
               alt="Image  de profil"
             />
           ) : (
