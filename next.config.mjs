@@ -17,6 +17,7 @@ const config = {
       'media-exp1.licdn.com',
       'media.licdn.com',
       'dabara.s3.amazonaws.com',
+      'ik.imagekit.io',
     ],
   },
   swcMinify: true,
