@@ -297,13 +297,16 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
 
   if (loadinguserinfo && page) {
     const image = encodeURIComponent(page.image as string);
+    const title = encodeURIComponent(nom as string);
+    const fonction = encodeURIComponent(page.fonction as string);
+
 
     return (
       <>
         <NextSeo
           title={`Dabara - Portfolio de ${nom as string}`}
           description="Dabara est une plateforme de partage de portfolio pour les développeurs"
-          canonical="https://dabara.com"
+          canonical="https://dabara.vercel.app"
           twitter={{
             handle: '@dabara',
             site: '@dabara',
@@ -311,14 +314,11 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
           }}
           openGraph={{
             url: 'https://dabara.com',
-            title: `Dabara - @${nom as string}`,
+            title: `Dabara - @${title }`,
             description: 'Dabara est une plateforme de partage de portfolio pour les développeurs',
             images: [
               {
-                url: `
-    https://dabara.vercel.app/api/og-image?title=${nom as string}&image=${
-                  image
-                }&fonction=${page.fonction as string}`,
+                url: `https://dabara.vercel.app/api/og-image?title=${title}&image=${image}&fonction=${fonction}`,
                 width: 1200,
                 height: 630,
                 alt: 'Dabara',
