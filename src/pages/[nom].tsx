@@ -313,7 +313,7 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
             cardType: 'summary_large_image',
           }}
           openGraph={{
-            url: 'https://dabara.com',
+            url: 'https://dabara.vercel.app',
             title: `Dabara - @${title }`,
             description: 'Dabara est une plateforme de partage de portfolio pour les développeurs',
             images: [
@@ -344,7 +344,7 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
         <NextSeo
           title={`Dabara - Ce portfolio n'existe pas`}
           description="Dabara est une plateforme de partage de portfolio pour les développeurs"
-          canonical="https://dabara.com"
+          canonical="https://dabara.vercel.app"
           twitter={{
             handle: '@dabara',
 
@@ -352,7 +352,7 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
             cardType: 'summary_large_image',
           }}
           openGraph={{
-            url: 'https://dabara.com',
+            url: 'https://dabara.vercel.app',
             title: 'Dabara',
 
             description: 'Dabara est une plateforme de partage de portfolio pour les développeurs',
