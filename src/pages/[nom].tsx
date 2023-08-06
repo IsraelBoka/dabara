@@ -834,7 +834,7 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
           <div className="mt-2 hidden  flex-col items-center justify-center gap-2 px-8 lg:flex  ">
             <div className="flex items-center justify-center  ">
               <input
-                value={`https://dabara.vercel.app/${userinfo?.page || ''}`}
+                value={`https://dabara.tech/${userinfo?.page || ''}`}
                 className="
               pointer-events-none w-full select-none truncate rounded-l-lg border bg-transparent p-1  
               "
