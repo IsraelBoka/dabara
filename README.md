@@ -1,28 +1,41 @@
-# Create T3 App
+# Générateur de Portfolio
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+## Description
 
-## What's next? How do I make an app with this?
+Le Générateur de Portfolio est une puissante application web qui permet aux utilisateurs de créer et de présenter leurs portfolios professionnels. Il offre une interface intuitive et conviviale aux utilisateurs pour ajouter facilement leurs projets, leurs œuvres d'art, leurs échantillons d'écriture et d'autres travaux, leur permettant de créer un portfolio impressionnant et personnalisé. Avec le Générateur de Portfolio, les utilisateurs peuvent aisément établir une présence en ligne, attirant ainsi des clients potentiels, des employeurs ou des collaborateurs.
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+## Fonctionnalités
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+- **Inscription et Connexion des Utilisateurs :** Système d'inscription et de connexion fluide pour un accès sécurisé aux portfolios.
+- **Création de Portfolios :** Créez et personnalisez facilement des portfolios en ajoutant des projets, des œuvres d'art et d'autres travaux avec des descriptions détaillées et des images captivantes.
+- **Edition et Gestion :** Facilité d'édition et de gestion du contenu du portfolio, permettant aux utilisateurs d'ajouter ou de supprimer des éléments selon leurs besoins.
+- **Génération de Cartes pour les Réseaux Sociaux (Og-image) :** Chaque portfolio génère des cartes uniques pour les réseaux sociaux (Og-images) pour un partage optimisé sur les plateformes sociales.
+- **Options d'Authentification :** Les utilisateurs peuvent se connecter à l'aide de leur compte Google, LinkedIn ou Discord pour une expérience de connexion fluide.
+- **Design Adaptatif :** L'application offre un design entièrement adaptatif pour une expérience utilisateur fluide sur divers appareils et tailles d'écran.
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+## Technologies Utilisées
 
-## Learn More
+- **Frontend :** React, TypeScript, Tailwind CSS, Create-t3-app
+- **Backend :** Node.js, Express
+- **Base de Données :** PostgreSQL avec Prisma ORM
+- **Authentification :**  Google OAuth, LinkedIn OAuth, Discord OAuth
+- **Déploiement :** Vercel
+- **Image Storage:** AWS (Amazon Web Services)
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+## Futures Fonctionnalités
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+- **Élargissement des Compétences :** Inclusion planifiée de compétences et de compétences supplémentaires pour une représentation complète du portfolio.
+- **Collaboration sur les Projets :** Permettre aux utilisateurs de collaborer sur des projets, en invitant d'autres détenteurs de portfolio à travailler sur des projets communs.
+- **Thèmes et Modèles Améliorés :** Introduction d'une large gamme de thèmes et de modèles personnalisables pour offrir aux utilisateurs différentes options de design.
 
-## How do I deploy this?
+## Contributions
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+Les contributions au Générateur de Portfolio sont les bienvenues ! Si vous trouvez des bugs ou avez des idées de nouvelles fonctionnalités, n'hésitez pas à ouvrir une issue. Pour les changements majeurs, veuillez ouvrir une issue pour discuter de votre proposition avant de l'implémenter.
+
+## Contact
+
+Pour toute question ou demande d'assistance,
+veuillez nous contacter par email à : [israelboka5@gmail.com](mailto:israelboka5@gmail.com).
+
+Bonne construction de portfolio !

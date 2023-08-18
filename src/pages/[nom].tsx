@@ -296,27 +296,29 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
     });
 
   if (loadinguserinfo && page) {
+    const image = encodeURIComponent(page.image as string);
+    const title = encodeURIComponent(nom as string);
+    const fonction = encodeURIComponent(page.fonction as string);
+
+
     return (
       <>
         <NextSeo
           title={`Dabara - Portfolio de ${nom as string}`}
           description="Dabara est une plateforme de partage de portfolio pour les développeurs"
-          canonical="https://dabara.com"
+          canonical="https://dabara.vercel.app"
           twitter={{
             handle: '@dabara',
             site: '@dabara',
             cardType: 'summary_large_image',
           }}
           openGraph={{
-            url: 'https://dabara.com',
-            title: `Dabara - @${nom as string}`,
+            url: 'https://dabara.vercel.app',
+            title: `Dabara - @${title }`,
             description: 'Dabara est une plateforme de partage de portfolio pour les développeurs',
             images: [
               {
-                url: `
-    https://dabara.vercel.app/api/og-image?title=${nom as string}&image=${
-                  page.image as string
-                }&fonction=${page.fonction as string}`,
+                url: `https://dabara.vercel.app/api/og-image?title=${title}&image=${image}&fonction=${fonction}`,
                 width: 1200,
                 height: 630,
                 alt: 'Dabara',
@@ -342,25 +344,19 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
         <NextSeo
           title={`Dabara - Ce portfolio n'existe pas`}
           description="Dabara est une plateforme de partage de portfolio pour les développeurs"
-          canonical="https://dabara.com"
           twitter={{
             handle: '@dabara',
-
             site: '@dabara',
             cardType: 'summary_large_image',
           }}
           openGraph={{
-            url: 'https://dabara.com',
             title: 'Dabara',
-
             description: 'Dabara est une plateforme de partage de portfolio pour les développeurs',
-
             images: [
               {
                 url: 'https://dabara.vercel.app/og.png',
               },
             ],
-
             type: 'website',
             site_name: 'Dabara',
           }}
@@ -384,44 +380,42 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
     });
   };
 
+  const image = encodeURIComponent(page.image as string);
+  const title = encodeURIComponent(nom as string);
+  const fonction = encodeURIComponent(page.fonction as string);
+
+
   return (
     <div>
       <NextSeo
-        title={`Dabara - Portfolio de ${nom as string}`}
-        description="Dabara est une plateforme de partage de portfolio pour les développeurs"
-        canonical="https://dabara.com"
-        twitter={{
-          handle: '@dabara',
+          title={`Dabara - Portfolio de ${nom as string}`}
+          description="Dabara est une plateforme de partage de portfolio pour les développeurs"
+          canonical={`https://dabara.vercel.app/${nom as string }`}
+          twitter={{
+            handle: '@dabara',
+            site: '@dabara',
+            cardType: 'summary_large_image',
+          }}
+          openGraph={{
+            title: `Dabara - @${title }`,
+            description: 'Dabara est une plateforme de partage de portfolio pour les développeurs',
+            images: [
+              {
+                url: `https://dabara.vercel.app/api/og-image?title=${title}&image=${image}&fonction=${fonction}`,
+                width: 1200,
+                height: 630,
+                alt: 'Dabara',
+              },
+            ],
 
-          site: '@dabara',
-          cardType: 'summary_large_image',
-        }}
-        openGraph={{
-          url: 'https://dabara.com',
-          title: 'Dabara',
-
-          description: 'Dabara est une plateforme de partage de portfolio pour les développeurs',
-
-          images: [
-            {
-              url: `
-    https://dabara.vercel.app/api/og-image?title=${nom as string}&image=${
-                page.image as string
-              }&fonction=${page.fonction as string}`,
-              width: 800,
-              height: 600,
-              alt: 'Dabara',
+            type: 'website',
+            site_name: 'Dabara',
+            profile: {
+              username: `${nom as string}`,
+              firstName: `${page.name as string}`,
             },
-          ],
-
-          type: 'website',
-          site_name: 'Dabara',
-          profile: {
-            username: `${nom as string}`,
-            firstName: `${page.name as string}`,
-          },
-        }}
-      />
+          }}
+        />
 
       <ToastContainer
         position="bottom-right"
@@ -840,7 +834,7 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
           <div className="mt-2 hidden  flex-col items-center justify-center gap-2 px-8 lg:flex  ">
             <div className="flex items-center justify-center  ">
               <input
-                value={`https://dabara.vercel.app/${userinfo?.page || ''}`}
+                value={`https://dabara.tech/${userinfo?.page || ''}`}
                 className="
               pointer-events-none w-full select-none truncate rounded-l-lg border bg-transparent p-1  
               "
@@ -1148,7 +1142,7 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
           <div className="mt-auto flex flex-col items-center justify-center gap-2 lg:hidden  ">
             <div className="flex items-center justify-center  px-8 ">
               <input
-                value={`https://dabara.vercel.app/${userinfo?.page || ''}`}
+                value={`https://dabara.tech/${userinfo?.page || ''}`}
                 className="
               w-full  truncate rounded-l-lg border bg-transparent p-1  
               "
