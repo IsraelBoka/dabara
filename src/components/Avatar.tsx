@@ -60,7 +60,7 @@ export const Avatar = (props: AvatarProps) => {
             <img
               referrerPolicy="origin"
               className="h-16 w-16"
-              src={`https://api.dicebear.com/7.x/lorelei-neutral/svg?seed=${nom.replace(' ', '-')}`}
+              src={`https://api.dicebear.com/7.x/lorelei/svg?seed=${nom.replace(' ', '-')}`}
               width={2000}
               height={2000}
               alt="test"
