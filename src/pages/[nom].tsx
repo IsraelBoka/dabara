@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState, Fragment, useRef, type RefObject } from 'react';
 import { Avatar } from '../components/Avatar';
-import { Container } from '../components/container';
+// import { Container } from '../components/container';
 import { Clipboard } from '../components/icons/clipboard';
 import { Logo } from '../components/icons/logo';
 import { ImageCard } from '../components/ImageCard';
