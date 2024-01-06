@@ -688,7 +688,7 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
       </Transition>
 
       <div className="mx-auto flex max-w-[100rem] flex-col items-center justify-center lg:flex lg:h-screen lg:w-full lg:flex-row lg:items-center lg:gap-12">
-        <div className=" flex flex-col  items-center py-24  lg:h-[50rem] lg:rounded lg:border-2 lg:border-yellow-200 lg:bg-profile">
+        <div className=" flex flex-col  items-center py-24  lg:h-[36rem] lg:rounded lg:border-2 lg:border-yellow-200 lg:bg-profile">
           <Avatar
             nom={nom as string}
             sessionid={session.data?.user?.id || ''}
