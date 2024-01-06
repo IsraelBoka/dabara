@@ -300,7 +300,6 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
     const title = encodeURIComponent(nom as string);
     const fonction = encodeURIComponent(page.fonction as string);
 
-
     return (
       <>
         <NextSeo
@@ -314,7 +313,7 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
           }}
           openGraph={{
             url: 'https://dabara.vercel.app',
-            title: `Dabara - @${title }`,
+            title: `Dabara - @${title}`,
             description: 'Dabara est une plateforme de partage de portfolio pour les développeurs',
             images: [
               {
@@ -384,38 +383,37 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
   const title = encodeURIComponent(nom as string);
   const fonction = encodeURIComponent(page.fonction as string);
 
-
   return (
     <div>
       <NextSeo
-          title={`Dabara - Portfolio de ${nom as string}`}
-          description="Dabara est une plateforme de partage de portfolio pour les développeurs"
-          canonical={`https://dabara.vercel.app/${nom as string }`}
-          twitter={{
-            handle: '@dabara',
-            site: '@dabara',
-            cardType: 'summary_large_image',
-          }}
-          openGraph={{
-            title: `Dabara - @${title }`,
-            description: 'Dabara est une plateforme de partage de portfolio pour les développeurs',
-            images: [
-              {
-                url: `https://dabara.vercel.app/api/og-image?title=${title}&image=${image}&fonction=${fonction}`,
-                width: 1200,
-                height: 630,
-                alt: 'Dabara',
-              },
-            ],
-
-            type: 'website',
-            site_name: 'Dabara',
-            profile: {
-              username: `${nom as string}`,
-              firstName: `${page.name as string}`,
+        title={`Dabara - Portfolio de ${nom as string}`}
+        description="Dabara est une plateforme de partage de portfolio pour les développeurs"
+        canonical={`https://dabara.vercel.app/${nom as string}`}
+        twitter={{
+          handle: '@dabara',
+          site: '@dabara',
+          cardType: 'summary_large_image',
+        }}
+        openGraph={{
+          title: `Dabara - @${title}`,
+          description: 'Dabara est une plateforme de partage de portfolio pour les développeurs',
+          images: [
+            {
+              url: `https://dabara.vercel.app/api/og-image?title=${title}&image=${image}&fonction=${fonction}`,
+              width: 1200,
+              height: 630,
+              alt: 'Dabara',
             },
-          }}
-        />
+          ],
+
+          type: 'website',
+          site_name: 'Dabara',
+          profile: {
+            username: `${nom as string}`,
+            firstName: `${page.name as string}`,
+          },
+        }}
+      />
 
       <ToastContainer
         position="bottom-right"
@@ -438,10 +436,10 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
         <Dialog as="div" className="relative z-10 overflow-y-auto" onClose={closeModal}>
           <Transition.Child
             as={Fragment}
-            enter="ease-out duration-300"
+            enter="duration-300 ease-out"
             enterFrom="opacity-0"
             enterTo="opacity-100"
-            leave="ease-in duration-200"
+            leave="duration-200 ease-in"
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
@@ -452,12 +450,12 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
             <div className="flex min-h-full items-center justify-center p-4 text-center">
               <Transition.Child
                 as={Fragment}
-                enter="ease-out duration-300"
-                enterFrom="opacity-0 scale-95"
-                enterTo="opacity-100 scale-100"
-                leave="ease-in duration-200"
-                leaveFrom="opacity-100 scale-100"
-                leaveTo="opacity-0 scale-95"
+                enter="duration-300 ease-out"
+                enterFrom="scale-95 opacity-0"
+                enterTo="scale-100 opacity-100"
+                leave="duration-200 ease-in"
+                leaveFrom="scale-100 opacity-100"
+                leaveTo="scale-95 opacity-0"
               >
                 <Dialog.Panel
                   className={classNames(
@@ -497,10 +495,10 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
         <Dialog as="div" className="relative z-10" onClose={closeModalDelete}>
           <Transition.Child
             as={Fragment}
-            enter="ease-out duration-300"
+            enter="duration-300 ease-out"
             enterFrom="opacity-0"
             enterTo="opacity-100"
-            leave="ease-in duration-200"
+            leave="duration-200 ease-in"
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
@@ -511,12 +509,12 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
             <div className="flex min-h-full items-center justify-center p-4 text-center">
               <Transition.Child
                 as={Fragment}
-                enter="ease-out duration-300"
-                enterFrom="opacity-0 scale-95"
-                enterTo="opacity-100 scale-100"
-                leave="ease-in duration-200"
-                leaveFrom="opacity-100 scale-100"
-                leaveTo="opacity-0 scale-95"
+                enter="duration-300 ease-out"
+                enterFrom="scale-95 opacity-0"
+                enterTo="scale-100 opacity-100"
+                leave="duration-200 ease-in"
+                leaveFrom="scale-100 opacity-100"
+                leaveTo="scale-95 opacity-0"
               >
                 <Dialog.Panel
                   className={classNames(
@@ -567,10 +565,10 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
         <Dialog as="div" className="relative z-10" onClose={closeModalCompetence}>
           <Transition.Child
             as={Fragment}
-            enter="ease-out duration-300"
+            enter="duration-300 ease-out"
             enterFrom="opacity-0"
             enterTo="opacity-100"
-            leave="ease-in duration-200"
+            leave="duration-200 ease-in"
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
@@ -581,12 +579,12 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
             <div className="flex min-h-full items-center justify-center p-4 text-center">
               <Transition.Child
                 as={Fragment}
-                enter="ease-out duration-300"
-                enterFrom="opacity-0 scale-95"
-                enterTo="opacity-100 scale-100"
-                leave="ease-in duration-200"
-                leaveFrom="opacity-100 scale-100"
-                leaveTo="opacity-0 scale-95"
+                enter="duration-300 ease-out"
+                enterFrom="scale-95 opacity-0"
+                enterTo="scale-100 opacity-100"
+                leave="duration-200 ease-in"
+                leaveFrom="scale-100 opacity-100"
+                leaveTo="scale-95 opacity-0"
               >
                 <Dialog.Panel
                   className={classNames(
@@ -629,10 +627,10 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
         <Dialog as="div" className="relative z-10" onClose={closeModalNetwork}>
           <Transition.Child
             as={Fragment}
-            enter="ease-out duration-300"
+            enter="duration-300 ease-out"
             enterFrom="opacity-0"
             enterTo="opacity-100"
-            leave="ease-in duration-200"
+            leave="duration-200 ease-in"
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
@@ -643,12 +641,12 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
             <div className="flex min-h-full items-center justify-center p-4 text-center">
               <Transition.Child
                 as={Fragment}
-                enter="ease-out duration-300"
-                enterFrom="opacity-0 scale-95"
-                enterTo="opacity-100 scale-100"
-                leave="ease-in duration-200"
-                leaveFrom="opacity-100 scale-100"
-                leaveTo="opacity-0 scale-95"
+                enter="duration-300 ease-out"
+                enterFrom="scale-95 opacity-0"
+                enterTo="scale-100 opacity-100"
+                leave="duration-200 ease-in"
+                leaveFrom="scale-100 opacity-100"
+                leaveTo="scale-95 opacity-0"
               >
                 <Dialog.Panel
                   className={classNames(
@@ -689,8 +687,8 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
         </Dialog>
       </Transition>
 
-      <Container classname="flex items-center flex-col justify-center lg:bg-transparent lg:flex lg:items-start lg:flex-row lg:h-screen lg:w-full">
-        <div className=" flex  flex-col items-center  lg:my-auto lg:h-[36rem] lg:w-96  lg:rounded lg:border-2 lg:border-yellow-200 lg:bg-profile ">
+      <div className="mx-auto flex max-w-[100rem] flex-col items-center justify-center lg:flex lg:h-screen lg:w-full lg:flex-row lg:items-center lg:gap-12">
+        <div className=" flex flex-col  items-center py-24  lg:h-[50rem] lg:rounded lg:border-2 lg:border-yellow-200 lg:bg-profile">
           <Avatar
             nom={nom as string}
             sessionid={session.data?.user?.id || ''}
@@ -851,7 +849,7 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
                 Cette page a été visitée {userinfo?.Profil?.views} fois
               </p>
               <Link className="md:text-md group mr-2 flex items-center justify-center  " href={'/'}>
-                <Logo classname="w-8 h-8 mr-2 stroke-white group-hover:rotate-45 ease-in-out transition duration-500 " />
+                <Logo classname="mr-2 h-8 w-8 stroke-white transition duration-500 ease-in-out group-hover:rotate-45 " />
                 <p className="text-md font-extrabold">
                   <span className="">DAB</span>
                   <span className="text-blue-300">ARA</span>
@@ -860,7 +858,7 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
             </div>
           </div>
         </div>
-        <div className="rounded lg:my-auto lg:ml-4 lg:h-[36rem] lg:max-h-screen  lg:w-full  lg:overflow-y-auto lg:border-2 lg:border-yellow-200 lg:bg-profile">
+        <div className="my-2 rounded lg:my-auto lg:ml-4 lg:h-[70rem] lg:max-h-screen  lg:w-full  lg:overflow-y-auto lg:border-2 lg:border-yellow-200 lg:bg-profile">
           <Tab.Group>
             <Tab.List
               className={
@@ -1159,7 +1157,7 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
                 Cette page a été visitée {userinfo?.Profil?.views} fois
               </p>
               <Link className="md:text-md mr-2 flex items-center justify-center " href={'/'}>
-                <Logo classname="w-8 h-8  mr-2 stroke-white" />
+                <Logo classname="mr-2 h-8  w-8 stroke-white" />
                 <p className="text-md font-extrabold">
                   <span className="">DAB</span>
                   <span className="text-blue-300">ARA</span>
@@ -1168,7 +1166,7 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
             </div>
           </div>
         </div>
-      </Container>
+      </div>
     </div>
   );
 };
