@@ -1,4 +1,4 @@
-import Image from 'next/image';
+// import Image from 'next/image';
 import Link from 'next/link';
 import { Fragment, useEffect, useState } from 'react';
 import { Container } from '../components/container';
@@ -67,12 +67,12 @@ const Recherche = () => {
       {loading ? (
         <PageLoader />
       ) : (
-        <Container classname="lg:px-48 py-4">
+        <Container classname="py-4 lg:px-48">
           <div>
             <div className="flex w-full items-center  justify-center">
               <Link href="/" className="duration-300 hover:scale-105">
                 <p className="sr-only">Retour à l&apos;accueil</p>
-                <Logo classname=" h-14 w-14 lg:w-16 lg:h-16 animate-fade-in [--animation-delay:200ms] opacity-0 " />
+                <Logo classname=" h-14 w-14 animate-fade-in opacity-0 [--animation-delay:200ms] lg:h-16 lg:w-16 " />
               </Link>
             </div>
             <div className="mb-1 flex  animate-fade-in items-center justify-center opacity-0 [--animation-delay:400ms]   ">
@@ -107,9 +107,17 @@ const Recherche = () => {
                       className=" flex w-48 flex-col items-start justify-center gap-1 rounded-md border border-gray-600  p-2 hover:bg-[#2b2d3c] "
                     >
                       <div className="flex items-center justify-center gap-2">
-                        <Image
+                        <img
                           alt="image du profile"
-                          src={profile?.image || ''}
+                          // src={profile?.image || ''}
+                          src={`${
+                            profile.page
+                              ? `https://api.dicebear.com/5.x/lorelei/svg?seed=${profile?.page.replace(
+                                  ' ',
+                                  '-',
+                                )}`
+                              : 'https://api.dicebear.com/5.x/lorelei/svg?seed=testons'
+                          }`}
                           width={500}
                           height={500}
                           className="h-16 w-16 rounded-full object-cover "
@@ -181,10 +189,10 @@ const Recherche = () => {
             <Dialog as="div" className="relative z-10" onClose={closeModal}>
               <Transition.Child
                 as={Fragment}
-                enter="ease-out duration-300"
+                enter="duration-300 ease-out"
                 enterFrom="opacity-0"
                 enterTo="opacity-100"
-                leave="ease-in duration-200"
+                leave="duration-200 ease-in"
                 leaveFrom="opacity-100"
                 leaveTo="opacity-0"
               >
@@ -195,18 +203,18 @@ const Recherche = () => {
                 <div className="flex min-h-full items-center justify-center p-4 text-center">
                   <Transition.Child
                     as={Fragment}
-                    enter="ease-out duration-300"
-                    enterFrom="opacity-0 scale-95"
-                    enterTo="opacity-100 scale-100"
-                    leave="ease-in duration-200"
-                    leaveFrom="opacity-100 scale-100"
-                    leaveTo="opacity-0 scale-95"
+                    enter="duration-300 ease-out"
+                    enterFrom="scale-95 opacity-0"
+                    enterTo="scale-100 opacity-100"
+                    leave="duration-200 ease-in"
+                    leaveFrom="scale-100 opacity-100"
+                    leaveTo="scale-95 opacity-0"
                   >
                     <Dialog.Panel
                       className={classNames(
                         'fixed z-50',
                         'w-[95vw] max-w-md rounded-lg p-4 md:w-full',
-                        'top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]',
+                        'left-[50%] top-[50%] -translate-x-[50%] -translate-y-[50%]',
                         ' bg-[#2b2d3c]  ',
                         'focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75',
                       )}

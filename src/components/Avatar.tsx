@@ -51,14 +51,13 @@ export const Avatar = (props: AvatarProps) => {
             <Image
               className=" h-11 w-11 rounded-full object-cover md:h-16 md:w-16"
               referrerPolicy="origin"
-              // src={lien}
-              src={`https://api.dicebear.com/5.x/lorelei/svg?seed=${nom.replace(' ', '-')}`}
+              src={lien}
               width={2000}
               height={2000}
               alt="Image  de profil"
             />
           ) : (
-            <Image
+            <img
               referrerPolicy="origin"
               className="h-16 w-16"
               src={`https://api.dicebear.com/5.x/lorelei/svg?seed=${nom.replace(' ', '-')}`}
