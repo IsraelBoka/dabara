@@ -66,7 +66,7 @@ export const Skills = ({ competence }: SkillsProps) => {
           )}
           {skill.name === 'Salesforce' && (
             <div className="group relative flex flex-col items-center justify-center">
-              <SalesforceIcon className="h-8 w-8" />
+              <SalesforceIcon className="h-12 w-12" />
               <p className="absolute top-9 z-10 hidden select-none rounded-md bg-gray-800 p-1 text-xs group-hover:block">
                 Salesforce
               </p>
