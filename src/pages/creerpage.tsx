@@ -16,6 +16,7 @@ import { Reactjs } from '../components/icons/skills/react';
 import { Nodejs } from '../components/icons/skills/nodejs';
 import { Angularjs } from '../components/icons/skills/angular';
 import { NextSeo } from 'next-seo';
+import { SalesforceIcon } from '../components/icons/skills/salesforce';
 
 type FormData = {
   name: string;
@@ -441,6 +442,19 @@ const Creerpage = () => {
                       />
                       <label className="py-2 text-white">
                         <Angularjs className="h-8 w-8" />
+                      </label>
+                    </div>
+                    <div className="flex flex-row items-center justify-center gap-2">
+                      <input
+                        className="rounded "
+                        type="checkbox"
+                        value="Salesforce"
+                        {...register('competencesTechniques', {
+                          required: true,
+                        })}
+                      />
+                      <label className="py-2 text-white">
+                        <SalesforceIcon className="h-12 w-12" />
                       </label>
                     </div>
                   </div>
