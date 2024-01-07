@@ -687,8 +687,8 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
         </Dialog>
       </Transition>
 
-      <div className="mx-auto flex max-w-[100rem] flex-col items-center justify-center lg:flex lg:h-screen lg:w-full lg:flex-row lg:items-center lg:gap-12">
-        <div className=" flex flex-col  items-center lg:h-[36rem] lg:rounded lg:border-2 lg:border-yellow-200 lg:bg-profile">
+      <div className="mx-auto flex max-w-[100rem] flex-col items-center justify-center lg:grid lg:h-screen lg:w-full lg:grid-cols-5 lg:items-center lg:gap-12 lg:py-16">
+        <div className=" flex flex-col items-center py-2 px-2 lg:h-full lg:rounded lg:border-2 lg:border-yellow-200 lg:bg-profile">
           <Avatar
             nom={nom as string}
             sessionid={session.data?.user?.id || ''}
@@ -729,7 +729,7 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
             {!changefonction ? (
               <p
                 onClick={userinfo.id === session.data?.user?.id ? onChangeFonction : undefined}
-                className="pt-6 text-xl font-bold"
+                className="pt-6 text-center text-xl font-bold"
               >
                 {newfonction ? newfonction : userinfo?.fonction || 'Ajouter votre fonction'}
               </p>
@@ -828,7 +828,7 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
             </div>
           </div> */}
 
-          <div className="mt-2 hidden  flex-col items-center justify-center gap-2 px-8 lg:flex  ">
+          <div className="mt-auto hidden  flex-col items-center justify-center gap-2 px-8 lg:flex  ">
             <div className="flex items-center justify-center  ">
               <input
                 value={`https://dabara.tech/${userinfo?.page || ''}`}
@@ -857,7 +857,7 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
             </div>
           </div>
         </div>
-        <div className="my-2 rounded lg:my-auto lg:ml-4 lg:h-[70rem] lg:max-h-screen  lg:w-full  lg:overflow-y-auto lg:border-2 lg:border-yellow-200 lg:bg-profile">
+        <div className="my-2 rounded lg:col-span-4 lg:my-auto lg:ml-4 lg:h-full lg:max-h-screen  lg:w-full  lg:overflow-y-auto lg:border-2 lg:border-yellow-200 lg:bg-profile">
           <Tab.Group>
             <Tab.List
               className={
