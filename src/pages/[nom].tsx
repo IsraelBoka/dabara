@@ -894,7 +894,7 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
                 <Tab
                   className={({ selected }) =>
                     classNames(
-                      'w-full rounded-lg p-1  font-medium leading-5 text-gray-100',
+                      'w-full rounded-lg p-1 font-medium  leading-5 text-gray-100 lg:w-72',
                       'ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2',
                       selected
                         ? 'border   bg-change'
