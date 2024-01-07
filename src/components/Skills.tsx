@@ -5,6 +5,7 @@ import { Html } from './icons/skills/html';
 import { Javascript } from './icons/skills/javascript';
 import { Nodejs } from './icons/skills/nodejs';
 import { Reactjs } from './icons/skills/react';
+import { SalesforceIcon } from './icons/skills/salesforce';
 
 interface SkillsProps {
   competence?: Competence[];
@@ -17,7 +18,7 @@ export const Skills = ({ competence }: SkillsProps) => {
         <div key={skill.id} className="p-1">
           {skill.name === 'Angular' && (
             <div className="group relative flex flex-col items-center justify-center">
-              <Angularjs className="   h-8 w-8" />
+              <Angularjs className="h-8 w-8" />
               <p className="absolute top-9 z-10 hidden select-none rounded-md bg-gray-800 p-1 text-xs group-hover:block">
                 Angular{' '}
               </p>
@@ -60,6 +61,14 @@ export const Skills = ({ competence }: SkillsProps) => {
               <Nodejs className="h-8 w-8" />
               <p className="absolute top-9 z-10 hidden select-none rounded-md bg-gray-800 p-1 text-xs group-hover:block">
                 NodeJS{' '}
+              </p>
+            </div>
+          )}
+          {skill.name === 'Salesforce' && (
+            <div className="group relative flex flex-col items-center justify-center">
+              <SalesforceIcon className="h-8 w-8" />
+              <p className="absolute top-9 z-10 hidden select-none rounded-md bg-gray-800 p-1 text-xs group-hover:block">
+                Salesforce
               </p>
             </div>
           )}

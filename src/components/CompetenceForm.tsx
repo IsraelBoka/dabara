@@ -90,6 +90,15 @@ export const CompetenceForm = ({ competence, closeModalCompetence }: CompetenceF
               />
               <label className="py-2 text-white">Angular</label>
             </div>
+            <div className="flex flex-row items-center justify-center gap-2">
+              <input
+                className="rounded"
+                type="checkbox"
+                value="Salesforce"
+                {...register('competencesTechniques')}
+              />
+              <label className="py-2 text-white">Salesforce</label>
+            </div>
           </div>
         </div>
         <button
