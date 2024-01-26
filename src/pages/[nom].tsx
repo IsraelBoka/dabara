@@ -672,6 +672,7 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
                     />
                   </div>
                   <div className="mt-4">
+
                     <button
                       type="button"
                       className=" inline-flex justify-center rounded-md  border border-gray-300 px-4 py-2 text-sm font-medium hover:bg-modalbutton  focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-300 focus-visible:ring-offset-2"
@@ -688,7 +689,7 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
       </Transition>
 
       <div className="mx-auto flex max-w-[100rem] flex-col items-center justify-center lg:grid lg:h-screen lg:w-full lg:grid-cols-5 lg:items-center lg:gap-12 lg:py-16">
-        <div className=" flex flex-col items-center py-2 px-2 lg:h-full lg:rounded lg:border-2 lg:border-yellow-200 lg:bg-profile">
+        <div className="flex flex-col items-center py-2 px-2 lg:h-full lg:rounded-lg sidebar">
           <Avatar
             nom={nom as string}
             sessionid={session.data?.user?.id || ''}
