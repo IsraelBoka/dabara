@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import { type RefObject, useRef, useState } from 'react';
 import { toast } from 'react-toastify';
 import useOnClickOutside from '../hooks/useOnClickOutside';
@@ -16,6 +17,8 @@ interface ImageCardProps {
 }
 
 export const ImageCard = (props: ImageCardProps) => {
+  const router = useRouter();
+
   const [changedesc, setchangedesc] = useState(false);
 
   const { image, title, description, link, id } = props;
@@ -57,14 +60,17 @@ export const ImageCard = (props: ImageCardProps) => {
   });
 
   return (
-    <div className="flex flex-col items-center justify-center ">
-      <div className="flex flex-col items-center justify-center gap-2">
+    <div className="flex flex-col items-center justify-center py-8">
+      <div className="flex items-center justify-center gap-2">
         <Image
           src={image}
           alt={title}
           height={400}
           width={400}
-          className=" rounded-xl lg:object-scale-down"
+          onClick={async () => {
+            await router.push(link);
+          }}
+          className="rounded-xl border border-gray-200/25  shadow-[0_0_20px_10px_rgba(0,0,0,0.75)] transition-transform duration-150 hover:scale-105 lg:object-scale-down"
         />
         <div className="flex flex-col items-center justify-center gap-3">
           {changetitle ? (
@@ -115,15 +121,15 @@ export const ImageCard = (props: ImageCardProps) => {
                 {newdescription === '' ? 'Ajouter une description' : newdescription}
               </p>
             ) : (
-              <p className=" w-44 text-center text-sm text-white md:w-auto ">{newdescription}</p>
+              <p className="px-9 text-left text-sm text-white md:w-auto ">{newdescription}</p>
             )}
           </div>
+          <div className="my-2">
+            <Button target={'_blank'} variant={'secondary'} href={link}>
+              Voir le projet
+            </Button>
+          </div>
         </div>
-      </div>
-      <div className="my-2">
-        <Button target={'_blank'} variant={'secondary'} href={link}>
-          Voir le projet
-        </Button>
       </div>
     </div>
   );
