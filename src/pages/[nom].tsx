@@ -983,7 +983,7 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
 
                   {!changedesc && (
                     <p
-                      className="truncate whitespace-pre-wrap p-2 text-center indent-4 text-sm lg:text-base "
+                      className="truncate whitespace-pre-wrap py-8 text-left indent-4 text-sm lg:text-base "
                       onClick={
                         userinfo.id === session.data?.user?.id ? onChangeDescription : undefined
                       }
@@ -1065,7 +1065,7 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
                           <div className="flex items-center justify-center ">
                             <Link
                               className={classNames(
-                                ' text-sm underline hover:text-blue-400 ',
+                                ' text-base underline hover:text-blue-400 ',
                                 userinfo.id === session.data?.user?.id && 'pointer-events-none',
                               )}
                               passHref
