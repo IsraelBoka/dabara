@@ -41,7 +41,7 @@ export const Avatar = (props: AvatarProps) => {
   return (
     <div
       className={classNames(
-        'flex flex-row-reverse items-center justify-center  rounded lg:p-2',
+        'flex flex-col citems-center justify-center  rounded lg:p-2',
         classname,
       )}
     >
@@ -77,9 +77,9 @@ export const Avatar = (props: AvatarProps) => {
             onClick={sessionid === userinfoid ? () => setChangeMail(!changeMail) : undefined}
           >
             {newEmail === 'undefined' ||
-            newEmail === 'null' ||
-            newEmail === 'NaN' ||
-            newEmail === '' ? (
+              newEmail === 'null' ||
+              newEmail === 'NaN' ||
+              newEmail === '' ? (
               <span className="text-gray-400">Ajouter un email</span>
             ) : (
               newEmail
@@ -90,9 +90,9 @@ export const Avatar = (props: AvatarProps) => {
         {!changeMail && sessionid !== userinfoid && newEmail && (
           <a href={`mailto:${newEmail}`} className="text-sm">
             {newEmail === 'undefined' ||
-            newEmail === 'null' ||
-            newEmail === 'NaN' ||
-            newEmail === '' ? (
+              newEmail === 'null' ||
+              newEmail === 'NaN' ||
+              newEmail === '' ? (
               <span className="text-gray-400">Ajouter un email</span>
             ) : (
               newEmail
