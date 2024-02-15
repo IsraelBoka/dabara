@@ -688,8 +688,12 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
         </Dialog>
       </Transition>
 
-      <div className="mx-auto flex max-w-[100rem] flex-col items-center justify-center lg:grid lg:h-screen lg:w-full lg:grid-cols-5 lg:items-center lg:gap-12 lg:py-16">
-        <div className="flex flex-col items-center py-2 px-2 lg:h-full lg:rounded-lg sidebar">
+      <div className="mx-auto flex max-w-[90rem] flex-col items-center justify-center lg:grid lg:h-screen lg:w-full lg:grid-cols-5 lg:items-center lg:gap-12 relative lg:py-16 ">
+        <div className="absolute h-60 w-60 bg-purple-500 rounded-full top-0 left-24"></div>
+        <div className="absolute h-32 w-32 bg-purple-500 rounded-full top-0 right-24"></div>
+        <div className="absolute h-60 w-60 bg-blue-500 rounded-full bottom-16 left-52"></div>
+        <div className="absolute h-32 w-32 bg-blue-500 rounded-full bottom-0 right-40"></div>
+        <div className="flex flex-col items-center py-2 px-2 lg:h-full lg:rounded-lg bg-opacity-80 backdrop-filter bg-gradient-to-b from-black/20 to-black/40 backdrop-blur-lg border-[1px] border-solid border-white border-opacity-10 shadow-[0_0_20px_10px_rgba(0,0,0,0.75)]">
           <Avatar
             nom={nom as string}
             sessionid={session.data?.user?.id || ''}
@@ -858,7 +862,7 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
             </div>
           </div>
         </div>
-        <div className="my-2 rounded lg:col-span-4 lg:my-auto lg:ml-4 lg:h-full lg:max-h-screen  lg:w-full  lg:overflow-y-auto lg:border-2 lg:border-yellow-200 lg:bg-profile">
+        <div className="my-2 py-8 rounded lg:col-span-4 lg:my-auto lg:ml-4 lg:h-full lg:max-h-screen  lg:w-full  lg:overflow-y-auto bg-opacity-80 backdrop-filter bg-gradient-to-b from-black/20 to-black/40 backdrop-blur-lg border-[1px] border-solid border-white border-opacity-10 shadow-[0_0_20px_10px_rgba(0,0,0,0.75)]">
           <Tab.Group>
             <Tab.List
               className={
@@ -1167,7 +1171,7 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
           </div>
         </div>
       </div>
-    </div>
+    </div >
   );
 };
 export default Nom;
