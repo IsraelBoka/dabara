@@ -125,7 +125,7 @@ export const ImageCard = (props: ImageCardProps) => {
             )}
           </div>
           <div className="my-2">
-            <Button target={'_blank'} variant={'secondary'} href={link}>
+            <Button target={'_blank'} variant={'primary'} size={"large"} href={link}>
               Voir le projet
             </Button>
           </div>

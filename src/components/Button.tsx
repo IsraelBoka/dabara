@@ -26,6 +26,8 @@ const Buttonclasses = cva(' inline-flex items-center justify-center', {
         'rounded-lg text-[#121216] bg-blue-300   transition-colors font-semibold no-underline duration-300 hover:bg-blue-400',
       tertiary:
         'rounded-lg text-[#121216] bg-orange-300   transition-colors font-semibold no-underline duration-300 hover:bg-orange-400',
+      glossy:
+        'text-lg py-6 px-6 bg-transparent border border-gray-300/25 transition-colors rounded-full bg-gradient-to-r from-neutral-400 to-neutral-600 hover:bg-black',
     },
     size: {
       small: 'text-sm px-3 py-4 h-7',

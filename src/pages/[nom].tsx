@@ -1028,7 +1028,7 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
                             ) : (
                               <span className="">
                                 Je travaille actuellement sur
-                                <span className="font-bold">
+                                <span className="text-base font-bold">
                                   {' '}
                                   {userinfo.Profil?.travailencours}
                                 </span>
@@ -1064,7 +1064,7 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
                           <div className="flex items-center justify-center ">
                             <Link
                               className={classNames(
-                                ' text-base underline hover:text-blue-400 ',
+                                ' text-lg underline hover:text-blue-400 ',
                                 userinfo.id === session.data?.user?.id && 'pointer-events-none',
                               )}
                               passHref
@@ -1081,7 +1081,7 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
                               <div className="flex items-center justify-center ">
                                 <Link
                                   className={classNames(
-                                    ' text-sm underline hover:text-blue-400 ',
+                                    ' text-lg underline hover:text-blue-400 ',
                                     userinfo.id === session.data?.user?.id && 'pointer-events-none',
                                   )}
                                   target="_blank"
