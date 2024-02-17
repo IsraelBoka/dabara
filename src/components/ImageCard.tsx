@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import useOnClickOutside from '../hooks/useOnClickOutside';
 import { api } from '../utils/api';
 import { Button } from './Button';
+import { TrashIcon } from './icons/trash';
 
 interface ImageCardProps {
   image: string;
@@ -36,6 +37,22 @@ export const ImageCard = (props: ImageCardProps) => {
     },
   });
 
+  const { mutate: deleteportfolio, isLoading: loadingdelete } =
+    api.image.deleteportfolio.useMutation({
+      onSuccess: async () => {
+        toast.success('Portfolio supprimé', {
+          position: 'top-center',
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: true,
+          progress: undefined,
+          theme: 'dark',
+        });
+        await utils.image.getuserimages.invalidate();
+      },
+    });
   // Create a ref that we add to the element for which we want to detect outside clicks
   const ref = useRef<HTMLTextAreaElement>();
   const reftitre = useRef<HTMLInputElement>();
@@ -124,10 +141,25 @@ export const ImageCard = (props: ImageCardProps) => {
               <p className="px-9 text-left text-sm text-white md:w-auto ">{newdescription}</p>
             )}
           </div>
-          <div className="my-2">
+          <div className="my-2 flex gap-5 items-center justify-center">
             <Button target={'_blank'} variant={'primary'} size={"large"} href={link}>
               Voir le projet
             </Button>
+            {props.sessionid === props.userinfoid && (
+              <div className="flex ">
+                <button
+                  onClick={() => {
+                    deleteportfolio({
+                      id: id,
+                    });
+                  }}
+                  disabled={loadingdelete}
+                  className="inline-flex w-24 items-center text-white justify-center rounded bg-red-400 p-2 font-bold  transition-colors duration-300 hover:bg-red-500"
+                >
+                  <TrashIcon className="h-7 w-7 text-white" />
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>

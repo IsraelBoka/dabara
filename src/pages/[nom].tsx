@@ -63,19 +63,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
 const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({ page }) => {
   const router = useRouter();
-  {
-    /**
-  const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    setIsLoading(false);
-  }, [page]);
-
-  {
-    isLoading && <PageLoader />;
-  }
- */
-  }
   const { nom } = router.query;
   // Set isLoading to false once data has been fetched
 
@@ -277,23 +265,6 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
       await utils.page.getPage.invalidate();
     },
   });
-
-  const { mutate: deleteportfolio, isLoading: loadingdelete } =
-    api.image.deleteportfolio.useMutation({
-      onSuccess: async () => {
-        toast.success('Portfolio supprimé', {
-          position: 'top-center',
-          autoClose: 1000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: false,
-          draggable: true,
-          progress: undefined,
-          theme: 'dark',
-        });
-        await utils.image.getuserimages.invalidate();
-      },
-    });
 
   if (loadinguserinfo && page) {
     const image = encodeURIComponent(page.image as string);
@@ -942,7 +913,7 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
                       )}
                       {images?.map((image) => {
                         return (
-                          <div className="m-2 flex flex-col px-8" key={image.id}>
+                          <div className="m-2 flex flex-col items-center px-8" key={image.id}>
                             <ImageCard
                               sessionid={session.data?.user?.id || ''}
                               userinfoid={userinfo?.id}
@@ -952,21 +923,6 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
                               title={image.title || ''}
                               link={image.github || ''}
                             />
-                            {userinfo?.id === session.data?.user?.id && (
-                              <div className="flex items-center justify-center ">
-                                <button
-                                  onClick={() => {
-                                    deleteportfolio({
-                                      id: image.id,
-                                    });
-                                  }}
-                                  disabled={loadingdelete}
-                                  className="mt-2 inline-flex w-24 items-center justify-center rounded bg-red-400 p-2 font-bold text-gray-800 transition-colors duration-300 hover:bg-red-500"
-                                >
-                                  Supprimer
-                                </button>
-                              </div>
-                            )}
                           </div>
                         );
                       })}
