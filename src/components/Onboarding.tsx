@@ -5,15 +5,14 @@ import { Logo } from "./icons/logo"
 const Onboarding = () => {
   return (
     <Container>
-    // Intro step
       <div>
         <h1>Bienvenue sur Dabara</h1>
         <h2>
-          Dabara vous donne la possibilité de faire plein de trucs machins choses
+          Dabara vous donne la possibilité
+          de faire plein de trucs machins choses
         </h2>
       </div>
 
-    // Rentrer son nom / choisir sa page like bento.me thing
       <div>
         <Logo />
         <input type="text" />
