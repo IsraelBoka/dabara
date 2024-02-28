@@ -8,8 +8,7 @@ const Onboarding = () => {
       <div>
         <h1>Bienvenue sur Dabara</h1>
         <h2>
-          Dabara vous donne la possibilité
-          de faire plein de trucs machins choses
+          Dabara vous donne la possibilité de faire plein de trucs machins choses
         </h2>
       </div>
 
