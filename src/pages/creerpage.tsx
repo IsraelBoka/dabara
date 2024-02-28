@@ -139,7 +139,8 @@ const Creerpage = () => {
         setTaken(true);
       } else {
         setPage(data.page);
-        setFormStep(formStep + 1);
+        router.push('/' + data.page)
+        // setFormStep(formStep + 1);
       }
     });
   });
@@ -195,7 +196,7 @@ const Creerpage = () => {
                 </div>
                 <div className=" flex flex-col justify-center rounded p-8 ">
                   <h1 className=" text-center text-3xl font-extrabold lg:text-4xl ">
-                    Vérifier la validité de <br className="hidden md:block" /> la page
+                    Réclamez votre lien <br className="hidden md:block" /> dabara
                   </h1>
                   <label className="py-2 ">🌐 Mon identifiant:</label>
                   <input

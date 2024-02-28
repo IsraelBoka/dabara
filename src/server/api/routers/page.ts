@@ -72,7 +72,25 @@ export const pageRouter = createTRPCRouter({
       if (page) {
         return true;
       } else {
-        return false;
+        const userPageCreated = ctx.prisma.user.update({
+          where: {
+            id: ctx.session.user.id
+          },
+          data: {
+            page: input.page
+          }
+        })
+
+        const userProfileCreated = ctx.prisma.profil.create({
+          data: {
+            userId: ctx.session.user.id,
+            name: ctx.session.user.name as string,
+            email: ctx.session.user.email as string
+          }
+        })
+
+        await ctx.prisma.$transaction([userPageCreated, userProfileCreated])
+
       }
     }),
 

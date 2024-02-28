@@ -937,20 +937,22 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
                   </p>
 
                   {!changedesc && (
-                    <p
-                      className="truncate whitespace-pre-wrap py-8 text-left indent-4 text-sm lg:text-base "
-                      onClick={
-                        userinfo.id === session.data?.user?.id ? onChangeDescription : undefined
-                      }
-                    >
-                      {newdesc ? newdesc : userinfo?.about || 'Aucune description'}
-                      {userinfo?.about === '' && userinfo.id === session.data?.user?.id && (
-                        <>
-                          <br />
-                          <span className="text-gray-400">Ajouter une description</span>
-                        </>
-                      )}
-                    </p>
+                    <div className="flex items-center flex-col">
+                      <p
+                        className="truncate whitespace-pre-wrap py-8 text-left indent-4 text-sm lg:text-base "
+                        onClick={
+                          userinfo.id === session.data?.user?.id ? onChangeDescription : undefined
+                        }
+                      >
+                        {newdesc ? newdesc : userinfo?.about || 'Aucune description'}
+                        {userinfo?.about === '' && userinfo.id === session.data?.user?.id && (
+                          <>
+                            <br />
+                            <span className="text-gray-400">Ajouter une description</span>
+                          </>
+                        )}
+                      </p>
+                    </div>
                   )}
                   {changedesc && (
                     <div className="flex flex-col items-center">
@@ -1031,7 +1033,7 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
                           </div>
                         ) : (
                           <div>
-                            {userinfo.Profil?.website === '' ? (
+                            {userinfo.Profil?.website === null || userinfo.Profil?.website === undefined || userinfo.Profil?.website === "" ? (
                               ''
                             ) : (
                               <div className="flex items-center justify-center ">
@@ -1042,7 +1044,7 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
                                   )}
                                   target="_blank"
                                   passHref
-                                  href={userinfo?.Profil?.website as string}
+                                  href={userinfo?.Profil?.website}
                                 >
                                   <span className="">{userinfo.Profil?.website}</span>
                                 </Link>
