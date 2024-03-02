@@ -83,7 +83,7 @@ const Signin: NextPage = () => {
         <Container classname="lg:px-48">
           <div className=" flex min-h-screen flex-col items-center justify-center gap-4">
             <Link href={'/'} passHref className="  transition  duration-300 hover:scale-105">
-              <Logo classname=" w-16 h-16 animate-fade-in [--animation-delay:200ms] opacity-0 " />
+              <Logo classname=" h-16 w-16 animate-fade-in opacity-0 [--animation-delay:200ms] " />
             </Link>
 
             {error && (
