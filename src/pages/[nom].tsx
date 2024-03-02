@@ -659,11 +659,11 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
       </Transition>
 
       <div className="relative mx-auto flex max-w-[90rem] flex-col items-center justify-center lg:grid lg:h-screen lg:w-full lg:grid-cols-5 lg:items-center lg:gap-12 lg:py-16 ">
-        <div className="absolute top-0 left-24 h-60 w-60 rounded-full bg-purple-500"></div>
-        <div className="absolute top-0 right-24 h-32 w-32 rounded-full bg-purple-500"></div>
+        <div className="absolute left-24 top-0 h-60 w-60 rounded-full bg-purple-500"></div>
+        <div className="absolute right-24 top-0 h-32 w-32 rounded-full bg-purple-500"></div>
         <div className="absolute bottom-16 left-52 h-60 w-60 rounded-full bg-blue-500"></div>
         <div className="absolute bottom-0 right-40 h-32 w-32 rounded-full bg-blue-500"></div>
-        <div className="flex flex-col items-center border-[1px] border-solid border-white border-opacity-10 bg-opacity-80 bg-gradient-to-b from-black/20 to-black/40 py-2 px-2 shadow-[0_0_20px_10px_rgba(0,0,0,0.75)] backdrop-blur-lg backdrop-filter lg:h-full lg:rounded-3xl">
+        <div className="flex flex-col items-center border-[1px] border-solid border-white border-opacity-10 bg-opacity-80 bg-gradient-to-b from-black/20 to-black/40 px-2 py-2 shadow-[0_0_20px_10px_rgba(0,0,0,0.75)] backdrop-blur-lg backdrop-filter lg:h-full lg:rounded-3xl">
           <Avatar
             nom={nom as string}
             sessionid={session.data?.user?.id || ''}
@@ -937,7 +937,7 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
                   </p>
 
                   {!changedesc && (
-                    <div className="flex items-center flex-col">
+                    <div className="flex flex-col items-center">
                       <p
                         className="truncate whitespace-pre-wrap py-8 text-left indent-4 text-sm lg:text-base "
                         onClick={
@@ -955,7 +955,7 @@ const Nom: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
                     </div>
                   )}
                   {changedesc && (
-                    <div className="flex flex-col items-center">
+                    <div className=" flex flex-col items-center">
                       <textarea
                         ref={refDescription as RefObject<HTMLTextAreaElement>}
                         autoFocus
