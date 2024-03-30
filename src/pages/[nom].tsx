@@ -1,6 +1,5 @@
 import Error from 'next/error';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
+import Link from 'next/link'; import { useRouter } from 'next/router';
 import { useState, Fragment, useRef, type RefObject } from 'react';
 import { Avatar } from '../components/Avatar';
 // import { Container } from '../components/container';

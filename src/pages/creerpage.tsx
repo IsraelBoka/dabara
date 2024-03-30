@@ -139,8 +139,13 @@ const Creerpage = () => {
         setTaken(true);
       } else {
         setPage(data.page);
-        router.push('/' + data.page)
-        // setFormStep(formStep + 1);
+        router.push('/' + data.page).then(
+          (data) => {
+            console.log(data)
+          }
+        ).catch((err) => {
+          console.log(err)
+        });
       }
     });
   });
