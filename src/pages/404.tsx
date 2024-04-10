@@ -11,7 +11,7 @@ export const UnFound = () => {
       <div className="text-center">
         <h1 className="py-2 text-3xl font-bold">Introuvable</h1>
         <h2 className="py-2 text-sm font-bold">
-          La page à laquelle vous essayez d&apos;accéder n&apos;existe pas.
+          La page à laquelle vous essayez d&apos;accéder n&apos;existe pas. Réclamez votre page
         </h2>
       </div>
     </div>
